@@ -153,7 +153,7 @@ export default function LatentSpace() {
       canvas.style.cursor = hoverRepo ? 'pointer' : 'default'
 
       for (const [k, v] of hot) {
-        const nv = v - 0.0028
+        const nv = v - 0.0013
         if (nv <= 0) hot.delete(k)
         else hot.set(k, nv)
       }
