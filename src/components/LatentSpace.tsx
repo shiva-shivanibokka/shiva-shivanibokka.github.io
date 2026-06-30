@@ -206,8 +206,8 @@ export default function LatentSpace() {
   return (
     <section className="w-full px-[clamp(28px,4vw,72px)] pb-12 pt-4">
       <p className="text-base uppercase tracking-[0.2em] text-mint">// my repos, mapped in embedding space</p>
-      <h2 className="mt-2 text-[clamp(32px,4.5vw,60px)] font-bold tracking-tight">Connecting the Dots</h2>
-      <p className="mt-4 w-full text-[21px] leading-relaxed text-muted">
+      <h2 className="mt-2 text-[clamp(26px,3.4vw,44px)] font-bold tracking-tight">Connecting the Dots</h2>
+      <p className="mt-4 w-full max-w-5xl text-[15.5px] leading-relaxed text-muted">
         Every repo is embedded into a <span className="text-text">384-dim vector</span> and projected to 2D —
         work that&apos;s similar in meaning sits close together, so my projects form clusters. Hover a node to
         see the repo, click to open it, or <span className="text-mint">run a search above</span> and watch the
@@ -224,9 +224,9 @@ export default function LatentSpace() {
         </span>
       </div>
 
-      <div className="mt-6 flex flex-wrap gap-x-7 gap-y-3">
+      <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2.5">
         {LEGEND.map(([d, c]) => (
-          <span key={d} className="flex items-center gap-2.5 text-[16.5px] text-muted">
+          <span key={d} className="flex items-center gap-2 text-[13.5px] text-muted">
             <span
               className="h-3 w-3 rounded-full"
               style={{ background: `rgb(${c})`, boxShadow: `0 0 9px rgb(${c})` }}

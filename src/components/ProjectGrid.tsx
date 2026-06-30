@@ -45,15 +45,15 @@ export default function ProjectGrid() {
   return (
     <section id="projects" className="w-full px-[clamp(28px,4vw,72px)] py-12">
       <p className="text-base uppercase tracking-[0.2em] text-mint">// 01</p>
-      <h2 className="mt-2 text-[clamp(32px,4.5vw,60px)] font-bold tracking-tight">Projects</h2>
-      <p className="mt-3 text-[17px] text-muted">{projects.length} things I&apos;ve built.</p>
+      <h2 className="mt-2 text-[clamp(26px,3.4vw,44px)] font-bold tracking-tight">Projects</h2>
+      <p className="mt-3 text-[14px] text-muted">{projects.length} things I&apos;ve built.</p>
 
       {/* Hiring-for role lens */}
-      <div className="mt-7 rounded-2xl border border-white/10 bg-surface/60 p-6 backdrop-blur-sm">
-        <h3 className="mb-4 text-[22px] font-bold text-text">
+      <div className="mt-7 rounded-2xl border border-white/10 bg-surface/60 p-5 backdrop-blur-sm">
+        <h3 className="mb-3.5 text-[17px] font-bold text-text">
           <span className="text-mint">▸</span> Hiring for a specific role?
         </h3>
-        <div className="flex flex-wrap gap-3">
+        <div className="flex flex-wrap gap-2.5">
           {ROLE_KEYS.map((r) => (
             <button
               key={r}
@@ -61,7 +61,7 @@ export default function ProjectGrid() {
                 setRole((cur) => (cur === r ? null : r))
                 setFilter('All')
               }}
-              className={`rounded-xl px-5 py-3 text-[17px] font-semibold transition ${
+              className={`rounded-xl px-4 py-2.5 text-[13.5px] font-semibold transition ${
                 role === r
                   ? 'bg-primary text-[#0B0A12]'
                   : 'border border-primary/40 text-text hover:border-mint hover:text-mint'
@@ -73,23 +73,23 @@ export default function ProjectGrid() {
           {role && (
             <button
               onClick={() => setRole(null)}
-              className="rounded-xl border border-white/15 px-5 py-3 text-[17px] text-muted transition hover:border-warm hover:text-warm"
+              className="rounded-xl border border-white/15 px-4 py-2.5 text-[13.5px] text-muted transition hover:border-warm hover:text-warm"
             >
               ✕ clear
             </button>
           )}
         </div>
-        {role && <p className="mt-4 text-[18px] text-warm">{ROLES[role].line}</p>}
+        {role && <p className="mt-3.5 text-[14.5px] text-warm">{ROLES[role].line}</p>}
       </div>
 
       {/* domain filters (disabled visual when a role lens is active) */}
       {!role && (
-        <div className="mt-6 flex flex-wrap gap-2.5">
+        <div className="mt-6 flex flex-wrap gap-2">
           {filters.map((f) => (
             <button
               key={f}
               onClick={() => setFilter(f)}
-              className={`rounded-full px-5 py-3 text-[17px] transition ${
+              className={`rounded-full px-4 py-2 text-[13px] transition ${
                 filter === f
                   ? 'bg-primary font-semibold text-[#0B0A12]'
                   : 'border border-white/15 text-muted hover:border-mint hover:text-mint'
