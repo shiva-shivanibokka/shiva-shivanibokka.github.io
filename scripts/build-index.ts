@@ -6,6 +6,28 @@ import { chunkText } from '../src/rag/chunk'
 import { projects } from '../src/data/projects'
 import { EMBED_DIM, EMBED_MODEL, type IndexChunk, type SearchIndex } from '../src/rag/indexTypes'
 
+// Strip markdown/HTML noise so retrieved chunks read as clean prose, not raw README source.
+export function stripMarkdown(md: string): string {
+  return md
+    .replace(/<!--[\s\S]*?-->/g, ' ')              // HTML comments
+    .replace(/```[\s\S]*?```/g, ' ')               // fenced code blocks
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, ' ')         // images / badges
+    .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')       // links -> link text
+    .replace(/^\s*\[[^\]]+\]:\s*\S+.*$/gm, ' ')    // reference link defs
+    .replace(/<[^>]+>/g, ' ')                       // HTML tags
+    .replace(/^\s*\|?[\s:|-]+\|[\s:|-]*$/gm, ' ')  // table separator rows
+    .replace(/\|/g, ' ')                            // remaining table pipes
+    .replace(/^\s{0,3}#{1,6}\s+/gm, '')            // heading markers
+    .replace(/^\s{0,3}>\s?/gm, '')                 // blockquotes
+    .replace(/^\s{0,3}[-*+]\s+/gm, '')             // list bullets
+    .replace(/^\s*([-*_])\1{2,}\s*$/gm, ' ')       // horizontal rules
+    .replace(/[*_`~]/g, '')                         // emphasis / inline-code marks
+    .replace(/https?:\/\/\S+/g, ' ')               // bare URLs
+    .replace(/[ \t]+/g, ' ')                        // collapse spaces
+    .replace(/\n{3,}/g, '\n\n')                     // collapse blank lines
+    .trim()
+}
+
 const OWNER = 'shiva-shivanibokka'
 const PROFILE_REPO = 'shiva-shivanibokka' // GitHub profile README repo (About content)
 
@@ -33,7 +55,7 @@ export async function buildIndex(opts: {
   // Per-project corpus: the live GitHub README + the project blurb.
   // (WHAT AND WHY write-ups are deferred to a later phase — see note below.)
   for (const p of projects) {
-    const readme = await fetchReadme(p.repo)
+    const readme = stripMarkdown(await fetchReadme(p.repo))
     const corpus = [`# ${p.title}\n${p.blurb}`, readme].filter(Boolean).join('\n\n')
     chunkText(corpus).forEach((text, i) => {
       chunks.push({ id: `${p.slug}-${i}`, repo: p.repo, domain: p.domain, title: p.title, url: p.url, text })
@@ -41,7 +63,7 @@ export async function buildIndex(opts: {
   }
 
   // About chunks from the GitHub profile README so "who are you / experience" queries match.
-  const about = await fetchReadme(PROFILE_REPO)
+  const about = stripMarkdown(await fetchReadme(PROFILE_REPO))
   chunkText(about).forEach((text, i) => {
     chunks.push({
       id: `about-${i}`, repo: '', domain: 'Data Science', title: 'About Shivani',
