@@ -39,21 +39,37 @@ export default function Intro() {
 
     let raf = 0
     let safety = 0
+    let endTimer = 0
     let particles: P[] = []
     let iw = 0
     let ih = 0
     let start = 0
     let disp = false
+    let fading = false
     let finished = false
+
+    const FADE_MS = 950
+
+    // Begin a smooth, eased crossfade: drop the overlay's opacity (the page is
+    // already mounted behind it, so the dispersing particles dissolve straight
+    // into the hero) while the animation loop keeps running so the particles
+    // stay alive during the fade. Unmount only after the fade fully completes.
+    const beginFade = () => {
+      if (fading) return
+      fading = true
+      window.clearTimeout(safety)
+      overlay.style.pointerEvents = 'none'
+      overlay.style.opacity = '0'
+      endTimer = window.setTimeout(finish, FADE_MS)
+    }
 
     const finish = () => {
       if (finished) return
       finished = true
       cancelAnimationFrame(raf)
       window.clearTimeout(safety)
-      overlay.style.opacity = '0'
-      overlay.style.visibility = 'hidden'
-      window.setTimeout(() => setActive(false), 650)
+      window.clearTimeout(endTimer)
+      setActive(false)
     }
 
     const build = () => {
@@ -107,7 +123,7 @@ export default function Intro() {
           p.x += (tx - p.x) * 0.3
           p.y += (ty - p.y) * 0.3
         }
-      } else if (t < 3.6) {
+      } else if (t < 4.2) {
         if (!disp) {
           disp = true
           for (const p of particles) {
@@ -126,9 +142,11 @@ export default function Intro() {
           if (p.x > iw + 20) p.x = -20
           if (p.y < -20) p.y = ih + 20
           if (p.y > ih + 20) p.y = -20
-          if (t > 2.1) p.a *= 0.97
+          if (t > 2.0) p.a *= 0.975
         }
-        if (t > 3.0) finish()
+        // Start the crossfade while particles are still drifting so the intro
+        // dissolves into the page instead of cutting to it.
+        if (t > 2.6) beginFade()
       } else {
         finish()
         return
@@ -155,10 +173,11 @@ export default function Intro() {
       start = performance.now()
       disp = false
       finished = false
+      overlay.style.pointerEvents = 'auto'
       overlay.style.opacity = '1'
       overlay.style.visibility = 'visible'
       loop()
-      safety = window.setTimeout(finish, 6000)
+      safety = window.setTimeout(beginFade, 6000)
     }
 
     // Wait for Bungee Shade before sampling glyph pixels (guarded for old/test envs).
@@ -168,14 +187,15 @@ export default function Intro() {
       if (!cancelled) window.setTimeout(go, 80)
     })
 
-    const onKey = () => finish()
-    const onClick = () => finish()
+    const onKey = () => beginFade()
+    const onClick = () => beginFade()
     window.addEventListener('keydown', onKey)
     overlay.addEventListener('click', onClick)
     return () => {
       cancelled = true
       cancelAnimationFrame(raf)
       window.clearTimeout(safety)
+      window.clearTimeout(endTimer)
       window.removeEventListener('keydown', onKey)
       overlay.removeEventListener('click', onClick)
     }
@@ -188,7 +208,7 @@ export default function Intro() {
       {active && (
         <div
           ref={overlayRef}
-          className="fixed inset-0 z-[100] bg-[#060509] transition-opacity duration-500"
+          className="fixed inset-0 z-[100] bg-base transition-opacity duration-[850ms] ease-out [will-change:opacity]"
         >
           <canvas ref={canvasRef} className="block h-full w-full" />
           <span className="pointer-events-none fixed bottom-6 right-7 text-xs text-muted">
