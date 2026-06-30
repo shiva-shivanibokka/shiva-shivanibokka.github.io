@@ -18,7 +18,7 @@
 - Palette tokens (exact): base `#14131A`, surface `#1C1B24`, text `#ECE6DD`, muted `#9A93A6`, primary `#7C6CF0`, warm `#FF8A6B`. Body text is warm-ivory `#ECE6DD`, never pure white.
 - All motion must respect `prefers-reduced-motion`. Target WCAG AA contrast.
 - GitHub username/links use `shiva-shivanibokka`. Contact: shivani.bokka93@gmail.com, LinkedIn `shivani-bokka`.
-- Corpus source: repo `README.md` (primary) + root `About_Me.md`. (The `WHAT AND WHY` write-ups are intentionally NOT used in Phase 1 — they will be authored for all projects later, then added as a corpus source.) Repo source root: `..` relative to project (the `GITHUB REPOS` parent).
+- Corpus source: each curated repo's README fetched **live from GitHub** (`api.github.com/repos/shiva-shivanibokka/<repo>/readme`, raw) + the GitHub profile README (`shiva-shivanibokka/shiva-shivanibokka`) for About content. No local-folder reads. (The `WHAT AND WHY` write-ups are intentionally NOT used in Phase 1 — they will be published and added as a corpus source later.)
 
 ---
 
@@ -278,9 +278,9 @@ git commit -m "feat: scaffold Vite+React+TS+Tailwind portfolio with theme tokens
 
 **Interfaces:**
 - Produces:
-  - `type Domain = 'Agentic' | 'LLMs & GenAI' | 'Deep Learning' | 'Classical ML' | 'ML System Design' | 'MLOps' | 'Data Science' | 'Visualization' | 'CS/DSA'`
+  - `type Domain = 'Agentic' | 'LLMs & GenAI' | 'Deep Learning' | 'ML System Design' | 'MLOps' | 'Classical ML' | 'Data Science' | 'NLP' | 'Full-Stack / Product'`
   - `interface Project { slug: string; title: string; repo: string; domain: Domain; blurb: string; tech: string[]; metrics?: string[]; url: string }`
-  - `const projects: Project[]` (the curated ~20)
+  - `const projects: Project[]` (the curated set, ~26)
   - `const DOMAINS: Domain[]` (ordered, for filter UI)
 
 - [ ] **Step 1: Write the failing test**
@@ -289,9 +289,9 @@ git commit -m "feat: scaffold Vite+React+TS+Tailwind portfolio with theme tokens
 ```ts
 import { projects, DOMAINS } from './projects'
 
-test('has 15-22 curated projects, all well-formed', () => {
-  expect(projects.length).toBeGreaterThanOrEqual(15)
-  expect(projects.length).toBeLessThanOrEqual(22)
+test('has 20-32 curated projects, all well-formed', () => {
+  expect(projects.length).toBeGreaterThanOrEqual(20)
+  expect(projects.length).toBeLessThanOrEqual(32)
   for (const p of projects) {
     expect(p.slug).toMatch(/^[a-z0-9-]+$/)
     expect(p.title.length).toBeGreaterThan(0)
@@ -326,12 +326,12 @@ export type Domain =
   | 'Agentic'
   | 'LLMs & GenAI'
   | 'Deep Learning'
-  | 'Classical ML'
   | 'ML System Design'
   | 'MLOps'
+  | 'Classical ML'
   | 'Data Science'
-  | 'Visualization'
-  | 'CS/DSA'
+  | 'NLP'
+  | 'Full-Stack / Product'
 
 export interface Project {
   slug: string
@@ -347,7 +347,10 @@ export interface Project {
 
 - [ ] **Step 4: Create `src/data/projects.ts`**
 
-> Implementer note: blurbs/tech/metrics below are drawn from `About_Me.md` and the repo READMEs. If a README reveals a sharper metric, refine the string — but keep the shape. `url` is always `https://github.com/shiva-shivanibokka/<repo>`.
+> Implementer note: `repo` values below are VERIFIED real public repos under
+> `github.com/shiva-shivanibokka` (do not alter them — they were reconciled against
+> the live GitHub account). Blurbs/metrics are grounded in the live READMEs. `url`
+> is always `https://github.com/shiva-shivanibokka/<repo>`.
 
 ```ts
 import type { Domain, Project } from './types'
@@ -356,63 +359,83 @@ export const DOMAINS: Domain[] = [
   'Agentic',
   'LLMs & GenAI',
   'Deep Learning',
-  'Classical ML',
   'ML System Design',
   'MLOps',
+  'Classical ML',
   'Data Science',
-  'Visualization',
-  'CS/DSA',
+  'NLP',
+  'Full-Stack / Product',
 ]
 
 const gh = (repo: string) => `https://github.com/shiva-shivanibokka/${repo}`
 
 const raw: Omit<Project, 'url'>[] = [
+  // ---- Agentic ----
   { slug: 'autonomous-swe-agent', title: 'Autonomous SWE Agent', repo: 'Autonomous-SWE-Agent', domain: 'Agentic',
     blurb: 'A ReAct-style coding agent that plans, edits, and runs code through a typed tool registry with error short-circuiting.',
-    tech: ['Python', 'LangGraph', 'ReAct', 'MCP'], metrics: ['50-tool typed registry'] },
-  { slug: 'autoapply-job-agent', title: 'AutoApply Job Agent', repo: 'AutoApply-Job-Agent', domain: 'Agentic',
-    blurb: 'An agent that scrapes postings, matches them to a resume, and drafts tailored applications end to end.',
-    tech: ['Python', 'LLMs', 'Playwright', 'Pydantic'] },
+    tech: ['Python', 'LangGraph', 'ReAct', 'MCP'] },
+  { slug: 'codepilot-agent', title: 'CodePilot Coding Agent', repo: 'CodePilot-Agent', domain: 'Agentic',
+    blurb: 'A containerized autonomous coding assistant with a retrieval-augmented codebase indexer, a tool router, and a FastAPI + demo app.',
+    tech: ['Python', 'FastAPI', 'Docker', 'RAG'] },
   { slug: 'autonomous-research-report-agent', title: 'Autonomous Research Report Agent', repo: 'Autonomous-Research-Report-Agent', domain: 'Agentic',
     blurb: 'Multi-step research agent that searches the web, reads sources, and synthesizes a cited report.',
     tech: ['Python', 'Tavily', 'LangGraph', 'LLMs'] },
   { slug: 'autonomous-ml-pipeline-builder', title: 'Autonomous ML Pipeline Builder', repo: 'Autonomous-ML-Pipeline-Builder', domain: 'Agentic',
     blurb: 'Agent that constructs and runs end-to-end ML pipelines from a dataset and a goal description.',
     tech: ['Python', 'scikit-learn', 'LLMs'] },
-  { slug: 'codepilot-agent', title: 'CodePilot Agent', repo: 'CodePilot-Agent', domain: 'Agentic',
-    blurb: 'A coding copilot agent with sliding-window memory compression and tool-result TTL caching.',
-    tech: ['Python', 'LLMs', 'MCP'] },
-  { slug: 'scm-mcp-llm', title: 'Supply Chain Agent (MCP + LLM)', repo: 'SCM-using-MCP-and-LLM', domain: 'Agentic',
-    blurb: 'Supply-chain decision agent exposing tools over the Model Context Protocol to an LLM planner.',
-    tech: ['Python', 'MCP', 'LLMs'] },
+  { slug: 'supply-chain-demand-agent', title: 'Supply Chain Demand Agent', repo: 'Supply-Chain-Demand-Agent', domain: 'Agentic',
+    blurb: 'Agentic RAG pipeline for supply-chain demand forecasting, combining LLMs, time-series models, and MLOps.',
+    tech: ['Python', 'RAG', 'Time Series', 'MLOps'] },
+  { slug: 'autograder-agent', title: 'AutoGrader Agent', repo: 'AutoGrader-Agent', domain: 'Agentic',
+    blurb: 'Auto-grades Jupyter notebooks: parses with nbformat, applies or auto-detects a rubric, scores each criterion via a multi-step LangGraph agent, and returns structured feedback.',
+    tech: ['Python', 'LangGraph', 'nbformat', 'FastAPI', 'Gradio'] },
 
-  { slug: 'cag-vs-rag-showdown', title: 'CAG vs RAG Showdown', repo: 'CAG-vs-RAG-Showdown', domain: 'LLMs & GenAI',
-    blurb: 'Benchmarks Context-Augmented vs Retrieval-Augmented Generation on latency, token cost, and LLM-as-judge quality.',
-    tech: ['Python', 'FAISS', 'LLM-as-judge'], metrics: ['Latency + cost + quality benchmark'] },
+  // ---- LLMs & GenAI ----
+  { slug: 'rag-vs-cag-showdown', title: 'RAG vs CAG Showdown', repo: 'RAG-vs-CAG-Showdown', domain: 'LLMs & GenAI',
+    blurb: 'Modular benchmark comparing Retrieval- vs Context-Augmented Generation on latency, token cost, and LLM-as-judge quality across factual, multi-hop, and reasoning tasks.',
+    tech: ['Python', 'Claude API', 'LLM-as-judge'], metrics: ['Latency + cost + quality benchmark'] },
   { slug: 'multimodal-rag', title: 'Multimodal RAG', repo: 'Multimodal-RAG', domain: 'LLMs & GenAI',
     blurb: 'RAG over text and images with embedding-based retrieval and grounded generation.',
     tech: ['Python', 'ChromaDB', 'CLIP', 'LLMs'] },
   { slug: 'llm-hallucination-detection', title: 'LLM Hallucination Detection', repo: 'LLM-Halucination-Detection', domain: 'LLMs & GenAI',
-    blurb: 'Sentence-level grounding check using DeBERTa-v3 NLI to label claims GROUNDED / UNGROUNDED / CONTRADICTED.',
-    tech: ['Python', 'DeBERTa-v3', 'Transformers'] },
+    blurb: 'NLI-based hallucination detector: flags unsupported LLM claims with DeBERTa-v3, scores hallucination confidence per sentence, and grounds responses against sources via ChromaDB.',
+    tech: ['Python', 'DeBERTa-v3', 'ChromaDB', 'Transformers'] },
   { slug: 'fine-tuned-domain-llm-qlora', title: 'Fine-Tuned Domain LLM (QLoRA)', repo: 'Fine-Tuned-Domain-LLM-QLoRA', domain: 'LLMs & GenAI',
     blurb: 'Parameter-efficient fine-tuning of an open LLM on a domain corpus using QLoRA.',
     tech: ['Python', 'PEFT', 'QLoRA', 'Transformers'] },
 
+  // ---- Deep Learning ----
   { slug: 'super-resolution-han', title: 'Super-Resolution with HAN', repo: 'Super_Resolution_using_HAN', domain: 'Deep Learning',
     blurb: 'Single-image super-resolution using a Holistic Attention Network with residual channel attention.',
     tech: ['PyTorch', 'CNN', 'Attention'], metrics: ['SSIM / PSNR evaluated'] },
   { slug: 'multi-horizon-stock-forecasting', title: 'Multi-Horizon Stock Forecasting', repo: 'Multi-Horizon-Stock-Forecasting-AI-Model', domain: 'Deep Learning',
-    blurb: 'Temporal Fusion Transformer with quantile (P10/P50/P90) outputs over 36+ engineered indicators.',
-    tech: ['PyTorch', 'TFT', 'Time Series'] },
+    blurb: 'Multi-horizon stock-price forecasting with Transformer, LSTM, RNN, and Random Forest on S&P 500 data.',
+    tech: ['PyTorch', 'Transformer', 'LSTM', 'Time Series'] },
   { slug: 'all-about-neural-networks', title: 'Neural Nets From Scratch', repo: 'All-about-Neural-Networks', domain: 'Deep Learning',
-    blurb: 'A custom autograd engine and neural nets built from first principles — backprop by hand.',
+    blurb: 'Neural networks and a custom autograd engine built from first principles — backprop by hand.',
     tech: ['Python', 'NumPy', 'Autograd'] },
 
-  { slug: 'ml-system-design-model-serving', title: 'ML System Design: Model Serving', repo: 'ML-System-Design-Model-Serving', domain: 'ML System Design',
-    blurb: 'Reference design for low-latency model serving: batching, caching, and rollout strategy.',
-    tech: ['Python', 'FastAPI', 'System Design'] },
+  // ---- ML System Design ----
+  { slug: 'ml-system-design-model-serving', title: 'Production Model Serving', repo: 'ML-System-Design-Model-Serving', domain: 'ML System Design',
+    blurb: 'Production model serving with shadow mode, canary delivery, circuit-breaker failover, and Evidently drift detection — FastAPI + Redis + Prometheus + Grafana.',
+    tech: ['FastAPI', 'Redis', 'Prometheus', 'Docker'] },
+  { slug: 'ml-system-design-feature-store', title: 'End-to-End Feature Store', repo: 'ML-System-Design-Feature-Store', domain: 'ML System Design',
+    blurb: 'A feature store built to Uber-Michelangelo standards that eliminates training-serving skew, the #1 silent production bug in ML systems.',
+    tech: ['Python', 'Feature Store', 'System Design'] },
+  { slug: 'ml-system-design-batch-inference', title: 'Batch Inference at Scale', repo: 'ML-System-Design-Batch-Inference', domain: 'ML System Design',
+    blurb: 'Nightly batch scoring of 1,000,000 customers with PySpark distributed inference, Airflow orchestration, FastAPI, and a Gradio dashboard.',
+    tech: ['PySpark', 'Airflow', 'FastAPI'], metrics: ['1M customers scored nightly'] },
+  { slug: 'ml-system-design-recommendation-engine', title: 'Real-Time Recommendation Engine', repo: 'ML-System-Design-Recommendation-Engine', domain: 'ML System Design',
+    blurb: 'A real-time recommendation system designed to the architectural standards of Netflix, Spotify, and YouTube.',
+    tech: ['Python', 'RecSys', 'System Design'] },
+  { slug: 'ml-system-design-retraining-pipeline', title: 'Automated Retraining Pipeline', repo: 'ML-System-Design-Retraining-Pipeline', domain: 'ML System Design',
+    blurb: 'Automated model-lifecycle system for a credit-risk LightGBM model that keeps it accurate as conditions drift — orchestrated with Prefect.',
+    tech: ['Python', 'LightGBM', 'Prefect', 'MLOps'] },
+  { slug: 'search-ranking-system', title: 'Neural Search & Ranking System', repo: 'Search-Ranking-System', domain: 'ML System Design',
+    blurb: 'Production neural search over 500k MS MARCO documents: five microservices, real-time click feedback, automated retraining, and a promotion gate — sub-200ms.',
+    tech: ['Python', 'Learning-to-Rank', 'Microservices'], metrics: ['500k docs · <200ms'] },
 
+  // ---- MLOps ----
   { slug: 'computer-vision-mlops-pipeline', title: 'Computer Vision MLOps Pipeline', repo: 'Computer-Vision-MLOps-Pipeline', domain: 'MLOps',
     blurb: 'End-to-end CV pipeline with experiment tracking, model registry, and automated retraining.',
     tech: ['Python', 'MLflow', 'Docker', 'GitHub Actions'] },
@@ -420,23 +443,37 @@ const raw: Omit<Project, 'url'>[] = [
     blurb: 'Tooling for quantization, pruning, and inference-cost profiling of trained models.',
     tech: ['Python', 'PyTorch', 'Quantization'] },
 
+  // ---- Classical / Domain ML ----
   { slug: 'fraud-detection-system', title: 'Fraud Detection System', repo: 'Fraud-Detection-System', domain: 'Classical ML',
     blurb: 'Imbalanced-class fraud classifier with SMOTE, threshold calibration, and gradient-boosted trees.',
-    tech: ['Python', 'XGBoost', 'SMOTE'], metrics: ['Class-imbalance handled'] },
-  { slug: 'churn-intelligence-engine', title: 'Churn Intelligence Engine', repo: 'Churn-Intelligence-Engine', domain: 'Classical ML',
-    blurb: 'Customer-churn prediction with engineered behavioral features and calibrated probabilities.',
-    tech: ['Python', 'scikit-learn', 'CatBoost'] },
+    tech: ['Python', 'XGBoost', 'SMOTE'] },
+  { slug: 'churn-intelligence-platform', title: 'Churn Intelligence Platform', repo: 'Churn-Intelligence-Platform', domain: 'Classical ML',
+    blurb: 'Decision-intelligence platform: behavioral segmentation → per-cohort churn prediction → causal uplift modeling (CausalML) → a 12-tool ReAct retention agent with closed-loop tracking.',
+    tech: ['Python', 'CausalML', 'SHAP', 'ReAct Agent'], metrics: ['AUC 0.79–0.86 across 5 segments'] },
   { slug: 'sepsis-ml-model', title: 'Sepsis Early-Warning Model', repo: 'Sepsis-ML-Model', domain: 'Classical ML',
-    blurb: 'Clinical early-warning model on high-dimensional patient data with careful leakage prevention.',
-    tech: ['Python', 'scikit-learn', 'Healthcare ML'] },
+    blurb: 'Early sepsis prediction for ICU patients (Random Forest, XGBoost) on the PhysioNet 2019 dataset, with a full leakage-aware pipeline.',
+    tech: ['Python', 'XGBoost', 'Healthcare ML'] },
 
-  { slug: 'data-analytics-portfolio', title: 'Data Analytics Portfolio', repo: 'Data-Analytics-Portfolio', domain: 'Data Science',
-    blurb: 'EDA, hypothesis testing, and interactive dashboards across several real datasets.',
-    tech: ['Pandas', 'Plotly', 'Tableau'], metrics: ['18-chart Plotly dashboard'] },
+  // ---- Data Science ----
+  { slug: 'competitor-insight-engine', title: 'Competitor Insight Engine', repo: 'Competitor-Insight-Engine', domain: 'Data Science',
+    blurb: 'Scrapes a company website, finds real-time competitors via Tavily, and generates a competitive-intelligence report with the LLM of your choice.',
+    tech: ['Python', 'Tavily', 'LLMs', 'Web Scraping'] },
 
-  { slug: 'nlp-pipeline-at-scale', title: 'NLP Pipeline at Scale', repo: 'NLP-Pipeline-at-Scale', domain: 'Data Science',
+  // ---- NLP ----
+  { slug: 'nlp-pipeline-at-scale', title: 'NLP Pipeline at Scale', repo: 'NLP-Pipeline-at-Scale', domain: 'NLP',
     blurb: 'Scalable text-processing pipeline: cleaning, embeddings, and downstream classification.',
-    tech: ['Python', 'spaCy', 'Transformers'] },
+    tech: ['Python', 'Transformers', 'NLP'] },
+
+  // ---- Full-Stack / Product ----
+  { slug: 'hireview', title: 'HireView', repo: 'HireView', domain: 'Full-Stack / Product',
+    blurb: 'A job-search aggregator that scrapes Greenhouse, Lever, and Ashby ATS platforms across hundreds of career pages, returning direct-apply roles in one view.',
+    tech: ['TypeScript', 'Web Scraping', 'Full-Stack'] },
+  { slug: 'take-home-project', title: 'Multi-Agent Research Desk', repo: 'take-home-project', domain: 'Full-Stack / Product',
+    blurb: 'Three cooperating AI agents research a topic, draft a brief, and review it — escalating low-confidence work to a human. Jobs flow through a shared Postgres queue with a live board.',
+    tech: ['TypeScript', 'Postgres', 'Multi-Agent'] },
+  { slug: 'resumeforge', title: 'ResumeForge', repo: 'ResumeForge', domain: 'Full-Stack / Product',
+    blurb: 'AI résumé tailoring with a true one-page guarantee — live demo, CI, MIT-licensed.',
+    tech: ['Python', 'LLMs', 'CI'] },
 ]
 
 export const projects: Project[] = raw.map((p) => ({ ...p, url: gh(p.repo) }))
@@ -445,7 +482,7 @@ export const projects: Project[] = raw.map((p) => ({ ...p, url: gh(p.repo) }))
 - [ ] **Step 5: Run the tests**
 
 Run: `npm test -- projects`
-Expected: PASS (3 tests). If "every domain has a project" fails, it's because `Visualization` and `CS/DSA` have no entry — that is expected for Phase 1. **Fix:** remove `'Visualization'` and `'CS/DSA'` from `DOMAINS` (Phase 1 has no projects there) so filters only show populated domains.
+Expected: PASS (3 tests). Every domain in `DOMAINS` has at least one project in the curated set, so "every domain has a project" passes. If you later add/remove a domain, keep this invariant (a domain with zero projects would render an empty filter).
 
 - [ ] **Step 6: Commit**
 
@@ -561,8 +598,8 @@ git commit -m "feat: paragraph-aware text chunker with overlap"
 - Consumes: `chunkText` (Task 3), `projects` (Task 2).
 - Produces:
   - `src/rag/indexTypes.ts`: `interface IndexChunk { id: string; repo: string; domain: string; title: string; url: string; text: string; embedding: number[] }` and `interface SearchIndex { model: string; dim: number; chunks: IndexChunk[] }`.
-  - `scripts/build-index.ts`: reads each curated project's `README.md` from the repo source root + root `About_Me.md`, chunks, embeds with `Xenova/all-MiniLM-L6-v2` (mean-pooled, normalized), writes `public/search-index.json`. (WHAT AND WHY is deferred — see the "Later" note at the end of this task.)
-  - Exported helper `buildIndex(opts: { repoRoot: string; embed: (texts: string[]) => Promise<number[][]> }): Promise<SearchIndex>` so the test can inject a fake embedder.
+  - `scripts/build-index.ts`: fetches each curated project's README live from GitHub (`https://api.github.com/repos/shiva-shivanibokka/<repo>/readme`, raw) + the GitHub profile README (`shiva-shivanibokka/shiva-shivanibokka`) for About content, chunks, embeds with `Xenova/all-MiniLM-L6-v2` (mean-pooled, normalized), writes `public/search-index.json`. (WHAT AND WHY is deferred — see the "Later" note at the end of this task.)
+  - Exported helper `buildIndex(opts: { fetchReadme: (repo: string) => Promise<string>; embed: (texts: string[]) => Promise<number[][]> }): Promise<SearchIndex>` so the test can inject a fake README fetcher and a fake embedder (no network, no model download in tests).
 
 - [ ] **Step 1: Create `src/rag/indexTypes.ts`**
 
@@ -593,11 +630,13 @@ export const EMBED_DIM = 384
 ```ts
 import { buildIndex } from './build-index'
 
-test('buildIndex produces a valid index using an injected embedder', async () => {
+test('buildIndex produces a valid index using injected fetch + embedder', async () => {
+  const fakeFetch = async (repo: string) =>
+    `# ${repo}\n\nThis project does cool AI things. ${'detail '.repeat(60)}`
   const fakeEmbed = async (texts: string[]) =>
     texts.map(() => Array.from({ length: 384 }, () => 0.1))
 
-  const index = await buildIndex({ repoRoot: process.cwd(), embed: fakeEmbed })
+  const index = await buildIndex({ fetchReadme: fakeFetch, embed: fakeEmbed })
 
   expect(index.model).toBe('Xenova/all-MiniLM-L6-v2')
   expect(index.dim).toBe(384)
@@ -605,8 +644,10 @@ test('buildIndex produces a valid index using an injected embedder', async () =>
   for (const c of index.chunks) {
     expect(c.embedding.length).toBe(384)
     expect(c.text.length).toBeGreaterThan(0)
-    expect(c.url).toMatch(/^https:\/\/github\.com\/shiva-shivanibokka\//)
   }
+  // project chunks carry a real GitHub URL; an About chunk is included
+  expect(index.chunks.some((c) => c.url.startsWith('https://github.com/shiva-shivanibokka'))).toBe(true)
+  expect(index.chunks.some((c) => c.id.startsWith('about-'))).toBe(true)
 })
 ```
 
@@ -625,37 +666,46 @@ import { chunkText } from '../src/rag/chunk'
 import { projects } from '../src/data/projects'
 import { EMBED_DIM, EMBED_MODEL, type IndexChunk, type SearchIndex } from '../src/rag/indexTypes'
 
-async function readIfExists(p: string): Promise<string> {
-  try {
-    return await fs.readFile(p, 'utf8')
-  } catch {
+const OWNER = 'shiva-shivanibokka'
+const PROFILE_REPO = 'shiva-shivanibokka' // GitHub profile README repo (About content)
+
+// Fetch a repo's README live from GitHub (default branch). Returns '' if none/404.
+// Uses Node's global fetch (Node 20+). Unauthenticated; raw README endpoint.
+async function fetchReadmeFromGitHub(repo: string): Promise<string> {
+  const url = `https://api.github.com/repos/${OWNER}/${repo}/readme`
+  const headers: Record<string, string> = { Accept: 'application/vnd.github.raw' }
+  if (process.env.GITHUB_TOKEN) headers.Authorization = `Bearer ${process.env.GITHUB_TOKEN}`
+  const res = await fetch(url, { headers })
+  if (!res.ok) {
+    console.warn(`  README fetch failed for ${repo}: ${res.status}`)
     return ''
   }
+  return await res.text()
 }
 
 export async function buildIndex(opts: {
-  repoRoot: string
+  fetchReadme: (repo: string) => Promise<string>
   embed: (texts: string[]) => Promise<number[][]>
 }): Promise<SearchIndex> {
-  const { repoRoot, embed } = opts
+  const { fetchReadme, embed } = opts
   const chunks: Omit<IndexChunk, 'embedding'>[] = []
 
-  // Per-project corpus: README + the project blurb.
+  // Per-project corpus: the live GitHub README + the project blurb.
   // (WHAT AND WHY write-ups are deferred to a later phase — see note below.)
   for (const p of projects) {
-    const readme = await readIfExists(path.join(repoRoot, p.repo, 'README.md'))
+    const readme = await fetchReadme(p.repo)
     const corpus = [`# ${p.title}\n${p.blurb}`, readme].filter(Boolean).join('\n\n')
     chunkText(corpus).forEach((text, i) => {
       chunks.push({ id: `${p.slug}-${i}`, repo: p.repo, domain: p.domain, title: p.title, url: p.url, text })
     })
   }
 
-  // About chunks (no repo) so "who are you / experience" queries match.
-  const about = await readIfExists(path.join(repoRoot, 'About_Me.md'))
+  // About chunks from the GitHub profile README so "who are you / experience" queries match.
+  const about = await fetchReadme(PROFILE_REPO)
   chunkText(about).forEach((text, i) => {
     chunks.push({
       id: `about-${i}`, repo: '', domain: 'Data Science', title: 'About Shivani',
-      url: 'https://github.com/shiva-shivanibokka', text,
+      url: `https://github.com/${OWNER}`, text,
     })
   })
 
@@ -682,8 +732,7 @@ async function realEmbed(texts: string[]): Promise<number[][]> {
 async function main() {
   const here = path.dirname(fileURLToPath(import.meta.url))
   const projectRoot = path.resolve(here, '..')
-  const repoRoot = path.resolve(projectRoot, '..') // the GITHUB REPOS parent
-  const index = await buildIndex({ repoRoot, embed: realEmbed })
+  const index = await buildIndex({ fetchReadme: fetchReadmeFromGitHub, embed: realEmbed })
   const outDir = path.join(projectRoot, 'public')
   await fs.mkdir(outDir, { recursive: true })
   await fs.writeFile(path.join(outDir, 'search-index.json'), JSON.stringify(index))
@@ -712,16 +761,21 @@ git add scripts/build-index.ts scripts/build-index.test.ts src/rag/indexTypes.ts
 git commit -m "feat: build-time RAG indexer over repo READMEs and About_Me"
 ```
 
-**Maintenance (no code changes needed when READMEs change):** Whenever a repo's
-`README.md` is revamped/expanded, just re-run `npm run build:index` and commit the
-updated `public/search-index.json`. The indexer reads whatever the READMEs contain —
-richer READMEs simply produce richer retrieval. The only time `src/data/projects.ts`
-needs editing is when a repo is renamed, added, or removed from the curated set.
+**Maintenance (no code changes needed when READMEs change):** The indexer fetches
+READMEs live from GitHub, so when you revamp a repo's README, the index regenerates
+automatically on the next deploy (CI runs `build:index`). To preview locally, run
+`npm run build:index`. The only time `src/data/projects.ts` needs editing is when a
+repo is renamed, added, or removed from the curated set.
 
-**Later (deferred — WHAT AND WHY):** Once `WHAT AND WHY/<repo>/` write-ups exist for
-all curated projects, add them as a second corpus source in the per-project loop:
-read `WHAT AND WHY/<repo>/*.md` with `readIfExists`, append to `corpus`, then
-re-run `npm run build:index`. No other code changes required.
+**Rate limits:** unauthenticated GitHub API allows 60 requests/hour; the curated set
+is ~26 repos + 1 profile = well under that for occasional builds. In CI, the workflow
+passes `GITHUB_TOKEN` (already available to Actions) via env so the limit is 1000+/hr —
+no action needed beyond the env line in Task 12.
+
+**Later (deferred — WHAT AND WHY):** Once the `WHAT AND WHY` write-ups are published
+to GitHub (e.g., committed into each repo or a dedicated docs repo), add a second
+`fetchReadme`-style call in the per-project loop to pull that file, append it to
+`corpus`, and rebuild. No other code changes required.
 
 ---
 
@@ -1719,6 +1773,8 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
@@ -1733,11 +1789,12 @@ jobs:
         uses: actions/deploy-pages@v4
 ```
 
-> Note: `npm run build` runs `build:index`, which reads sibling repos at `../<repo>`. In CI those siblings are not checked out, so READMEs resolve to empty and only the `projects.ts` blurbs + `About_Me.md` (also absent in CI) are indexed — yielding a thin index. **Therefore the committed `public/search-index.json` (generated locally in Task 4) is the source of truth.** Change the CI build step to skip re-indexing: use `run: npx tsc -b && npx vite build` instead of `npm run build`, so the committed index ships as-is. Regenerate the index locally with `npm run build:index` whenever repo content changes, and commit it.
+> Note: `npm run build` runs `build:index`, which fetches READMEs **live from GitHub** (not local folders), so CI rebuilds a complete, fresh index on every deploy — including any README you revamped. The `GITHUB_TOKEN` env on the build step raises the GitHub API rate limit for the fetch. The committed `public/search-index.json` is just a convenience for local `vite preview`; CI regenerates it during the build, so it never goes stale in production.
 
-- [ ] **Step 4: Apply the CI fix from the note**
+- [ ] **Step 4: Verify the CI build locally**
 
-Edit `.github/workflows/deploy.yml` build step `- run: npm run build` → `- run: npx tsc -b && npx vite build`.
+Run: `npm run build`
+Expected: `build:index` fetches all curated READMEs from GitHub and writes `public/search-index.json`, `tsc -b` passes, and `vite build` produces `dist/` (containing `search-index.json`). This mirrors exactly what CI runs.
 
 - [ ] **Step 5: Commit**
 
@@ -1763,7 +1820,8 @@ On github.com → repo Settings → Pages → Source: "GitHub Actions". Push `ma
 - Violet+Coral theme, warm-ivory text, reduced-motion → Tasks 1, 8 ✓
 - Vite+React+TS+Tailwind+framer-motion+transformers.js → Tasks 1, 4, 5, 7 ✓
 - GitHub Pages deploy at user-site → Task 12 ✓
-- Curated ~15–20 repos → Task 2 (20 entries) ✓
+- Curated repo set (verified cloud names, all 5 ML-System-Design repos, Full-Stack/Product domain) → Task 2 (~26 entries) ✓
+- RAG corpus fetched live from GitHub READMEs → Tasks 4, 12 ✓
 - Error/empty states, a11y, responsive → Tasks 7, 9, 11 ✓
 - Testing (unit retriever/chunker/indexer, component states) → Tasks 3–11 ✓
 
