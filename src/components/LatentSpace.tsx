@@ -204,10 +204,10 @@ export default function LatentSpace() {
   }, [reduced])
 
   return (
-    <section className="w-full px-[clamp(28px,4vw,72px)] pb-12 pt-4">
+    <section className="w-full px-[clamp(28px,4vw,72px)] pb-12 pt-24">
       <p className="text-base uppercase tracking-[0.2em] text-mint">// my repos, mapped in embedding space</p>
-      <h2 className="mt-2 text-[clamp(26px,3.4vw,44px)] font-bold tracking-tight">Connecting the Dots</h2>
-      <p className="mt-4 w-full max-w-5xl text-[15.5px] leading-relaxed text-muted">
+      <h2 className="mt-2 text-[clamp(23px,2.9vw,38px)] font-bold tracking-tight">Connecting the Dots</h2>
+      <p className="mt-4 w-full text-[15.5px] leading-relaxed text-muted">
         Every repo is embedded into a <span className="text-text">384-dim vector</span> and projected to 2D —
         work that&apos;s similar in meaning sits close together, so my projects form clusters. Hover a node to
         see the repo, click to open it, or <span className="text-mint">run a search above</span> and watch the

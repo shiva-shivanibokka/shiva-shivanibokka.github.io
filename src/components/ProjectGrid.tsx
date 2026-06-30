@@ -45,7 +45,7 @@ export default function ProjectGrid() {
   return (
     <section id="projects" className="w-full px-[clamp(28px,4vw,72px)] py-12">
       <p className="text-base uppercase tracking-[0.2em] text-mint">// 01</p>
-      <h2 className="mt-2 text-[clamp(26px,3.4vw,44px)] font-bold tracking-tight">Projects</h2>
+      <h2 className="mt-2 text-[clamp(23px,2.9vw,38px)] font-bold tracking-tight">Projects</h2>
       <p className="mt-3 text-[14px] text-muted">{projects.length} things I&apos;ve built.</p>
 
       {/* Hiring-for role lens */}

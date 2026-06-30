@@ -4,7 +4,7 @@ export default function About() {
   return (
     <section id="about" className="w-full px-[clamp(28px,4vw,72px)] py-12">
       <p className="text-base uppercase tracking-[0.2em] text-mint">// 04</p>
-      <h2 className="mt-2 text-[clamp(26px,3.4vw,44px)] font-bold tracking-tight">About &amp; Contact</h2>
+      <h2 className="mt-2 text-[clamp(23px,2.9vw,38px)] font-bold tracking-tight">About &amp; Contact</h2>
 
       <div className="mt-6 w-full rounded-2xl border border-white/10 bg-surface/60 p-7 backdrop-blur-sm">
         <p className="text-[16.5px] leading-relaxed text-muted">{bio}</p>

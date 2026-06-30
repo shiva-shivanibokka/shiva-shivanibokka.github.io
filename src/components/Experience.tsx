@@ -3,8 +3,8 @@ import { experience } from '../data/content'
 export default function Experience() {
   return (
     <section id="experience" className="w-full px-[clamp(28px,4vw,72px)] py-12">
-      <p className="text-base uppercase tracking-[0.2em] text-mint">// 02</p>
-      <h2 className="mt-2 text-[clamp(26px,3.4vw,44px)] font-bold tracking-tight">Experience</h2>
+      <p className="text-base uppercase tracking-[0.2em] text-mint">// 03</p>
+      <h2 className="mt-2 text-[clamp(23px,2.9vw,38px)] font-bold tracking-tight">Experience</h2>
 
       <div className="mt-10 space-y-4">
         {experience.map((e) => (

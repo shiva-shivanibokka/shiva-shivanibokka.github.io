@@ -20,7 +20,7 @@ export default function Hero() {
       </div>
 
       <h1
-        className="glitch-name max-w-full overflow-hidden whitespace-nowrap font-display text-[clamp(34px,8.8vw,150px)] leading-none tracking-[0.005em]"
+        className="glitch-name max-w-full overflow-hidden whitespace-nowrap font-display text-[clamp(28px,6.6vw,112px)] leading-none tracking-[0.005em]"
         data-t="SHIVANI BOKKA"
       >
         SHIVANI BOKKA

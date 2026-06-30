@@ -33,19 +33,6 @@ export const experience: ExperienceItem[] = [
     ],
   },
   {
-    role: 'Teaching Assistant — PINC (Promoting Inclusivity in Computing)',
-    org: 'San Francisco State University',
-    period: 'Aug 2025 – Dec 2025',
-    kind: 'Part-time',
-    location: 'San Francisco, CA · Hybrid',
-    bullets: [
-      'TA for the PINC program under Prof. Anagha Kulkarni, building computing, data science, and ML skills for students from diverse and underrepresented backgrounds.',
-      'Facilitate weekly discussion sessions, assist with technical concepts, and support students on programming, data analysis, and machine learning projects.',
-      'Cover Foundations in Computing & Data Structures, Core & Intermediate ML and Data Analysis, and applications including ML for Personalized Medicine and Medical Image Analysis.',
-      'Foster an inclusive, supportive learning environment that strengthens both theoretical understanding and practical application.',
-    ],
-  },
-  {
     role: 'Vice President of Finance & Chair, Finance Committee',
     org: 'Associated Students, San Francisco State University',
     period: 'Jun 2025 – May 2026',
@@ -56,6 +43,19 @@ export const experience: ExperienceItem[] = [
       'Lead budgeting and fund-allocation efforts, oversee financial planning, and represent student financial interests across campus initiatives.',
       'As Chair, develop and review student-government budgets, facilitate committee discussions, and evaluate funding proposals to support student services, events, and organizations.',
       'Collaborate with university departments to uphold transparency and financial accountability.',
+    ],
+  },
+  {
+    role: 'Teaching Assistant — PINC (Promoting Inclusivity in Computing)',
+    org: 'San Francisco State University',
+    period: 'Aug 2025 – Dec 2025',
+    kind: 'Part-time',
+    location: 'San Francisco, CA · Hybrid',
+    bullets: [
+      'TA for the PINC program under Prof. Anagha Kulkarni, building computing, data science, and ML skills for students from diverse and underrepresented backgrounds.',
+      'Facilitate weekly discussion sessions, assist with technical concepts, and support students on programming, data analysis, and machine learning projects.',
+      'Cover Foundations in Computing & Data Structures, Core & Intermediate ML and Data Analysis, and applications including ML for Personalized Medicine and Medical Image Analysis.',
+      'Foster an inclusive, supportive learning environment that strengthens both theoretical understanding and practical application.',
     ],
   },
   {

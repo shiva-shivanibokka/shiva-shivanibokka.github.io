@@ -19,8 +19,8 @@ export default function App() {
           <Hero />
           <LatentSpace />
           <ProjectGrid />
-          <Experience />
           <Skills />
+          <Experience />
           <About />
         </main>
         <footer className="border-t border-white/10 px-[clamp(28px,4vw,72px)] py-10 text-sm text-muted">
