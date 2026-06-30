@@ -2,7 +2,7 @@ import { buildAnswer } from './answer'
 import type { ScoredChunk } from './retriever'
 
 const mk = (over: Partial<ScoredChunk>): ScoredChunk => ({
-  id: 'x', repo: 'R', domain: 'Agentic', title: 'T', url: 'https://u', text: 'text', score: 0.9, ...over,
+  id: 'x', repo: 'R', domain: 'Agentic', title: 'T', url: 'https://u', text: 'text', embedding: [], score: 0.9, ...over,
 })
 
 test('returns empty answer when nothing clears threshold', () => {
