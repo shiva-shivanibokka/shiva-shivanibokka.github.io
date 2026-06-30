@@ -11,7 +11,7 @@ test('shows answer and sources after asking', async () => {
   render(<AskBox ask={fakeAsk} />)
   fireEvent.change(screen.getByRole('searchbox'), { target: { value: 'best rag project' } })
   fireEvent.submit(screen.getByRole('search'))
-  await waitFor(() => expect(screen.getByText(/CAG vs RAG Showdown/)).toBeInTheDocument())
+  await waitFor(() => expect(screen.getByText(/I built CAG vs RAG Showdown/)).toBeInTheDocument())
   expect(screen.getByRole('link', { name: /CAG vs RAG Showdown/i })).toHaveAttribute('href', expect.stringContaining('CAG-vs-RAG-Showdown'))
 })
 

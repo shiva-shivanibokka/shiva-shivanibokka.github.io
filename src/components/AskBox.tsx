@@ -85,8 +85,8 @@ export default function AskBox({ ask: askProp }: { ask?: (q: string) => Promise<
                 <ul className="flex flex-wrap gap-2">
                   {answer.sources.map((s) => (
                     <li key={s.url}>
-                      <a href={s.url} aria-label={s.title} target="_blank" rel="noreferrer" className="text-sm text-primary hover:text-warm underline">
-                        {s.repo}
+                      <a href={s.url} target="_blank" rel="noreferrer" className="text-sm text-primary hover:text-warm underline">
+                        {s.title}
                       </a>
                     </li>
                   ))}
