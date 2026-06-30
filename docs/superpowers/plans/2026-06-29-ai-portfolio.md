@@ -661,6 +661,7 @@ Expected: FAIL (cannot find `./build-index`).
 ```ts
 import { promises as fs } from 'node:fs'
 import path from 'node:path'
+import { createHash } from 'node:crypto'
 import { fileURLToPath } from 'node:url'
 import { chunkText } from '../src/rag/chunk'
 import { projects } from '../src/data/projects'
@@ -736,7 +737,14 @@ async function main() {
   const outDir = path.join(projectRoot, 'public')
   await fs.mkdir(outDir, { recursive: true })
   await fs.writeFile(path.join(outDir, 'search-index.json'), JSON.stringify(index))
-  console.log(`Wrote ${index.chunks.length} chunks to public/search-index.json`)
+  // Content signature over chunk TEXT only (not embeddings) so the scheduled
+  // rebuild can detect real README changes without false positives from any
+  // floating-point nondeterminism in the embeddings. Task 12's deploy gate diffs this file.
+  const sig = createHash('sha256')
+    .update(index.chunks.map((c) => `${c.id} ${c.text}`).sort().join(''))
+    .digest('hex')
+  await fs.writeFile(path.join(outDir, 'corpus.sig'), sig + '\n')
+  console.log(`Wrote ${index.chunks.length} chunks to public/search-index.json (sig ${sig.slice(0, 12)})`)
 }
 
 // Run main() only when executed directly, not when imported by the test.
@@ -752,13 +760,13 @@ Expected: PASS. (The test injects `fakeEmbed`; it does not download the model.)
 - [ ] **Step 6: Generate the real index**
 
 Run: `npm run build:index`
-Expected: downloads the model once, prints `Wrote N chunks to public/search-index.json`, and `public/search-index.json` exists with non-empty `chunks`.
+Expected: fetches READMEs from GitHub, downloads the embedding model once, prints `Wrote N chunks to public/search-index.json (sig ...)`, and both `public/search-index.json` (non-empty `chunks`) and `public/corpus.sig` exist.
 
 - [ ] **Step 7: Commit**
 
 ```bash
-git add scripts/build-index.ts scripts/build-index.test.ts src/rag/indexTypes.ts public/search-index.json
-git commit -m "feat: build-time RAG indexer over repo READMEs and About_Me"
+git add scripts/build-index.ts scripts/build-index.test.ts src/rag/indexTypes.ts public/search-index.json public/corpus.sig
+git commit -m "feat: build-time RAG indexer fetching READMEs from GitHub"
 ```
 
 **Maintenance (no code changes needed when READMEs change):** The indexer fetches
@@ -1735,7 +1743,7 @@ git commit -m "feat: assemble full single-page layout with sticky nav"
 - Create: `.github/workflows/deploy.yml`, `public/.nojekyll`, `public/resume.pdf` (placeholder note below)
 
 **Interfaces:**
-- Produces: CI that builds the RAG index + site and publishes to GitHub Pages on push to `main`.
+- Produces: CI that builds the RAG index + site and publishes to GitHub Pages on (a) push to `main`, (b) manual dispatch, and (c) a biweekly schedule that deploys ONLY when a README change is detected (via the `public/corpus.sig` content signature from Task 4).
 
 - [ ] **Step 1: Add `public/.nojekyll`** (empty file — prevents Jekyll from touching `_`-prefixed assets).
 
@@ -1755,8 +1763,11 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  schedule:
+    # Biweekly: 06:00 UTC on the 1st and 15th of each month.
+    - cron: '0 6 1,15 * *'
 permissions:
-  contents: read
+  contents: write   # scheduled runs commit the refreshed index/signature
   pages: write
   id-token: write
 concurrency:
@@ -1765,6 +1776,8 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    outputs:
+      proceed: ${{ steps.gate.outputs.proceed }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -1772,14 +1785,45 @@ jobs:
           node-version: 20
           cache: npm
       - run: npm ci
-      - run: npm run build
+      # Rebuild the RAG index from the live GitHub READMEs (also writes public/corpus.sig).
+      - run: npm run build:index
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - uses: actions/upload-pages-artifact@v3
+      # Gate: push/manual always deploy. Scheduled runs deploy ONLY if the corpus
+      # signature changed since the committed baseline (i.e. a README actually changed).
+      - id: gate
+        run: |
+          if [ "${{ github.event_name }}" != "schedule" ]; then
+            echo "proceed=true" >> "$GITHUB_OUTPUT"
+          elif git diff --quiet -- public/corpus.sig; then
+            echo "No README changes since last run — skipping deploy."
+            echo "proceed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "README changes detected — refreshing and deploying."
+            echo "proceed=true" >> "$GITHUB_OUTPUT"
+          fi
+      # On a scheduled change, commit the refreshed index + signature so the next
+      # scheduled run compares against the new baseline (prevents repeat deploys).
+      # Pushing with GITHUB_TOKEN intentionally does NOT re-trigger this workflow.
+      - name: Commit refreshed index
+        if: steps.gate.outputs.proceed == 'true' && github.event_name == 'schedule'
+        run: |
+          git config user.name "shiva-shivanibokka"
+          git config user.email "shivani.bokka93@gmail.com"
+          git add public/search-index.json public/corpus.sig
+          git commit -m "chore: refresh RAG index (README changes detected)"
+          git push origin HEAD:main
+      - name: Build site
+        if: steps.gate.outputs.proceed == 'true'
+        run: npx tsc -b && npx vite build
+      - name: Upload Pages artifact
+        if: steps.gate.outputs.proceed == 'true'
+        uses: actions/upload-pages-artifact@v3
         with:
           path: dist
   deploy:
     needs: build
+    if: needs.build.outputs.proceed == 'true'
     runs-on: ubuntu-latest
     environment:
       name: github-pages
@@ -1789,7 +1833,7 @@ jobs:
         uses: actions/deploy-pages@v4
 ```
 
-> Note: `npm run build` runs `build:index`, which fetches READMEs **live from GitHub** (not local folders), so CI rebuilds a complete, fresh index on every deploy — including any README you revamped. The `GITHUB_TOKEN` env on the build step raises the GitHub API rate limit for the fetch. The committed `public/search-index.json` is just a convenience for local `vite preview`; CI regenerates it during the build, so it never goes stale in production.
+> Note: `build:index` fetches READMEs **live from GitHub**, so a deploy always reflects your latest READMEs. The `GITHUB_TOKEN` env raises the GitHub API rate limit. On **push** or **manual dispatch** the site always rebuilds and deploys. On the **biweekly schedule** it rebuilds the index, compares `public/corpus.sig` (a text-only signature, so embedding float noise never triggers a false change) against the committed baseline, and deploys **only if a README actually changed** — otherwise it exits without deploying, then commits the new baseline so the same change doesn't redeploy next cycle. Net effect: after you finish revamping READMEs, the site refreshes itself within two weeks with zero action from you, and burns no CI when nothing changed.
 
 - [ ] **Step 4: Verify the CI build locally**
 
@@ -1800,7 +1844,7 @@ Expected: `build:index` fetches all curated READMEs from GitHub and writes `publ
 
 ```bash
 git add .github/workflows/deploy.yml public/.nojekyll public/resume.pdf
-git commit -m "ci: GitHub Pages deploy shipping prebuilt RAG index"
+git commit -m "ci: GitHub Pages deploy with biweekly change-gated RAG refresh"
 ```
 
 - [ ] **Step 6: Enable Pages (manual, by Shivani)**
@@ -1819,9 +1863,9 @@ On github.com → repo Settings → Pages → Source: "GitHub Actions". Push `ma
 - Experience, Skills, About + resume + contact → Task 10 ✓
 - Violet+Coral theme, warm-ivory text, reduced-motion → Tasks 1, 8 ✓
 - Vite+React+TS+Tailwind+framer-motion+transformers.js → Tasks 1, 4, 5, 7 ✓
-- GitHub Pages deploy at user-site → Task 12 ✓
-- Curated repo set (verified cloud names, all 5 ML-System-Design repos, Full-Stack/Product domain) → Task 2 (~26 entries) ✓
-- RAG corpus fetched live from GitHub READMEs → Tasks 4, 12 ✓
+- GitHub Pages deploy at user-site, with biweekly change-gated auto-refresh → Task 12 ✓
+- Curated repo set (verified cloud names, all 5 ML-System-Design repos, Full-Stack/Product domain) → Task 2 (29 entries) ✓
+- RAG corpus fetched live from GitHub READMEs; deploy gates on `corpus.sig` → Tasks 4, 12 ✓
 - Error/empty states, a11y, responsive → Tasks 7, 9, 11 ✓
 - Testing (unit retriever/chunker/indexer, component states) → Tasks 3–11 ✓
 
