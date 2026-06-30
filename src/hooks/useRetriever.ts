@@ -17,7 +17,13 @@ export function useRetriever() {
       setStatus('loading')
       const results = await retrieverRef.current.search(query, 4)
       setStatus('ready')
-      return buildAnswer(results)
+      // Light up the matching repo-nodes on the embedding-map background.
+      const answer = buildAnswer(results)
+      if (typeof window !== 'undefined') {
+        const repos = (answer.groups ?? []).map((g) => g.repo).filter(Boolean)
+        window.dispatchEvent(new CustomEvent('rag-retrieve', { detail: { repos } }))
+      }
+      return answer
     } catch (e) {
       setStatus('error')
       throw e

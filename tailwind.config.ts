@@ -5,16 +5,18 @@ export default {
   theme: {
     extend: {
       colors: {
-        base: '#14131A',
-        surface: '#1C1B24',
+        base: '#0B0A12',
+        surface: '#16141F',
         text: '#ECE6DD',
-        muted: '#9A93A6',
-        primary: '#7C6CF0',
-        warm: '#FF8A6B',
+        muted: '#C8C1D5',
+        primary: '#8B7BFF', // violet
+        warm: '#FF8A6B', // coral
+        mint: '#46E0D0', // terminal-signal accent
       },
       fontFamily: {
+        display: ['"Bungee Shade"', 'cursive'],
+        mono: ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
         sans: ['Inter', 'system-ui', 'sans-serif'],
-        mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
       },
     },
   },

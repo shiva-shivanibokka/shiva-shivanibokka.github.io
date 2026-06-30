@@ -4,8 +4,53 @@
 
 :root { color-scheme: dark; }
 html { scroll-behavior: smooth; }
-body { @apply bg-base text-text font-sans antialiased; }
+body { @apply bg-base text-text font-mono antialiased; }
+
+/* ---- Glitch headline (Bungee Shade name) ---- */
+/* Constant multi-color chromatic edge + intermittent slice-bursts. */
+.glitch-name {
+  position: relative;
+  width: max-content;
+  max-width: 100%;
+  color: #EDE8FF;
+  text-shadow:
+    -3px 0 rgba(255, 61, 216, 0.55),
+    3px 0 rgba(34, 224, 255, 0.55),
+    0 3px 0 rgba(255, 138, 107, 0.35),
+    0 -3px 0 rgba(139, 123, 255, 0.35);
+}
+.glitch-name::before,
+.glitch-name::after {
+  content: attr(data-t);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+  mix-blend-mode: screen;
+}
+.glitch-name::before { color: #FF3DD8; animation: glitch1 3s infinite steps(1); }
+.glitch-name::after { color: #22E0FF; animation: glitch2 2.6s infinite steps(1); }
+
+@keyframes glitch1 {
+  0%, 5%, 15%, 42%, 48%, 100% { opacity: 0; transform: translate(0, 0); clip-path: inset(0 0 0 0); }
+  6%  { opacity: .9; color: #FF3DD8; transform: translate(-9px, 2px); clip-path: inset(8% 0 58% 0); }
+  11% { opacity: .85; color: #FF8A6B; transform: translate(7px, -2px); clip-path: inset(48% 0 16% 0); }
+  44% { opacity: .9; color: #FF3DD8; transform: translate(-11px, 0); clip-path: inset(66% 0 6% 0); }
+}
+@keyframes glitch2 {
+  0%, 7%, 18%, 54%, 60%, 100% { opacity: 0; transform: translate(0, 0); clip-path: inset(0 0 0 0); }
+  8%  { opacity: .9; color: #22E0FF; transform: translate(9px, -2px); clip-path: inset(12% 0 52% 0); }
+  14% { opacity: .8; color: #46E0D0; transform: translate(-7px, 2px); clip-path: inset(40% 0 28% 0); }
+  56% { opacity: .85; color: #22E0FF; transform: translate(11px, 1px); clip-path: inset(60% 0 12% 0); }
+}
+
+/* Blinking terminal cursor */
+@keyframes blink { 50% { opacity: 0; } }
+.cursor-blink { animation: blink 1s steps(1) infinite; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+  .glitch-name::before, .glitch-name::after { animation: none; opacity: 0; }
+  .cursor-blink { animation: none; }
 }

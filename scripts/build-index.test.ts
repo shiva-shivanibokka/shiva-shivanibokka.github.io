@@ -15,7 +15,7 @@ test('buildIndex produces a valid index using injected fetch + embedder', async 
     expect(c.embedding.length).toBe(384)
     expect(c.text.length).toBeGreaterThan(0)
   }
-  // project chunks carry a real GitHub URL; an About chunk is included
+  // project chunks carry a real GitHub URL; the About/profile README is NOT embedded
   expect(index.chunks.some((c) => c.url.startsWith('https://github.com/shiva-shivanibokka'))).toBe(true)
-  expect(index.chunks.some((c) => c.id.startsWith('about-'))).toBe(true)
+  expect(index.chunks.some((c) => c.id.startsWith('about-'))).toBe(false)
 })

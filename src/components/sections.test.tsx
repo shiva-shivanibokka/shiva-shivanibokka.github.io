@@ -1,18 +1,11 @@
 import { render, screen } from '@testing-library/react'
-import DomainsBand from './DomainsBand'
 import Experience from './Experience'
 import Skills from './Skills'
 import About from './About'
 
-test('domains band lists every domain', () => {
-  render(<DomainsBand />)
-  expect(screen.getByText('Agentic')).toBeInTheDocument()
-  expect(screen.getByText('MLOps')).toBeInTheDocument()
-})
-
 test('experience renders roles with periods', () => {
   render(<Experience />)
-  expect(screen.getByText(/Teaching Assistant/i)).toBeInTheDocument()
+  expect(screen.getAllByText(/Teaching Assistant/i).length).toBeGreaterThan(0)
 })
 
 test('skills renders grouped skills', () => {

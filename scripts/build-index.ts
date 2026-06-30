@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url'
 import { chunkText } from '../src/rag/chunk'
 import { projects } from '../src/data/projects'
 import { EMBED_DIM, EMBED_MODEL, type IndexChunk, type SearchIndex } from '../src/rag/indexTypes'
+import { buildMap } from './build-map'
 
 // Strip markdown/HTML noise so retrieved chunks read as clean prose, not raw README source.
 export function stripMarkdown(md: string): string {
@@ -29,7 +30,6 @@ export function stripMarkdown(md: string): string {
 }
 
 const OWNER = 'shiva-shivanibokka'
-const PROFILE_REPO = 'shiva-shivanibokka' // GitHub profile README repo (About content)
 
 // Fetch a repo's README live from GitHub (default branch). Returns '' if none/404.
 // Uses Node's global fetch (Node 20+). Unauthenticated; raw README endpoint.
@@ -52,8 +52,9 @@ export async function buildIndex(opts: {
   const { fetchReadme, embed } = opts
   const chunks: Omit<IndexChunk, 'embedding'>[] = []
 
-  // Per-project corpus: the live GitHub README + the project blurb.
-  // (WHAT AND WHY write-ups are deferred to a later phase — see note below.)
+  // Per-project corpus ONLY: the live GitHub README + the project blurb.
+  // The About/profile README is intentionally NOT embedded — the RAG answers
+  // about projects, and including the bio added noise + off-topic matches.
   for (const p of projects) {
     const readme = stripMarkdown(await fetchReadme(p.repo))
     const corpus = [`# ${p.title}\n${p.blurb}`, readme].filter(Boolean).join('\n\n')
@@ -61,15 +62,6 @@ export async function buildIndex(opts: {
       chunks.push({ id: `${p.slug}-${i}`, repo: p.repo, domain: p.domain, title: p.title, url: p.url, text })
     })
   }
-
-  // About chunks from the GitHub profile README so "who are you / experience" queries match.
-  const about = stripMarkdown(await fetchReadme(PROFILE_REPO))
-  chunkText(about).forEach((text, i) => {
-    chunks.push({
-      id: `about-${i}`, repo: '', domain: 'Data Science', title: 'About Shivani',
-      url: `https://github.com/${OWNER}`, text,
-    })
-  })
 
   const embeddings = await embed(chunks.map((c) => c.text))
   return {
@@ -106,6 +98,10 @@ async function main() {
     .digest('hex')
   await fs.writeFile(path.join(outDir, 'corpus.sig'), sig + '\n')
   console.log(`Wrote ${index.chunks.length} chunks to public/search-index.json (sig ${sig.slice(0, 12)})`)
+  // 2D PCA projection of repo embeddings → the interactive map background.
+  const map = buildMap(index)
+  await fs.writeFile(path.join(outDir, 'embedding-map.json'), JSON.stringify(map))
+  console.log(`Wrote ${map.length} repo nodes to public/embedding-map.json`)
 }
 
 // Run main() only when executed directly, not when imported by the test.
