@@ -29,10 +29,11 @@ export class Retriever {
   static async create(indexUrl = `${import.meta.env.BASE_URL}search-index.json`): Promise<Retriever> {
     const index: SearchIndex = await fetch(indexUrl).then((r) => r.json())
     const { pipeline, env } = await import('@xenova/transformers')
-    // Fetch the model from the Hugging Face CDN, not from the site's own origin.
-    // (transformers.js defaults to looking for /models/... locally, which a static
-    // host/dev server answers with an HTML fallback, breaking the load.)
-    env.allowLocalModels = false
+    // Load the embedding model from our OWN origin (vendored in public/models/),
+    // not an external CDN — faster, dependency-free, and reliable on GitHub Pages.
+    env.allowLocalModels = true
+    env.allowRemoteModels = false
+    env.localModelPath = `${import.meta.env.BASE_URL}models/`
     env.useBrowserCache = true
     const extractor = await pipeline('feature-extraction', EMBED_MODEL)
     const embed = async (q: string) => {
