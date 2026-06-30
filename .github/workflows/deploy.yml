@@ -1,0 +1,73 @@
+name: Deploy to GitHub Pages
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    # Biweekly: 06:00 UTC on the 1st and 15th of each month.
+    - cron: '0 6 1,15 * *'
+permissions:
+  contents: write   # scheduled runs commit the refreshed index/signature
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      proceed: ${{ steps.gate.outputs.proceed }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      # Rebuild the RAG index from the live GitHub READMEs (also writes public/corpus.sig).
+      - run: npm run build:index
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # Gate: push/manual always deploy. Scheduled runs deploy ONLY if the corpus
+      # signature changed since the committed baseline (i.e. a README actually changed).
+      - id: gate
+        run: |
+          if [ "${{ github.event_name }}" != "schedule" ]; then
+            echo "proceed=true" >> "$GITHUB_OUTPUT"
+          elif git diff --quiet -- public/corpus.sig; then
+            echo "No README changes since last run — skipping deploy."
+            echo "proceed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "README changes detected — refreshing and deploying."
+            echo "proceed=true" >> "$GITHUB_OUTPUT"
+          fi
+      # On a scheduled change, commit the refreshed index + signature so the next
+      # scheduled run compares against the new baseline (prevents repeat deploys).
+      # Pushing with GITHUB_TOKEN intentionally does NOT re-trigger this workflow.
+      - name: Commit refreshed index
+        if: steps.gate.outputs.proceed == 'true' && github.event_name == 'schedule'
+        run: |
+          git config user.name "shiva-shivanibokka"
+          git config user.email "shivani.bokka93@gmail.com"
+          git add public/search-index.json public/corpus.sig
+          git commit -m "chore: refresh RAG index (README changes detected)"
+          git push origin HEAD:main
+      - name: Build site
+        if: steps.gate.outputs.proceed == 'true'
+        run: npx tsc -b && npx vite build
+      - name: Upload Pages artifact
+        if: steps.gate.outputs.proceed == 'true'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+  deploy:
+    needs: build
+    if: needs.build.outputs.proceed == 'true'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
