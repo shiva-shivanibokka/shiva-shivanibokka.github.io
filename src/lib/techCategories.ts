@@ -40,7 +40,6 @@ const MAP: Record<string, TechCat> = {
   redux: 'Frontend', zustand: 'Frontend', 'tanstack query': 'Frontend', 'three.js': 'Frontend',
   'd3.js': 'Frontend', 'chart.js': 'Frontend', recharts: 'Frontend', axios: 'Frontend',
   gradio: 'Frontend', streamlit: 'Frontend',
-  // shared / infra extras
   zod: 'Backend', vercel: 'MLOps / Infra', netlify: 'MLOps / Infra',
   // Data
   numpy: 'Data', pandas: 'Data', polars: 'Data', duckdb: 'Data', scipy: 'Data', statsmodels: 'Data',
