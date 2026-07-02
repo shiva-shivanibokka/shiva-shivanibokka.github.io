@@ -21,21 +21,30 @@ const MAP: Record<string, TechCat> = {
   'c#': 'Languages', go: 'Languages', rust: 'Languages', ruby: 'Languages', r: 'Languages', matlab: 'Languages',
   sql: 'Languages', plpgsql: 'Languages', 'jupyter notebook': 'Languages', html: 'Languages', css: 'Languages',
   // ML & AI
-  pytorch: 'ML & AI', tensorflow: 'ML & AI', keras: 'ML & AI', 'scikit-learn': 'ML & AI', xgboost: 'ML & AI',
-  catboost: 'ML & AI', lightgbm: 'ML & AI', transformers: 'ML & AI', rag: 'ML & AI', faiss: 'ML & AI',
-  chromadb: 'ML & AI', lora: 'ML & AI', langgraph: 'ML & AI', langchain: 'ML & AI', mcp: 'ML & AI',
-  openai: 'ML & AI', anthropic: 'ML & AI', ollama: 'ML & AI',
-  // Backend
-  fastapi: 'Backend', flask: 'Backend', django: 'Backend', 'node.js': 'Backend', express: 'Backend',
-  postgres: 'Backend', postgresql: 'Backend', mongodb: 'Backend', redis: 'Backend', pydantic: 'Backend',
+  pytorch: 'ML & AI', tensorflow: 'ML & AI', keras: 'ML & AI', jax: 'ML & AI', 'scikit-learn': 'ML & AI',
+  xgboost: 'ML & AI', catboost: 'ML & AI', lightgbm: 'ML & AI', onnx: 'ML & AI', opencv: 'ML & AI',
+  transformers: 'ML & AI', 'sentence-transformers': 'ML & AI', peft: 'ML & AI', trl: 'ML & AI', bitsandbytes: 'ML & AI',
+  vllm: 'ML & AI', langgraph: 'ML & AI', langchain: 'ML & AI', llamaindex: 'ML & AI', rag: 'ML & AI', faiss: 'ML & AI',
+  chromadb: 'ML & AI', pinecone: 'ML & AI', weaviate: 'ML & AI', qdrant: 'ML & AI', lora: 'ML & AI', mcp: 'ML & AI',
+  openai: 'ML & AI', anthropic: 'ML & AI', gemini: 'ML & AI', groq: 'ML & AI', cohere: 'ML & AI', ollama: 'ML & AI',
+  spacy: 'ML & AI', nltk: 'ML & AI', deberta: 'ML & AI', optuna: 'ML & AI',
+  // Backend / APIs / data stores
+  fastapi: 'Backend', flask: 'Backend', django: 'Backend', uvicorn: 'Backend', pydantic: 'Backend',
+  sqlalchemy: 'Backend', 'node.js': 'Backend', express: 'Backend', graphql: 'Backend', prisma: 'Backend',
+  postgres: 'Backend', postgresql: 'Backend', mysql: 'Backend', mongodb: 'Backend', redis: 'Backend',
+  celery: 'Backend', supabase: 'Backend',
   // Frontend / app UIs
-  react: 'Frontend', 'next.js': 'Frontend', tailwind: 'Frontend', vite: 'Frontend', vue: 'Frontend',
-  gradio: 'Frontend', streamlit: 'Frontend',
+  react: 'Frontend', 'next.js': 'Frontend', vue: 'Frontend', svelte: 'Frontend', tailwind: 'Frontend',
+  vite: 'Frontend', 'framer motion': 'Frontend', gradio: 'Frontend', streamlit: 'Frontend',
   // Data
-  numpy: 'Data', pandas: 'Data', plotly: 'Data', matplotlib: 'Data', seaborn: 'Data', tableau: 'Data',
+  numpy: 'Data', pandas: 'Data', polars: 'Data', duckdb: 'Data', scipy: 'Data', statsmodels: 'Data',
+  matplotlib: 'Data', seaborn: 'Data', plotly: 'Data', pyspark: 'Data', airflow: 'Data', dbt: 'Data',
+  kafka: 'Data', tableau: 'Data', 'power bi': 'Data',
   // MLOps / Infra
-  docker: 'MLOps / Infra', mlflow: 'MLOps / Infra', aws: 'MLOps / Infra', gcp: 'MLOps / Infra',
-  kubernetes: 'MLOps / Infra', 'github actions': 'MLOps / Infra', playwright: 'MLOps / Infra',
+  docker: 'MLOps / Infra', kubernetes: 'MLOps / Infra', terraform: 'MLOps / Infra', 'github actions': 'MLOps / Infra',
+  mlflow: 'MLOps / Infra', 'weights & biases': 'MLOps / Infra', dvc: 'MLOps / Infra', ray: 'MLOps / Infra',
+  pytest: 'MLOps / Infra', aws: 'MLOps / Infra', gcp: 'MLOps / Infra', azure: 'MLOps / Infra',
+  playwright: 'MLOps / Infra', beautifulsoup: 'MLOps / Infra',
 }
 
 export function catOf(tech: string): TechCat {

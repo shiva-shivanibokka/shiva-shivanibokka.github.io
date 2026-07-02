@@ -18,7 +18,12 @@ export const generatedProjects: Project[] = [
       "RAG",
       "MCP",
       "OpenAI",
-      "Anthropic"
+      "Anthropic",
+      "Gemini",
+      "Groq",
+      "NumPy",
+      "pandas",
+      "DuckDB"
     ],
     "url": "https://github.com/shiva-shivanibokka/SCM-using-MCP-and-LLM"
   },
@@ -35,9 +40,14 @@ export const generatedProjects: Project[] = [
       "scikit-learn",
       "XGBoost",
       "CatBoost",
+      "Groq",
+      "NumPy",
+      "pandas",
+      "Plotly",
       "FastAPI",
-      "Streamlit",
-      "Docker"
+      "uvicorn",
+      "Pydantic",
+      "Node.js"
     ],
     "url": "https://github.com/shiva-shivanibokka/Churn-Intelligence-Platform"
   },
@@ -50,11 +60,15 @@ export const generatedProjects: Project[] = [
     "tech": [
       "Python",
       "LangGraph",
+      "LangChain",
       "Anthropic",
       "FastAPI",
+      "uvicorn",
+      "Pydantic",
+      "Redis",
       "Gradio",
       "Docker",
-      "Pydantic"
+      "pytest"
     ],
     "url": "https://github.com/shiva-shivanibokka/CodePilot-Agent"
   },
@@ -67,8 +81,13 @@ export const generatedProjects: Project[] = [
     "tech": [
       "Jupyter Notebook",
       "Python",
+      "statsmodels",
+      "SciPy",
       "NumPy",
-      "pandas"
+      "pandas",
+      "Matplotlib",
+      "Seaborn",
+      "Plotly"
     ],
     "url": "https://github.com/shiva-shivanibokka/Data-Analytics-Portfolio"
   },
@@ -85,8 +104,13 @@ export const generatedProjects: Project[] = [
       "RAG",
       "OpenAI",
       "Anthropic",
+      "Gemini",
+      "Groq",
       "FastAPI",
-      "Docker",
+      "uvicorn",
+      "Pydantic",
+      "Node.js",
+      "Postgres",
       "React"
     ],
     "url": "https://github.com/shiva-shivanibokka/ResumeForge"
@@ -105,8 +129,13 @@ export const generatedProjects: Project[] = [
       "XGBoost",
       "CatBoost",
       "LightGBM",
+      "ONNX",
       "Transformers",
-      "RAG"
+      "sentence-transformers",
+      "RAG",
+      "OpenAI",
+      "Groq",
+      "NumPy"
     ],
     "url": "https://github.com/shiva-shivanibokka/Fraud-Detection-System"
   },
@@ -119,13 +148,18 @@ export const generatedProjects: Project[] = [
     "tech": [
       "Python",
       "JavaScript",
+      "ONNX",
+      "vLLM",
       "RAG",
       "FAISS",
+      "Qdrant",
       "OpenAI",
       "Anthropic",
-      "FastAPI",
-      "Docker",
-      "React"
+      "Gemini",
+      "Groq",
+      "Cohere",
+      "NumPy",
+      "FastAPI"
     ],
     "url": "https://github.com/shiva-shivanibokka/RAG-vs-CAG-Showdown"
   },
@@ -141,10 +175,15 @@ export const generatedProjects: Project[] = [
       "PLpgSQL",
       "OpenAI",
       "Anthropic",
+      "Groq",
       "Ollama",
-      "AWS",
+      "Node.js",
+      "Postgres",
+      "Supabase",
       "React",
-      "Next.js"
+      "Next.js",
+      "AWS",
+      "GCP"
     ],
     "url": "https://github.com/shiva-shivanibokka/take-home-project"
   },
@@ -157,13 +196,18 @@ export const generatedProjects: Project[] = [
     "tech": [
       "Python",
       "PyTorch",
+      "scikit-learn",
       "XGBoost",
+      "SciPy",
       "Transformers",
+      "sentence-transformers",
+      "PEFT",
+      "LangChain",
       "FAISS",
       "Anthropic",
-      "FastAPI",
-      "Gradio",
-      "Docker"
+      "NumPy",
+      "pandas",
+      "Plotly"
     ],
     "url": "https://github.com/shiva-shivanibokka/Search-Ranking-System"
   },
@@ -178,8 +222,13 @@ export const generatedProjects: Project[] = [
       "Python",
       "JavaScript",
       "Transformers",
+      "sentence-transformers",
       "Anthropic",
       "FastAPI",
+      "uvicorn",
+      "Node.js",
+      "Postgres",
+      "Supabase",
       "React",
       "Next.js",
       "Tailwind"
@@ -197,11 +246,15 @@ export const generatedProjects: Project[] = [
       "Jupyter Notebook",
       "PyTorch",
       "Transformers",
+      "NumPy",
+      "Matplotlib",
+      "Plotly",
+      "Pydantic",
       "Gradio",
       "Docker",
+      "GitHub Actions",
       "MLflow",
-      "NumPy",
-      "Pydantic"
+      "pytest"
     ],
     "url": "https://github.com/shiva-shivanibokka/Gradient-Descent-and-Optimizers"
   },
@@ -214,7 +267,11 @@ export const generatedProjects: Project[] = [
     "tech": [
       "Jupyter Notebook",
       "Python",
-      "pandas"
+      "pandas",
+      "Matplotlib",
+      "Seaborn",
+      "Plotly",
+      "SQLAlchemy"
     ],
     "url": "https://github.com/shiva-shivanibokka/SQL-and-Database-Skills"
   },
@@ -229,7 +286,10 @@ export const generatedProjects: Project[] = [
       "Python",
       "OpenAI",
       "Anthropic",
-      "Ollama"
+      "Gemini",
+      "Groq",
+      "Ollama",
+      "BeautifulSoup"
     ],
     "url": "https://github.com/shiva-shivanibokka/Competitor-Insight-Engine"
   },
@@ -244,11 +304,15 @@ export const generatedProjects: Project[] = [
       "JavaScript",
       "PyTorch",
       "scikit-learn",
+      "NumPy",
+      "pandas",
+      "Matplotlib",
       "Flask",
-      "Docker",
-      "MLflow",
+      "Node.js",
       "Next.js",
-      "NumPy"
+      "Docker",
+      "GitHub Actions",
+      "MLflow"
     ],
     "url": "https://github.com/shiva-shivanibokka/Multi-Horizon-Stock-Forecasting-AI-Model"
   },
@@ -263,11 +327,16 @@ export const generatedProjects: Project[] = [
       "Jupyter Notebook",
       "PyTorch",
       "Transformers",
+      "sentence-transformers",
       "RAG",
       "ChromaDB",
       "OpenAI",
       "Anthropic",
-      "Streamlit"
+      "Groq",
+      "NumPy",
+      "pandas",
+      "Plotly",
+      "MongoDB"
     ],
     "url": "https://github.com/shiva-shivanibokka/Supply-Chain-Demand-Agent"
   },
@@ -279,14 +348,19 @@ export const generatedProjects: Project[] = [
     "blurb": "NLI-based hallucination detection pipeline. Flags unsupported LLM claims using DeBERTa-v3, assigns a hallucination confidence score per sentence, and grounds responses against source documents via ChromaDB.",
     "tech": [
       "Python",
+      "PyTorch",
       "Transformers",
+      "sentence-transformers",
       "ChromaDB",
       "OpenAI",
       "Anthropic",
+      "Gemini",
+      "Groq",
       "Ollama",
+      "DeBERTa",
       "FastAPI",
-      "Gradio",
-      "Playwright"
+      "uvicorn",
+      "Pydantic"
     ],
     "url": "https://github.com/shiva-shivanibokka/LLM-Halucination-Detection"
   },
@@ -298,11 +372,19 @@ export const generatedProjects: Project[] = [
     "blurb": "A production-grade automated model lifecycle system for a credit risk LightGBM model — built to reflect how Uber, Airbnb, Netflix, and Google actually manage model decay in production.",
     "tech": [
       "Python",
+      "scikit-learn",
       "XGBoost",
       "LightGBM",
+      "SciPy",
+      "NumPy",
+      "pandas",
+      "Matplotlib",
+      "Plotly",
+      "Airflow",
       "Streamlit",
       "Docker",
-      "MLflow"
+      "MLflow",
+      "Optuna"
     ],
     "url": "https://github.com/shiva-shivanibokka/ML-System-Design-Retraining-Pipeline"
   },
@@ -315,11 +397,18 @@ export const generatedProjects: Project[] = [
     "tech": [
       "Python",
       "PyTorch",
+      "SciPy",
       "Transformers",
+      "NumPy",
+      "pandas",
+      "Plotly",
       "FastAPI",
-      "Gradio",
-      "Docker",
-      "Postgres"
+      "uvicorn",
+      "Pydantic",
+      "SQLAlchemy",
+      "Postgres",
+      "Redis",
+      "Gradio"
     ],
     "url": "https://github.com/shiva-shivanibokka/ML-System-Design-Model-Serving"
   },
@@ -331,13 +420,19 @@ export const generatedProjects: Project[] = [
     "blurb": "A production-grade feature store built to the same architectural standards as Uber Michelangelo , DoorDash , and Twitter Cortex — the systems that serve billions of ML predictions per day.",
     "tech": [
       "Python",
+      "scikit-learn",
       "LightGBM",
+      "SciPy",
+      "NumPy",
+      "pandas",
+      "Plotly",
+      "Airflow",
       "FastAPI",
-      "Gradio",
-      "Docker",
-      "MLflow",
+      "uvicorn",
+      "Pydantic",
       "Postgres",
-      "Plotly"
+      "Redis",
+      "Gradio"
     ],
     "url": "https://github.com/shiva-shivanibokka/ML-System-Design-Feature-Store"
   },
@@ -349,13 +444,18 @@ export const generatedProjects: Project[] = [
     "blurb": "Production-grade nightly batch scoring system that scores 1,000,000 customers for churn probability using PySpark distributed inference, orchestrated by Apache Airflow, served via FastAPI, and monitored through a Gradio dashboard.",
     "tech": [
       "Python",
+      "scikit-learn",
       "LightGBM",
-      "FastAPI",
-      "Gradio",
-      "Docker",
-      "Postgres",
+      "SciPy",
+      "NumPy",
       "pandas",
+      "Matplotlib",
+      "Seaborn",
       "Plotly",
+      "PySpark",
+      "Airflow",
+      "FastAPI",
+      "uvicorn",
       "Pydantic"
     ],
     "url": "https://github.com/shiva-shivanibokka/ML-System-Design-Batch-Inference"
@@ -371,9 +471,11 @@ export const generatedProjects: Project[] = [
       "Jupyter Notebook",
       "PyTorch",
       "Transformers",
-      "AWS",
       "NumPy",
-      "pandas"
+      "pandas",
+      "Matplotlib",
+      "Seaborn",
+      "AWS"
     ],
     "url": "https://github.com/shiva-shivanibokka/ML-Model-Efficiency-Toolkit"
   },
@@ -387,8 +489,12 @@ export const generatedProjects: Project[] = [
       "Jupyter Notebook",
       "scikit-learn",
       "XGBoost",
+      "SciPy",
       "NumPy",
-      "pandas"
+      "pandas",
+      "Matplotlib",
+      "Seaborn",
+      "Express"
     ],
     "url": "https://github.com/shiva-shivanibokka/Tisch-ML-Model"
   },
@@ -403,7 +509,9 @@ export const generatedProjects: Project[] = [
       "scikit-learn",
       "XGBoost",
       "NumPy",
-      "pandas"
+      "pandas",
+      "Matplotlib",
+      "Seaborn"
     ],
     "url": "https://github.com/shiva-shivanibokka/Sepsis-ML-Model"
   },
@@ -418,7 +526,9 @@ export const generatedProjects: Project[] = [
       "scikit-learn",
       "XGBoost",
       "NumPy",
-      "pandas"
+      "pandas",
+      "Matplotlib",
+      "Seaborn"
     ],
     "url": "https://github.com/shiva-shivanibokka/Cumida-ML-Model"
   },
@@ -431,8 +541,12 @@ export const generatedProjects: Project[] = [
     "tech": [
       "Jupyter Notebook",
       "scikit-learn",
+      "SciPy",
       "NumPy",
-      "pandas"
+      "pandas",
+      "Matplotlib",
+      "Seaborn",
+      "Optuna"
     ],
     "url": "https://github.com/shiva-shivanibokka/All-About-Cross-Validation"
   },
@@ -447,7 +561,9 @@ export const generatedProjects: Project[] = [
       "scikit-learn",
       "XGBoost",
       "NumPy",
-      "pandas"
+      "pandas",
+      "Matplotlib",
+      "Seaborn"
     ],
     "url": "https://github.com/shiva-shivanibokka/Dive-deeper-into-linear-models"
   },
@@ -462,7 +578,8 @@ export const generatedProjects: Project[] = [
       "scikit-learn",
       "Transformers",
       "NumPy",
-      "pandas"
+      "pandas",
+      "Matplotlib"
     ],
     "url": "https://github.com/shiva-shivanibokka/Basics-of-Linear-and-Logistic-Regression"
   },
@@ -477,7 +594,9 @@ export const generatedProjects: Project[] = [
       "scikit-learn",
       "XGBoost",
       "NumPy",
-      "pandas"
+      "pandas",
+      "Matplotlib",
+      "Seaborn"
     ],
     "url": "https://github.com/shiva-shivanibokka/Data-Preprocessing"
   },
@@ -491,12 +610,15 @@ export const generatedProjects: Project[] = [
       "Python",
       "Transformers",
       "LangGraph",
+      "LangChain",
       "RAG",
       "OpenAI",
       "Anthropic",
+      "Groq",
       "FastAPI",
-      "Gradio",
-      "Pydantic"
+      "uvicorn",
+      "Pydantic",
+      "Gradio"
     ],
     "url": "https://github.com/shiva-shivanibokka/AutoGrader-Agent"
   },
@@ -508,7 +630,9 @@ export const generatedProjects: Project[] = [
     "blurb": "Simple to complex projects implemented using LLMs",
     "tech": [
       "Jupyter Notebook",
-      "Anthropic"
+      "OpenAI",
+      "Anthropic",
+      "BeautifulSoup"
     ],
     "url": "https://github.com/shiva-shivanibokka/LLM-research-scraper"
   },
@@ -522,6 +646,8 @@ export const generatedProjects: Project[] = [
       "Jupyter Notebook",
       "Python",
       "OpenAI",
+      "Gemini",
+      "Groq",
       "Ollama"
     ],
     "url": "https://github.com/shiva-shivanibokka/open-source-LLMs-api-wrapper"
@@ -549,6 +675,7 @@ export const generatedProjects: Project[] = [
       "JavaScript",
       "Python",
       "Django",
+      "MySQL",
       "Docker",
       "AWS"
     ],

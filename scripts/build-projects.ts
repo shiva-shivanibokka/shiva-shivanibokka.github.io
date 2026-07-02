@@ -65,6 +65,22 @@ async function fetchReadme(repo: string): Promise<string> {
   return await res.text()
 }
 
+// Raw contents of a file in the repo (default branch); '' if missing.
+async function fetchFile(repo: string, path: string): Promise<string> {
+  const res = await fetch(`${API}/repos/${OWNER}/${repo}/contents/${encodeURIComponent(path)}`, {
+    headers: { ...headers(), Accept: 'application/vnd.github.raw' },
+  })
+  if (!res.ok) return ''
+  return await res.text()
+}
+
+// Dependency manifests → the real imported libraries, for precise tech detection.
+async function fetchManifests(repo: string): Promise<string> {
+  const files = ['requirements.txt', 'pyproject.toml', 'environment.yml', 'package.json']
+  const texts = await Promise.all(files.map((f) => fetchFile(repo, f)))
+  return texts.join('\n')
+}
+
 // All languages GitHub detected in the repo, most-used first — authoritative tech.
 async function fetchLanguages(repo: string): Promise<string[]> {
   const res = await fetch(`${API}/repos/${OWNER}/${repo}/languages`, { headers: headers() })
@@ -126,52 +142,116 @@ function hit(hay: string, kw: string): boolean {
   return new RegExp(`(^|[^a-z0-9+#.])${escapeRe(kw)}([^a-z0-9+#.]|$)`, 'i').test(hay)
 }
 
-// Tech stack — canonical name → keywords to find in README/topics/languages.
+// Tech stack — canonical name → keywords to find in README/topics/languages/
+// dependency manifests. Keep keywords distinctive so they don't match inside
+// other words. Detected against a haystack that includes requirements.txt,
+// pyproject.toml, environment.yml and package.json, so real imports get caught.
 const TECH: [string, string[]][] = [
+  // Deep learning / ML frameworks
   ['PyTorch', ['pytorch', 'torch']],
   ['TensorFlow', ['tensorflow']],
   ['Keras', ['keras']],
+  ['JAX', ['jax', 'flax']],
   ['scikit-learn', ['scikit-learn', 'sklearn']],
   ['XGBoost', ['xgboost']],
   ['CatBoost', ['catboost']],
   ['LightGBM', ['lightgbm']],
+  ['statsmodels', ['statsmodels']],
+  ['SciPy', ['scipy']],
+  ['ONNX', ['onnx']],
+  ['OpenCV', ['opencv', 'cv2']],
+  // LLM / GenAI / agents
   ['Transformers', ['transformers', 'huggingface', 'hugging face']],
+  ['sentence-transformers', ['sentence-transformers', 'sentence transformer']],
+  ['PEFT', ['peft']],
+  ['TRL', ['trl']],
+  ['bitsandbytes', ['bitsandbytes']],
+  ['vLLM', ['vllm']],
   ['LangGraph', ['langgraph']],
   ['LangChain', ['langchain']],
+  ['LlamaIndex', ['llamaindex', 'llama-index', 'llama index']],
   ['RAG', ['rag', 'retrieval-augmented', 'retrieval augmented']],
   ['FAISS', ['faiss']],
   ['ChromaDB', ['chromadb', 'chroma']],
+  ['Pinecone', ['pinecone']],
+  ['Weaviate', ['weaviate']],
+  ['Qdrant', ['qdrant']],
   ['LoRA', ['lora', 'qlora']],
   ['MCP', ['mcp', 'model context protocol']],
-  ['OpenAI', ['openai']],
+  ['OpenAI', ['openai', 'gpt-4', 'gpt-4o']],
   ['Anthropic', ['anthropic', 'claude']],
+  ['Gemini', ['gemini', 'google generativeai']],
+  ['Groq', ['groq']],
+  ['Cohere', ['cohere']],
   ['Ollama', ['ollama']],
+  ['spaCy', ['spacy']],
+  ['NLTK', ['nltk']],
+  ['DeBERTa', ['deberta']],
+  // Data / analytics
+  ['NumPy', ['numpy']],
+  ['pandas', ['pandas']],
+  ['Polars', ['polars']],
+  ['DuckDB', ['duckdb']],
+  ['Matplotlib', ['matplotlib']],
+  ['Seaborn', ['seaborn']],
+  ['Plotly', ['plotly']],
+  ['PySpark', ['pyspark', 'apache spark']],
+  ['Airflow', ['airflow']],
+  ['dbt', ['dbt-core', 'dbt run']],
+  ['Kafka', ['kafka']],
+  ['Tableau', ['tableau']],
+  ['Power BI', ['power bi', 'powerbi']],
+  // Backend / APIs / data stores
   ['FastAPI', ['fastapi']],
   ['Flask', ['flask']],
   ['Django', ['django']],
-  ['Streamlit', ['streamlit']],
-  ['Gradio', ['gradio']],
-  ['Docker', ['docker', 'docker-compose']],
-  ['MLflow', ['mlflow']],
-  ['AWS', ['aws', 'sagemaker']],
+  ['uvicorn', ['uvicorn']],
+  ['Pydantic', ['pydantic']],
+  ['SQLAlchemy', ['sqlalchemy']],
+  ['Node.js', ['node.js', 'nodejs']],
+  ['Express', ['express']],
+  ['GraphQL', ['graphql']],
+  ['Prisma', ['prisma']],
+  ['Postgres', ['postgres', 'postgresql', 'psycopg', 'asyncpg']],
+  ['MySQL', ['mysql', 'aiomysql']],
+  ['MongoDB', ['mongodb', 'pymongo']],
+  ['Redis', ['redis']],
+  ['Celery', ['celery']],
+  ['Supabase', ['supabase']],
+  // Frontend
   ['React', ['react']],
   ['Next.js', ['next.js', 'nextjs']],
+  ['Vue', ['vue']],
+  ['Svelte', ['svelte']],
   ['Tailwind', ['tailwind']],
   ['Vite', ['vite']],
-  ['Postgres', ['postgres', 'postgresql']],
-  ['MongoDB', ['mongodb']],
-  ['NumPy', ['numpy']],
-  ['pandas', ['pandas']],
-  ['Plotly', ['plotly']],
+  ['Framer Motion', ['framer-motion', 'framer motion']],
+  // Serving / demos
+  ['Streamlit', ['streamlit']],
+  ['Gradio', ['gradio']],
+  // MLOps / infra / cloud / testing
+  ['Docker', ['docker', 'docker-compose']],
+  ['Kubernetes', ['kubernetes', 'k8s']],
+  ['Terraform', ['terraform']],
+  ['GitHub Actions', ['github actions', 'github-actions']],
+  ['MLflow', ['mlflow']],
+  ['Weights & Biases', ['wandb', 'weights & biases', 'weights and biases']],
+  ['DVC', ['dvc']],
+  ['Optuna', ['optuna']],
+  ['Ray', ['ray tune', 'ray[']],
+  ['pytest', ['pytest']],
+  ['AWS', ['aws', 'sagemaker', 'boto3']],
+  ['GCP', ['gcp', 'google cloud', 'bigquery', 'vertex ai']],
+  ['Azure', ['azure']],
   ['Playwright', ['playwright']],
-  ['Pydantic', ['pydantic']],
+  ['BeautifulSoup', ['beautifulsoup', 'bs4']],
 ]
 const SKIP_LANG = new Set(['html', 'css', 'scss', 'dockerfile', 'makefile', 'shell', 'batchfile', 'procfile', 'roff'])
 
 function detectTech(hay: string, langs: string[]): string[] {
   const cleanLangs = langs.filter((l) => !SKIP_LANG.has(l.toLowerCase())).slice(0, 3)
   const frameworks = TECH.filter(([, kws]) => kws.some((k) => hit(hay, k))).map(([name]) => name)
-  return [...new Set([...cleanLangs, ...frameworks])].slice(0, 9)
+  return [...new Set([...cleanLangs, ...frameworks])].slice(0, 14)
 }
 
 // Domain by WEIGHTED keyword score over README + topics + description + languages.
@@ -224,9 +304,11 @@ async function main() {
     if (proseLength(readme) < MIN_README_CHARS) continue // skip empty / stub repos
     const blurb = (r.description && r.description.trim()) || firstParagraph(readme)
     if (blurb.length < 30) continue // no usable summary → skip
-    // Detect tech + domain from README + topics + description + real repo languages.
+    // Detect tech + domain from README + topics + description + real repo
+    // languages + dependency manifests (the actual imported libraries).
     const langs = await fetchLanguages(r.name)
-    const hay = `${r.name} ${(r.topics || []).join(' ')} ${r.description || ''} ${langs.join(' ')} ${readme}`.toLowerCase()
+    const manifests = await fetchManifests(r.name)
+    const hay = `${r.name} ${(r.topics || []).join(' ')} ${r.description || ''} ${langs.join(' ')} ${readme}\n${manifests}`.toLowerCase()
     const tech = detectTech(hay, langs)
     shown.push({
       slug: slugify(r.name),

@@ -101,7 +101,7 @@ export default function ProjectGrid() {
         </div>
       )}
 
-      <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <div className="mt-10 grid items-start gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {visible.map((p) => (
           <ProjectCard key={p.slug} project={p} />
         ))}
