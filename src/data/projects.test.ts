@@ -1,8 +1,7 @@
 import { projects, DOMAINS } from './projects'
 
-test('has 20-32 curated projects, all well-formed', () => {
-  expect(projects.length).toBeGreaterThanOrEqual(20)
-  expect(projects.length).toBeLessThanOrEqual(32)
+test('auto-discovered projects are well-formed', () => {
+  expect(projects.length).toBeGreaterThanOrEqual(10)
   for (const p of projects) {
     expect(p.slug).toMatch(/^[a-z0-9-]+$/)
     expect(p.title.length).toBeGreaterThan(0)
@@ -16,10 +15,4 @@ test('has 20-32 curated projects, all well-formed', () => {
 test('slugs are unique', () => {
   const slugs = projects.map((p) => p.slug)
   expect(new Set(slugs).size).toBe(slugs.length)
-})
-
-test('every domain has at least one project', () => {
-  for (const d of DOMAINS) {
-    expect(projects.some((p) => p.domain === d)).toBe(true)
-  }
 })

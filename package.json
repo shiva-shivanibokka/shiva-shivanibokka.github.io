@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "npm run build:index && tsc -b && vite build",
+    "build": "npm run build:projects && npm run build:index && tsc -b && vite build",
+    "build:projects": "tsx scripts/build-projects.ts",
     "build:index": "tsx scripts/build-index.ts",
     "preview": "vite preview",
     "test": "vitest run",

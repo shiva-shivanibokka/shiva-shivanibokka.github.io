@@ -4,8 +4,8 @@ on:
     branches: [main]
   workflow_dispatch:
   schedule:
-    # Biweekly: 06:00 UTC on the 1st and 15th of each month.
-    - cron: '0 6 1,15 * *'
+    # Daily at 06:00 UTC — auto-syncs new/updated repos and README changes.
+    - cron: '0 6 * * *'
 permissions:
   contents: write   # scheduled runs commit the refreshed index/signature
   pages: write
@@ -25,7 +25,11 @@ jobs:
           node-version: 20
           cache: npm
       - run: npm ci
-      # Rebuild the RAG index from the live GitHub READMEs (also writes public/corpus.sig).
+      # Rebuild the project list from GitHub (all repos with a detailed README),
+      # then rebuild the RAG index from the live READMEs (also writes public/corpus.sig).
+      - run: npm run build:projects
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: npm run build:index
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -50,8 +54,8 @@ jobs:
         run: |
           git config user.name "shiva-shivanibokka"
           git config user.email "shivani.bokka93@gmail.com"
-          git add public/search-index.json public/corpus.sig
-          git commit -m "chore: refresh RAG index (README changes detected)"
+          git add public/search-index.json public/corpus.sig src/data/projects.generated.ts
+          git commit -m "chore: refresh projects + RAG index (repo/README changes detected)"
           git push origin HEAD:main
       - name: Build site
         if: steps.gate.outputs.proceed == 'true'
