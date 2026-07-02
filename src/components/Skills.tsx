@@ -7,14 +7,14 @@ export default function Skills() {
       <h2 className="mt-2 text-[clamp(23px,2.9vw,38px)] font-bold tracking-tight">Skills</h2>
       <p className="mt-3 text-[14px] text-muted">Pulled together from the tech across the projects on this page.</p>
 
-      <div className="mt-10 grid items-start gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <div className="mt-10 grid auto-rows-fr gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {skillGroups.map((g, i) => (
           <div
             key={g.label}
-            className="rounded-2xl border bg-surface/60 p-5 backdrop-blur-sm transition"
+            className="flex flex-col rounded-2xl border bg-surface/60 p-5 backdrop-blur-sm transition"
             style={{ borderColor: `${g.color}33` }}
           >
-            <h3 className="text-[16px] font-bold" style={{ color: g.color }}>
+            <h3 className="text-[16px] font-bold text-text">
               <span className="text-muted">{String(i + 1).padStart(2, '0')}</span> {g.label}
             </h3>
             <div className="mt-3.5 flex flex-wrap gap-2">
