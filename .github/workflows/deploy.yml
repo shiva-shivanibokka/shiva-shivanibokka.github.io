@@ -10,9 +10,12 @@ permissions:
   contents: write   # scheduled runs commit the refreshed index/signature
   pages: write
   id-token: write
+# One deploy at a time, but never cancel an in-progress deploy — let it finish so
+# a code push is never silently killed by a scheduled/data commit. A newer run
+# just queues; GitHub keeps only the latest pending one.
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -71,7 +74,24 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.a1.outputs.page_url || steps.a2.outputs.page_url || steps.a3.outputs.page_url }}
     steps:
-      - id: deployment
+      # Retry deploy-pages up to 3x with backoff — it occasionally returns a
+      # transient "Deployment failed, try again later" from the Pages backend.
+      - id: a1
+        name: Deploy to GitHub Pages (attempt 1)
+        uses: actions/deploy-pages@v4
+        continue-on-error: true
+      - if: steps.a1.outcome == 'failure'
+        run: sleep 20
+      - id: a2
+        name: Deploy to GitHub Pages (attempt 2)
+        if: steps.a1.outcome == 'failure'
+        uses: actions/deploy-pages@v4
+        continue-on-error: true
+      - if: steps.a1.outcome == 'failure' && steps.a2.outcome == 'failure'
+        run: sleep 30
+      - id: a3
+        name: Deploy to GitHub Pages (attempt 3)
+        if: steps.a1.outcome == 'failure' && steps.a2.outcome == 'failure'
         uses: actions/deploy-pages@v4
