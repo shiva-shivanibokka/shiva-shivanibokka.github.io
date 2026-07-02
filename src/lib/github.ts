@@ -37,10 +37,18 @@ export async function dispatchSync(): Promise<{ ok: boolean; message: string }> 
     body: JSON.stringify({ ref: 'main' }),
   })
   if (r.status === 204) return { ok: true, message: 'Sync started' }
-  if (r.status === 403) return { ok: false, message: 'Token needs Actions: read & write' }
-  if (r.status === 401) return { ok: false, message: 'Invalid token' }
-  if (r.status === 404) return { ok: false, message: 'No access to the workflow' }
-  return { ok: false, message: `GitHub error ${r.status}` }
+  // Surface GitHub's actual reason instead of guessing.
+  let detail = ''
+  try {
+    const j = await r.json()
+    detail = j?.message || ''
+  } catch {
+    /* no body */
+  }
+  if (r.status === 401) return { ok: false, message: 'Invalid or expired token' }
+  if (r.status === 403 || r.status === 404)
+    return { ok: false, message: `${r.status}: ${detail || 'token can’t access this repo — check it selects shiva-shivanibokka.github.io + Actions: read & write'}` }
+  return { ok: false, message: `GitHub ${r.status}${detail ? `: ${detail}` : ''}` }
 }
 
 export async function latestRun(): Promise<{ id: number; status: string } | null> {
