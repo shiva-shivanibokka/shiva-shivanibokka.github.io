@@ -191,7 +191,7 @@ export default function LatentSpace() {
         window.addEventListener('rag-retrieve', onRetrieve)
         raf = requestAnimationFrame(draw)
       })
-      .catch(() => {})
+      .catch((e) => console.warn('embedding-map load failed', e))
 
     return () => {
       cancelAnimationFrame(raf)

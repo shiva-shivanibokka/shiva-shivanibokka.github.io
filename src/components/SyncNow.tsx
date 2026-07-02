@@ -27,6 +27,9 @@ export default function SyncNow() {
         return
       }
       window.setTimeout(() => poll(beforeId), 8000)
+    }).catch(() => {
+      // transient reject → reschedule instead of dying (the try cap still applies)
+      window.setTimeout(() => poll(beforeId), 8000)
     })
   }
 
@@ -38,16 +41,22 @@ export default function SyncNow() {
     }
     setState('starting')
     setMsg('')
-    const before = await latestRun()
-    const res = await dispatchSync()
-    if (!res.ok) {
+    try {
+      const before = await latestRun()
+      const res = await dispatchSync()
+      if (!res.ok) {
+        setState('error')
+        setMsg(res.message)
+        return
+      }
+      setState('running')
+      tries.current = 0
+      window.setTimeout(() => poll(before?.id ?? null), 6000)
+    } catch {
+      // defensive: never leave the button stuck on 'starting' if something throws
       setState('error')
-      setMsg(res.message)
-      return
+      setMsg('network error')
     }
-    setState('running')
-    tries.current = 0
-    window.setTimeout(() => poll(before?.id ?? null), 6000)
   }
 
   const busy = state === 'starting' || state === 'running' || state === 'done'

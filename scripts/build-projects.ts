@@ -2,6 +2,7 @@ import { promises as fs } from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import type { Domain, Project } from '../src/data/types'
+import { firstParagraph, proseLength } from '../src/rag/markdown'
 
 // Auto-build the FULL project list from GitHub: every public repo that has a
 // *detailed* README, with empty/stub repos, forks, archived, and infra/site/
@@ -59,9 +60,22 @@ async function listRepos(): Promise<Repo[]> {
   return all
 }
 
+// GitHub returns 403/429 (or x-ratelimit-remaining: 0) when rate-limited. That is
+// NOT the same as a genuine 404 "file absent": treating it as absent would silently
+// drop real repos from the site. Detect it and hard-fail the build so we never emit
+// a truncated project list.
+function assertNotRateLimited(res: Response, what: string): void {
+  if (res.status === 403 || res.status === 429 || res.headers.get('x-ratelimit-remaining') === '0') {
+    throw new Error(`GitHub rate limit hit while fetching ${what}; aborting to avoid a truncated site`)
+  }
+}
+
 async function fetchReadme(repo: string): Promise<string> {
   const res = await fetch(`${API}/repos/${OWNER}/${repo}/readme`, { headers: { ...headers(), Accept: 'application/vnd.github.raw' } })
-  if (!res.ok) return ''
+  if (!res.ok) {
+    assertNotRateLimited(res, `${repo}/readme`)
+    return '' // genuine 404 → repo simply has no README
+  }
   return await res.text()
 }
 
@@ -70,7 +84,10 @@ async function fetchFile(repo: string, path: string): Promise<string> {
   const res = await fetch(`${API}/repos/${OWNER}/${repo}/contents/${encodeURIComponent(path)}`, {
     headers: { ...headers(), Accept: 'application/vnd.github.raw' },
   })
-  if (!res.ok) return ''
+  if (!res.ok) {
+    assertNotRateLimited(res, `${repo}/${path}`)
+    return '' // genuine 404 → file absent
+  }
   return await res.text()
 }
 
@@ -84,43 +101,14 @@ async function fetchManifests(repo: string): Promise<string> {
 // All languages GitHub detected in the repo, most-used first — authoritative tech.
 async function fetchLanguages(repo: string): Promise<string[]> {
   const res = await fetch(`${API}/repos/${OWNER}/${repo}/languages`, { headers: headers() })
-  if (!res.ok) return []
+  if (!res.ok) {
+    assertNotRateLimited(res, `${repo}/languages`)
+    return []
+  }
   const j = (await res.json()) as Record<string, number>
   return Object.entries(j)
     .sort((a, b) => b[1] - a[1])
     .map(([k]) => k)
-}
-
-// Rough prose length of a README (strip badges, code, html, headings, links).
-function proseLength(md: string): number {
-  return md
-    .replace(/```[\s\S]*?```/g, ' ')
-    .replace(/!\[[^\]]*\]\([^)]*\)/g, ' ')
-    .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
-    .replace(/<[^>]+>/g, ' ')
-    .replace(/[#>*_`~|-]/g, ' ')
-    .replace(/https?:\/\/\S+/g, ' ')
-    .replace(/\s+/g, ' ')
-    .trim().length
-}
-
-// First real paragraph of a README → fallback blurb when there's no repo description.
-function firstParagraph(md: string): string {
-  // Drop a leading YAML front-matter block (e.g. Hugging Face Spaces configs:
-  // ---\n title: … sdk: … \n--- ) so it never leaks into the blurb.
-  const noFrontmatter = md.replace(/^﻿?\s*---\r?\n[\s\S]*?\r?\n---\s*/, ' ')
-  const clean = noFrontmatter
-    .replace(/```[\s\S]*?```/g, ' ')
-    .replace(/!\[[^\]]*\]\([^)]*\)/g, ' ')
-    .replace(/^\s*#.*$/gm, ' ')
-    .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
-    .replace(/<[^>]+>/g, ' ')
-    .replace(/[#>*_`~|]/g, ' ')
-  for (const para of clean.split(/\n\s*\n/)) {
-    const t = para.replace(/\s+/g, ' ').trim()
-    if (t.length > 40) return t.length > 240 ? t.slice(0, 237).trimEnd() + '…' : t
-  }
-  return ''
 }
 
 function prettyTitle(repo: string): string {

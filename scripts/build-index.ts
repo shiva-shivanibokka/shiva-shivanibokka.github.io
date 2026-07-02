@@ -5,29 +5,12 @@ import { fileURLToPath } from 'node:url'
 import { chunkText } from '../src/rag/chunk'
 import { projects } from '../src/data/projects'
 import { EMBED_DIM, EMBED_MODEL, type IndexChunk, type SearchIndex } from '../src/rag/indexTypes'
+import { stripMarkdown } from '../src/rag/markdown'
 import { buildMap } from './build-map'
 
-// Strip markdown/HTML noise so retrieved chunks read as clean prose, not raw README source.
-export function stripMarkdown(md: string): string {
-  return md
-    .replace(/<!--[\s\S]*?-->/g, ' ')              // HTML comments
-    .replace(/```[\s\S]*?```/g, ' ')               // fenced code blocks
-    .replace(/!\[[^\]]*\]\([^)]*\)/g, ' ')         // images / badges
-    .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')       // links -> link text
-    .replace(/^\s*\[[^\]]+\]:\s*\S+.*$/gm, ' ')    // reference link defs
-    .replace(/<[^>]+>/g, ' ')                       // HTML tags
-    .replace(/^\s*\|?[\s:|-]+\|[\s:|-]*$/gm, ' ')  // table separator rows
-    .replace(/\|/g, ' ')                            // remaining table pipes
-    .replace(/^\s{0,3}#{1,6}\s+/gm, '')            // heading markers
-    .replace(/^\s{0,3}>\s?/gm, '')                 // blockquotes
-    .replace(/^\s{0,3}[-*+]\s+/gm, '')             // list bullets
-    .replace(/^\s*([-*_])\1{2,}\s*$/gm, ' ')       // horizontal rules
-    .replace(/[*_`~]/g, '')                         // emphasis / inline-code marks
-    .replace(/https?:\/\/\S+/g, ' ')               // bare URLs
-    .replace(/[ \t]+/g, ' ')                        // collapse spaces
-    .replace(/\n{3,}/g, '\n\n')                     // collapse blank lines
-    .trim()
-}
+// Re-exported from the shared markdown utility so existing importers (and the
+// strip-markdown test) keep working after the pipeline moved to src/rag/markdown.ts.
+export { stripMarkdown }
 
 const OWNER = 'shiva-shivanibokka'
 

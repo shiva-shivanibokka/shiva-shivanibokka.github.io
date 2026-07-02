@@ -17,7 +17,6 @@ export interface Project {
   domain: Domain
   blurb: string
   tech: string[]
-  metrics?: string[]
   url: string
 }
 

@@ -31,11 +31,16 @@ function authHeaders(token: string) {
 export async function dispatchSync(): Promise<{ ok: boolean; message: string }> {
   const token = getToken()
   if (!token) return { ok: false, message: 'Paste a token first' }
-  const r = await fetch(`${API}/repos/${OWNER}/${REPO}/actions/workflows/deploy.yml/dispatches`, {
-    method: 'POST',
-    headers: authHeaders(token),
-    body: JSON.stringify({ ref: 'main' }),
-  })
+  let r: Response
+  try {
+    r = await fetch(`${API}/repos/${OWNER}/${REPO}/actions/workflows/deploy.yml/dispatches`, {
+      method: 'POST',
+      headers: authHeaders(token),
+      body: JSON.stringify({ ref: 'main' }),
+    })
+  } catch {
+    return { ok: false, message: 'network error — check your connection' }
+  }
   if (r.status === 204) return { ok: true, message: 'Sync started' }
   // Surface GitHub's actual reason instead of guessing.
   let detail = ''
@@ -54,7 +59,12 @@ export async function dispatchSync(): Promise<{ ok: boolean; message: string }> 
 export async function latestRun(): Promise<{ id: number; status: string } | null> {
   const token = getToken()
   if (!token) return null
-  const r = await fetch(`${API}/repos/${OWNER}/${REPO}/actions/runs?per_page=1`, { headers: authHeaders(token) })
+  let r: Response
+  try {
+    r = await fetch(`${API}/repos/${OWNER}/${REPO}/actions/runs?per_page=1`, { headers: authHeaders(token) })
+  } catch {
+    return null
+  }
   if (!r.ok) return null
   const j = await r.json()
   const run = j.workflow_runs?.[0]

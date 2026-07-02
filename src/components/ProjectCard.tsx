@@ -20,10 +20,6 @@ export default function ProjectCard({ project }: { project: Project }) {
         {project.blurb}
       </p>
 
-      {open && project.metrics && project.metrics.length > 0 && (
-        <p className="mt-2.5 text-[13px] text-warm">▸ {project.metrics.join(' · ')}</p>
-      )}
-
       {/* Expanded: tech grouped into colored, headed rows (heading | values) */}
       {open && groups.length > 0 && (
         <div className="mt-3.5 flex flex-col gap-2">

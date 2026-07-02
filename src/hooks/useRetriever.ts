@@ -11,7 +11,6 @@ export function useRetriever() {
   const ask = useCallback(async (query: string): Promise<Answer> => {
     try {
       if (!retrieverRef.current) {
-        setStatus('loading')
         retrieverRef.current = await Retriever.create()
       }
       setStatus('loading')
