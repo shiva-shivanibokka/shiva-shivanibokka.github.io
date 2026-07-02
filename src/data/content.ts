@@ -84,19 +84,26 @@ export const experience: ExperienceItem[] = [
   },
 ]
 
-export const skillGroups = [
-  { label: 'Languages', items: ['Python', 'TypeScript', 'JavaScript', 'SQL', 'MATLAB', 'R', 'Bash', 'HTML', 'CSS'] },
-  { label: 'Machine Learning', items: ['scikit-learn', 'XGBoost', 'LightGBM', 'CatBoost', 'SMOTE', 'SHAP', 'CausalML', 'Bayesian Optimization'] },
-  { label: 'Deep Learning', items: ['PyTorch', 'TensorFlow', 'Keras', 'Transformers', 'CNNs', 'LSTM / RNN', 'Attention', 'TFT', 'Autograd'] },
-  { label: 'LLMs & GenAI', items: ['RAG', 'CAG', 'LangGraph', 'LangChain', 'MCP', 'QLoRA / PEFT', 'Fine-tuning', 'LLM-as-Judge', 'Prompt Engineering', 'Hugging Face'] },
-  { label: 'NLP', items: ['Hugging Face Transformers', 'spaCy', 'NLTK', 'DeBERTa', 'Embeddings', 'NER', 'Text Classification'] },
-  { label: 'Retrieval & Vector DBs', items: ['FAISS', 'ChromaDB', 'Sentence-Transformers', 'all-MiniLM', 'Cosine Search', 'CLIP'] },
-  { label: 'MLOps', items: ['MLflow', 'Docker', 'GitHub Actions', 'Prefect', 'Airflow', 'Evidently', 'Model Registry', 'CI/CD'] },
-  { label: 'Cloud', items: ['AWS (S3, EC2, Lambda, SageMaker)', 'GCP', 'Hugging Face Spaces', 'Render', 'Vercel', 'GitHub Pages'] },
-  { label: 'Backend', items: ['FastAPI', 'Flask', 'Node.js', 'REST APIs', 'PostgreSQL', 'Redis', 'Microservices', 'WebSockets'] },
-  { label: 'Frontend', items: ['React', 'TypeScript', 'Tailwind CSS', 'Vite', 'Next.js', 'Framer Motion', 'Gradio', 'Streamlit'] },
-  { label: 'Data & Visualization', items: ['Pandas', 'NumPy', 'Polars', 'Plotly', 'Matplotlib', 'Seaborn', 'Tableau', 'Power BI'] },
-  { label: 'Big Data & Tools', items: ['PySpark', 'Spark', 'Prometheus', 'Grafana', 'Git', 'Jupyter', 'Linux', 'VS Code'] },
+// Skills grouped and colored. Enriched from the tech detected across the repos
+// shown on this site; each group has a color used for its heading + chips.
+export interface SkillGroup {
+  label: string
+  color: string
+  items: string[]
+}
+export const skillGroups: SkillGroup[] = [
+  { label: 'Languages', color: '#60a5fa', items: ['Python', 'TypeScript', 'JavaScript', 'SQL', 'MATLAB', 'R', 'Bash', 'HTML', 'CSS'] },
+  { label: 'Machine Learning', color: '#a78bfa', items: ['scikit-learn', 'XGBoost', 'LightGBM', 'CatBoost', 'Optuna', 'SMOTE', 'SHAP', 'Bayesian Optimization', 'Feature Engineering'] },
+  { label: 'Deep Learning', color: '#f472b6', items: ['PyTorch', 'TensorFlow', 'Keras', 'JAX', 'Transformers', 'CNNs', 'LSTM / RNN', 'Attention', 'TFT / PatchTST', 'ONNX', 'Autograd'] },
+  { label: 'LLMs & GenAI', color: '#34d399', items: ['RAG', 'CAG', 'LangGraph', 'LangChain', 'LlamaIndex', 'MCP', 'QLoRA / PEFT', 'TRL / DPO', 'Fine-tuning', 'OpenAI', 'Anthropic', 'Gemini', 'Groq', 'Cohere', 'Ollama', 'vLLM', 'LLM-as-Judge', 'Prompt Engineering'] },
+  { label: 'NLP', color: '#22d3ee', items: ['Hugging Face Transformers', 'spaCy', 'NLTK', 'DeBERTa', 'Embeddings', 'NER', 'Text Classification'] },
+  { label: 'Retrieval & Vector DBs', color: '#fbbf24', items: ['FAISS', 'ChromaDB', 'Qdrant', 'Pinecone', 'Weaviate', 'Sentence-Transformers', 'all-MiniLM', 'Cosine Search', 'CLIP'] },
+  { label: 'MLOps', color: '#fb923c', items: ['MLflow', 'Docker', 'GitHub Actions', 'Weights & Biases', 'DVC', 'Airflow', 'Kubernetes', 'pytest', 'Model Registry', 'Drift Detection', 'CI/CD'] },
+  { label: 'Cloud', color: '#818cf8', items: ['AWS (S3, EC2, Lambda, SageMaker)', 'GCP', 'Azure', 'Hugging Face Spaces', 'Vercel', 'Netlify', 'Render', 'GitHub Pages'] },
+  { label: 'Backend', color: '#2dd4bf', items: ['FastAPI', 'Flask', 'Django', 'uvicorn', 'Pydantic', 'SQLAlchemy', 'Node.js', 'GraphQL', 'REST APIs', 'PostgreSQL', 'MySQL', 'MongoDB', 'Redis', 'Supabase', 'Celery'] },
+  { label: 'Frontend', color: '#e879f9', items: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Vite', 'Framer Motion', 'Redux', 'Gradio', 'Streamlit'] },
+  { label: 'Data & Visualization', color: '#38bdf8', items: ['Pandas', 'NumPy', 'Polars', 'DuckDB', 'SciPy', 'statsmodels', 'Plotly', 'Matplotlib', 'Seaborn', 'Tableau', 'Power BI'] },
+  { label: 'Big Data & Tools', color: '#94a3b8', items: ['PySpark', 'Kafka', 'BeautifulSoup', 'Playwright', 'Git', 'Jupyter', 'Linux', 'VS Code'] },
 ]
 
 export const bio =
