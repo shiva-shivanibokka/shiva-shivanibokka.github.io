@@ -182,8 +182,8 @@ export const generatedProjects: Project[] = [
       "Supabase",
       "React",
       "Next.js",
-      "AWS",
-      "GCP"
+      "Vercel",
+      "AWS"
     ],
     "url": "https://github.com/shiva-shivanibokka/take-home-project"
   },
@@ -310,6 +310,7 @@ export const generatedProjects: Project[] = [
       "Flask",
       "Node.js",
       "Next.js",
+      "Vercel",
       "Docker",
       "GitHub Actions",
       "MLflow"
@@ -381,10 +382,10 @@ export const generatedProjects: Project[] = [
       "Matplotlib",
       "Plotly",
       "Airflow",
+      "Bootstrap",
       "Streamlit",
       "Docker",
-      "MLflow",
-      "Optuna"
+      "MLflow"
     ],
     "url": "https://github.com/shiva-shivanibokka/ML-System-Design-Retraining-Pipeline"
   },
@@ -511,7 +512,8 @@ export const generatedProjects: Project[] = [
       "NumPy",
       "pandas",
       "Matplotlib",
-      "Seaborn"
+      "Seaborn",
+      "Bootstrap"
     ],
     "url": "https://github.com/shiva-shivanibokka/Sepsis-ML-Model"
   },
@@ -563,7 +565,8 @@ export const generatedProjects: Project[] = [
       "NumPy",
       "pandas",
       "Matplotlib",
-      "Seaborn"
+      "Seaborn",
+      "Bootstrap"
     ],
     "url": "https://github.com/shiva-shivanibokka/Dive-deeper-into-linear-models"
   },

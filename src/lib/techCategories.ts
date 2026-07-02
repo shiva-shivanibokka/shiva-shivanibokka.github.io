@@ -35,7 +35,13 @@ const MAP: Record<string, TechCat> = {
   celery: 'Backend', supabase: 'Backend',
   // Frontend / app UIs
   react: 'Frontend', 'next.js': 'Frontend', vue: 'Frontend', svelte: 'Frontend', tailwind: 'Frontend',
-  vite: 'Frontend', 'framer motion': 'Frontend', gradio: 'Frontend', streamlit: 'Frontend',
+  vite: 'Frontend', 'framer motion': 'Frontend', 'shadcn/ui': 'Frontend', 'radix ui': 'Frontend',
+  'material ui': 'Frontend', 'chakra ui': 'Frontend', bootstrap: 'Frontend', 'styled-components': 'Frontend',
+  redux: 'Frontend', zustand: 'Frontend', 'tanstack query': 'Frontend', 'three.js': 'Frontend',
+  'd3.js': 'Frontend', 'chart.js': 'Frontend', recharts: 'Frontend', axios: 'Frontend',
+  gradio: 'Frontend', streamlit: 'Frontend',
+  // shared / infra extras
+  zod: 'Backend', vercel: 'MLOps / Infra', netlify: 'MLOps / Infra',
   // Data
   numpy: 'Data', pandas: 'Data', polars: 'Data', duckdb: 'Data', scipy: 'Data', statsmodels: 'Data',
   matplotlib: 'Data', seaborn: 'Data', plotly: 'Data', pyspark: 'Data', airflow: 'Data', dbt: 'Data',
