@@ -7,6 +7,7 @@ import ProjectGrid from './components/ProjectGrid'
 import Experience from './components/Experience'
 import Skills from './components/Skills'
 import About from './components/About'
+import SyncNow from './components/SyncNow'
 
 export default function App() {
   return (
@@ -15,6 +16,9 @@ export default function App() {
       <Intro />
       <div className="relative z-[2]">
         <Nav />
+        <div className="flex justify-end px-[clamp(28px,4vw,72px)] pt-3">
+          <SyncNow />
+        </div>
         <main>
           <Hero />
           <LatentSpace />

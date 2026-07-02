@@ -1,5 +1,3 @@
-import SyncNow from './SyncNow'
-
 const ITEMS = [
   { n: '01', label: 'Projects', href: '#projects' },
   { n: '02', label: 'Skills', href: '#skills' },
@@ -26,7 +24,6 @@ export default function Nav() {
               <span className="text-[11px] font-medium text-muted">{i.n}</span> {i.label}
             </a>
           ))}
-          <SyncNow />
         </div>
       </div>
     </nav>
