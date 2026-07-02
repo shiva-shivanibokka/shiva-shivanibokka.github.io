@@ -7,13 +7,11 @@ import ProjectGrid from './components/ProjectGrid'
 import Experience from './components/Experience'
 import Skills from './components/Skills'
 import About from './components/About'
-import SyncNow from './components/SyncNow'
 
 export default function App() {
   return (
     <div className="relative min-h-screen bg-base text-text">
       <EmbeddingBackground />
-      <SyncNow />
       <Intro />
       <div className="relative z-[2]">
         <Nav />
