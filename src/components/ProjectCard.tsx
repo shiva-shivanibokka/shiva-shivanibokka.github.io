@@ -1,8 +1,11 @@
+import { useState } from 'react'
 import type { Project } from '../data/types'
 import { CAT_COLOR, groupTech } from '../lib/techCategories'
 
 export default function ProjectCard({ project }: { project: Project }) {
+  const [open, setOpen] = useState(false)
   const groups = groupTech(project.tech)
+
   return (
     <article className="flex flex-col rounded-2xl border border-white/10 bg-surface/60 p-5 backdrop-blur-sm transition hover:-translate-y-1 hover:border-primary/60">
       <span className="w-max rounded-full bg-primary/15 px-3 py-1 text-[12.5px] font-medium text-primary">
@@ -13,29 +16,42 @@ export default function ProjectCard({ project }: { project: Project }) {
       {project.metrics && project.metrics.length > 0 && (
         <p className="mt-2.5 text-[13px] text-warm">▸ {project.metrics.join(' · ')}</p>
       )}
-      <div className="mt-3.5 flex flex-col gap-2">
-        {groups.map(([cat, items]) => {
-          const c = CAT_COLOR[cat]
-          return (
-            <div key={cat}>
-              <div className="mb-1 text-[9.5px] font-bold uppercase tracking-[0.12em]" style={{ color: c }}>
-                {cat}
+
+      {groups.length > 0 && (
+        <button
+          onClick={() => setOpen((o) => !o)}
+          className="mt-3.5 w-max text-[12.5px] font-semibold text-mint transition hover:text-warm"
+          aria-expanded={open}
+        >
+          {open ? '▾ Hide tech stack' : `▸ Tech stack (${project.tech.length})`}
+        </button>
+      )}
+
+      {/* Two-column rows: heading (normal text) | colored value chips that wrap */}
+      {open && (
+        <div className="mt-2.5 flex flex-col gap-2">
+          {groups.map(([cat, items]) => {
+            const c = CAT_COLOR[cat]
+            return (
+              <div key={cat} className="flex gap-3">
+                <span className="w-[86px] shrink-0 pt-1 text-[11px] font-semibold text-muted">{cat}</span>
+                <div className="flex flex-wrap gap-1.5">
+                  {items.map((t) => (
+                    <span
+                      key={t}
+                      className="rounded-md border px-2 py-0.5 text-[11.5px] font-medium"
+                      style={{ color: c, borderColor: `${c}55`, background: `${c}14` }}
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
               </div>
-              <div className="flex flex-wrap gap-1.5">
-                {items.map((t) => (
-                  <span
-                    key={t}
-                    className="rounded-md border px-2 py-0.5 text-[11.5px] font-medium"
-                    style={{ color: c, borderColor: `${c}55`, background: `${c}14` }}
-                  >
-                    {t}
-                  </span>
-                ))}
-              </div>
-            </div>
-          )
-        })}
-      </div>
+            )
+          })}
+        </div>
+      )}
+
       <a
         href={project.url}
         target="_blank"
