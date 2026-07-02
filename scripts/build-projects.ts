@@ -65,6 +65,16 @@ async function fetchReadme(repo: string): Promise<string> {
   return await res.text()
 }
 
+// All languages GitHub detected in the repo, most-used first — authoritative tech.
+async function fetchLanguages(repo: string): Promise<string[]> {
+  const res = await fetch(`${API}/repos/${OWNER}/${repo}/languages`, { headers: headers() })
+  if (!res.ok) return []
+  const j = (await res.json()) as Record<string, number>
+  return Object.entries(j)
+    .sort((a, b) => b[1] - a[1])
+    .map(([k]) => k)
+}
+
 // Rough prose length of a README (strip badges, code, html, headings, links).
 function proseLength(md: string): number {
   return md
@@ -104,19 +114,91 @@ function prettyTitle(repo: string): string {
     .join(' ')
 }
 
-function classify(repo: Repo): Domain {
-  const hay = `${repo.name} ${(repo.topics || []).join(' ')} ${repo.description || ''}`.toLowerCase()
-  const has = (...ks: string[]) => ks.some((k) => hay.includes(k))
-  if (has('agent', 'react-loop', 'langgraph', 'mcp', 'autonomous')) return 'Agentic'
-  if (has('rag', 'cag', 'llm', 'gpt', 'prompt', 'generative', 'genai', 'chatbot')) return 'LLMs & GenAI'
-  if (has('nlp', 'text', 'language-model', 'ner', 'sentiment')) return 'NLP'
-  if (has('cnn', 'transformer', 'deep', 'neural', 'vision', 'image', 'super-resolution', 'lstm', 'attention')) return 'Deep Learning'
-  if (has('mlops', 'pipeline', 'serving', 'deploy', 'mlflow', 'retrain', 'monitoring')) return 'MLOps'
-  if (has('system-design', 'feature-store', 'batch-inference', 'recommendation', 'ranking')) return 'ML System Design'
-  if (has('regression', 'classification', 'xgboost', 'random-forest', 'ml-model', 'scikit')) return 'Classical ML'
-  if (has('data', 'analytics', 'sql', 'eda', 'visualization', 'dashboard', 'tableau')) return 'Data Science'
-  if (has('web', 'app', 'full-stack', 'fullstack', 'react', 'next', 'frontend')) return 'Full-Stack / Product'
-  return 'Other'
+// Whole-word-ish keyword match so short tokens (rag, mcp, lora) don't match
+// inside other words (e.g. "storage").
+function escapeRe(s: string): string {
+  return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+}
+function hit(hay: string, kw: string): boolean {
+  return new RegExp(`(^|[^a-z0-9+#.])${escapeRe(kw)}([^a-z0-9+#.]|$)`, 'i').test(hay)
+}
+
+// Tech stack — canonical name → keywords to find in README/topics/languages.
+const TECH: [string, string[]][] = [
+  ['PyTorch', ['pytorch', 'torch']],
+  ['TensorFlow', ['tensorflow']],
+  ['Keras', ['keras']],
+  ['scikit-learn', ['scikit-learn', 'sklearn']],
+  ['XGBoost', ['xgboost']],
+  ['CatBoost', ['catboost']],
+  ['LightGBM', ['lightgbm']],
+  ['Transformers', ['transformers', 'huggingface', 'hugging face']],
+  ['LangGraph', ['langgraph']],
+  ['LangChain', ['langchain']],
+  ['RAG', ['rag', 'retrieval-augmented', 'retrieval augmented']],
+  ['FAISS', ['faiss']],
+  ['ChromaDB', ['chromadb', 'chroma']],
+  ['LoRA', ['lora', 'qlora']],
+  ['MCP', ['mcp', 'model context protocol']],
+  ['OpenAI', ['openai']],
+  ['Anthropic', ['anthropic', 'claude']],
+  ['Ollama', ['ollama']],
+  ['FastAPI', ['fastapi']],
+  ['Flask', ['flask']],
+  ['Django', ['django']],
+  ['Streamlit', ['streamlit']],
+  ['Gradio', ['gradio']],
+  ['Docker', ['docker', 'docker-compose']],
+  ['MLflow', ['mlflow']],
+  ['AWS', ['aws', 'sagemaker']],
+  ['React', ['react']],
+  ['Next.js', ['next.js', 'nextjs']],
+  ['Tailwind', ['tailwind']],
+  ['Vite', ['vite']],
+  ['Postgres', ['postgres', 'postgresql']],
+  ['MongoDB', ['mongodb']],
+  ['NumPy', ['numpy']],
+  ['pandas', ['pandas']],
+  ['Plotly', ['plotly']],
+  ['Playwright', ['playwright']],
+  ['Pydantic', ['pydantic']],
+]
+const SKIP_LANG = new Set(['html', 'css', 'scss', 'dockerfile', 'makefile', 'shell', 'batchfile', 'procfile', 'roff'])
+
+function detectTech(hay: string, langs: string[]): string[] {
+  const out: string[] = []
+  for (const l of langs) if (!SKIP_LANG.has(l.toLowerCase())) out.push(l)
+  for (const [name, kws] of TECH) if (kws.some((k) => hit(hay, k))) out.push(name)
+  return [...new Set(out)].slice(0, 6)
+}
+
+// Domain by WEIGHTED keyword score over README + topics + description + languages.
+// [domain, strong markers (×3), weak markers (×1)]. Strong = distinctive to that
+// domain; weak = broad terms that show up across many ML repos. Earlier domains
+// win ties (most specific first); 'Other' only when there's no signal at all.
+const DOMAIN_KW: [Domain, string[], string[]][] = [
+  ['Agentic', ['langgraph', 'mcp', 'model context protocol', 'multi-agent', 'agentic', 'react loop', 'tool registry', 'autonomous agent'], ['agent', 'tool-calling', 'planner']],
+  ['LLMs & GenAI', ['rag', 'cag', 'retrieval-augmented', 'fine-tuning', 'fine-tune', 'lora', 'qlora', 'dpo', 'prompt engineering'], ['llm', 'gpt', 'prompt', 'generative', 'genai', 'chatbot', 'embedding', 'embeddings', 'openai', 'anthropic', 'langchain', 'llama', 'mistral']],
+  ['NLP', ['named entity', 'ner', 'entailment', 'hallucination', 'tokenizer', 'sentiment analysis'], ['nlp', 'sentiment', 'spacy', 'summarization', 'text classification']],
+  ['Deep Learning', ['cnn', 'super-resolution', 'autograd', 'backprop', 'lstm', 'temporal fusion', 'patchtst'], ['pytorch', 'tensorflow', 'keras', 'transformer', 'neural network', 'deep learning', 'rnn', 'attention', 'gan']],
+  ['ML System Design', ['feature store', 'feature-store', 'batch inference', 'batch-inference', 'model serving', 'model-serving', 'retraining pipeline', 'retraining-pipeline', 'system design', 'system-design', 'recommendation-engine'], ['recommendation', 'ranking', 'scalable']],
+  ['MLOps', ['mlflow', 'ci/cd', 'model registry', 'kubernetes', 'drift detection'], ['mlops', 'monitoring', 'drift', 'deployment pipeline', 'docker-compose']],
+  ['Classical ML', ['xgboost', 'catboost', 'random forest', 'gradient boosting', 'k-means'], ['regression', 'classification', 'svm', 'clustering', 'scikit-learn', 'sklearn', 'feature engineering']],
+  ['Data Science', ['exploratory data analysis', 'eda', 'tableau', 'power bi'], ['data analysis', 'visualization', 'dashboard', 'statistics', 'hypothesis', 'pandas']],
+  ['Full-Stack / Product', ['full-stack', 'fullstack', 'next.js', 'saas'], ['web app', 'frontend', 'react app', 'user interface']],
+]
+
+function classify(hay: string): Domain {
+  let best: Domain = 'Other'
+  let bestScore = 0
+  for (const [domain, strong, weak] of DOMAIN_KW) {
+    const score = 3 * strong.filter((k) => hit(hay, k)).length + weak.filter((k) => hit(hay, k)).length
+    if (score > bestScore) {
+      bestScore = score
+      best = domain
+    }
+  }
+  return best
 }
 
 function slugify(repo: string): string {
@@ -140,12 +222,15 @@ async function main() {
     if (proseLength(readme) < MIN_README_CHARS) continue // skip empty / stub repos
     const blurb = (r.description && r.description.trim()) || firstParagraph(readme)
     if (blurb.length < 30) continue // no usable summary → skip
-    const tech = [...new Set([...(r.topics || []), r.language].filter(Boolean))].slice(0, 5) as string[]
+    // Detect tech + domain from README + topics + description + real repo languages.
+    const langs = await fetchLanguages(r.name)
+    const hay = `${r.name} ${(r.topics || []).join(' ')} ${r.description || ''} ${langs.join(' ')} ${readme}`.toLowerCase()
+    const tech = detectTech(hay, langs)
     shown.push({
       slug: slugify(r.name),
       title: prettyTitle(r.name),
       repo: r.name,
-      domain: classify(r),
+      domain: classify(hay),
       blurb,
       tech: tech.length ? tech : ['Project'],
       url: `https://github.com/${OWNER}/${r.name}`,

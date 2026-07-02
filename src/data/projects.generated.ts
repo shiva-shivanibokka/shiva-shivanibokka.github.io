@@ -10,7 +10,12 @@ export const generatedProjects: Project[] = [
     "domain": "Agentic",
     "blurb": "--- title: Petopia Backend emoji: 🐾 colorFrom: green colorTo: yellow sdk: docker app port: 7860 pinned: false license: mit ---",
     "tech": [
-      "Python"
+      "Python",
+      "JavaScript",
+      "PyTorch",
+      "CatBoost",
+      "Transformers",
+      "RAG"
     ],
     "url": "https://github.com/shiva-shivanibokka/SCM-using-MCP-and-LLM"
   },
@@ -18,10 +23,15 @@ export const generatedProjects: Project[] = [
     "slug": "churn-intelligence-platform",
     "title": "Churn Intelligence Platform",
     "repo": "Churn-Intelligence-Platform",
-    "domain": "Other",
+    "domain": "Classical ML",
     "blurb": "End-to-end decision intelligence platform: behavioral segmentation → per-cohort churn prediction → uplift modeling → 12-tool AI retention agent → closed-loop outcome tracking.",
     "tech": [
-      "Python"
+      "Python",
+      "TypeScript",
+      "PLpgSQL",
+      "JavaScript",
+      "scikit-learn",
+      "XGBoost"
     ],
     "url": "https://github.com/shiva-shivanibokka/Churn-Intelligence-Platform"
   },
@@ -32,7 +42,12 @@ export const generatedProjects: Project[] = [
     "domain": "Agentic",
     "blurb": "An autonomous coding agent that takes a natural language task, plans an implementation, writes code across multiple files, runs it in an isolated sandbox, debugs failures, and delivers working results — all streamed to you in real time.",
     "tech": [
-      "Python"
+      "Python",
+      "LangGraph",
+      "Anthropic",
+      "FastAPI",
+      "Gradio",
+      "Docker"
     ],
     "url": "https://github.com/shiva-shivanibokka/CodePilot-Agent"
   },
@@ -43,7 +58,10 @@ export const generatedProjects: Project[] = [
     "domain": "Data Science",
     "blurb": "A complete data analytics case study built around FlowDesk — a fictional B2B SaaS project management company (think Asana / Monday.com). Seven notebooks cover every analytical skill tested in DA and DS interviews at Meta, Airbnb, LinkedI…",
     "tech": [
-      "Jupyter Notebook"
+      "Jupyter Notebook",
+      "Python",
+      "NumPy",
+      "pandas"
     ],
     "url": "https://github.com/shiva-shivanibokka/Data-Analytics-Portfolio"
   },
@@ -51,10 +69,15 @@ export const generatedProjects: Project[] = [
     "slug": "resumeforge",
     "title": "ResumeForge",
     "repo": "ResumeForge",
-    "domain": "Other",
+    "domain": "LLMs & GenAI",
     "blurb": "Forge a résumé the job can't ignore — AI résumé tailoring with a true one-page guarantee.",
     "tech": [
-      "Python"
+      "Python",
+      "TypeScript",
+      "Transformers",
+      "RAG",
+      "OpenAI",
+      "Anthropic"
     ],
     "url": "https://github.com/shiva-shivanibokka/ResumeForge"
   },
@@ -62,10 +85,15 @@ export const generatedProjects: Project[] = [
     "slug": "fraud-detection-system",
     "title": "Fraud Detection System",
     "repo": "Fraud-Detection-System",
-    "domain": "Other",
+    "domain": "MLOps",
     "blurb": "An end-to-end, deployed fraud-detection platform on free-tier infra — model registry → CI → deploy — pairing a real-time tabular scoring API with a graph-neural-network benchmark on real Bitcoin fraud data.",
     "tech": [
-      "Python"
+      "Python",
+      "JavaScript",
+      "PyTorch",
+      "scikit-learn",
+      "XGBoost",
+      "CatBoost"
     ],
     "url": "https://github.com/shiva-shivanibokka/Fraud-Detection-System"
   },
@@ -76,7 +104,12 @@ export const generatedProjects: Project[] = [
     "domain": "LLMs & GenAI",
     "blurb": "A modular benchmarking framework that compares Context Augmented Generation and Retrieval Augmented Generation head-to-head. Measures latency, token cost, and answer quality via LLM-as-judge scoring across factual, multi-hop, and reasoning tasks using the Anthropic Claude API",
     "tech": [
-      "Python"
+      "Python",
+      "JavaScript",
+      "RAG",
+      "FAISS",
+      "OpenAI",
+      "Anthropic"
     ],
     "url": "https://github.com/shiva-shivanibokka/RAG-vs-CAG-Showdown"
   },
@@ -84,10 +117,15 @@ export const generatedProjects: Project[] = [
     "slug": "take-home-project",
     "title": "Take Home Project",
     "repo": "take-home-project",
-    "domain": "Other",
+    "domain": "LLMs & GenAI",
     "blurb": "Confer Inc. · AI/ML Engineering Take-Home · Assignment 5 of 5",
     "tech": [
-      "TypeScript"
+      "TypeScript",
+      "JavaScript",
+      "PLpgSQL",
+      "OpenAI",
+      "Anthropic",
+      "Ollama"
     ],
     "url": "https://github.com/shiva-shivanibokka/take-home-project"
   },
@@ -95,10 +133,15 @@ export const generatedProjects: Project[] = [
     "slug": "search-ranking-system",
     "title": "Search Ranking System",
     "repo": "Search-Ranking-System",
-    "domain": "ML System Design",
+    "domain": "Classical ML",
     "blurb": "A full production-grade search and ranking system, built the way a senior ML engineer would build it at a company like YouTube, Spotify, or Google. It takes a user's search query, understands what they mean, finds the most relevant passa…",
     "tech": [
-      "Python"
+      "Python",
+      "PyTorch",
+      "XGBoost",
+      "Transformers",
+      "FAISS",
+      "Anthropic"
     ],
     "url": "https://github.com/shiva-shivanibokka/Search-Ranking-System"
   },
@@ -106,10 +149,15 @@ export const generatedProjects: Project[] = [
     "slug": "hireview",
     "title": "HireView",
     "repo": "HireView",
-    "domain": "Other",
+    "domain": "Full-Stack / Product",
     "blurb": "HireView is a job search aggregator that searches hundreds of company career pages simultaneously so you never have to visit each one manually. You type a job title or company name, and HireView scrapes the ATS platforms those companies…",
     "tech": [
-      "TypeScript"
+      "TypeScript",
+      "Python",
+      "JavaScript",
+      "Transformers",
+      "Anthropic",
+      "FastAPI"
     ],
     "url": "https://github.com/shiva-shivanibokka/HireView"
   },
@@ -117,10 +165,15 @@ export const generatedProjects: Project[] = [
     "slug": "gradient-descent-and-optimizers",
     "title": "Gradient Descent And Optimizers",
     "repo": "Gradient-Descent-and-Optimizers",
-    "domain": "Other",
+    "domain": "Deep Learning",
     "blurb": "A production-grade optimizer benchmarking library and interactive demo. Every major gradient descent variant, adaptive optimizer, and LR scheduler — implemented from scratch in NumPy, tested with pytest, tracked with MLflow, and deployed…",
     "tech": [
-      "Python"
+      "Python",
+      "Jupyter Notebook",
+      "PyTorch",
+      "Transformers",
+      "Gradio",
+      "Docker"
     ],
     "url": "https://github.com/shiva-shivanibokka/Gradient-Descent-and-Optimizers"
   },
@@ -131,7 +184,9 @@ export const generatedProjects: Project[] = [
     "domain": "Data Science",
     "blurb": "Production-grade SQL from fundamentals through FAANG-level interview patterns — demonstrated on a realistic 2.6M-row synthetic e-commerce database.",
     "tech": [
-      "Jupyter Notebook"
+      "Jupyter Notebook",
+      "Python",
+      "pandas"
     ],
     "url": "https://github.com/shiva-shivanibokka/SQL-and-Database-Skills"
   },
@@ -142,7 +197,11 @@ export const generatedProjects: Project[] = [
     "domain": "LLMs & GenAI",
     "blurb": "AI-powered tool that scrapes any company's website, finds real-time competitors via Tavily search, and generates a full competitive intelligence report — including market comparison and strategic recommendations — using any LLM of your choice.",
     "tech": [
-      "Jupyter Notebook"
+      "Jupyter Notebook",
+      "Python",
+      "OpenAI",
+      "Anthropic",
+      "Ollama"
     ],
     "url": "https://github.com/shiva-shivanibokka/Competitor-Insight-Engine"
   },
@@ -153,7 +212,12 @@ export const generatedProjects: Project[] = [
     "domain": "Deep Learning",
     "blurb": "Multi-Horizon Stock Price Forecasting using Transformer, LSTM, RNN, and Random Forest on S&P 500 data.",
     "tech": [
-      "Python"
+      "Python",
+      "JavaScript",
+      "PyTorch",
+      "scikit-learn",
+      "Flask",
+      "Docker"
     ],
     "url": "https://github.com/shiva-shivanibokka/Multi-Horizon-Stock-Forecasting-AI-Model"
   },
@@ -161,10 +225,15 @@ export const generatedProjects: Project[] = [
     "slug": "supply-chain-demand-agent",
     "title": "Supply Chain Demand Agent",
     "repo": "Supply-Chain-Demand-Agent",
-    "domain": "Agentic",
+    "domain": "LLMs & GenAI",
     "blurb": "Agentic RAG pipeline for supply chain demand forecasting using LLMs, time-series models, and MLOps",
     "tech": [
-      "Python"
+      "Python",
+      "Jupyter Notebook",
+      "PyTorch",
+      "Transformers",
+      "RAG",
+      "ChromaDB"
     ],
     "url": "https://github.com/shiva-shivanibokka/Supply-Chain-Demand-Agent"
   },
@@ -172,10 +241,15 @@ export const generatedProjects: Project[] = [
     "slug": "llm-halucination-detection",
     "title": "LLM Halucination Detection",
     "repo": "LLM-Halucination-Detection",
-    "domain": "LLMs & GenAI",
+    "domain": "NLP",
     "blurb": "NLI-based hallucination detection pipeline. Flags unsupported LLM claims using DeBERTa-v3, assigns a hallucination confidence score per sentence, and grounds responses against source documents via ChromaDB.",
     "tech": [
-      "Python"
+      "Python",
+      "Transformers",
+      "ChromaDB",
+      "OpenAI",
+      "Anthropic",
+      "Ollama"
     ],
     "url": "https://github.com/shiva-shivanibokka/LLM-Halucination-Detection"
   },
@@ -183,10 +257,15 @@ export const generatedProjects: Project[] = [
     "slug": "ml-system-design-retraining-pipeline",
     "title": "ML System Design Retraining Pipeline",
     "repo": "ML-System-Design-Retraining-Pipeline",
-    "domain": "MLOps",
+    "domain": "ML System Design",
     "blurb": "A production-grade automated model lifecycle system for a credit risk LightGBM model — built to reflect how Uber, Airbnb, Netflix, and Google actually manage model decay in production.",
     "tech": [
-      "Python"
+      "Python",
+      "XGBoost",
+      "LightGBM",
+      "Streamlit",
+      "Docker",
+      "MLflow"
     ],
     "url": "https://github.com/shiva-shivanibokka/ML-System-Design-Retraining-Pipeline"
   },
@@ -194,10 +273,15 @@ export const generatedProjects: Project[] = [
     "slug": "ml-system-design-model-serving",
     "title": "ML System Design Model Serving",
     "repo": "ML-System-Design-Model-Serving",
-    "domain": "MLOps",
+    "domain": "ML System Design",
     "blurb": "A production-grade model deployment system built around the question every ML engineering interview asks:",
     "tech": [
-      "Python"
+      "Python",
+      "PyTorch",
+      "Transformers",
+      "FastAPI",
+      "Gradio",
+      "Docker"
     ],
     "url": "https://github.com/shiva-shivanibokka/ML-System-Design-Model-Serving"
   },
@@ -208,7 +292,12 @@ export const generatedProjects: Project[] = [
     "domain": "ML System Design",
     "blurb": "A production-grade feature store built to the same architectural standards as Uber Michelangelo , DoorDash , and Twitter Cortex — the systems that serve billions of ML predictions per day.",
     "tech": [
-      "Python"
+      "Python",
+      "LightGBM",
+      "FastAPI",
+      "Gradio",
+      "Docker",
+      "MLflow"
     ],
     "url": "https://github.com/shiva-shivanibokka/ML-System-Design-Feature-Store"
   },
@@ -219,7 +308,12 @@ export const generatedProjects: Project[] = [
     "domain": "ML System Design",
     "blurb": "Production-grade nightly batch scoring system that scores 1,000,000 customers for churn probability using PySpark distributed inference, orchestrated by Apache Airflow, served via FastAPI, and monitored through a Gradio dashboard.",
     "tech": [
-      "Python"
+      "Python",
+      "LightGBM",
+      "FastAPI",
+      "Gradio",
+      "Docker",
+      "Postgres"
     ],
     "url": "https://github.com/shiva-shivanibokka/ML-System-Design-Batch-Inference"
   },
@@ -227,10 +321,15 @@ export const generatedProjects: Project[] = [
     "slug": "ml-model-efficiency-toolkit",
     "title": "ML Model Efficiency Toolkit",
     "repo": "ML-Model-Efficiency-Toolkit",
-    "domain": "Classical ML",
+    "domain": "Deep Learning",
     "blurb": "A comprehensive, modular framework for compressing and benchmarking deep learning models using three industry-standard techniques — Quantization , Pruning , and Knowledge Distillation — applied to both vision (ResNet-50, CIFAR-10) and NL…",
     "tech": [
-      "Python"
+      "Python",
+      "Jupyter Notebook",
+      "PyTorch",
+      "Transformers",
+      "AWS",
+      "NumPy"
     ],
     "url": "https://github.com/shiva-shivanibokka/ML-Model-Efficiency-Toolkit"
   },
@@ -241,7 +340,11 @@ export const generatedProjects: Project[] = [
     "domain": "Classical ML",
     "blurb": "A machine learning classification project using the TISCH (Tumor Immune Single-cell Hub) dataset, applying machine learning techniques to classify cell types across cancer samples from single-cell RNA sequencing data.",
     "tech": [
-      "Jupyter Notebook"
+      "Jupyter Notebook",
+      "scikit-learn",
+      "XGBoost",
+      "NumPy",
+      "pandas"
     ],
     "url": "https://github.com/shiva-shivanibokka/Tisch-ML-Model"
   },
@@ -249,10 +352,14 @@ export const generatedProjects: Project[] = [
     "slug": "sepsis-ml-model",
     "title": "Sepsis ML Model",
     "repo": "Sepsis-ML-Model",
-    "domain": "MLOps",
+    "domain": "Classical ML",
     "blurb": "Early prediction of sepsis in ICU patients using Random Forest and XGBoost on the PhysioNet/CinC Challenge 2019 dataset. Covers the full ML pipeline: EDA, preprocessing, feature selection, and model tuning. Built as an introductory project for students learning applied machine learning.",
     "tech": [
-      "Jupyter Notebook"
+      "Jupyter Notebook",
+      "scikit-learn",
+      "XGBoost",
+      "NumPy",
+      "pandas"
     ],
     "url": "https://github.com/shiva-shivanibokka/Sepsis-ML-Model"
   },
@@ -263,7 +370,11 @@ export const generatedProjects: Project[] = [
     "domain": "Classical ML",
     "blurb": "ML classification project using the CuMiDa Liver Cancer dataset, applying supervised learning techniques to classify liver cancer subtypes from curated microarray gene expression data.",
     "tech": [
-      "Jupyter Notebook"
+      "Jupyter Notebook",
+      "scikit-learn",
+      "XGBoost",
+      "NumPy",
+      "pandas"
     ],
     "url": "https://github.com/shiva-shivanibokka/Cumida-ML-Model"
   },
@@ -271,10 +382,13 @@ export const generatedProjects: Project[] = [
     "slug": "all-about-cross-validation",
     "title": "All About Cross Validation",
     "repo": "All-About-Cross-Validation",
-    "domain": "Other",
+    "domain": "Classical ML",
     "blurb": "Learn everything there is to learn about Cross Validation in ML.",
     "tech": [
-      "Jupyter Notebook"
+      "Jupyter Notebook",
+      "scikit-learn",
+      "NumPy",
+      "pandas"
     ],
     "url": "https://github.com/shiva-shivanibokka/All-About-Cross-Validation"
   },
@@ -282,10 +396,14 @@ export const generatedProjects: Project[] = [
     "slug": "dive-deeper-into-linear-models",
     "title": "Dive Deeper Into Linear Models",
     "repo": "Dive-deeper-into-linear-models",
-    "domain": "Deep Learning",
+    "domain": "Classical ML",
     "blurb": "Let's move on from basic linear and logistic regression to some advanced techniques.",
     "tech": [
-      "Jupyter Notebook"
+      "Jupyter Notebook",
+      "scikit-learn",
+      "XGBoost",
+      "NumPy",
+      "pandas"
     ],
     "url": "https://github.com/shiva-shivanibokka/Dive-deeper-into-linear-models"
   },
@@ -296,7 +414,11 @@ export const generatedProjects: Project[] = [
     "domain": "Classical ML",
     "blurb": "Learn everything about basics of Linear and Logistic regression end to end",
     "tech": [
-      "Jupyter Notebook"
+      "Jupyter Notebook",
+      "scikit-learn",
+      "Transformers",
+      "NumPy",
+      "pandas"
     ],
     "url": "https://github.com/shiva-shivanibokka/Basics-of-Linear-and-Logistic-Regression"
   },
@@ -304,10 +426,14 @@ export const generatedProjects: Project[] = [
     "slug": "data-preprocessing",
     "title": "Data Preprocessing",
     "repo": "Data-Preprocessing",
-    "domain": "Data Science",
+    "domain": "Classical ML",
     "blurb": "Learn all about data preprocessing for ML models",
     "tech": [
-      "Jupyter Notebook"
+      "Jupyter Notebook",
+      "scikit-learn",
+      "XGBoost",
+      "NumPy",
+      "pandas"
     ],
     "url": "https://github.com/shiva-shivanibokka/Data-Preprocessing"
   },
@@ -315,10 +441,15 @@ export const generatedProjects: Project[] = [
     "slug": "autograder-agent",
     "title": "AutoGrader Agent",
     "repo": "AutoGrader-Agent",
-    "domain": "Agentic",
+    "domain": "LLMs & GenAI",
     "blurb": "AI agent that auto-grades any Jupyter notebook (ML, RAG, NLP, CV, data analysis, algorithms). Upload a notebook, optionally provide your own rubric, set grading strictness, and get a structured report with scores per criterion, written feedback, strengths, and improvement suggestions. Built with LangGraph, nbformat, Pydantic, FastAPI, and Gradio.",
     "tech": [
-      "Python"
+      "Python",
+      "Transformers",
+      "LangGraph",
+      "RAG",
+      "OpenAI",
+      "Anthropic"
     ],
     "url": "https://github.com/shiva-shivanibokka/AutoGrader-Agent"
   },
@@ -329,7 +460,8 @@ export const generatedProjects: Project[] = [
     "domain": "LLMs & GenAI",
     "blurb": "Simple to complex projects implemented using LLMs",
     "tech": [
-      "Jupyter Notebook"
+      "Jupyter Notebook",
+      "Anthropic"
     ],
     "url": "https://github.com/shiva-shivanibokka/LLM-research-scraper"
   },
@@ -340,7 +472,10 @@ export const generatedProjects: Project[] = [
     "domain": "LLMs & GenAI",
     "blurb": "Using an API wrapper where the user selects an open source LLM model without changing any code.",
     "tech": [
-      "Jupyter Notebook"
+      "Jupyter Notebook",
+      "Python",
+      "OpenAI",
+      "Ollama"
     ],
     "url": "https://github.com/shiva-shivanibokka/open-source-LLMs-api-wrapper"
   },
@@ -351,7 +486,9 @@ export const generatedProjects: Project[] = [
     "domain": "Deep Learning",
     "blurb": "Super Resolution using HAN (Holistic Attention Network) architecture",
     "tech": [
-      "Python"
+      "Python",
+      "Jupyter Notebook",
+      "PyTorch"
     ],
     "url": "https://github.com/shiva-shivanibokka/Super_Resolution_using_HAN"
   },
@@ -359,10 +496,14 @@ export const generatedProjects: Project[] = [
     "slug": "wellnest-curated-health-web-app",
     "title": "Wellnest Curated Health Web App",
     "repo": "Wellnest-Curated-Health-Web-App",
-    "domain": "Full-Stack / Product",
+    "domain": "Data Science",
     "blurb": "Wellnest is a lightweight wellness companion that helps users build sustainable habits through daily tracking, friendly competition, and smart recommendations. Users complete a short intake survey, sign up, and start logging habits like…",
     "tech": [
-      "HTML"
+      "JavaScript",
+      "Python",
+      "Django",
+      "Docker",
+      "AWS"
     ],
     "url": "https://github.com/shiva-shivanibokka/Wellnest-Curated-Health-Web-App"
   }
