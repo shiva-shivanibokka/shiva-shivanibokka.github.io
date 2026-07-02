@@ -90,7 +90,10 @@ function proseLength(md: string): number {
 
 // First real paragraph of a README → fallback blurb when there's no repo description.
 function firstParagraph(md: string): string {
-  const clean = md
+  // Drop a leading YAML front-matter block (e.g. Hugging Face Spaces configs:
+  // ---\n title: … sdk: … \n--- ) so it never leaks into the blurb.
+  const noFrontmatter = md.replace(/^﻿?\s*---\r?\n[\s\S]*?\r?\n---\s*/, ' ')
+  const clean = noFrontmatter
     .replace(/```[\s\S]*?```/g, ' ')
     .replace(/!\[[^\]]*\]\([^)]*\)/g, ' ')
     .replace(/^\s*#.*$/gm, ' ')
@@ -166,10 +169,9 @@ const TECH: [string, string[]][] = [
 const SKIP_LANG = new Set(['html', 'css', 'scss', 'dockerfile', 'makefile', 'shell', 'batchfile', 'procfile', 'roff'])
 
 function detectTech(hay: string, langs: string[]): string[] {
-  const out: string[] = []
-  for (const l of langs) if (!SKIP_LANG.has(l.toLowerCase())) out.push(l)
-  for (const [name, kws] of TECH) if (kws.some((k) => hit(hay, k))) out.push(name)
-  return [...new Set(out)].slice(0, 6)
+  const cleanLangs = langs.filter((l) => !SKIP_LANG.has(l.toLowerCase())).slice(0, 3)
+  const frameworks = TECH.filter(([, kws]) => kws.some((k) => hit(hay, k))).map(([name]) => name)
+  return [...new Set([...cleanLangs, ...frameworks])].slice(0, 9)
 }
 
 // Domain by WEIGHTED keyword score over README + topics + description + languages.

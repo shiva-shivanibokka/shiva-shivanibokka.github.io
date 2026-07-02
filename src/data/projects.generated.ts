@@ -8,14 +8,17 @@ export const generatedProjects: Project[] = [
     "title": "SCM Using MCP And LLM",
     "repo": "SCM-using-MCP-and-LLM",
     "domain": "Agentic",
-    "blurb": "--- title: Petopia Backend emoji: 🐾 colorFrom: green colorTo: yellow sdk: docker app port: 7860 pinned: false license: mit ---",
+    "blurb": "A pet-retail supply-chain platform where an AI agent reasons over a live data warehouse and tells you what to do — not just what happened.",
     "tech": [
       "Python",
       "JavaScript",
       "PyTorch",
       "CatBoost",
       "Transformers",
-      "RAG"
+      "RAG",
+      "MCP",
+      "OpenAI",
+      "Anthropic"
     ],
     "url": "https://github.com/shiva-shivanibokka/SCM-using-MCP-and-LLM"
   },
@@ -29,9 +32,12 @@ export const generatedProjects: Project[] = [
       "Python",
       "TypeScript",
       "PLpgSQL",
-      "JavaScript",
       "scikit-learn",
-      "XGBoost"
+      "XGBoost",
+      "CatBoost",
+      "FastAPI",
+      "Streamlit",
+      "Docker"
     ],
     "url": "https://github.com/shiva-shivanibokka/Churn-Intelligence-Platform"
   },
@@ -47,7 +53,8 @@ export const generatedProjects: Project[] = [
       "Anthropic",
       "FastAPI",
       "Gradio",
-      "Docker"
+      "Docker",
+      "Pydantic"
     ],
     "url": "https://github.com/shiva-shivanibokka/CodePilot-Agent"
   },
@@ -77,7 +84,10 @@ export const generatedProjects: Project[] = [
       "Transformers",
       "RAG",
       "OpenAI",
-      "Anthropic"
+      "Anthropic",
+      "FastAPI",
+      "Docker",
+      "React"
     ],
     "url": "https://github.com/shiva-shivanibokka/ResumeForge"
   },
@@ -93,7 +103,10 @@ export const generatedProjects: Project[] = [
       "PyTorch",
       "scikit-learn",
       "XGBoost",
-      "CatBoost"
+      "CatBoost",
+      "LightGBM",
+      "Transformers",
+      "RAG"
     ],
     "url": "https://github.com/shiva-shivanibokka/Fraud-Detection-System"
   },
@@ -109,7 +122,10 @@ export const generatedProjects: Project[] = [
       "RAG",
       "FAISS",
       "OpenAI",
-      "Anthropic"
+      "Anthropic",
+      "FastAPI",
+      "Docker",
+      "React"
     ],
     "url": "https://github.com/shiva-shivanibokka/RAG-vs-CAG-Showdown"
   },
@@ -125,7 +141,10 @@ export const generatedProjects: Project[] = [
       "PLpgSQL",
       "OpenAI",
       "Anthropic",
-      "Ollama"
+      "Ollama",
+      "AWS",
+      "React",
+      "Next.js"
     ],
     "url": "https://github.com/shiva-shivanibokka/take-home-project"
   },
@@ -141,7 +160,10 @@ export const generatedProjects: Project[] = [
       "XGBoost",
       "Transformers",
       "FAISS",
-      "Anthropic"
+      "Anthropic",
+      "FastAPI",
+      "Gradio",
+      "Docker"
     ],
     "url": "https://github.com/shiva-shivanibokka/Search-Ranking-System"
   },
@@ -157,7 +179,10 @@ export const generatedProjects: Project[] = [
       "JavaScript",
       "Transformers",
       "Anthropic",
-      "FastAPI"
+      "FastAPI",
+      "React",
+      "Next.js",
+      "Tailwind"
     ],
     "url": "https://github.com/shiva-shivanibokka/HireView"
   },
@@ -173,7 +198,10 @@ export const generatedProjects: Project[] = [
       "PyTorch",
       "Transformers",
       "Gradio",
-      "Docker"
+      "Docker",
+      "MLflow",
+      "NumPy",
+      "Pydantic"
     ],
     "url": "https://github.com/shiva-shivanibokka/Gradient-Descent-and-Optimizers"
   },
@@ -217,7 +245,10 @@ export const generatedProjects: Project[] = [
       "PyTorch",
       "scikit-learn",
       "Flask",
-      "Docker"
+      "Docker",
+      "MLflow",
+      "Next.js",
+      "NumPy"
     ],
     "url": "https://github.com/shiva-shivanibokka/Multi-Horizon-Stock-Forecasting-AI-Model"
   },
@@ -233,7 +264,10 @@ export const generatedProjects: Project[] = [
       "PyTorch",
       "Transformers",
       "RAG",
-      "ChromaDB"
+      "ChromaDB",
+      "OpenAI",
+      "Anthropic",
+      "Streamlit"
     ],
     "url": "https://github.com/shiva-shivanibokka/Supply-Chain-Demand-Agent"
   },
@@ -249,7 +283,10 @@ export const generatedProjects: Project[] = [
       "ChromaDB",
       "OpenAI",
       "Anthropic",
-      "Ollama"
+      "Ollama",
+      "FastAPI",
+      "Gradio",
+      "Playwright"
     ],
     "url": "https://github.com/shiva-shivanibokka/LLM-Halucination-Detection"
   },
@@ -281,7 +318,8 @@ export const generatedProjects: Project[] = [
       "Transformers",
       "FastAPI",
       "Gradio",
-      "Docker"
+      "Docker",
+      "Postgres"
     ],
     "url": "https://github.com/shiva-shivanibokka/ML-System-Design-Model-Serving"
   },
@@ -297,7 +335,9 @@ export const generatedProjects: Project[] = [
       "FastAPI",
       "Gradio",
       "Docker",
-      "MLflow"
+      "MLflow",
+      "Postgres",
+      "Plotly"
     ],
     "url": "https://github.com/shiva-shivanibokka/ML-System-Design-Feature-Store"
   },
@@ -313,7 +353,10 @@ export const generatedProjects: Project[] = [
       "FastAPI",
       "Gradio",
       "Docker",
-      "Postgres"
+      "Postgres",
+      "pandas",
+      "Plotly",
+      "Pydantic"
     ],
     "url": "https://github.com/shiva-shivanibokka/ML-System-Design-Batch-Inference"
   },
@@ -329,7 +372,8 @@ export const generatedProjects: Project[] = [
       "PyTorch",
       "Transformers",
       "AWS",
-      "NumPy"
+      "NumPy",
+      "pandas"
     ],
     "url": "https://github.com/shiva-shivanibokka/ML-Model-Efficiency-Toolkit"
   },
@@ -449,7 +493,10 @@ export const generatedProjects: Project[] = [
       "LangGraph",
       "RAG",
       "OpenAI",
-      "Anthropic"
+      "Anthropic",
+      "FastAPI",
+      "Gradio",
+      "Pydantic"
     ],
     "url": "https://github.com/shiva-shivanibokka/AutoGrader-Agent"
   },
