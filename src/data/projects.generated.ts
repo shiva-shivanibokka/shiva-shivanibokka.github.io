@@ -4,6 +4,54 @@ import type { Project } from './types'
 // Every public repo with a detailed README (empty / stub repos filtered out).
 export const generatedProjects: Project[] = [
   {
+    "slug": "ml-system-design-retraining-pipeline",
+    "title": "ML System Design Retraining Pipeline",
+    "repo": "ML-System-Design-Retraining-Pipeline",
+    "domain": "ML System Design",
+    "blurb": "A production-grade automated model lifecycle system for a credit risk LightGBM model — built to reflect how Uber, Airbnb, Netflix, and Google actually manage model decay in production.",
+    "tech": [
+      "Python",
+      "TypeScript",
+      "JavaScript",
+      "scikit-learn",
+      "XGBoost",
+      "LightGBM",
+      "SciPy",
+      "Transformers",
+      "OpenAI",
+      "Anthropic",
+      "Groq",
+      "NumPy",
+      "pandas",
+      "Matplotlib"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/ML-System-Design-Retraining-Pipeline"
+  },
+  {
+    "slug": "ml-system-design-recommendation-engine",
+    "title": "ML System Design Recommendation Engine",
+    "repo": "ML-System-Design-Recommendation-Engine",
+    "domain": "ML System Design",
+    "blurb": "A two-stage, bandit-routed movie recommender served behind a latency-budgeted FastAPI gateway — deployed live, end-to-end, on free-tier infrastructure.",
+    "tech": [
+      "Python",
+      "TypeScript",
+      "JavaScript",
+      "PyTorch",
+      "scikit-learn",
+      "SciPy",
+      "Transformers",
+      "FAISS",
+      "Gemini",
+      "NumPy",
+      "pandas",
+      "Plotly",
+      "Kafka",
+      "FastAPI"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/ML-System-Design-Recommendation-Engine"
+  },
+  {
     "slug": "scm-using-mcp-and-llm",
     "title": "SCM Using MCP And LLM",
     "repo": "SCM-using-MCP-and-LLM",
@@ -364,30 +412,6 @@ export const generatedProjects: Project[] = [
       "Pydantic"
     ],
     "url": "https://github.com/shiva-shivanibokka/LLM-Halucination-Detection"
-  },
-  {
-    "slug": "ml-system-design-retraining-pipeline",
-    "title": "ML System Design Retraining Pipeline",
-    "repo": "ML-System-Design-Retraining-Pipeline",
-    "domain": "ML System Design",
-    "blurb": "A production-grade automated model lifecycle system for a credit risk LightGBM model — built to reflect how Uber, Airbnb, Netflix, and Google actually manage model decay in production.",
-    "tech": [
-      "Python",
-      "scikit-learn",
-      "XGBoost",
-      "LightGBM",
-      "SciPy",
-      "NumPy",
-      "pandas",
-      "Matplotlib",
-      "Plotly",
-      "Airflow",
-      "Bootstrap",
-      "Streamlit",
-      "Docker",
-      "MLflow"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/ML-System-Design-Retraining-Pipeline"
   },
   {
     "slug": "ml-system-design-model-serving",
