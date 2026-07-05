@@ -15,10 +15,11 @@ The hero isn't a list of links — it's a **real, in-browser semantic search ove
 
 ## How the search works
 
-1. **At build time** (`npm run build:index`), each curated repo's README is fetched live from the GitHub API, stripped of markdown, chunked, and embedded. The vectors are written to `public/search-index.json`, and `scripts/build-map.ts` computes the 2D embedding map into `public/embedding-map.json`.
-2. **In the browser**, the model is loaded once (cached afterward), the query is embedded, and results are cosine-ranked against the prebuilt index — all client-side.
+1. **The project list builds itself** (`npm run build:projects`). Instead of a hand-curated list, `scripts/build-projects.ts` discovers projects straight from GitHub — every public repo with a *detailed* README (forks, archived, and infra/tracker repos filtered out), each auto-classified by domain and tech stack from its README, topics, languages, and dependency manifests. The result is written to `src/data/projects.generated.ts`.
+2. **The index is embedded** (`npm run build:index`). Each of those repos' READMEs is fetched live from the GitHub API, stripped of markdown, chunked, and embedded. The vectors are written to `public/search-index.json`, and `scripts/build-map.ts` computes the 2D embedding map into `public/embedding-map.json`.
+3. **In the browser**, the model is loaded once (cached afterward), the query is embedded, and results are cosine-ranked against the prebuilt index — all client-side.
 
-Because the index is rebuilt from live READMEs, improving a project's README automatically improves how it shows up here.
+Because both the project list and the index are rebuilt from live GitHub data, adding a repo with a solid README makes it appear on the site automatically, and improving a README improves how it shows up here.
 
 ## Tech stack
 
@@ -43,10 +44,11 @@ src/
                    ProjectGrid, Experience, Skills, About, Nav, Intro, backgrounds
   rag/             retriever, answer builder, chunking, index types  (the search core)
   hooks/           useRetriever (runs a query, lights up the map), reduced-motion
-  data/            content.ts (experience/skills/bio), projects.ts
+  data/            content.ts (experience/skills/bio), projects.generated.ts (auto-built list)
 scripts/
-  build-index.ts   fetch live READMEs -> chunk -> embed -> public/search-index.json
-  build-map.ts     PCA of repo embeddings -> public/embedding-map.json
+  build-projects.ts  discover GitHub repos w/ detailed READMEs -> src/data/projects.generated.ts
+  build-index.ts     fetch live READMEs -> chunk -> embed -> public/search-index.json
+  build-map.ts       PCA of repo embeddings -> public/embedding-map.json
 public/
   search-index.json    prebuilt embeddings (generated)
   embedding-map.json   2D map nodes (generated)
@@ -61,7 +63,7 @@ public/
 ```bash
 npm install
 npm run dev          # start the dev server
-npm run build        # build:index + typecheck + production bundle
+npm run build        # build:projects + build:index + typecheck + bundle
 npm run preview      # preview the production build
 npm test             # run the test suite
 ```
@@ -70,6 +72,6 @@ npm test             # run the test suite
 
 ## Deployment
 
-Pushing to `main` triggers `deploy.yml`, which reinstalls, **rebuilds the search index from the live GitHub READMEs**, typechecks, builds, and publishes to GitHub Pages. A scheduled biweekly run refreshes the index only when a README has actually changed (gated on a corpus signature) so the site stays in sync with my repositories without redundant deploys.
+Pushing to `main` triggers `deploy.yml`, which reinstalls, **rebuilds the project list and search index from the live GitHub READMEs**, typechecks, builds, and publishes to GitHub Pages. A scheduled biweekly run refreshes the index only when a README has actually changed (gated on a corpus signature) so the site stays in sync with my repositories without redundant deploys.
 
 To update content: edit the relevant file (or `public/resume.pdf`) and push to `main`.
