@@ -4,11 +4,34 @@ import type { Project } from './types'
 // Every public repo with a detailed README (empty / stub repos filtered out).
 export const generatedProjects: Project[] = [
   {
+    "slug": "cumida-ml-model",
+    "title": "Cumida ML Model",
+    "repo": "Cumida-ML-Model",
+    "domain": "Classical ML",
+    "blurb": "ML classification project using the CuMiDa Liver Cancer dataset, applying supervised learning techniques to classify liver cancer subtypes from curated microarray gene expression data.",
+    "tech": [
+      "Jupyter Notebook",
+      "Python",
+      "scikit-learn",
+      "NumPy",
+      "pandas",
+      "Matplotlib",
+      "Seaborn",
+      "FastAPI",
+      "uvicorn",
+      "Pydantic",
+      "Docker",
+      "pytest",
+      "GCP"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/Cumida-ML-Model"
+  },
+  {
     "slug": "ml-system-design-retraining-pipeline",
     "title": "ML System Design Retraining Pipeline",
     "repo": "ML-System-Design-Retraining-Pipeline",
     "domain": "ML System Design",
-    "blurb": "A production-grade automated model lifecycle system for a credit risk LightGBM model — built to reflect how Uber, Airbnb, Netflix, and Google actually manage model decay in production.",
+    "blurb": "Recruiter TL;DR - What it is — An end-to-end MLOps system that keeps a production credit-risk model accurate as data drifts: it detects distribution shift nightly, retrains a hyperparameter-tuned challenger, gates it behind statistical a…",
     "tech": [
       "Python",
       "TypeScript",
@@ -26,30 +49,6 @@ export const generatedProjects: Project[] = [
       "Matplotlib"
     ],
     "url": "https://github.com/shiva-shivanibokka/ML-System-Design-Retraining-Pipeline"
-  },
-  {
-    "slug": "ml-system-design-recommendation-engine",
-    "title": "ML System Design Recommendation Engine",
-    "repo": "ML-System-Design-Recommendation-Engine",
-    "domain": "ML System Design",
-    "blurb": "A two-stage, bandit-routed movie recommender served behind a latency-budgeted FastAPI gateway — deployed live, end-to-end, on free-tier infrastructure.",
-    "tech": [
-      "Python",
-      "TypeScript",
-      "JavaScript",
-      "PyTorch",
-      "scikit-learn",
-      "SciPy",
-      "Transformers",
-      "FAISS",
-      "Gemini",
-      "NumPy",
-      "pandas",
-      "Plotly",
-      "Kafka",
-      "FastAPI"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/ML-System-Design-Recommendation-Engine"
   },
   {
     "slug": "scm-using-mcp-and-llm",
@@ -74,6 +73,54 @@ export const generatedProjects: Project[] = [
       "DuckDB"
     ],
     "url": "https://github.com/shiva-shivanibokka/SCM-using-MCP-and-LLM"
+  },
+  {
+    "slug": "resumeforge",
+    "title": "ResumeForge",
+    "repo": "ResumeForge",
+    "domain": "LLMs & GenAI",
+    "blurb": "Forge a résumé the job can't ignore — AI résumé tailoring with a true one-page guarantee.",
+    "tech": [
+      "Python",
+      "TypeScript",
+      "Transformers",
+      "RAG",
+      "OpenAI",
+      "Anthropic",
+      "Gemini",
+      "Groq",
+      "FastAPI",
+      "uvicorn",
+      "Pydantic",
+      "Node.js",
+      "Postgres",
+      "React"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/ResumeForge"
+  },
+  {
+    "slug": "ml-system-design-recommendation-engine",
+    "title": "ML System Design Recommendation Engine",
+    "repo": "ML-System-Design-Recommendation-Engine",
+    "domain": "ML System Design",
+    "blurb": "A two-stage, bandit-routed movie recommender served behind a latency-budgeted FastAPI gateway — deployed live, end-to-end, on free-tier infrastructure.",
+    "tech": [
+      "Python",
+      "TypeScript",
+      "JavaScript",
+      "PyTorch",
+      "scikit-learn",
+      "SciPy",
+      "Transformers",
+      "FAISS",
+      "Gemini",
+      "NumPy",
+      "pandas",
+      "Plotly",
+      "Kafka",
+      "FastAPI"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/ML-System-Design-Recommendation-Engine"
   },
   {
     "slug": "churn-intelligence-platform",
@@ -138,30 +185,6 @@ export const generatedProjects: Project[] = [
       "Plotly"
     ],
     "url": "https://github.com/shiva-shivanibokka/Data-Analytics-Portfolio"
-  },
-  {
-    "slug": "resumeforge",
-    "title": "ResumeForge",
-    "repo": "ResumeForge",
-    "domain": "LLMs & GenAI",
-    "blurb": "Forge a résumé the job can't ignore — AI résumé tailoring with a true one-page guarantee.",
-    "tech": [
-      "Python",
-      "TypeScript",
-      "Transformers",
-      "RAG",
-      "OpenAI",
-      "Anthropic",
-      "Gemini",
-      "Groq",
-      "FastAPI",
-      "uvicorn",
-      "Pydantic",
-      "Node.js",
-      "Postgres",
-      "React"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/ResumeForge"
   },
   {
     "slug": "fraud-detection-system",
@@ -540,23 +563,6 @@ export const generatedProjects: Project[] = [
       "Bootstrap"
     ],
     "url": "https://github.com/shiva-shivanibokka/Sepsis-ML-Model"
-  },
-  {
-    "slug": "cumida-ml-model",
-    "title": "Cumida ML Model",
-    "repo": "Cumida-ML-Model",
-    "domain": "Classical ML",
-    "blurb": "ML classification project using the CuMiDa Liver Cancer dataset, applying supervised learning techniques to classify liver cancer subtypes from curated microarray gene expression data.",
-    "tech": [
-      "Jupyter Notebook",
-      "scikit-learn",
-      "XGBoost",
-      "NumPy",
-      "pandas",
-      "Matplotlib",
-      "Seaborn"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/Cumida-ML-Model"
   },
   {
     "slug": "all-about-cross-validation",
