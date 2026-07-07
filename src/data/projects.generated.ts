@@ -4,10 +4,121 @@ import type { Project } from './types'
 // Every public repo with a detailed README (empty / stub repos filtered out).
 export const generatedProjects: Project[] = [
   {
+    "slug": "transfer-learning-huggingface",
+    "title": "Transfer Learning HuggingFace",
+    "repo": "Transfer-Learning-HuggingFace",
+    "domain": "LLMs & GenAI",
+    "blurb": "🚀 Live Demo (custom Next.js frontend on Vercel) · API + Gradio (HF Space) · 🤗 Models",
+    "tech": [
+      "Python",
+      "Jupyter Notebook",
+      "TypeScript",
+      "PyTorch",
+      "scikit-learn",
+      "SciPy",
+      "ONNX",
+      "OpenCV",
+      "Transformers",
+      "PEFT",
+      "OpenAI",
+      "NumPy",
+      "pandas",
+      "Matplotlib"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/Transfer-Learning-HuggingFace"
+  },
+  {
+    "slug": "sepsis-ml-model",
+    "title": "Sepsis ML Model",
+    "repo": "Sepsis-ML-Model",
+    "domain": "Classical ML",
+    "blurb": "Early prediction of sepsis in ICU patients using Random Forest and XGBoost on the PhysioNet/CinC Challenge 2019 dataset. Covers the full ML pipeline: EDA, preprocessing, feature selection, and model tuning. Built as an introductory project for students learning applied machine learning.",
+    "tech": [
+      "Jupyter Notebook",
+      "Python",
+      "scikit-learn",
+      "XGBoost",
+      "SciPy",
+      "NumPy",
+      "pandas",
+      "Matplotlib",
+      "Seaborn",
+      "FastAPI",
+      "uvicorn",
+      "Pydantic",
+      "Docker",
+      "GitHub Actions"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/Sepsis-ML-Model"
+  },
+  {
+    "slug": "launchpad",
+    "title": "Launchpad",
+    "repo": "launchpad",
+    "domain": "MLOps",
+    "blurb": "Job application tracker — kanban pipeline, per-resume response analytics, follow-up nudges. React + TS + Vite → GitHub Pages.",
+    "tech": [
+      "TypeScript",
+      "JavaScript",
+      "React",
+      "Tailwind",
+      "Vite",
+      "GitHub Actions"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/launchpad"
+  },
+  {
+    "slug": "hireview",
+    "title": "HireView",
+    "repo": "HireView",
+    "domain": "Full-Stack / Product",
+    "blurb": "A first-party job aggregator and application tracker. HireView searches the ATS platforms companies actually hire on — Greenhouse, Lever, and Ashby — across 1,000+ companies at once, then lets you track every role you care about through…",
+    "tech": [
+      "TypeScript",
+      "Python",
+      "JavaScript",
+      "FastAPI",
+      "uvicorn",
+      "React",
+      "Next.js",
+      "Tailwind",
+      "Vercel",
+      "GitHub Actions",
+      "pytest",
+      "GCP",
+      "BeautifulSoup"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/HireView"
+  },
+  {
+    "slug": "tisch-ml-model",
+    "title": "Tisch ML Model",
+    "repo": "Tisch-ML-Model",
+    "domain": "Classical ML",
+    "blurb": "A machine learning classification project using the TISCH (Tumor Immune Single-cell Hub) dataset, applying machine learning techniques to classify cell types across cancer samples from single-cell RNA sequencing data.",
+    "tech": [
+      "Jupyter Notebook",
+      "Python",
+      "scikit-learn",
+      "XGBoost",
+      "SciPy",
+      "NumPy",
+      "pandas",
+      "Matplotlib",
+      "Seaborn",
+      "FastAPI",
+      "uvicorn",
+      "Pydantic",
+      "Docker",
+      "GitHub Actions"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/Tisch-ML-Model"
+  },
+  {
     "slug": "cumida-ml-model",
     "title": "Cumida ML Model",
     "repo": "Cumida-ML-Model",
-    "domain": "Classical ML",
+    "domain": "MLOps",
     "blurb": "ML classification project using the CuMiDa Liver Cancer dataset, applying supervised learning techniques to classify liver cancer subtypes from curated microarray gene expression data.",
     "tech": [
       "Jupyter Notebook",
@@ -21,6 +132,7 @@ export const generatedProjects: Project[] = [
       "uvicorn",
       "Pydantic",
       "Docker",
+      "GitHub Actions",
       "pytest",
       "GCP"
     ],
@@ -283,30 +395,6 @@ export const generatedProjects: Project[] = [
     "url": "https://github.com/shiva-shivanibokka/Search-Ranking-System"
   },
   {
-    "slug": "hireview",
-    "title": "HireView",
-    "repo": "HireView",
-    "domain": "Full-Stack / Product",
-    "blurb": "HireView is a job search aggregator that searches hundreds of company career pages simultaneously so you never have to visit each one manually. You type a job title or company name, and HireView scrapes the ATS platforms those companies…",
-    "tech": [
-      "TypeScript",
-      "Python",
-      "JavaScript",
-      "Transformers",
-      "sentence-transformers",
-      "Anthropic",
-      "FastAPI",
-      "uvicorn",
-      "Node.js",
-      "Postgres",
-      "Supabase",
-      "React",
-      "Next.js",
-      "Tailwind"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/HireView"
-  },
-  {
     "slug": "gradient-descent-and-optimizers",
     "title": "Gradient Descent And Optimizers",
     "repo": "Gradient-Descent-and-Optimizers",
@@ -526,43 +614,6 @@ export const generatedProjects: Project[] = [
       "AWS"
     ],
     "url": "https://github.com/shiva-shivanibokka/ML-Model-Efficiency-Toolkit"
-  },
-  {
-    "slug": "tisch-ml-model",
-    "title": "Tisch ML Model",
-    "repo": "Tisch-ML-Model",
-    "domain": "Classical ML",
-    "blurb": "A machine learning classification project using the TISCH (Tumor Immune Single-cell Hub) dataset, applying machine learning techniques to classify cell types across cancer samples from single-cell RNA sequencing data.",
-    "tech": [
-      "Jupyter Notebook",
-      "scikit-learn",
-      "XGBoost",
-      "SciPy",
-      "NumPy",
-      "pandas",
-      "Matplotlib",
-      "Seaborn",
-      "Express"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/Tisch-ML-Model"
-  },
-  {
-    "slug": "sepsis-ml-model",
-    "title": "Sepsis ML Model",
-    "repo": "Sepsis-ML-Model",
-    "domain": "Classical ML",
-    "blurb": "Early prediction of sepsis in ICU patients using Random Forest and XGBoost on the PhysioNet/CinC Challenge 2019 dataset. Covers the full ML pipeline: EDA, preprocessing, feature selection, and model tuning. Built as an introductory project for students learning applied machine learning.",
-    "tech": [
-      "Jupyter Notebook",
-      "scikit-learn",
-      "XGBoost",
-      "NumPy",
-      "pandas",
-      "Matplotlib",
-      "Seaborn",
-      "Bootstrap"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/Sepsis-ML-Model"
   },
   {
     "slug": "all-about-cross-validation",
