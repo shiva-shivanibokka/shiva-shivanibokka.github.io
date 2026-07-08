@@ -4,6 +4,118 @@ import type { Project } from './types'
 // Every public repo with a detailed README (empty / stub repos filtered out).
 export const generatedProjects: Project[] = [
   {
+    "slug": "basics-of-linear-and-logistic-regression",
+    "title": "Basics Of Linear And Logistic Regression",
+    "repo": "Basics-of-Linear-and-Logistic-Regression",
+    "domain": "Classical ML",
+    "blurb": "Learn everything about basics of Linear and Logistic regression end to end",
+    "tech": [
+      "Jupyter Notebook",
+      "scikit-learn",
+      "Transformers",
+      "NumPy",
+      "pandas",
+      "Matplotlib",
+      "Seaborn",
+      "FastAPI"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/Basics-of-Linear-and-Logistic-Regression"
+  },
+  {
+    "slug": "sql-and-database-skills",
+    "title": "SQL And Database Skills",
+    "repo": "SQL-and-Database-Skills",
+    "domain": "Data Science",
+    "blurb": "Two things live in this repo: BookIt , a Postgres event-ticketing system that demonstrates production database engineering, and a set of SQL notebooks covering fundamentals through FAANG-level interview patterns on a 2.6M-row synthetic e…",
+    "tech": [
+      "Jupyter Notebook",
+      "Python",
+      "pandas",
+      "Matplotlib",
+      "Seaborn",
+      "FastAPI",
+      "uvicorn",
+      "SQLAlchemy",
+      "Postgres",
+      "Vercel",
+      "Docker",
+      "GitHub Actions",
+      "pytest"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/SQL-and-Database-Skills"
+  },
+  {
+    "slug": "hireview",
+    "title": "HireView",
+    "repo": "HireView",
+    "domain": "Full-Stack / Product",
+    "blurb": "A first-party job aggregator and application tracker. HireView searches the ATS platforms companies actually hire on — Greenhouse, Lever, and Ashby — across 1,000+ companies at once, then lets you track every role you care about through…",
+    "tech": [
+      "TypeScript",
+      "Python",
+      "JavaScript",
+      "FastAPI",
+      "uvicorn",
+      "React",
+      "Next.js",
+      "Tailwind",
+      "Vercel",
+      "GitHub Actions",
+      "pytest",
+      "GCP",
+      "BeautifulSoup"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/HireView"
+  },
+  {
+    "slug": "gradient-descent-and-optimizers",
+    "title": "Gradient Descent And Optimizers",
+    "repo": "Gradient-Descent-and-Optimizers",
+    "domain": "Deep Learning",
+    "blurb": "A production-grade optimizer benchmarking library and interactive demo. Every major gradient descent variant, adaptive optimizer, and LR scheduler — implemented from scratch in NumPy, tested with pytest, tracked with MLflow, and paired w…",
+    "tech": [
+      "Python",
+      "TypeScript",
+      "Jupyter Notebook",
+      "PyTorch",
+      "NumPy",
+      "Matplotlib",
+      "Plotly",
+      "Pydantic",
+      "Next.js",
+      "Tailwind",
+      "Recharts",
+      "Vercel",
+      "Docker",
+      "GitHub Actions"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/Gradient-Descent-and-Optimizers"
+  },
+  {
+    "slug": "search-ranking-system",
+    "title": "Search Ranking System",
+    "repo": "Search-Ranking-System",
+    "domain": "LLMs & GenAI",
+    "blurb": "🔗 Live demo: https://search-ranking-system-shiv-a.vercel.app (SvelteKit on Vercel → FastAPI on Cloud Run; the first request may cold-start for 1–2 min)",
+    "tech": [
+      "Python",
+      "Svelte",
+      "TypeScript",
+      "PyTorch",
+      "scikit-learn",
+      "XGBoost",
+      "SciPy",
+      "ONNX",
+      "Transformers",
+      "sentence-transformers",
+      "PEFT",
+      "LangChain",
+      "RAG",
+      "FAISS"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/Search-Ranking-System"
+  },
+  {
     "slug": "transfer-learning-huggingface",
     "title": "Transfer Learning HuggingFace",
     "repo": "Transfer-Learning-HuggingFace",
@@ -66,29 +178,6 @@ export const generatedProjects: Project[] = [
       "GitHub Actions"
     ],
     "url": "https://github.com/shiva-shivanibokka/launchpad"
-  },
-  {
-    "slug": "hireview",
-    "title": "HireView",
-    "repo": "HireView",
-    "domain": "Full-Stack / Product",
-    "blurb": "A first-party job aggregator and application tracker. HireView searches the ATS platforms companies actually hire on — Greenhouse, Lever, and Ashby — across 1,000+ companies at once, then lets you track every role you care about through…",
-    "tech": [
-      "TypeScript",
-      "Python",
-      "JavaScript",
-      "FastAPI",
-      "uvicorn",
-      "React",
-      "Next.js",
-      "Tailwind",
-      "Vercel",
-      "GitHub Actions",
-      "pytest",
-      "GCP",
-      "BeautifulSoup"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/HireView"
   },
   {
     "slug": "tisch-ml-model",
@@ -371,70 +460,6 @@ export const generatedProjects: Project[] = [
     "url": "https://github.com/shiva-shivanibokka/take-home-project"
   },
   {
-    "slug": "search-ranking-system",
-    "title": "Search Ranking System",
-    "repo": "Search-Ranking-System",
-    "domain": "Classical ML",
-    "blurb": "A full production-grade search and ranking system, built the way a senior ML engineer would build it at a company like YouTube, Spotify, or Google. It takes a user's search query, understands what they mean, finds the most relevant passa…",
-    "tech": [
-      "Python",
-      "PyTorch",
-      "scikit-learn",
-      "XGBoost",
-      "SciPy",
-      "Transformers",
-      "sentence-transformers",
-      "PEFT",
-      "LangChain",
-      "FAISS",
-      "Anthropic",
-      "NumPy",
-      "pandas",
-      "Plotly"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/Search-Ranking-System"
-  },
-  {
-    "slug": "gradient-descent-and-optimizers",
-    "title": "Gradient Descent And Optimizers",
-    "repo": "Gradient-Descent-and-Optimizers",
-    "domain": "Deep Learning",
-    "blurb": "A production-grade optimizer benchmarking library and interactive demo. Every major gradient descent variant, adaptive optimizer, and LR scheduler — implemented from scratch in NumPy, tested with pytest, tracked with MLflow, and deployed…",
-    "tech": [
-      "Python",
-      "Jupyter Notebook",
-      "PyTorch",
-      "Transformers",
-      "NumPy",
-      "Matplotlib",
-      "Plotly",
-      "Pydantic",
-      "Gradio",
-      "Docker",
-      "GitHub Actions",
-      "MLflow",
-      "pytest"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/Gradient-Descent-and-Optimizers"
-  },
-  {
-    "slug": "sql-and-database-skills",
-    "title": "SQL And Database Skills",
-    "repo": "SQL-and-Database-Skills",
-    "domain": "Data Science",
-    "blurb": "Production-grade SQL from fundamentals through FAANG-level interview patterns — demonstrated on a realistic 2.6M-row synthetic e-commerce database.",
-    "tech": [
-      "Jupyter Notebook",
-      "Python",
-      "pandas",
-      "Matplotlib",
-      "Seaborn",
-      "Plotly",
-      "SQLAlchemy"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/SQL-and-Database-Skills"
-  },
-  {
     "slug": "competitor-insight-engine",
     "title": "Competitor Insight Engine",
     "repo": "Competitor-Insight-Engine",
@@ -650,22 +675,6 @@ export const generatedProjects: Project[] = [
       "Bootstrap"
     ],
     "url": "https://github.com/shiva-shivanibokka/Dive-deeper-into-linear-models"
-  },
-  {
-    "slug": "basics-of-linear-and-logistic-regression",
-    "title": "Basics Of Linear And Logistic Regression",
-    "repo": "Basics-of-Linear-and-Logistic-Regression",
-    "domain": "Classical ML",
-    "blurb": "Learn everything about basics of Linear and Logistic regression end to end",
-    "tech": [
-      "Jupyter Notebook",
-      "scikit-learn",
-      "Transformers",
-      "NumPy",
-      "pandas",
-      "Matplotlib"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/Basics-of-Linear-and-Logistic-Regression"
   },
   {
     "slug": "data-preprocessing",
