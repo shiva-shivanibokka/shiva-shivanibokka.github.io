@@ -4,6 +4,54 @@ import type { Project } from './types'
 // Every public repo with a detailed README (empty / stub repos filtered out).
 export const generatedProjects: Project[] = [
   {
+    "slug": "supply-chain-demand-agent",
+    "title": "Supply Chain Demand Agent",
+    "repo": "Supply-Chain-Demand-Agent",
+    "domain": "LLMs & GenAI",
+    "blurb": "Agentic RAG pipeline for supply chain demand forecasting using LLMs, time-series models, and MLOps",
+    "tech": [
+      "Python",
+      "TypeScript",
+      "Jupyter Notebook",
+      "PyTorch",
+      "Transformers",
+      "sentence-transformers",
+      "RAG",
+      "ChromaDB",
+      "OpenAI",
+      "Anthropic",
+      "Gemini",
+      "Groq",
+      "pandas",
+      "Plotly"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/Supply-Chain-Demand-Agent"
+  },
+  {
+    "slug": "competitor-insight-engine",
+    "title": "Competitor Insight Engine",
+    "repo": "Competitor-Insight-Engine",
+    "domain": "LLMs & GenAI",
+    "blurb": "AI-powered tool that scrapes any company's website, finds real-time competitors via Tavily search, and generates a full competitive intelligence report — including market comparison and strategic recommendations — using any LLM of your choice.",
+    "tech": [
+      "Python",
+      "Jupyter Notebook",
+      "TypeScript",
+      "OpenAI",
+      "Anthropic",
+      "Gemini",
+      "Groq",
+      "Ollama",
+      "FastAPI",
+      "uvicorn",
+      "Pydantic",
+      "React",
+      "Next.js",
+      "Vercel"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/Competitor-Insight-Engine"
+  },
+  {
     "slug": "basics-of-linear-and-logistic-regression",
     "title": "Basics Of Linear And Logistic Regression",
     "repo": "Basics-of-Linear-and-Logistic-Regression",
@@ -202,30 +250,6 @@ export const generatedProjects: Project[] = [
       "GitHub Actions"
     ],
     "url": "https://github.com/shiva-shivanibokka/Tisch-ML-Model"
-  },
-  {
-    "slug": "cumida-ml-model",
-    "title": "Cumida ML Model",
-    "repo": "Cumida-ML-Model",
-    "domain": "MLOps",
-    "blurb": "ML classification project using the CuMiDa Liver Cancer dataset, applying supervised learning techniques to classify liver cancer subtypes from curated microarray gene expression data.",
-    "tech": [
-      "Jupyter Notebook",
-      "Python",
-      "scikit-learn",
-      "NumPy",
-      "pandas",
-      "Matplotlib",
-      "Seaborn",
-      "FastAPI",
-      "uvicorn",
-      "Pydantic",
-      "Docker",
-      "GitHub Actions",
-      "pytest",
-      "GCP"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/Cumida-ML-Model"
   },
   {
     "slug": "ml-system-design-retraining-pipeline",
@@ -458,72 +482,6 @@ export const generatedProjects: Project[] = [
       "AWS"
     ],
     "url": "https://github.com/shiva-shivanibokka/take-home-project"
-  },
-  {
-    "slug": "competitor-insight-engine",
-    "title": "Competitor Insight Engine",
-    "repo": "Competitor-Insight-Engine",
-    "domain": "LLMs & GenAI",
-    "blurb": "AI-powered tool that scrapes any company's website, finds real-time competitors via Tavily search, and generates a full competitive intelligence report — including market comparison and strategic recommendations — using any LLM of your choice.",
-    "tech": [
-      "Jupyter Notebook",
-      "Python",
-      "OpenAI",
-      "Anthropic",
-      "Gemini",
-      "Groq",
-      "Ollama",
-      "BeautifulSoup"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/Competitor-Insight-Engine"
-  },
-  {
-    "slug": "multi-horizon-stock-forecasting-ai-model",
-    "title": "Multi Horizon Stock Forecasting AI Model",
-    "repo": "Multi-Horizon-Stock-Forecasting-AI-Model",
-    "domain": "Deep Learning",
-    "blurb": "Multi-Horizon Stock Price Forecasting using Transformer, LSTM, RNN, and Random Forest on S&P 500 data.",
-    "tech": [
-      "Python",
-      "JavaScript",
-      "PyTorch",
-      "scikit-learn",
-      "NumPy",
-      "pandas",
-      "Matplotlib",
-      "Flask",
-      "Node.js",
-      "Next.js",
-      "Vercel",
-      "Docker",
-      "GitHub Actions",
-      "MLflow"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/Multi-Horizon-Stock-Forecasting-AI-Model"
-  },
-  {
-    "slug": "supply-chain-demand-agent",
-    "title": "Supply Chain Demand Agent",
-    "repo": "Supply-Chain-Demand-Agent",
-    "domain": "LLMs & GenAI",
-    "blurb": "Agentic RAG pipeline for supply chain demand forecasting using LLMs, time-series models, and MLOps",
-    "tech": [
-      "Python",
-      "Jupyter Notebook",
-      "PyTorch",
-      "Transformers",
-      "sentence-transformers",
-      "RAG",
-      "ChromaDB",
-      "OpenAI",
-      "Anthropic",
-      "Groq",
-      "NumPy",
-      "pandas",
-      "Plotly",
-      "MongoDB"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/Supply-Chain-Demand-Agent"
   },
   {
     "slug": "llm-halucination-detection",
