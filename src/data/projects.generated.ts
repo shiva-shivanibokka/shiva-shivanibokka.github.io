@@ -4,6 +4,78 @@ import type { Project } from './types'
 // Every public repo with a detailed README (empty / stub repos filtered out).
 export const generatedProjects: Project[] = [
   {
+    "slug": "dive-deeper-into-deep-learning",
+    "title": "Dive Deeper Into Deep Learning",
+    "repo": "Dive-Deeper-into-Deep-Learning",
+    "domain": "Deep Learning",
+    "blurb": "A hands-on, from-scratch tour of modern deep learning in PyTorch — eight self-contained notebooks that build every major architecture family from first principles, each with plain-language explanations and a \"how to read this chart\" guid…",
+    "tech": [
+      "Jupyter Notebook",
+      "TypeScript",
+      "Python",
+      "PyTorch",
+      "scikit-learn",
+      "XGBoost",
+      "SciPy",
+      "ONNX",
+      "Transformers",
+      "NumPy",
+      "pandas",
+      "Matplotlib",
+      "Seaborn",
+      "Next.js"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/Dive-Deeper-into-Deep-Learning"
+  },
+  {
+    "slug": "dive-deeper-into-unsupervised-learning",
+    "title": "Dive Deeper Into Unsupervised Learning",
+    "repo": "Dive-Deeper-into-Unsupervised-Learning",
+    "domain": "Full-Stack / Product",
+    "blurb": "A hands-on tour of every major family of label-free machine learning — five from-first-principles notebooks on real datasets, plus a live browser playground.",
+    "tech": [
+      "Jupyter Notebook",
+      "TypeScript",
+      "Python",
+      "PyTorch",
+      "scikit-learn",
+      "SciPy",
+      "Transformers",
+      "sentence-transformers",
+      "NLTK",
+      "NumPy",
+      "pandas",
+      "Matplotlib",
+      "Seaborn",
+      "React"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/Dive-Deeper-into-Unsupervised-Learning"
+  },
+  {
+    "slug": "dive-deeper-into-supervised-learning",
+    "title": "Dive Deeper Into Supervised Learning",
+    "repo": "Dive-Deeper-into-Supervised-Learning",
+    "domain": "Classical ML",
+    "blurb": "A from-first-principles tour of classical supervised ML — seven teaching notebooks and a live, browser-based playground where the models actually run.",
+    "tech": [
+      "Jupyter Notebook",
+      "TypeScript",
+      "Python",
+      "scikit-learn",
+      "XGBoost",
+      "CatBoost",
+      "LightGBM",
+      "SciPy",
+      "ONNX",
+      "NumPy",
+      "pandas",
+      "Matplotlib",
+      "Seaborn",
+      "FastAPI"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/Dive-Deeper-into-Supervised-Learning"
+  },
+  {
     "slug": "supply-chain-demand-agent",
     "title": "Supply Chain Demand Agent",
     "repo": "Supply-Chain-Demand-Agent",
@@ -26,6 +98,30 @@ export const generatedProjects: Project[] = [
       "Plotly"
     ],
     "url": "https://github.com/shiva-shivanibokka/Supply-Chain-Demand-Agent"
+  },
+  {
+    "slug": "multi-horizon-stock-forecasting-ai-model",
+    "title": "Multi Horizon Stock Forecasting AI Model",
+    "repo": "Multi-Horizon-Stock-Forecasting-AI-Model",
+    "domain": "Classical ML",
+    "blurb": "Multi-Horizon Stock Price Forecasting using Transformer, LSTM, RNN, and Random Forest on S&P 500 data.",
+    "tech": [
+      "Python",
+      "JavaScript",
+      "PyTorch",
+      "scikit-learn",
+      "LightGBM",
+      "SciPy",
+      "NumPy",
+      "pandas",
+      "Pydantic",
+      "React",
+      "Vite",
+      "Recharts",
+      "Vercel",
+      "GitHub Actions"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/Multi-Horizon-Stock-Forecasting-AI-Model"
   },
   {
     "slug": "competitor-insight-engine",
@@ -250,6 +346,30 @@ export const generatedProjects: Project[] = [
       "GitHub Actions"
     ],
     "url": "https://github.com/shiva-shivanibokka/Tisch-ML-Model"
+  },
+  {
+    "slug": "cumida-ml-model",
+    "title": "Cumida ML Model",
+    "repo": "Cumida-ML-Model",
+    "domain": "MLOps",
+    "blurb": "ML classification project using the CuMiDa Liver Cancer dataset, applying supervised learning techniques to classify liver cancer subtypes from curated microarray gene expression data.",
+    "tech": [
+      "Jupyter Notebook",
+      "Python",
+      "scikit-learn",
+      "NumPy",
+      "pandas",
+      "Matplotlib",
+      "Seaborn",
+      "FastAPI",
+      "uvicorn",
+      "Pydantic",
+      "Docker",
+      "GitHub Actions",
+      "pytest",
+      "GCP"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/Cumida-ML-Model"
   },
   {
     "slug": "ml-system-design-retraining-pipeline",
