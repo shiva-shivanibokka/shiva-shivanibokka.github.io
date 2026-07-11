@@ -4,11 +4,140 @@ import type { Project } from './types'
 // Every public repo with a detailed README (empty / stub repos filtered out).
 export const generatedProjects: Project[] = [
   {
+    "slug": "data-analytics-portfolio",
+    "title": "Data Analytics Portfolio",
+    "repo": "Data-Analytics-Portfolio",
+    "domain": "Data Science",
+    "blurb": "A complete data analytics case study built around FlowDesk — a fictional B2B SaaS project management company (think Asana / Monday.com). Seven notebooks cover every analytical skill tested in DA and DS interviews at Meta, Airbnb, LinkedI…",
+    "tech": [
+      "Jupyter Notebook",
+      "TypeScript",
+      "Python",
+      "statsmodels",
+      "SciPy",
+      "NumPy",
+      "pandas",
+      "DuckDB",
+      "Matplotlib",
+      "Seaborn",
+      "pytest"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/Data-Analytics-Portfolio"
+  },
+  {
+    "slug": "all-about-neural-networks",
+    "title": "All About Neural Networks",
+    "repo": "All-about-Neural-Networks",
+    "domain": "Deep Learning",
+    "blurb": "Implementing Neural Networks from scratch",
+    "tech": [
+      "Jupyter Notebook",
+      "PyTorch",
+      "Transformers",
+      "PEFT",
+      "LoRA",
+      "OpenAI",
+      "NumPy",
+      "Matplotlib"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/All-about-Neural-Networks"
+  },
+  {
+    "slug": "llm-research-scraper",
+    "title": "LLM Research Scraper",
+    "repo": "LLM-research-scraper",
+    "domain": "LLMs & GenAI",
+    "blurb": "Simple to complex projects implemented using LLMs",
+    "tech": [
+      "TypeScript",
+      "JavaScript",
+      "OpenAI",
+      "Anthropic",
+      "Groq",
+      "React",
+      "Next.js",
+      "Zod",
+      "Vercel"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/LLM-research-scraper"
+  },
+  {
+    "slug": "data-preprocessing",
+    "title": "Data Preprocessing",
+    "repo": "Data-Preprocessing",
+    "domain": "Data Science",
+    "blurb": "Learn all about data preprocessing for ML models",
+    "tech": [
+      "Jupyter Notebook",
+      "TypeScript",
+      "Python",
+      "scikit-learn",
+      "Transformers",
+      "NumPy",
+      "pandas",
+      "Matplotlib",
+      "Seaborn",
+      "React",
+      "Next.js",
+      "Vercel",
+      "GitHub Actions"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/Data-Preprocessing"
+  },
+  {
+    "slug": "nlp-pipeline-at-scale",
+    "title": "NLP Pipeline At Scale",
+    "repo": "NLP-Pipeline-at-Scale",
+    "domain": "MLOps",
+    "blurb": "Recruiter TL;DR - What it is: a production, end-to-end NLP system that reads social-media text three ways at once — sentiment, emotion, and toxicity — from a single RoBERTa forward pass, plus named-entity extraction with brand normalizat…",
+    "tech": [
+      "Python",
+      "TypeScript",
+      "JavaScript",
+      "PyTorch",
+      "scikit-learn",
+      "SciPy",
+      "Transformers",
+      "sentence-transformers",
+      "PEFT",
+      "NumPy",
+      "pandas",
+      "Matplotlib",
+      "Seaborn",
+      "Plotly"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/NLP-Pipeline-at-Scale"
+  },
+  {
+    "slug": "fine-tuned-domain-llm-qlora",
+    "title": "Fine Tuned Domain LLM QLoRA",
+    "repo": "Fine-Tuned-Domain-LLM-QLoRA",
+    "domain": "LLMs & GenAI",
+    "blurb": "Llama 3.2 3B fine-tuned to extract clauses from legal contracts, evaluated the way production teams actually evaluate models — and served end to end.",
+    "tech": [
+      "Python",
+      "TypeScript",
+      "JavaScript",
+      "PyTorch",
+      "scikit-learn",
+      "SciPy",
+      "Transformers",
+      "sentence-transformers",
+      "PEFT",
+      "TRL",
+      "bitsandbytes",
+      "LoRA",
+      "OpenAI",
+      "Anthropic"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/Fine-Tuned-Domain-LLM-QLoRA"
+  },
+  {
     "slug": "dive-deeper-into-deep-learning",
     "title": "Dive Deeper Into Deep Learning",
     "repo": "Dive-Deeper-into-Deep-Learning",
     "domain": "Deep Learning",
-    "blurb": "A hands-on, from-scratch tour of modern deep learning in PyTorch — eight self-contained notebooks that build every major architecture family from first principles, each with plain-language explanations and a \"how to read this chart\" guid…",
+    "blurb": "Recruiter TL;DR - What it is: eight from-scratch PyTorch notebooks covering every major deep-learning architecture family (MLP → CNN → RNN/LSTM → Transformer → VAE/GAN → Diffusion → ViT → GNN), each also playable in a live browser app th…",
     "tech": [
       "Jupyter Notebook",
       "TypeScript",
@@ -23,7 +152,7 @@ export const generatedProjects: Project[] = [
       "pandas",
       "Matplotlib",
       "Seaborn",
-      "Next.js"
+      "React"
     ],
     "url": "https://github.com/shiva-shivanibokka/Dive-Deeper-into-Deep-Learning"
   },
@@ -513,25 +642,6 @@ export const generatedProjects: Project[] = [
     "url": "https://github.com/shiva-shivanibokka/CodePilot-Agent"
   },
   {
-    "slug": "data-analytics-portfolio",
-    "title": "Data Analytics Portfolio",
-    "repo": "Data-Analytics-Portfolio",
-    "domain": "Data Science",
-    "blurb": "A complete data analytics case study built around FlowDesk — a fictional B2B SaaS project management company (think Asana / Monday.com). Seven notebooks cover every analytical skill tested in DA and DS interviews at Meta, Airbnb, LinkedI…",
-    "tech": [
-      "Jupyter Notebook",
-      "Python",
-      "statsmodels",
-      "SciPy",
-      "NumPy",
-      "pandas",
-      "Matplotlib",
-      "Seaborn",
-      "Plotly"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/Data-Analytics-Portfolio"
-  },
-  {
     "slug": "fraud-detection-system",
     "title": "Fraud Detection System",
     "repo": "Fraud-Detection-System",
@@ -755,23 +865,6 @@ export const generatedProjects: Project[] = [
     "url": "https://github.com/shiva-shivanibokka/Dive-deeper-into-linear-models"
   },
   {
-    "slug": "data-preprocessing",
-    "title": "Data Preprocessing",
-    "repo": "Data-Preprocessing",
-    "domain": "Classical ML",
-    "blurb": "Learn all about data preprocessing for ML models",
-    "tech": [
-      "Jupyter Notebook",
-      "scikit-learn",
-      "XGBoost",
-      "NumPy",
-      "pandas",
-      "Matplotlib",
-      "Seaborn"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/Data-Preprocessing"
-  },
-  {
     "slug": "autograder-agent",
     "title": "AutoGrader Agent",
     "repo": "AutoGrader-Agent",
@@ -792,20 +885,6 @@ export const generatedProjects: Project[] = [
       "Gradio"
     ],
     "url": "https://github.com/shiva-shivanibokka/AutoGrader-Agent"
-  },
-  {
-    "slug": "llm-research-scraper",
-    "title": "LLM Research Scraper",
-    "repo": "LLM-research-scraper",
-    "domain": "LLMs & GenAI",
-    "blurb": "Simple to complex projects implemented using LLMs",
-    "tech": [
-      "Jupyter Notebook",
-      "OpenAI",
-      "Anthropic",
-      "BeautifulSoup"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/LLM-research-scraper"
   },
   {
     "slug": "open-source-llms-api-wrapper",
