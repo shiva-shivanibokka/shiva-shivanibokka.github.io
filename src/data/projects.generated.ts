@@ -4,11 +4,148 @@ import type { Project } from './types'
 // Every public repo with a detailed README (empty / stub repos filtered out).
 export const generatedProjects: Project[] = [
   {
+    "slug": "llm-hallucination-detection",
+    "title": "Llm Hallucination Detection",
+    "repo": "llm-hallucination-detection",
+    "domain": "LLMs & GenAI",
+    "blurb": "NLI-based hallucination detection pipeline. Flags unsupported LLM claims using DeBERTa-v3, assigns a hallucination confidence score per sentence, and grounds responses against source documents via ChromaDB.",
+    "tech": [
+      "Python",
+      "TypeScript",
+      "JavaScript",
+      "PyTorch",
+      "TensorFlow",
+      "Transformers",
+      "sentence-transformers",
+      "ChromaDB",
+      "OpenAI",
+      "Anthropic",
+      "Gemini",
+      "Groq",
+      "Ollama",
+      "DeBERTa"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/llm-hallucination-detection"
+  },
+  {
+    "slug": "multimodal-rag",
+    "title": "Multimodal RAG",
+    "repo": "Multimodal-RAG",
+    "domain": "LLMs & GenAI",
+    "blurb": "Don't trust the LLM — verify it. A document-QA system that answers only what your documents actually support: every claim is checked against retrieved evidence with an NLI model before it reaches you, answers refuse outright when the gro…",
+    "tech": [
+      "Python",
+      "TypeScript",
+      "JavaScript",
+      "PyTorch",
+      "Transformers",
+      "sentence-transformers",
+      "RAG",
+      "FAISS",
+      "OpenAI",
+      "Anthropic",
+      "Gemini",
+      "Groq",
+      "DeBERTa",
+      "pandas"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/Multimodal-RAG"
+  },
+  {
+    "slug": "all-about-cross-validation",
+    "title": "All About Cross Validation",
+    "repo": "All-About-Cross-Validation",
+    "domain": "Classical ML",
+    "blurb": "Learn everything there is to learn about Cross Validation in ML.",
+    "tech": [
+      "Jupyter Notebook",
+      "TypeScript",
+      "Python",
+      "scikit-learn",
+      "SciPy",
+      "NumPy",
+      "pandas",
+      "Matplotlib",
+      "Seaborn",
+      "React",
+      "Next.js",
+      "Vercel",
+      "Optuna",
+      "pytest"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/All-About-Cross-Validation"
+  },
+  {
+    "slug": "federated-learning-simulation",
+    "title": "Federated Learning Simulation",
+    "repo": "Federated-Learning-Simulation",
+    "domain": "MLOps",
+    "blurb": "An interactive lab that reconstructs a real patient's medical record from a single federated-learning gradient — then defeats the attack with differential privacy.",
+    "tech": [
+      "TypeScript",
+      "Python",
+      "JavaScript",
+      "PyTorch",
+      "scikit-learn",
+      "Next.js",
+      "Tailwind",
+      "Recharts",
+      "Vercel",
+      "GitHub Actions",
+      "MLflow",
+      "pytest"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/Federated-Learning-Simulation"
+  },
+  {
+    "slug": "llm-research-scraper",
+    "title": "LLM Research Scraper",
+    "repo": "LLM-research-scraper",
+    "domain": "LLMs & GenAI",
+    "blurb": "Simple to complex projects implemented using LLMs",
+    "tech": [
+      "TypeScript",
+      "JavaScript",
+      "RAG",
+      "Pinecone",
+      "Weaviate",
+      "OpenAI",
+      "Anthropic",
+      "Gemini",
+      "Groq",
+      "Postgres",
+      "React",
+      "Next.js",
+      "Zod",
+      "Vercel"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/LLM-research-scraper"
+  },
+  {
+    "slug": "games-built-using-python",
+    "title": "Games Built Using Python",
+    "repo": "Games-built-using-Python",
+    "domain": "Full-Stack / Product",
+    "blurb": "Some simple games for beginners using Python",
+    "tech": [
+      "Python",
+      "TypeScript",
+      "Jupyter Notebook",
+      "React",
+      "Next.js",
+      "Tailwind",
+      "Vercel",
+      "GitHub Actions",
+      "pytest"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/Games-built-using-Python"
+  },
+  {
     "slug": "data-analytics-portfolio",
     "title": "Data Analytics Portfolio",
     "repo": "Data-Analytics-Portfolio",
     "domain": "Data Science",
-    "blurb": "A complete data analytics case study built around FlowDesk — a fictional B2B SaaS project management company (think Asana / Monday.com). Seven notebooks cover every analytical skill tested in DA and DS interviews at Meta, Airbnb, LinkedI…",
+    "blurb": "An end‑to‑end analytics project on 100k real orders: a validated Python pipeline feeding seven analysis notebooks and a live, backend‑free dashboard that runs SQL in your browser.",
     "tech": [
       "Jupyter Notebook",
       "TypeScript",
@@ -20,46 +157,46 @@ export const generatedProjects: Project[] = [
       "DuckDB",
       "Matplotlib",
       "Seaborn",
-      "pytest"
+      "React",
+      "Next.js",
+      "Bootstrap",
+      "Recharts"
     ],
     "url": "https://github.com/shiva-shivanibokka/Data-Analytics-Portfolio"
+  },
+  {
+    "slug": "core-algorithms-for-leetcode",
+    "title": "Core Algorithms For Leetcode",
+    "repo": "Core-algorithms-for-Leetcode",
+    "domain": "ML System Design",
+    "blurb": "A pattern-first coding-interview prep bank: 13 algorithm patterns, 90 worked problems each, every solution paired with runnable assert tests and enforced green by CI.",
+    "tech": [
+      "Jupyter Notebook",
+      "JavaScript",
+      "Python",
+      "GitHub Actions"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/Core-algorithms-for-Leetcode"
   },
   {
     "slug": "all-about-neural-networks",
     "title": "All About Neural Networks",
     "repo": "All-about-Neural-Networks",
-    "domain": "Deep Learning",
+    "domain": "LLMs & GenAI",
     "blurb": "Implementing Neural Networks from scratch",
     "tech": [
       "Jupyter Notebook",
       "PyTorch",
       "Transformers",
       "PEFT",
+      "RAG",
       "LoRA",
       "OpenAI",
       "NumPy",
-      "Matplotlib"
+      "Matplotlib",
+      "React"
     ],
     "url": "https://github.com/shiva-shivanibokka/All-about-Neural-Networks"
-  },
-  {
-    "slug": "llm-research-scraper",
-    "title": "LLM Research Scraper",
-    "repo": "LLM-research-scraper",
-    "domain": "LLMs & GenAI",
-    "blurb": "Simple to complex projects implemented using LLMs",
-    "tech": [
-      "TypeScript",
-      "JavaScript",
-      "OpenAI",
-      "Anthropic",
-      "Groq",
-      "React",
-      "Next.js",
-      "Zod",
-      "Vercel"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/LLM-research-scraper"
   },
   {
     "slug": "data-preprocessing",
@@ -714,30 +851,6 @@ export const generatedProjects: Project[] = [
     "url": "https://github.com/shiva-shivanibokka/take-home-project"
   },
   {
-    "slug": "llm-halucination-detection",
-    "title": "LLM Halucination Detection",
-    "repo": "LLM-Halucination-Detection",
-    "domain": "NLP",
-    "blurb": "NLI-based hallucination detection pipeline. Flags unsupported LLM claims using DeBERTa-v3, assigns a hallucination confidence score per sentence, and grounds responses against source documents via ChromaDB.",
-    "tech": [
-      "Python",
-      "PyTorch",
-      "Transformers",
-      "sentence-transformers",
-      "ChromaDB",
-      "OpenAI",
-      "Anthropic",
-      "Gemini",
-      "Groq",
-      "Ollama",
-      "DeBERTa",
-      "FastAPI",
-      "uvicorn",
-      "Pydantic"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/LLM-Halucination-Detection"
-  },
-  {
     "slug": "ml-system-design-model-serving",
     "title": "ML System Design Model Serving",
     "repo": "ML-System-Design-Model-Serving",
@@ -827,24 +940,6 @@ export const generatedProjects: Project[] = [
       "AWS"
     ],
     "url": "https://github.com/shiva-shivanibokka/ML-Model-Efficiency-Toolkit"
-  },
-  {
-    "slug": "all-about-cross-validation",
-    "title": "All About Cross Validation",
-    "repo": "All-About-Cross-Validation",
-    "domain": "Classical ML",
-    "blurb": "Learn everything there is to learn about Cross Validation in ML.",
-    "tech": [
-      "Jupyter Notebook",
-      "scikit-learn",
-      "SciPy",
-      "NumPy",
-      "pandas",
-      "Matplotlib",
-      "Seaborn",
-      "Optuna"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/All-About-Cross-Validation"
   },
   {
     "slug": "dive-deeper-into-linear-models",
