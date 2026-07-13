@@ -4,28 +4,213 @@ import type { Project } from './types'
 // Every public repo with a detailed README (empty / stub repos filtered out).
 export const generatedProjects: Project[] = [
   {
-    "slug": "llm-hallucination-detection",
-    "title": "Llm Hallucination Detection",
-    "repo": "llm-hallucination-detection",
-    "domain": "LLMs & GenAI",
-    "blurb": "NLI-based hallucination detection pipeline. Flags unsupported LLM claims using DeBERTa-v3, assigns a hallucination confidence score per sentence, and grounds responses against source documents via ChromaDB.",
+    "slug": "ml-system-design-batch-inference",
+    "title": "ML System Design Batch Inference",
+    "repo": "ML-System-Design-Batch-Inference",
+    "domain": "MLOps",
+    "blurb": "Nightly batch ML system that scores 970K real subscribers for churn using distributed inference, an audit-trailed Postgres store, a serverless API, and a live monitoring dashboard.",
+    "tech": [
+      "Python",
+      "TypeScript",
+      "JavaScript",
+      "scikit-learn",
+      "LightGBM",
+      "SciPy",
+      "NumPy",
+      "pandas",
+      "Matplotlib",
+      "PySpark",
+      "Airflow",
+      "FastAPI",
+      "uvicorn",
+      "Pydantic"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/ML-System-Design-Batch-Inference"
+  },
+  {
+    "slug": "rl-portfolio-optimization",
+    "title": "RL Portfolio Optimization",
+    "repo": "RL-Portfolio-Optimization",
+    "domain": "Full-Stack / Product",
+    "blurb": "Interactive reinforcement-learning portfolio allocator — three reward-shaped PPO agents, trained offline on real ETF data, served on Vercel's free tier with zero PyTorch in production.",
     "tech": [
       "Python",
       "TypeScript",
       "JavaScript",
       "PyTorch",
-      "TensorFlow",
+      "NumPy",
+      "pandas",
+      "Express",
+      "React",
+      "Next.js",
+      "Recharts",
+      "Vercel",
+      "MLflow",
+      "pytest"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/RL-Portfolio-Optimization"
+  },
+  {
+    "slug": "autonomous-swe-agent",
+    "title": "Autonomous SWE Agent",
+    "repo": "Autonomous-SWE-Agent",
+    "domain": "MLOps",
+    "blurb": "Resolves real GitHub issues two ways — an agentic tool-use loop vs. a 3-phase agentless pipeline — on the same benchmark, with full cost/token/turn accounting.",
+    "tech": [
+      "Python",
+      "TypeScript",
+      "JavaScript",
+      "PyTorch",
       "Transformers",
       "sentence-transformers",
-      "ChromaDB",
       "OpenAI",
       "Anthropic",
       "Gemini",
       "Groq",
-      "Ollama",
-      "DeBERTa"
+      "NumPy",
+      "FastAPI",
+      "uvicorn",
+      "Pydantic"
     ],
-    "url": "https://github.com/shiva-shivanibokka/llm-hallucination-detection"
+    "url": "https://github.com/shiva-shivanibokka/Autonomous-SWE-Agent"
+  },
+  {
+    "slug": "autonomous-research-report-agent",
+    "title": "Autonomous Research Report Agent",
+    "repo": "Autonomous-Research-Report-Agent",
+    "domain": "Agentic",
+    "blurb": "A multi-agent pipeline that autonomously researches the open web and writes cited, quality-scored research reports — with a self-improving critic loop, source triangulation, contradiction detection, and per-report cost accounting.",
+    "tech": [
+      "Python",
+      "TypeScript",
+      "JavaScript",
+      "LangGraph",
+      "LangChain",
+      "OpenAI",
+      "Anthropic",
+      "Gemini",
+      "Groq",
+      "FastAPI",
+      "uvicorn",
+      "Pydantic",
+      "Postgres",
+      "Redis"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/Autonomous-Research-Report-Agent"
+  },
+  {
+    "slug": "federated-learning-simulation",
+    "title": "Federated Learning Simulation",
+    "repo": "Federated-Learning-Simulation",
+    "domain": "Full-Stack / Product",
+    "blurb": "Reconstruct a real patient's medical record from a single federated-learning gradient — then defeat the attack with differential privacy. Live, in the browser.",
+    "tech": [
+      "TypeScript",
+      "Python",
+      "JavaScript",
+      "PyTorch",
+      "scikit-learn",
+      "NumPy",
+      "pandas",
+      "React",
+      "Next.js",
+      "Tailwind",
+      "Recharts",
+      "Vercel",
+      "GitHub Actions",
+      "pytest"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/Federated-Learning-Simulation"
+  },
+  {
+    "slug": "ml-system-design-feature-store",
+    "title": "ML System Design Feature Store",
+    "repo": "ML-System-Design-Feature-Store",
+    "domain": "ML System Design",
+    "blurb": "Recruiter TL;DR - What it is: a full, live feature store — offline + online stores, point-in-time-correct training data, a dual-path serving API, and a monitoring dashboard — that structurally prevents training-serving skew , the 1 silen…",
+    "tech": [
+      "Python",
+      "TypeScript",
+      "JavaScript",
+      "scikit-learn",
+      "LightGBM",
+      "SciPy",
+      "NumPy",
+      "pandas",
+      "DuckDB",
+      "FastAPI",
+      "uvicorn",
+      "Pydantic",
+      "Redis",
+      "Supabase"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/ML-System-Design-Feature-Store"
+  },
+  {
+    "slug": "prepgap-lens",
+    "title": "PrepGap Lens",
+    "repo": "PrepGap-Lens",
+    "domain": "ML System Design",
+    "blurb": "Paste a job description and your resume — get a readiness score, your biggest skill gaps, and an adaptive day-by-day study plan.",
+    "tech": [
+      "TypeScript",
+      "JavaScript",
+      "scikit-learn",
+      "OpenAI",
+      "Anthropic",
+      "Gemini",
+      "Groq",
+      "React",
+      "Next.js",
+      "Tailwind",
+      "Zod",
+      "Vercel",
+      "GitHub Actions"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/PrepGap-Lens"
+  },
+  {
+    "slug": "open-source-llms-api-wrapper",
+    "title": "Open Source LLMs Api Wrapper",
+    "repo": "open-source-LLMs-api-wrapper",
+    "domain": "LLMs & GenAI",
+    "blurb": "Using an API wrapper where the user selects an open source LLM model without changing any code.",
+    "tech": [
+      "TypeScript",
+      "JavaScript",
+      "OpenAI",
+      "Gemini",
+      "Groq",
+      "Ollama",
+      "React",
+      "Next.js",
+      "Vercel"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/open-source-LLMs-api-wrapper"
+  },
+  {
+    "slug": "dive-deeper-into-linear-models",
+    "title": "Dive Deeper Into Linear Models",
+    "repo": "Dive-deeper-into-linear-models",
+    "domain": "Classical ML",
+    "blurb": "Let's move on from basic linear and logistic regression to some advanced techniques.",
+    "tech": [
+      "Jupyter Notebook",
+      "TypeScript",
+      "Python",
+      "scikit-learn",
+      "XGBoost",
+      "NumPy",
+      "pandas",
+      "Matplotlib",
+      "Seaborn",
+      "React",
+      "Next.js",
+      "Vercel",
+      "GitHub Actions",
+      "pytest"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/Dive-deeper-into-linear-models"
   },
   {
     "slug": "multimodal-rag",
@@ -52,6 +237,30 @@ export const generatedProjects: Project[] = [
     "url": "https://github.com/shiva-shivanibokka/Multimodal-RAG"
   },
   {
+    "slug": "llm-hallucination-detection",
+    "title": "Llm Hallucination Detection",
+    "repo": "llm-hallucination-detection",
+    "domain": "LLMs & GenAI",
+    "blurb": "NLI-based hallucination detection pipeline. Flags unsupported LLM claims using DeBERTa-v3, assigns a hallucination confidence score per sentence, and grounds responses against source documents via ChromaDB.",
+    "tech": [
+      "Python",
+      "TypeScript",
+      "JavaScript",
+      "PyTorch",
+      "TensorFlow",
+      "Transformers",
+      "sentence-transformers",
+      "RAG",
+      "ChromaDB",
+      "OpenAI",
+      "Anthropic",
+      "Gemini",
+      "Groq",
+      "Ollama"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/llm-hallucination-detection"
+  },
+  {
     "slug": "all-about-cross-validation",
     "title": "All About Cross Validation",
     "repo": "All-About-Cross-Validation",
@@ -74,28 +283,6 @@ export const generatedProjects: Project[] = [
       "pytest"
     ],
     "url": "https://github.com/shiva-shivanibokka/All-About-Cross-Validation"
-  },
-  {
-    "slug": "federated-learning-simulation",
-    "title": "Federated Learning Simulation",
-    "repo": "Federated-Learning-Simulation",
-    "domain": "MLOps",
-    "blurb": "An interactive lab that reconstructs a real patient's medical record from a single federated-learning gradient — then defeats the attack with differential privacy.",
-    "tech": [
-      "TypeScript",
-      "Python",
-      "JavaScript",
-      "PyTorch",
-      "scikit-learn",
-      "Next.js",
-      "Tailwind",
-      "Recharts",
-      "Vercel",
-      "GitHub Actions",
-      "MLflow",
-      "pytest"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/Federated-Learning-Simulation"
   },
   {
     "slug": "llm-research-scraper",
@@ -647,17 +834,17 @@ export const generatedProjects: Project[] = [
       "Python",
       "TypeScript",
       "JavaScript",
-      "scikit-learn",
       "XGBoost",
       "LightGBM",
       "SciPy",
       "Transformers",
-      "OpenAI",
       "Anthropic",
-      "Groq",
-      "NumPy",
-      "pandas",
-      "Matplotlib"
+      "Airflow",
+      "FastAPI",
+      "uvicorn",
+      "Next.js",
+      "Bootstrap",
+      "Vercel"
     ],
     "url": "https://github.com/shiva-shivanibokka/ML-System-Design-Retraining-Pipeline"
   },
@@ -875,54 +1062,6 @@ export const generatedProjects: Project[] = [
     "url": "https://github.com/shiva-shivanibokka/ML-System-Design-Model-Serving"
   },
   {
-    "slug": "ml-system-design-feature-store",
-    "title": "ML System Design Feature Store",
-    "repo": "ML-System-Design-Feature-Store",
-    "domain": "ML System Design",
-    "blurb": "A production-grade feature store built to the same architectural standards as Uber Michelangelo , DoorDash , and Twitter Cortex — the systems that serve billions of ML predictions per day.",
-    "tech": [
-      "Python",
-      "scikit-learn",
-      "LightGBM",
-      "SciPy",
-      "NumPy",
-      "pandas",
-      "Plotly",
-      "Airflow",
-      "FastAPI",
-      "uvicorn",
-      "Pydantic",
-      "Postgres",
-      "Redis",
-      "Gradio"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/ML-System-Design-Feature-Store"
-  },
-  {
-    "slug": "ml-system-design-batch-inference",
-    "title": "ML System Design Batch Inference",
-    "repo": "ML-System-Design-Batch-Inference",
-    "domain": "ML System Design",
-    "blurb": "Production-grade nightly batch scoring system that scores 1,000,000 customers for churn probability using PySpark distributed inference, orchestrated by Apache Airflow, served via FastAPI, and monitored through a Gradio dashboard.",
-    "tech": [
-      "Python",
-      "scikit-learn",
-      "LightGBM",
-      "SciPy",
-      "NumPy",
-      "pandas",
-      "Matplotlib",
-      "Seaborn",
-      "Plotly",
-      "PySpark",
-      "Airflow",
-      "FastAPI",
-      "uvicorn",
-      "Pydantic"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/ML-System-Design-Batch-Inference"
-  },
-  {
     "slug": "ml-model-efficiency-toolkit",
     "title": "ML Model Efficiency Toolkit",
     "repo": "ML-Model-Efficiency-Toolkit",
@@ -940,24 +1079,6 @@ export const generatedProjects: Project[] = [
       "AWS"
     ],
     "url": "https://github.com/shiva-shivanibokka/ML-Model-Efficiency-Toolkit"
-  },
-  {
-    "slug": "dive-deeper-into-linear-models",
-    "title": "Dive Deeper Into Linear Models",
-    "repo": "Dive-deeper-into-linear-models",
-    "domain": "Classical ML",
-    "blurb": "Let's move on from basic linear and logistic regression to some advanced techniques.",
-    "tech": [
-      "Jupyter Notebook",
-      "scikit-learn",
-      "XGBoost",
-      "NumPy",
-      "pandas",
-      "Matplotlib",
-      "Seaborn",
-      "Bootstrap"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/Dive-deeper-into-linear-models"
   },
   {
     "slug": "autograder-agent",
@@ -980,22 +1101,6 @@ export const generatedProjects: Project[] = [
       "Gradio"
     ],
     "url": "https://github.com/shiva-shivanibokka/AutoGrader-Agent"
-  },
-  {
-    "slug": "open-source-llms-api-wrapper",
-    "title": "Open Source LLMs Api Wrapper",
-    "repo": "open-source-LLMs-api-wrapper",
-    "domain": "LLMs & GenAI",
-    "blurb": "Using an API wrapper where the user selects an open source LLM model without changing any code.",
-    "tech": [
-      "Jupyter Notebook",
-      "Python",
-      "OpenAI",
-      "Gemini",
-      "Groq",
-      "Ollama"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/open-source-LLMs-api-wrapper"
   },
   {
     "slug": "super-resolution-using-han",
