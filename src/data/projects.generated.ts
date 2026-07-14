@@ -4,6 +4,78 @@ import type { Project } from './types'
 // Every public repo with a detailed README (empty / stub repos filtered out).
 export const generatedProjects: Project[] = [
   {
+    "slug": "computer-vision-mlops-pipeline",
+    "title": "Computer Vision MLOps Pipeline",
+    "repo": "Computer-Vision-MLOps-Pipeline",
+    "domain": "MLOps",
+    "blurb": "An end-to-end, production-style MLOps system for detecting manufacturing defects on printed circuit boards with a YOLO object detector. The point of this project is not the model — it's the closed MLOps loop around it: versioned data, tr…",
+    "tech": [
+      "Python",
+      "PyTorch",
+      "Transformers",
+      "NumPy",
+      "pandas",
+      "FastAPI",
+      "uvicorn",
+      "Pydantic",
+      "Gradio",
+      "Docker",
+      "GitHub Actions",
+      "MLflow",
+      "DVC",
+      "pytest"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/Computer-Vision-MLOps-Pipeline"
+  },
+  {
+    "slug": "autonomous-ml-pipeline-builder",
+    "title": "Autonomous ML Pipeline Builder",
+    "repo": "Autonomous-ML-Pipeline-Builder",
+    "domain": "MLOps",
+    "blurb": "Upload a CSV, describe your problem in plain English, and a team of AI agents builds, evaluates, and packages a complete, deployable ML pipeline — live.",
+    "tech": [
+      "Python",
+      "TypeScript",
+      "JavaScript",
+      "scikit-learn",
+      "XGBoost",
+      "LightGBM",
+      "LangGraph",
+      "LangChain",
+      "RAG",
+      "OpenAI",
+      "Anthropic",
+      "Groq",
+      "NumPy",
+      "pandas"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/Autonomous-ML-Pipeline-Builder"
+  },
+  {
+    "slug": "ml-model-efficiency-toolkit",
+    "title": "ML Model Efficiency Toolkit",
+    "repo": "ML-Model-Efficiency-Toolkit",
+    "domain": "Full-Stack / Product",
+    "blurb": "Benchmark every major neural-network compression technique side-by-side — so the size/latency/accuracy tradeoff is measured, not guessed.",
+    "tech": [
+      "Python",
+      "TypeScript",
+      "Jupyter Notebook",
+      "PyTorch",
+      "Transformers",
+      "NumPy",
+      "pandas",
+      "Matplotlib",
+      "Seaborn",
+      "FastAPI",
+      "React",
+      "Next.js",
+      "Tailwind",
+      "Recharts"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/ML-Model-Efficiency-Toolkit"
+  },
+  {
     "slug": "ml-system-design-batch-inference",
     "title": "ML System Design Batch Inference",
     "repo": "ML-System-Design-Batch-Inference",
@@ -834,17 +906,17 @@ export const generatedProjects: Project[] = [
       "Python",
       "TypeScript",
       "JavaScript",
+      "scikit-learn",
       "XGBoost",
       "LightGBM",
       "SciPy",
       "Transformers",
+      "OpenAI",
       "Anthropic",
-      "Airflow",
-      "FastAPI",
-      "uvicorn",
-      "Next.js",
-      "Bootstrap",
-      "Vercel"
+      "Groq",
+      "NumPy",
+      "pandas",
+      "Matplotlib"
     ],
     "url": "https://github.com/shiva-shivanibokka/ML-System-Design-Retraining-Pipeline"
   },
@@ -1060,25 +1132,6 @@ export const generatedProjects: Project[] = [
       "Gradio"
     ],
     "url": "https://github.com/shiva-shivanibokka/ML-System-Design-Model-Serving"
-  },
-  {
-    "slug": "ml-model-efficiency-toolkit",
-    "title": "ML Model Efficiency Toolkit",
-    "repo": "ML-Model-Efficiency-Toolkit",
-    "domain": "Deep Learning",
-    "blurb": "A comprehensive, modular framework for compressing and benchmarking deep learning models using three industry-standard techniques — Quantization , Pruning , and Knowledge Distillation — applied to both vision (ResNet-50, CIFAR-10) and NL…",
-    "tech": [
-      "Python",
-      "Jupyter Notebook",
-      "PyTorch",
-      "Transformers",
-      "NumPy",
-      "pandas",
-      "Matplotlib",
-      "Seaborn",
-      "AWS"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/ML-Model-Efficiency-Toolkit"
   },
   {
     "slug": "autograder-agent",
