@@ -4,6 +4,54 @@ import type { Project } from './types'
 // Every public repo with a detailed README (empty / stub repos filtered out).
 export const generatedProjects: Project[] = [
   {
+    "slug": "fraud-detection-system",
+    "title": "Fraud Detection System",
+    "repo": "Fraud-Detection-System",
+    "domain": "MLOps",
+    "blurb": "An end-to-end, deployed fraud-detection platform on free-tier infra — model registry → CI → deploy — pairing a real-time tabular scoring API with a graph-neural-network benchmark on real Bitcoin fraud data.",
+    "tech": [
+      "Python",
+      "JavaScript",
+      "PyTorch",
+      "scikit-learn",
+      "XGBoost",
+      "CatBoost",
+      "LightGBM",
+      "ONNX",
+      "Transformers",
+      "sentence-transformers",
+      "RAG",
+      "OpenAI",
+      "Groq",
+      "NumPy"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/Fraud-Detection-System"
+  },
+  {
+    "slug": "gradient-descent-and-optimizers",
+    "title": "Gradient Descent And Optimizers",
+    "repo": "Gradient-Descent-and-Optimizers",
+    "domain": "Deep Learning",
+    "blurb": "A production-grade optimizer benchmarking library and interactive demo. Every major gradient descent variant, adaptive optimizer, and LR scheduler — implemented from scratch in NumPy, tested with pytest, tracked with MLflow, and paired w…",
+    "tech": [
+      "Python",
+      "TypeScript",
+      "Jupyter Notebook",
+      "PyTorch",
+      "NumPy",
+      "Matplotlib",
+      "Plotly",
+      "Pydantic",
+      "Next.js",
+      "Tailwind",
+      "Recharts",
+      "Vercel",
+      "Docker",
+      "GitHub Actions"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/Gradient-Descent-and-Optimizers"
+  },
+  {
     "slug": "computer-vision-mlops-pipeline",
     "title": "Computer Vision MLOps Pipeline",
     "repo": "Computer-Vision-MLOps-Pipeline",
@@ -737,30 +785,6 @@ export const generatedProjects: Project[] = [
     "url": "https://github.com/shiva-shivanibokka/HireView"
   },
   {
-    "slug": "gradient-descent-and-optimizers",
-    "title": "Gradient Descent And Optimizers",
-    "repo": "Gradient-Descent-and-Optimizers",
-    "domain": "Deep Learning",
-    "blurb": "A production-grade optimizer benchmarking library and interactive demo. Every major gradient descent variant, adaptive optimizer, and LR scheduler — implemented from scratch in NumPy, tested with pytest, tracked with MLflow, and paired w…",
-    "tech": [
-      "Python",
-      "TypeScript",
-      "Jupyter Notebook",
-      "PyTorch",
-      "NumPy",
-      "Matplotlib",
-      "Plotly",
-      "Pydantic",
-      "Next.js",
-      "Tailwind",
-      "Recharts",
-      "Vercel",
-      "Docker",
-      "GitHub Actions"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/Gradient-Descent-and-Optimizers"
-  },
-  {
     "slug": "search-ranking-system",
     "title": "Search Ranking System",
     "repo": "Search-Ranking-System",
@@ -1036,30 +1060,6 @@ export const generatedProjects: Project[] = [
       "pytest"
     ],
     "url": "https://github.com/shiva-shivanibokka/CodePilot-Agent"
-  },
-  {
-    "slug": "fraud-detection-system",
-    "title": "Fraud Detection System",
-    "repo": "Fraud-Detection-System",
-    "domain": "MLOps",
-    "blurb": "An end-to-end, deployed fraud-detection platform on free-tier infra — model registry → CI → deploy — pairing a real-time tabular scoring API with a graph-neural-network benchmark on real Bitcoin fraud data.",
-    "tech": [
-      "Python",
-      "JavaScript",
-      "PyTorch",
-      "scikit-learn",
-      "XGBoost",
-      "CatBoost",
-      "LightGBM",
-      "ONNX",
-      "Transformers",
-      "sentence-transformers",
-      "RAG",
-      "OpenAI",
-      "Groq",
-      "NumPy"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/Fraud-Detection-System"
   },
   {
     "slug": "rag-vs-cag-showdown",
