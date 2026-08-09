@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { retrieveChunkIds, streamChat, type ChatMessage } from '../lib/chat'
+import { retrieveContext, streamChat, type ChatMessage } from '../lib/chat'
 
 const STARTERS = [
   'What AI projects has she built?',
@@ -97,6 +97,8 @@ export default function ChatPanel() {
   const [error, setError] = useState<string | null>(null)
   const scrollRef = useRef<HTMLDivElement>(null)
   const abortRef = useRef<AbortController | null>(null)
+  // Which project the thread is on, so narrow follow-ups keep their subject.
+  const focusRef = useRef<string | null>(null)
 
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: 'smooth' })
@@ -119,18 +121,20 @@ export default function ChatPanel() {
 
     try {
       setStage('searching her repos…')
-      const { ids, repos } = await retrieveChunkIds(q)
+      const { ids, repos, focusRepo } = await retrieveContext(q, messages, focusRef.current)
+      focusRef.current = focusRepo
       // Light up the matching nodes on the embedding-map background, the same
       // way the search box does.
       window.dispatchEvent(new CustomEvent('rag-retrieve', { detail: { repos } }))
 
-      setStage('reading the READMEs…')
+      setStage(focusRepo ? `reading the ${focusRepo} README…` : 'reading the READMEs…')
       setMessages([...history, { role: 'assistant', content: '' }])
 
       let acc = ''
       await streamChat(
         history,
         ids,
+        focusRepo,
         (delta) => {
           acc += delta
           setMessages([...history, { role: 'assistant', content: acc }])
@@ -230,6 +234,7 @@ export default function ChatPanel() {
             onClick={() => {
               setMessages([])
               setError(null)
+              focusRef.current = null
             }}
             className="shrink-0 rounded-[10px] border border-white/20 px-3.5 py-2.5 text-[12.5px] font-bold text-muted transition hover:border-warm hover:text-warm"
           >
