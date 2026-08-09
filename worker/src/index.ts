@@ -44,6 +44,7 @@ interface Corpus {
   bio: string
   contact?: { label: string; url: string }[]
   experience: { role: string; org: string; period: string; bullets: string[] }[]
+  skills?: { label: string; items: string[] }[]
   catalog: CatalogEntry[]
   chunks: Record<string, ChatChunk>
 }
@@ -106,6 +107,7 @@ function systemPrompt(corpus: Corpus, chunks: ChatChunk[], focus: ReturnType<typ
     .join('\n')
 
   const contact = (corpus.contact ?? []).map((c) => `${c.label}: ${c.url}`).join(' · ')
+  const skills = (corpus.skills ?? []).map((g) => `- ${g.label}: ${g.items.join(', ')}`).join('\n')
 
   const focusBlock = focus
     ? `\n## COMPLETE README — ${focus.title} (${focusRepo})\n\nThe conversation is currently about this project, so you have its full documentation. Answer any question about it from here, in as much depth as asked.\n\n${focus.text}\n`
@@ -150,6 +152,10 @@ ${contact}
 ## Experience
 
 ${experience}
+
+## Skills
+
+${skills}
 
 ## Full project catalog (${corpus.catalog.length} projects — this is all of them)
 

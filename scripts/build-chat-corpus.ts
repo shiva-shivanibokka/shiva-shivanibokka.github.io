@@ -2,7 +2,7 @@ import { promises as fs } from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { generatedProjects } from '../src/data/projects.generated'
-import { bio, experience, links } from '../src/data/content'
+import { bio, experience, links, skillGroups } from '../src/data/content'
 import type { SearchIndex } from '../src/rag/indexTypes'
 
 // The chatbot's source of truth, and deliberately NOT search-index.json.
@@ -52,6 +52,9 @@ async function main() {
     bio,
     contact: links.filter((l) => l.url.startsWith('mailto:') || l.url.startsWith('http')),
     experience: experience.map((e) => ({ role: e.role, org: e.org, period: e.period, bullets: e.bullets })),
+    // Without this, "does she know Kubernetes?" is only answerable if the word
+    // happens to appear in some README. It is the resume's skills section.
+    skills: skillGroups.map((g) => ({ label: g.label, items: g.items })),
     catalog,
     chunks,
   }
