@@ -1,6 +1,7 @@
 import { promises as fs } from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { readIndex } from './indexFiles'
 import type { SearchIndex } from '../src/rag/indexTypes'
 
 // A 2D point for one repo, projected from its mean README embedding via PCA.
@@ -84,7 +85,7 @@ export function buildMap(index: SearchIndex): MapNode[] {
 async function main() {
   const here = path.dirname(fileURLToPath(import.meta.url))
   const root = path.resolve(here, '..')
-  const idx: SearchIndex = JSON.parse(await fs.readFile(path.join(root, 'public', 'search-index.json'), 'utf8'))
+  const idx: SearchIndex = await readIndex(path.join(root, 'public'))
   const map = buildMap(idx)
   await fs.writeFile(path.join(root, 'public', 'embedding-map.json'), JSON.stringify(map))
   console.log(`Wrote embedding-map.json with ${map.length} repo nodes`)

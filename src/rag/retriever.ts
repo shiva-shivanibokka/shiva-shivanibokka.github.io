@@ -26,8 +26,25 @@ export class Retriever {
     private embed: (q: string) => Promise<number[]>,
   ) {}
 
-  static async create(indexUrl = `${import.meta.env.BASE_URL}search-index.json`): Promise<Retriever> {
-    const index: SearchIndex = await fetch(indexUrl).then((r) => r.json())
+  // Two files: readable metadata as JSON, and the vectors as a raw float32
+  // buffer. Stored as JSON the vectors cost 6.13 MB to carry 1.02 MB of numbers,
+  // because every float becomes ASCII digits — and a visitor waits for all of it
+  // before search or chat will answer. Fetched in parallel and rejoined here, so
+  // nothing downstream knows the difference.
+  static async create(base = import.meta.env.BASE_URL): Promise<Retriever> {
+    const [meta, vecBuf] = await Promise.all([
+      fetch(`${base}search-meta.json`).then((r) => r.json()),
+      fetch(`${base}search-vectors.bin`).then((r) => r.arrayBuffer()),
+    ])
+    const flat = new Float32Array(vecBuf)
+    const dim: number = meta.dim
+    const index: SearchIndex = {
+      ...meta,
+      chunks: meta.chunks.map((c: Omit<IndexChunk, 'embedding'>, i: number) => ({
+        ...c,
+        embedding: Array.from(flat.subarray(i * dim, (i + 1) * dim)),
+      })),
+    }
     const { pipeline, env } = await import('@xenova/transformers')
     // Load the embedding model from our OWN origin (vendored in public/models/),
     // not an external CDN — faster, dependency-free, and reliable on GitHub Pages.

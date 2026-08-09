@@ -2,7 +2,7 @@ import { skillGroups } from '../data/content'
 
 export default function Skills() {
   return (
-    <section id="skills" className="w-full px-[clamp(28px,4vw,72px)] py-12">
+    <section id="skills" className="w-full scroll-mt-28 px-[clamp(28px,4vw,72px)] py-12">
       <p className="text-base uppercase tracking-[0.2em] text-mint">// 02</p>
       <h2 className="mt-2 text-[clamp(23px,2.9vw,38px)] font-bold tracking-tight">Skills</h2>
       <p className="mt-3 text-[14px] text-muted">Pulled together from the tech across the projects on this page.</p>

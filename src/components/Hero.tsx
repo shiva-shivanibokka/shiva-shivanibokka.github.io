@@ -26,14 +26,20 @@ export default function Hero() {
         SHIVANI BOKKA
       </h1>
 
+      {/* The specific claim goes first. "I build across the full AI lifecycle…"
+          is a list of fields — true of a few thousand people — while a search
+          engine running in this tab is a claim you can check in one click, and
+          it is demonstrated directly below. The category list still earns its
+          place, just not in the opening line. */}
       <div className="mt-6 max-w-full text-[clamp(15px,1.55vw,21px)] leading-relaxed text-[#E0DAE8] [text-shadow:0_1px_12px_rgba(0,0,0,0.7)]">
-        <p className="flex flex-wrap items-baseline gap-x-2.5">
-          <span>I build</span>
+        <p>
+          I build retrieval and agent systems — <span className="text-mint">this page runs one</span>. Semantic
+          search and a grounded chatbot over my repos, in your browser, no server.
+        </p>
+        <p className="mt-1.5 flex flex-wrap items-baseline gap-x-2.5">
+          <span>Also</span>
           <span className="font-bold text-mint">›</span>
           <Typewriter phrases={BUILDS} className="font-semibold text-white" />
-        </p>
-        <p className="mt-1.5">
-          and this page runs <span className="text-mint">in-browser semantic search</span> over my work.
         </p>
       </div>
 

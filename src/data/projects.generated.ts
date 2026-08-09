@@ -14,15 +14,11 @@ export const generatedProjects: Project[] = [
       "TypeScript",
       "Jupyter Notebook",
       "PyTorch",
-      "NumPy",
-      "Matplotlib",
       "Plotly",
       "Pydantic",
       "Next.js",
       "Tailwind",
       "Recharts",
-      "Vercel",
-      "Docker",
       "GitHub Actions"
     ],
     "url": "https://github.com/shiva-shivanibokka/Gradient-Descent-and-Optimizers",
@@ -44,14 +40,11 @@ export const generatedProjects: Project[] = [
       "LightGBM",
       "ONNX",
       "Transformers",
-      "sentence-transformers",
-      "RAG",
-      "OpenAI",
-      "Groq",
-      "NumPy"
+      "sentence-transformers"
     ],
     "url": "https://github.com/shiva-shivanibokka/Fraud-Detection-System",
-    "demo": "https://fraud-detection-system-ebon.vercel.app"
+    "demo": "https://fraud-detection-system-ebon.vercel.app",
+    "outcome": "Real numbers: Tabular model AUC-PR 0.314 at a 0.49% base rate (~64× lift) on synthetic Sparkov data; GNN module — EvolveGCN-O beats static GAT and TGAT on illicit-F1 on the real Elliptic Bitcoin graph."
   },
   {
     "slug": "computer-vision-mlops-pipeline",
@@ -63,17 +56,13 @@ export const generatedProjects: Project[] = [
       "Python",
       "PyTorch",
       "Transformers",
-      "NumPy",
-      "pandas",
       "FastAPI",
       "uvicorn",
       "Pydantic",
       "Gradio",
-      "Docker",
       "GitHub Actions",
       "MLflow",
-      "DVC",
-      "pytest"
+      "DVC"
     ],
     "url": "https://github.com/shiva-shivanibokka/Computer-Vision-MLOps-Pipeline"
   },
@@ -93,11 +82,7 @@ export const generatedProjects: Project[] = [
       "LangGraph",
       "LangChain",
       "RAG",
-      "OpenAI",
-      "Anthropic",
-      "Groq",
-      "NumPy",
-      "pandas"
+      "OpenAI"
     ],
     "url": "https://github.com/shiva-shivanibokka/Autonomous-ML-Pipeline-Builder"
   },
@@ -113,10 +98,6 @@ export const generatedProjects: Project[] = [
       "Jupyter Notebook",
       "PyTorch",
       "Transformers",
-      "NumPy",
-      "pandas",
-      "Matplotlib",
-      "Seaborn",
       "FastAPI",
       "React",
       "Next.js",
@@ -137,17 +118,14 @@ export const generatedProjects: Project[] = [
       "JavaScript",
       "scikit-learn",
       "LightGBM",
-      "SciPy",
-      "NumPy",
-      "pandas",
-      "Matplotlib",
       "PySpark",
       "Airflow",
       "FastAPI",
       "uvicorn",
       "Pydantic"
     ],
-    "url": "https://github.com/shiva-shivanibokka/ML-System-Design-Batch-Inference"
+    "url": "https://github.com/shiva-shivanibokka/ML-System-Design-Batch-Inference",
+    "outcome": "Measured on the real data: LightGBM churn model AUC-ROC 0.81 (held-out test); the pandas scoring path scores all 970,960 subscribers in ~10s (~95K records/sec) on a single machine."
   },
   {
     "slug": "rl-portfolio-optimization",
@@ -160,15 +138,12 @@ export const generatedProjects: Project[] = [
       "TypeScript",
       "JavaScript",
       "PyTorch",
-      "NumPy",
-      "pandas",
-      "Express",
       "React",
       "Next.js",
       "Recharts",
-      "Vercel",
       "MLflow",
-      "pytest"
+      "NumPy",
+      "pandas"
     ],
     "url": "https://github.com/shiva-shivanibokka/RL-Portfolio-Optimization",
     "demo": "https://rl-portfolio-optimization.vercel.app"
@@ -189,11 +164,7 @@ export const generatedProjects: Project[] = [
       "OpenAI",
       "Anthropic",
       "Gemini",
-      "Groq",
-      "NumPy",
-      "FastAPI",
-      "uvicorn",
-      "Pydantic"
+      "Groq"
     ],
     "url": "https://github.com/shiva-shivanibokka/Autonomous-SWE-Agent",
     "demo": "https://autonomous-swe-agent.vercel.app"
@@ -214,11 +185,7 @@ export const generatedProjects: Project[] = [
       "Anthropic",
       "Gemini",
       "Groq",
-      "FastAPI",
-      "uvicorn",
-      "Pydantic",
-      "Postgres",
-      "Redis"
+      "FastAPI"
     ],
     "url": "https://github.com/shiva-shivanibokka/Autonomous-Research-Report-Agent"
   },
@@ -234,15 +201,11 @@ export const generatedProjects: Project[] = [
       "JavaScript",
       "PyTorch",
       "scikit-learn",
-      "NumPy",
-      "pandas",
       "React",
       "Next.js",
       "Tailwind",
       "Recharts",
-      "Vercel",
-      "GitHub Actions",
-      "pytest"
+      "GitHub Actions"
     ],
     "url": "https://github.com/shiva-shivanibokka/Federated-Learning-Simulation",
     "demo": "https://web-neon-eight-45.vercel.app"
@@ -259,15 +222,11 @@ export const generatedProjects: Project[] = [
       "JavaScript",
       "scikit-learn",
       "LightGBM",
-      "SciPy",
-      "NumPy",
-      "pandas",
       "DuckDB",
       "FastAPI",
       "uvicorn",
       "Pydantic",
-      "Redis",
-      "Supabase"
+      "Redis"
     ],
     "url": "https://github.com/shiva-shivanibokka/ML-System-Design-Feature-Store",
     "demo": "https://ml-feature-store-three.vercel.app"
@@ -288,10 +247,7 @@ export const generatedProjects: Project[] = [
       "Groq",
       "React",
       "Next.js",
-      "Tailwind",
-      "Zod",
-      "Vercel",
-      "GitHub Actions"
+      "Tailwind"
     ],
     "url": "https://github.com/shiva-shivanibokka/PrepGap-Lens",
     "demo": "https://prepgap-lens.vercel.app"
@@ -328,15 +284,11 @@ export const generatedProjects: Project[] = [
       "Python",
       "scikit-learn",
       "XGBoost",
-      "NumPy",
-      "pandas",
-      "Matplotlib",
-      "Seaborn",
       "React",
       "Next.js",
-      "Vercel",
       "GitHub Actions",
-      "pytest"
+      "NumPy",
+      "pandas"
     ],
     "url": "https://github.com/shiva-shivanibokka/Dive-deeper-into-linear-models",
     "demo": "https://web-sable-gamma-39.vercel.app"
@@ -357,11 +309,7 @@ export const generatedProjects: Project[] = [
       "RAG",
       "FAISS",
       "OpenAI",
-      "Anthropic",
-      "Gemini",
-      "Groq",
-      "DeBERTa",
-      "pandas"
+      "Anthropic"
     ],
     "url": "https://github.com/shiva-shivanibokka/Multimodal-RAG",
     "demo": "https://multimodal-rag-plum.vercel.app"
@@ -382,11 +330,7 @@ export const generatedProjects: Project[] = [
       "sentence-transformers",
       "RAG",
       "ChromaDB",
-      "OpenAI",
-      "Anthropic",
-      "Gemini",
-      "Groq",
-      "Ollama"
+      "OpenAI"
     ],
     "url": "https://github.com/shiva-shivanibokka/llm-hallucination-detection",
     "demo": "https://frontend-shiv-a.vercel.app"
@@ -402,16 +346,12 @@ export const generatedProjects: Project[] = [
       "TypeScript",
       "Python",
       "scikit-learn",
-      "SciPy",
-      "NumPy",
-      "pandas",
-      "Matplotlib",
-      "Seaborn",
       "React",
       "Next.js",
-      "Vercel",
       "Optuna",
-      "pytest"
+      "SciPy",
+      "NumPy",
+      "pandas"
     ],
     "url": "https://github.com/shiva-shivanibokka/All-About-Cross-Validation",
     "demo": "https://cross-validation-visualizer.vercel.app"
@@ -432,11 +372,7 @@ export const generatedProjects: Project[] = [
       "Anthropic",
       "Gemini",
       "Groq",
-      "Postgres",
-      "React",
-      "Next.js",
-      "Zod",
-      "Vercel"
+      "Postgres"
     ],
     "url": "https://github.com/shiva-shivanibokka/LLM-research-scraper",
     "demo": "https://research-copilot-steel.vercel.app"
@@ -454,8 +390,8 @@ export const generatedProjects: Project[] = [
       "React",
       "Next.js",
       "Tailwind",
-      "Vercel",
       "GitHub Actions",
+      "Vercel",
       "pytest"
     ],
     "url": "https://github.com/shiva-shivanibokka/Games-built-using-Python",
@@ -472,16 +408,12 @@ export const generatedProjects: Project[] = [
       "TypeScript",
       "Python",
       "statsmodels",
-      "SciPy",
-      "NumPy",
-      "pandas",
       "DuckDB",
-      "Matplotlib",
-      "Seaborn",
       "React",
       "Next.js",
-      "Bootstrap",
-      "Recharts"
+      "Recharts",
+      "GitHub Actions",
+      "SciPy"
     ],
     "url": "https://github.com/shiva-shivanibokka/Data-Analytics-Portfolio",
     "demo": "https://data-analytics-portfolio-shiv-a.vercel.app"
@@ -498,7 +430,8 @@ export const generatedProjects: Project[] = [
       "Python",
       "GitHub Actions"
     ],
-    "url": "https://github.com/shiva-shivanibokka/Core-algorithms-for-Leetcode"
+    "url": "https://github.com/shiva-shivanibokka/Core-algorithms-for-Leetcode",
+    "outcome": "100% of solution cells pass verifynotebooks.py, enforced by CI on every push."
   },
   {
     "slug": "all-about-neural-networks",
@@ -514,9 +447,9 @@ export const generatedProjects: Project[] = [
       "RAG",
       "LoRA",
       "OpenAI",
+      "React",
       "NumPy",
-      "Matplotlib",
-      "React"
+      "Matplotlib"
     ],
     "url": "https://github.com/shiva-shivanibokka/All-about-Neural-Networks"
   },
@@ -532,14 +465,11 @@ export const generatedProjects: Project[] = [
       "Python",
       "scikit-learn",
       "Transformers",
-      "NumPy",
-      "pandas",
-      "Matplotlib",
-      "Seaborn",
       "React",
       "Next.js",
-      "Vercel",
-      "GitHub Actions"
+      "GitHub Actions",
+      "NumPy",
+      "pandas"
     ],
     "url": "https://github.com/shiva-shivanibokka/Data-Preprocessing",
     "demo": "https://data-preprocessing.vercel.app"
@@ -556,15 +486,11 @@ export const generatedProjects: Project[] = [
       "JavaScript",
       "PyTorch",
       "scikit-learn",
-      "SciPy",
       "Transformers",
       "sentence-transformers",
       "PEFT",
-      "NumPy",
-      "pandas",
-      "Matplotlib",
-      "Seaborn",
-      "Plotly"
+      "Plotly",
+      "Kafka"
     ],
     "url": "https://github.com/shiva-shivanibokka/NLP-Pipeline-at-Scale",
     "demo": "https://frontend-ten-eta-64.vercel.app"
@@ -581,18 +507,15 @@ export const generatedProjects: Project[] = [
       "JavaScript",
       "PyTorch",
       "scikit-learn",
-      "SciPy",
       "Transformers",
       "sentence-transformers",
       "PEFT",
       "TRL",
-      "bitsandbytes",
-      "LoRA",
-      "OpenAI",
-      "Anthropic"
+      "bitsandbytes"
     ],
     "url": "https://github.com/shiva-shivanibokka/Fine-Tuned-Domain-LLM-QLoRA",
-    "demo": "https://cuad-legal-llm.vercel.app"
+    "demo": "https://cuad-legal-llm.vercel.app",
+    "outcome": "Fine-tuned on an 8 GB RTX 4060 laptop (4-bit to fit VRAM), 3 epochs, ~886 training examples. Evaluated on a fixed 120-sample held-out test set. Lower is better for Hallucination and ECE."
   },
   {
     "slug": "dive-deeper-into-deep-learning",
@@ -607,14 +530,10 @@ export const generatedProjects: Project[] = [
       "PyTorch",
       "scikit-learn",
       "XGBoost",
-      "SciPy",
       "ONNX",
       "Transformers",
-      "NumPy",
-      "pandas",
-      "Matplotlib",
-      "Seaborn",
-      "React"
+      "React",
+      "Next.js"
     ],
     "url": "https://github.com/shiva-shivanibokka/Dive-Deeper-into-Deep-Learning",
     "demo": "https://web-seven-phi-35.vercel.app"
@@ -631,18 +550,15 @@ export const generatedProjects: Project[] = [
       "Python",
       "PyTorch",
       "scikit-learn",
-      "SciPy",
       "Transformers",
       "sentence-transformers",
       "NLTK",
-      "NumPy",
-      "pandas",
-      "Matplotlib",
-      "Seaborn",
-      "React"
+      "React",
+      "Next.js"
     ],
     "url": "https://github.com/shiva-shivanibokka/Dive-Deeper-into-Unsupervised-Learning",
-    "demo": "https://web-swart-psi-49.vercel.app"
+    "demo": "https://web-swart-psi-49.vercel.app",
+    "outcome": "Concrete results: K-Means recovers 3 penguin species at ARI 0.80 / 91.9% match; on real credit-card fraud, novelty-LOF hits 0.81 PR-AUC (vs."
   },
   {
     "slug": "dive-deeper-into-supervised-learning",
@@ -658,13 +574,9 @@ export const generatedProjects: Project[] = [
       "XGBoost",
       "CatBoost",
       "LightGBM",
-      "SciPy",
       "ONNX",
-      "NumPy",
-      "pandas",
-      "Matplotlib",
-      "Seaborn",
-      "FastAPI"
+      "FastAPI",
+      "React"
     ],
     "url": "https://github.com/shiva-shivanibokka/Dive-Deeper-into-Supervised-Learning",
     "demo": "https://dive-deeper-supervised-learning.vercel.app"
@@ -685,14 +597,11 @@ export const generatedProjects: Project[] = [
       "RAG",
       "ChromaDB",
       "OpenAI",
-      "Anthropic",
-      "Gemini",
-      "Groq",
-      "pandas",
-      "Plotly"
+      "Anthropic"
     ],
     "url": "https://github.com/shiva-shivanibokka/Supply-Chain-Demand-Agent",
-    "demo": "https://supply-chain-demand-agent.vercel.app"
+    "demo": "https://supply-chain-demand-agent.vercel.app",
+    "outcome": "actual average daily demand - Calibration — the % of actuals falling inside the predicted p10–p90 band (target ~80%+) - Drift flag — fires when MAE is more than 1.5× the baseline (predict-the-global-mean) MAE"
   },
   {
     "slug": "multi-horizon-stock-forecasting-ai-model",
@@ -706,15 +615,11 @@ export const generatedProjects: Project[] = [
       "PyTorch",
       "scikit-learn",
       "LightGBM",
-      "SciPy",
-      "NumPy",
-      "pandas",
       "Pydantic",
       "React",
-      "Vite",
       "Recharts",
-      "Vercel",
-      "GitHub Actions"
+      "GitHub Actions",
+      "Weights & Biases"
     ],
     "url": "https://github.com/shiva-shivanibokka/Multi-Horizon-Stock-Forecasting-AI-Model",
     "demo": "https://mhf-forecaster.vercel.app"
@@ -735,11 +640,7 @@ export const generatedProjects: Project[] = [
       "Groq",
       "Ollama",
       "FastAPI",
-      "uvicorn",
-      "Pydantic",
-      "React",
-      "Next.js",
-      "Vercel"
+      "uvicorn"
     ],
     "url": "https://github.com/shiva-shivanibokka/Competitor-Insight-Engine",
     "demo": "https://competitor-insight-engine.vercel.app"
@@ -754,13 +655,14 @@ export const generatedProjects: Project[] = [
       "Jupyter Notebook",
       "scikit-learn",
       "Transformers",
+      "FastAPI",
       "NumPy",
       "pandas",
       "Matplotlib",
-      "Seaborn",
-      "FastAPI"
+      "Seaborn"
     ],
-    "url": "https://github.com/shiva-shivanibokka/Basics-of-Linear-and-Logistic-Regression"
+    "url": "https://github.com/shiva-shivanibokka/Basics-of-Linear-and-Logistic-Regression",
+    "outcome": "Measured results (reproducible, randomstate=42): linear R² 0.927 / RMSE ≈ $1,076 after a log-target transform; logistic 97.7% accuracy, 0.998 ROC-AUC on a 10,788-row hold-out set."
   },
   {
     "slug": "sql-and-database-skills",
@@ -771,17 +673,14 @@ export const generatedProjects: Project[] = [
     "tech": [
       "Jupyter Notebook",
       "Python",
-      "pandas",
-      "Matplotlib",
-      "Seaborn",
       "FastAPI",
       "uvicorn",
       "SQLAlchemy",
       "Postgres",
-      "Vercel",
-      "Docker",
       "GitHub Actions",
-      "pytest"
+      "pandas",
+      "Matplotlib",
+      "Seaborn"
     ],
     "url": "https://github.com/shiva-shivanibokka/SQL-and-Database-Skills"
   },
@@ -800,11 +699,8 @@ export const generatedProjects: Project[] = [
       "React",
       "Next.js",
       "Tailwind",
-      "Vercel",
       "GitHub Actions",
-      "pytest",
-      "GCP",
-      "BeautifulSoup"
+      "GCP"
     ],
     "url": "https://github.com/shiva-shivanibokka/HireView"
   },
@@ -821,17 +717,14 @@ export const generatedProjects: Project[] = [
       "PyTorch",
       "scikit-learn",
       "XGBoost",
-      "SciPy",
       "ONNX",
       "Transformers",
       "sentence-transformers",
-      "PEFT",
-      "LangChain",
-      "RAG",
-      "FAISS"
+      "PEFT"
     ],
     "url": "https://github.com/shiva-shivanibokka/Search-Ranking-System",
-    "demo": "https://web-shiv-a.vercel.app"
+    "demo": "https://web-shiv-a.vercel.app",
+    "outcome": "Result: in-domain Recall@100 ≈ 0.74 over the full 1M index (measured); a two-stage pipeline evaluated end-to-end with NDCG@10 / Recall / MRR across BM25, dense, hybrid, and both rerankers — see the measured table in §14."
   },
   {
     "slug": "transfer-learning-huggingface",
@@ -845,18 +738,15 @@ export const generatedProjects: Project[] = [
       "TypeScript",
       "PyTorch",
       "scikit-learn",
-      "SciPy",
       "ONNX",
       "OpenCV",
       "Transformers",
       "PEFT",
-      "OpenAI",
-      "NumPy",
-      "pandas",
-      "Matplotlib"
+      "OpenAI"
     ],
     "url": "https://github.com/shiva-shivanibokka/Transfer-Learning-HuggingFace",
-    "demo": "https://transfer-learning-hugging-face.vercel.app"
+    "demo": "https://transfer-learning-hugging-face.vercel.app",
+    "outcome": "Accuracy swings 42%→52% across five prompt templates; a 5-template ensemble recovers to 53.1% — but that is still far below a fine-tuned CNN's linear probe (78%), so any labeled data makes fine-tuning the better choice."
   },
   {
     "slug": "sepsis-ml-model",
@@ -869,18 +759,15 @@ export const generatedProjects: Project[] = [
       "Python",
       "scikit-learn",
       "XGBoost",
-      "SciPy",
-      "NumPy",
-      "pandas",
-      "Matplotlib",
-      "Seaborn",
       "FastAPI",
       "uvicorn",
       "Pydantic",
-      "Docker",
-      "GitHub Actions"
+      "GitHub Actions",
+      "GCP",
+      "SciPy"
     ],
-    "url": "https://github.com/shiva-shivanibokka/Sepsis-ML-Model"
+    "url": "https://github.com/shiva-shivanibokka/Sepsis-ML-Model",
+    "outcome": "Imbalanced classification — SMOTE, F1-over-accuracy framing, threshold calibration for a ~7% positive rate."
   },
   {
     "slug": "launchpad",
@@ -893,8 +780,8 @@ export const generatedProjects: Project[] = [
       "JavaScript",
       "React",
       "Tailwind",
-      "Vite",
-      "GitHub Actions"
+      "GitHub Actions",
+      "Vite"
     ],
     "url": "https://github.com/shiva-shivanibokka/launchpad"
   },
@@ -909,18 +796,15 @@ export const generatedProjects: Project[] = [
       "Python",
       "scikit-learn",
       "XGBoost",
-      "SciPy",
-      "NumPy",
-      "pandas",
-      "Matplotlib",
-      "Seaborn",
       "FastAPI",
       "uvicorn",
       "Pydantic",
-      "Docker",
-      "GitHub Actions"
+      "GitHub Actions",
+      "SciPy",
+      "NumPy"
     ],
-    "url": "https://github.com/shiva-shivanibokka/Tisch-ML-Model"
+    "url": "https://github.com/shiva-shivanibokka/Tisch-ML-Model",
+    "outcome": "A \"always predict Proximal Tubule\" model would score ~50% accuracy while learning nothing; weighted F1 rewards performance across all classes."
   },
   {
     "slug": "cumida-ml-model",
@@ -932,17 +816,13 @@ export const generatedProjects: Project[] = [
       "Jupyter Notebook",
       "Python",
       "scikit-learn",
-      "NumPy",
-      "pandas",
-      "Matplotlib",
-      "Seaborn",
       "FastAPI",
       "uvicorn",
       "Pydantic",
-      "Docker",
       "GitHub Actions",
-      "pytest",
-      "GCP"
+      "GCP",
+      "NumPy",
+      "pandas"
     ],
     "url": "https://github.com/shiva-shivanibokka/Cumida-ML-Model"
   },
@@ -959,17 +839,14 @@ export const generatedProjects: Project[] = [
       "scikit-learn",
       "XGBoost",
       "LightGBM",
-      "SciPy",
       "Transformers",
       "OpenAI",
       "Anthropic",
-      "Groq",
-      "NumPy",
-      "pandas",
-      "Matplotlib"
+      "Groq"
     ],
     "url": "https://github.com/shiva-shivanibokka/ML-System-Design-Retraining-Pipeline",
-    "demo": "https://ml-system-design-retraining-pipelin.vercel.app"
+    "demo": "https://ml-system-design-retraining-pipelin.vercel.app",
+    "outcome": "If ANY slice degrades 2% AUC vs champion → REJECTED."
   },
   {
     "slug": "scm-using-mcp-and-llm",
@@ -987,11 +864,7 @@ export const generatedProjects: Project[] = [
       "MCP",
       "OpenAI",
       "Anthropic",
-      "Gemini",
-      "Groq",
-      "NumPy",
-      "pandas",
-      "DuckDB"
+      "Gemini"
     ],
     "url": "https://github.com/shiva-shivanibokka/SCM-using-MCP-and-LLM",
     "demo": "https://scm-using-mcp-and-llm.vercel.app"
@@ -1012,11 +885,7 @@ export const generatedProjects: Project[] = [
       "Gemini",
       "Groq",
       "FastAPI",
-      "uvicorn",
-      "Pydantic",
-      "Node.js",
-      "Postgres",
-      "React"
+      "uvicorn"
     ],
     "url": "https://github.com/shiva-shivanibokka/ResumeForge",
     "demo": "https://resume-forge-shiv-a.vercel.app"
@@ -1033,15 +902,11 @@ export const generatedProjects: Project[] = [
       "JavaScript",
       "PyTorch",
       "scikit-learn",
-      "SciPy",
       "Transformers",
       "FAISS",
       "Gemini",
-      "NumPy",
-      "pandas",
       "Plotly",
-      "Kafka",
-      "FastAPI"
+      "Kafka"
     ],
     "url": "https://github.com/shiva-shivanibokka/ML-System-Design-Recommendation-Engine",
     "demo": "https://ml-system-design-recommendation-eng.vercel.app"
@@ -1060,16 +925,13 @@ export const generatedProjects: Project[] = [
       "XGBoost",
       "CatBoost",
       "Groq",
-      "NumPy",
-      "pandas",
       "Plotly",
       "FastAPI",
-      "uvicorn",
-      "Pydantic",
-      "Node.js"
+      "uvicorn"
     ],
     "url": "https://github.com/shiva-shivanibokka/Churn-Intelligence-Platform",
-    "demo": "https://customer-segmentation-churn.vercel.app"
+    "demo": "https://customer-segmentation-churn.vercel.app",
+    "outcome": "Raw CatBoost output is not well-calibrated — a score of 0.7 ≠ 70% actual churn rate."
   },
   {
     "slug": "codepilot-agent",
@@ -1087,8 +949,7 @@ export const generatedProjects: Project[] = [
       "Pydantic",
       "Redis",
       "Gradio",
-      "Docker",
-      "pytest"
+      "Docker"
     ],
     "url": "https://github.com/shiva-shivanibokka/CodePilot-Agent"
   },
@@ -1108,14 +969,11 @@ export const generatedProjects: Project[] = [
       "Qdrant",
       "OpenAI",
       "Anthropic",
-      "Gemini",
-      "Groq",
-      "Cohere",
-      "NumPy",
-      "FastAPI"
+      "Gemini"
     ],
     "url": "https://github.com/shiva-shivanibokka/RAG-vs-CAG-Showdown",
-    "demo": "https://rag-vs-cag-showdown.vercel.app"
+    "demo": "https://rag-vs-cag-showdown.vercel.app",
+    "outcome": "CAG's latency disadvantage (~30% slower in the sample tournament) is largely a perception problem at full-document scale; streaming would make it feel much faster."
   },
   {
     "slug": "take-home-project",
@@ -1131,16 +989,13 @@ export const generatedProjects: Project[] = [
       "Anthropic",
       "Groq",
       "Ollama",
-      "Node.js",
       "Postgres",
       "Supabase",
-      "React",
-      "Next.js",
-      "Vercel",
-      "AWS"
+      "React"
     ],
     "url": "https://github.com/shiva-shivanibokka/take-home-project",
-    "demo": "https://take-home-project-ten.vercel.app"
+    "demo": "https://take-home-project-ten.vercel.app",
+    "outcome": "The latency tradeoff is acceptable: the write stage increases from ~10s to ~45s."
   },
   {
     "slug": "ml-system-design-model-serving",
@@ -1151,20 +1006,17 @@ export const generatedProjects: Project[] = [
     "tech": [
       "Python",
       "PyTorch",
-      "SciPy",
       "Transformers",
-      "NumPy",
-      "pandas",
       "Plotly",
       "FastAPI",
       "uvicorn",
       "Pydantic",
       "SQLAlchemy",
       "Postgres",
-      "Redis",
-      "Gradio"
+      "Redis"
     ],
-    "url": "https://github.com/shiva-shivanibokka/ML-System-Design-Model-Serving"
+    "url": "https://github.com/shiva-shivanibokka/ML-System-Design-Model-Serving",
+    "outcome": "\"What triggers automatic rollback?\" Two independent signals: error rate 5% OR p99 latency 2× v1 p99."
   },
   {
     "slug": "autograder-agent",
@@ -1182,9 +1034,7 @@ export const generatedProjects: Project[] = [
       "Anthropic",
       "Groq",
       "FastAPI",
-      "uvicorn",
-      "Pydantic",
-      "Gradio"
+      "uvicorn"
     ],
     "url": "https://github.com/shiva-shivanibokka/AutoGrader-Agent"
   },
@@ -1212,8 +1062,8 @@ export const generatedProjects: Project[] = [
       "Python",
       "Django",
       "MySQL",
-      "Docker",
-      "AWS"
+      "AWS",
+      "Docker"
     ],
     "url": "https://github.com/shiva-shivanibokka/Wellnest-Curated-Health-Web-App"
   }

@@ -3,6 +3,7 @@ import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { generatedProjects } from '../src/data/projects.generated'
 import { bio, experience, links, skillGroups } from '../src/data/content'
+import { readIndex } from './indexFiles'
 import type { SearchIndex } from '../src/rag/indexTypes'
 
 // The chatbot's source of truth, and deliberately NOT search-index.json.
@@ -26,7 +27,7 @@ interface ChatChunk {
 async function main() {
   const here = path.dirname(fileURLToPath(import.meta.url))
   const root = path.resolve(here, '..')
-  const index: SearchIndex = JSON.parse(await fs.readFile(path.join(root, 'public', 'search-index.json'), 'utf-8'))
+  const index: SearchIndex = await readIndex(path.join(root, 'public'))
 
   const chunks: Record<string, ChatChunk> = {}
   for (const c of index.chunks) {

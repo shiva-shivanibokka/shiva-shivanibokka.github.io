@@ -2,6 +2,7 @@ import { promises as fs } from 'node:fs'
 import path from 'node:path'
 import { createHash } from 'node:crypto'
 import { fileURLToPath } from 'node:url'
+import { writeIndex } from './indexFiles'
 import { chunkText } from '../src/rag/chunk'
 import { projects } from '../src/data/projects'
 import { EMBED_DIM, EMBED_MODEL, type IndexChunk, type SearchIndex } from '../src/rag/indexTypes'
@@ -72,7 +73,7 @@ async function main() {
   const index = await buildIndex({ fetchReadme: fetchReadmeFromGitHub, embed: realEmbed })
   const outDir = path.join(projectRoot, 'public')
   await fs.mkdir(outDir, { recursive: true })
-  await fs.writeFile(path.join(outDir, 'search-index.json'), JSON.stringify(index))
+  const { metaBytes, vecBytes } = await writeIndex(outDir, index)
   // Content signature over chunk TEXT only (not embeddings) so the scheduled
   // rebuild can detect real README changes without false positives from any
   // floating-point nondeterminism in the embeddings. Task 12's deploy gate diffs this file.
@@ -80,7 +81,10 @@ async function main() {
     .update(index.chunks.map((c) => `${c.id} ${c.text}`).sort().join(''))
     .digest('hex')
   await fs.writeFile(path.join(outDir, 'corpus.sig'), sig + '\n')
-  console.log(`Wrote ${index.chunks.length} chunks to public/search-index.json (sig ${sig.slice(0, 12)})`)
+  console.log(
+    `Wrote ${index.chunks.length} chunks: ${(metaBytes / 1048576).toFixed(2)} MB meta + ` +
+      `${(vecBytes / 1048576).toFixed(2)} MB vectors (sig ${sig.slice(0, 12)})`,
+  )
   // 2D PCA projection of repo embeddings → the interactive map background.
   const map = buildMap(index)
   await fs.writeFile(path.join(outDir, 'embedding-map.json'), JSON.stringify(map))

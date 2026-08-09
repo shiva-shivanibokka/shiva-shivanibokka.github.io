@@ -289,10 +289,91 @@ const TECH: [string, string[]][] = [
 ]
 const SKIP_LANG = new Set(['html', 'css', 'scss', 'dockerfile', 'makefile', 'shell', 'batchfile', 'procfile', 'roff'])
 
+// Present in almost every Python repo, so they say nothing about what a project
+// IS. Kept — they are true — but ranked last, because a reader scanning tags
+// should meet the distinctive ones first. "LangGraph, QLoRA, FAISS" describes a
+// project; "NumPy, pandas, Matplotlib" describes Python.
+const GENERIC_TECH = new Set([
+  'NumPy',
+  'pandas',
+  'Matplotlib',
+  'Seaborn',
+  'SciPy',
+  'pytest',
+  'Docker',
+  'Vite',
+  'Axios',
+  'Zod',
+  'Vercel',
+  'Netlify',
+  'Bootstrap',
+  'Express',
+  'Node.js',
+])
+
 function detectTech(hay: string, langs: string[]): string[] {
   const cleanLangs = langs.filter((l) => !SKIP_LANG.has(l.toLowerCase())).slice(0, 3)
   const frameworks = TECH.filter(([, kws]) => kws.some((k) => hit(hay, k))).map(([name]) => name)
-  return [...new Set([...cleanLangs, ...frameworks])].slice(0, 14)
+  const distinctive = frameworks.filter((t) => !GENERIC_TECH.has(t))
+  const generic = frameworks.filter((t) => GENERIC_TECH.has(t))
+  // Languages first (GitHub measured them, so they are the least disputable),
+  // then what makes this project itself, then the background noise.
+  return [...new Set([...cleanLangs, ...distinctive, ...generic])].slice(0, 10)
+}
+
+// What came of it. Purely an extraction — if a README does not state an outcome,
+// the card shows none, because the alternative is inventing one. Looks for a
+// results-flavoured section first, then falls back to any sentence carrying a
+// hard number, which is what a claim about outcomes nearly always contains.
+const OUTCOME_HEADING = /^#{2,4}\s*(?:📊\s*)?(results?|outcomes?|performance|benchmarks?|impact|key findings?)\b.*$/im
+const HAS_NUMBER = /\b\d[\d,.]*\s*(%|x\b|ms\b|s\b|k\b|m\b|gb\b|mb\b|hours?\b|minutes?\b|seconds?\b|pp\b|points?\b)/i
+// Vocabulary that means a measurement was taken, rather than a fact stated.
+const MEASURED =
+  /\b(accuracy|auc|auc-?roc|auc-?pr|f1|precision|recall|rmse|mae|mape|bleu|rouge|perplexity|latency|throughput|speed-?up|reduc\w+|improv\w+|outperform\w+|beats?|achiev\w+|scores?|lift|baseline|benchmark\w*|faster|slower|smaller|cheaper|hit rate|win rate|pass@)\b/i
+
+function cleanSentence(s: string): string {
+  return s
+    .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
+    .replace(/^\s*[-*+]\s+/, '') // list marker, wherever the line came from
+    .replace(/[*_`>#|]/g, '')
+    .replace(/\s+/g, ' ')
+    .trim()
+}
+
+// "Measured on the real KKBox data:" introduces the numbers, it is not itself a
+// result. A line that trails off into a colon is always a lead-in to a table or
+// list we are not going to show.
+function isLeadIn(s: string): boolean {
+  return /[:;]$/.test(s)
+}
+
+function extractOutcome(readme: string): string | undefined {
+  const m = OUTCOME_HEADING.exec(readme)
+  if (m) {
+    const after = readme.slice(m.index + m[0].length)
+    // Stop at the next heading so we stay inside the results section.
+    const section = after.split(/\n#{1,4}\s/)[0]
+    for (const raw of section.split('\n')) {
+      const line = cleanSentence(raw.replace(/^[-*+]\s*/, ''))
+      // A results section usually opens with housekeeping — "all figures below
+      // are reproducible from a clean clone" — before it says anything. Skip
+      // ahead to a line that actually carries a figure.
+      if (line.length >= 40 && line.length <= 220 && !/^\|/.test(raw) && !isLeadIn(line) && HAS_NUMBER.test(line)) {
+        return line
+      }
+    }
+  }
+  for (const raw of readme.split(/\n\n+/)) {
+    if (/^\s*[#|>`]/.test(raw)) continue
+    for (const sentence of cleanSentence(raw).split(/(?<=[.!?])\s+/)) {
+      const s = sentence.replace(/^\s*[-*+]\s+/, '') // bullets survive a collapsed list
+      // A number alone is not a result — "100% client-side" and "needs 4 GB RAM"
+      // both match one. Require a word that means something was *measured*, or
+      // this fills the page with descriptions wearing a Result label.
+      if (s.length >= 45 && s.length <= 220 && HAS_NUMBER.test(s) && MEASURED.test(s) && !isLeadIn(s)) return s
+    }
+  }
+  return undefined
 }
 
 // Domain by WEIGHTED keyword score over README + topics + description + languages.
@@ -339,6 +420,7 @@ async function main() {
   const dead: string[] = []
   let scanned = 0
   let live = 0
+  let withOutcome = 0
   for (const r of repos) {
     const key = r.name.toLowerCase()
     if (r.fork || r.archived || EXCLUDE.has(key)) continue
@@ -353,6 +435,8 @@ async function main() {
     const manifests = await fetchManifests(r.name)
     const hay = `${r.name} ${(r.topics || []).join(' ')} ${r.description || ''} ${langs.join(' ')} ${readme}\n${manifests}`.toLowerCase()
     const tech = detectTech(hay, langs)
+    const outcome = extractOutcome(readme)
+    if (outcome) withOutcome++
     const candidate = demoCandidate(r.name, r.homepage)
     let demo: string | undefined
     if (candidate) {
@@ -372,11 +456,13 @@ async function main() {
       tech: tech.length ? tech : ['Project'],
       url: `https://github.com/${OWNER}/${r.name}`,
       ...(demo ? { demo } : {}),
+      ...(outcome ? { outcome } : {}),
     })
   }
 
   console.log(`  ${shown.length} shown (of ${scanned} scanned; rest filtered for thin/empty READMEs)`)
   console.log(`  ${live} live demos linked`)
+  console.log(`  ${withOutcome} projects state an outcome in their README`)
   // Never drop a demo silently — an unreachable one is a thing to go fix.
   if (dead.length) console.warn(`  ${dead.length} demo(s) unreachable, link omitted:\n    ${dead.join('\n    ')}`)
 

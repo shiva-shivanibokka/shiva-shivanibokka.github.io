@@ -20,6 +20,16 @@ export default function ProjectCard({ project }: { project: Project }) {
         {project.blurb}
       </p>
 
+      {/* The result, when the README states one. Shown collapsed rather than
+          behind "Show more", because "what came of it" is the part a reader
+          scanning for thirty seconds is actually looking for. */}
+      {project.outcome && (
+        <p className={`mt-3 border-l-2 border-warm/50 pl-3 text-[13.5px] leading-relaxed text-[#C9C2D4] ${open ? '' : 'line-clamp-2'}`}>
+          <span className="mr-1.5 text-[11px] font-semibold uppercase tracking-wide text-warm">Result</span>
+          {project.outcome}
+        </p>
+      )}
+
       {/* Expanded: tech grouped into colored, headed rows (heading | values) */}
       {open && groups.length > 0 && (
         <div className="mt-3.5 flex flex-col gap-2">

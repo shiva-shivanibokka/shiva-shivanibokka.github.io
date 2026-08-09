@@ -24,6 +24,12 @@ export interface Project {
    * strength of the field merely being set — see checkLive in build-projects.ts.
    */
   demo?: string
+  /**
+   * A result the README actually states, extracted verbatim — never written or
+   * inferred here. Projects whose README claims no outcome simply have none,
+   * which is the honest display.
+   */
+  outcome?: string
 }
 
 export const DOMAINS: Domain[] = [

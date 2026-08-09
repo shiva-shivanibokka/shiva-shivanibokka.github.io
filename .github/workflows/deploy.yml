@@ -25,7 +25,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
           cache: npm
       - run: npm ci
       # Rebuild the project list from GitHub (all repos with a detailed README),
@@ -57,7 +57,7 @@ jobs:
         run: |
           git config user.name "shiva-shivanibokka"
           git config user.email "shivani.bokka93@gmail.com"
-          git add public/search-index.json public/corpus.sig public/chat-corpus.json src/data/projects.generated.ts
+          git add public/search-meta.json public/search-vectors.bin public/corpus.sig public/chat-corpus.json src/data/projects.generated.ts
           git commit -m "chore: refresh projects + RAG index (repo/README changes detected)"
           git push origin HEAD:main
       - name: Build site
