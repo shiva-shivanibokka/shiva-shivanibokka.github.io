@@ -18,6 +18,12 @@ export interface Project {
   blurb: string
   tech: string[]
   url: string
+  /**
+   * The repo's homepage, but only when it actually responded at build time.
+   * Free-tier hosts go away without warning, so a link is never emitted on the
+   * strength of the field merely being set — see checkLive in build-projects.ts.
+   */
+  demo?: string
 }
 
 export const DOMAINS: Domain[] = [

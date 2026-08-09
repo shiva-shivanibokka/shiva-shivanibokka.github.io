@@ -4,30 +4,6 @@ import type { Project } from './types'
 // Every public repo with a detailed README (empty / stub repos filtered out).
 export const generatedProjects: Project[] = [
   {
-    "slug": "fraud-detection-system",
-    "title": "Fraud Detection System",
-    "repo": "Fraud-Detection-System",
-    "domain": "MLOps",
-    "blurb": "An end-to-end, deployed fraud-detection platform on free-tier infra — model registry → CI → deploy — pairing a real-time tabular scoring API with a graph-neural-network benchmark on real Bitcoin fraud data.",
-    "tech": [
-      "Python",
-      "JavaScript",
-      "PyTorch",
-      "scikit-learn",
-      "XGBoost",
-      "CatBoost",
-      "LightGBM",
-      "ONNX",
-      "Transformers",
-      "sentence-transformers",
-      "RAG",
-      "OpenAI",
-      "Groq",
-      "NumPy"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/Fraud-Detection-System"
-  },
-  {
     "slug": "gradient-descent-and-optimizers",
     "title": "Gradient Descent And Optimizers",
     "repo": "Gradient-Descent-and-Optimizers",
@@ -49,7 +25,33 @@ export const generatedProjects: Project[] = [
       "Docker",
       "GitHub Actions"
     ],
-    "url": "https://github.com/shiva-shivanibokka/Gradient-Descent-and-Optimizers"
+    "url": "https://github.com/shiva-shivanibokka/Gradient-Descent-and-Optimizers",
+    "demo": "https://gradient-descent-and-optimizers.vercel.app"
+  },
+  {
+    "slug": "fraud-detection-system",
+    "title": "Fraud Detection System",
+    "repo": "Fraud-Detection-System",
+    "domain": "MLOps",
+    "blurb": "An end-to-end, deployed fraud-detection platform on free-tier infra — model registry → CI → deploy — pairing a real-time tabular scoring API with a graph-neural-network benchmark on real Bitcoin fraud data.",
+    "tech": [
+      "Python",
+      "JavaScript",
+      "PyTorch",
+      "scikit-learn",
+      "XGBoost",
+      "CatBoost",
+      "LightGBM",
+      "ONNX",
+      "Transformers",
+      "sentence-transformers",
+      "RAG",
+      "OpenAI",
+      "Groq",
+      "NumPy"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/Fraud-Detection-System",
+    "demo": "https://fraud-detection-system-ebon.vercel.app"
   },
   {
     "slug": "computer-vision-mlops-pipeline",
@@ -168,7 +170,8 @@ export const generatedProjects: Project[] = [
       "MLflow",
       "pytest"
     ],
-    "url": "https://github.com/shiva-shivanibokka/RL-Portfolio-Optimization"
+    "url": "https://github.com/shiva-shivanibokka/RL-Portfolio-Optimization",
+    "demo": "https://rl-portfolio-optimization.vercel.app"
   },
   {
     "slug": "autonomous-swe-agent",
@@ -192,7 +195,8 @@ export const generatedProjects: Project[] = [
       "uvicorn",
       "Pydantic"
     ],
-    "url": "https://github.com/shiva-shivanibokka/Autonomous-SWE-Agent"
+    "url": "https://github.com/shiva-shivanibokka/Autonomous-SWE-Agent",
+    "demo": "https://autonomous-swe-agent.vercel.app"
   },
   {
     "slug": "autonomous-research-report-agent",
@@ -240,7 +244,8 @@ export const generatedProjects: Project[] = [
       "GitHub Actions",
       "pytest"
     ],
-    "url": "https://github.com/shiva-shivanibokka/Federated-Learning-Simulation"
+    "url": "https://github.com/shiva-shivanibokka/Federated-Learning-Simulation",
+    "demo": "https://web-neon-eight-45.vercel.app"
   },
   {
     "slug": "ml-system-design-feature-store",
@@ -264,7 +269,8 @@ export const generatedProjects: Project[] = [
       "Redis",
       "Supabase"
     ],
-    "url": "https://github.com/shiva-shivanibokka/ML-System-Design-Feature-Store"
+    "url": "https://github.com/shiva-shivanibokka/ML-System-Design-Feature-Store",
+    "demo": "https://ml-feature-store-three.vercel.app"
   },
   {
     "slug": "prepgap-lens",
@@ -287,7 +293,8 @@ export const generatedProjects: Project[] = [
       "Vercel",
       "GitHub Actions"
     ],
-    "url": "https://github.com/shiva-shivanibokka/PrepGap-Lens"
+    "url": "https://github.com/shiva-shivanibokka/PrepGap-Lens",
+    "demo": "https://prepgap-lens.vercel.app"
   },
   {
     "slug": "open-source-llms-api-wrapper",
@@ -306,7 +313,8 @@ export const generatedProjects: Project[] = [
       "Next.js",
       "Vercel"
     ],
-    "url": "https://github.com/shiva-shivanibokka/open-source-LLMs-api-wrapper"
+    "url": "https://github.com/shiva-shivanibokka/open-source-LLMs-api-wrapper",
+    "demo": "https://open-source-llms-api-wrapper.vercel.app"
   },
   {
     "slug": "dive-deeper-into-linear-models",
@@ -330,7 +338,8 @@ export const generatedProjects: Project[] = [
       "GitHub Actions",
       "pytest"
     ],
-    "url": "https://github.com/shiva-shivanibokka/Dive-deeper-into-linear-models"
+    "url": "https://github.com/shiva-shivanibokka/Dive-deeper-into-linear-models",
+    "demo": "https://web-sable-gamma-39.vercel.app"
   },
   {
     "slug": "multimodal-rag",
@@ -354,7 +363,8 @@ export const generatedProjects: Project[] = [
       "DeBERTa",
       "pandas"
     ],
-    "url": "https://github.com/shiva-shivanibokka/Multimodal-RAG"
+    "url": "https://github.com/shiva-shivanibokka/Multimodal-RAG",
+    "demo": "https://multimodal-rag-plum.vercel.app"
   },
   {
     "slug": "llm-hallucination-detection",
@@ -378,7 +388,8 @@ export const generatedProjects: Project[] = [
       "Groq",
       "Ollama"
     ],
-    "url": "https://github.com/shiva-shivanibokka/llm-hallucination-detection"
+    "url": "https://github.com/shiva-shivanibokka/llm-hallucination-detection",
+    "demo": "https://frontend-shiv-a.vercel.app"
   },
   {
     "slug": "all-about-cross-validation",
@@ -402,7 +413,8 @@ export const generatedProjects: Project[] = [
       "Optuna",
       "pytest"
     ],
-    "url": "https://github.com/shiva-shivanibokka/All-About-Cross-Validation"
+    "url": "https://github.com/shiva-shivanibokka/All-About-Cross-Validation",
+    "demo": "https://cross-validation-visualizer.vercel.app"
   },
   {
     "slug": "llm-research-scraper",
@@ -426,7 +438,8 @@ export const generatedProjects: Project[] = [
       "Zod",
       "Vercel"
     ],
-    "url": "https://github.com/shiva-shivanibokka/LLM-research-scraper"
+    "url": "https://github.com/shiva-shivanibokka/LLM-research-scraper",
+    "demo": "https://research-copilot-steel.vercel.app"
   },
   {
     "slug": "games-built-using-python",
@@ -445,7 +458,8 @@ export const generatedProjects: Project[] = [
       "GitHub Actions",
       "pytest"
     ],
-    "url": "https://github.com/shiva-shivanibokka/Games-built-using-Python"
+    "url": "https://github.com/shiva-shivanibokka/Games-built-using-Python",
+    "demo": "https://games-built-using-python.vercel.app"
   },
   {
     "slug": "data-analytics-portfolio",
@@ -469,7 +483,8 @@ export const generatedProjects: Project[] = [
       "Bootstrap",
       "Recharts"
     ],
-    "url": "https://github.com/shiva-shivanibokka/Data-Analytics-Portfolio"
+    "url": "https://github.com/shiva-shivanibokka/Data-Analytics-Portfolio",
+    "demo": "https://data-analytics-portfolio-shiv-a.vercel.app"
   },
   {
     "slug": "core-algorithms-for-leetcode",
@@ -526,7 +541,8 @@ export const generatedProjects: Project[] = [
       "Vercel",
       "GitHub Actions"
     ],
-    "url": "https://github.com/shiva-shivanibokka/Data-Preprocessing"
+    "url": "https://github.com/shiva-shivanibokka/Data-Preprocessing",
+    "demo": "https://data-preprocessing.vercel.app"
   },
   {
     "slug": "nlp-pipeline-at-scale",
@@ -550,7 +566,8 @@ export const generatedProjects: Project[] = [
       "Seaborn",
       "Plotly"
     ],
-    "url": "https://github.com/shiva-shivanibokka/NLP-Pipeline-at-Scale"
+    "url": "https://github.com/shiva-shivanibokka/NLP-Pipeline-at-Scale",
+    "demo": "https://frontend-ten-eta-64.vercel.app"
   },
   {
     "slug": "fine-tuned-domain-llm-qlora",
@@ -574,7 +591,8 @@ export const generatedProjects: Project[] = [
       "OpenAI",
       "Anthropic"
     ],
-    "url": "https://github.com/shiva-shivanibokka/Fine-Tuned-Domain-LLM-QLoRA"
+    "url": "https://github.com/shiva-shivanibokka/Fine-Tuned-Domain-LLM-QLoRA",
+    "demo": "https://cuad-legal-llm.vercel.app"
   },
   {
     "slug": "dive-deeper-into-deep-learning",
@@ -598,7 +616,8 @@ export const generatedProjects: Project[] = [
       "Seaborn",
       "React"
     ],
-    "url": "https://github.com/shiva-shivanibokka/Dive-Deeper-into-Deep-Learning"
+    "url": "https://github.com/shiva-shivanibokka/Dive-Deeper-into-Deep-Learning",
+    "demo": "https://web-seven-phi-35.vercel.app"
   },
   {
     "slug": "dive-deeper-into-unsupervised-learning",
@@ -622,7 +641,8 @@ export const generatedProjects: Project[] = [
       "Seaborn",
       "React"
     ],
-    "url": "https://github.com/shiva-shivanibokka/Dive-Deeper-into-Unsupervised-Learning"
+    "url": "https://github.com/shiva-shivanibokka/Dive-Deeper-into-Unsupervised-Learning",
+    "demo": "https://web-swart-psi-49.vercel.app"
   },
   {
     "slug": "dive-deeper-into-supervised-learning",
@@ -646,7 +666,8 @@ export const generatedProjects: Project[] = [
       "Seaborn",
       "FastAPI"
     ],
-    "url": "https://github.com/shiva-shivanibokka/Dive-Deeper-into-Supervised-Learning"
+    "url": "https://github.com/shiva-shivanibokka/Dive-Deeper-into-Supervised-Learning",
+    "demo": "https://dive-deeper-supervised-learning.vercel.app"
   },
   {
     "slug": "supply-chain-demand-agent",
@@ -670,7 +691,8 @@ export const generatedProjects: Project[] = [
       "pandas",
       "Plotly"
     ],
-    "url": "https://github.com/shiva-shivanibokka/Supply-Chain-Demand-Agent"
+    "url": "https://github.com/shiva-shivanibokka/Supply-Chain-Demand-Agent",
+    "demo": "https://supply-chain-demand-agent.vercel.app"
   },
   {
     "slug": "multi-horizon-stock-forecasting-ai-model",
@@ -694,7 +716,8 @@ export const generatedProjects: Project[] = [
       "Vercel",
       "GitHub Actions"
     ],
-    "url": "https://github.com/shiva-shivanibokka/Multi-Horizon-Stock-Forecasting-AI-Model"
+    "url": "https://github.com/shiva-shivanibokka/Multi-Horizon-Stock-Forecasting-AI-Model",
+    "demo": "https://mhf-forecaster.vercel.app"
   },
   {
     "slug": "competitor-insight-engine",
@@ -718,7 +741,8 @@ export const generatedProjects: Project[] = [
       "Next.js",
       "Vercel"
     ],
-    "url": "https://github.com/shiva-shivanibokka/Competitor-Insight-Engine"
+    "url": "https://github.com/shiva-shivanibokka/Competitor-Insight-Engine",
+    "demo": "https://competitor-insight-engine.vercel.app"
   },
   {
     "slug": "basics-of-linear-and-logistic-regression",
@@ -806,7 +830,8 @@ export const generatedProjects: Project[] = [
       "RAG",
       "FAISS"
     ],
-    "url": "https://github.com/shiva-shivanibokka/Search-Ranking-System"
+    "url": "https://github.com/shiva-shivanibokka/Search-Ranking-System",
+    "demo": "https://web-shiv-a.vercel.app"
   },
   {
     "slug": "transfer-learning-huggingface",
@@ -830,7 +855,8 @@ export const generatedProjects: Project[] = [
       "pandas",
       "Matplotlib"
     ],
-    "url": "https://github.com/shiva-shivanibokka/Transfer-Learning-HuggingFace"
+    "url": "https://github.com/shiva-shivanibokka/Transfer-Learning-HuggingFace",
+    "demo": "https://transfer-learning-hugging-face.vercel.app"
   },
   {
     "slug": "sepsis-ml-model",
@@ -942,7 +968,8 @@ export const generatedProjects: Project[] = [
       "pandas",
       "Matplotlib"
     ],
-    "url": "https://github.com/shiva-shivanibokka/ML-System-Design-Retraining-Pipeline"
+    "url": "https://github.com/shiva-shivanibokka/ML-System-Design-Retraining-Pipeline",
+    "demo": "https://ml-system-design-retraining-pipelin.vercel.app"
   },
   {
     "slug": "scm-using-mcp-and-llm",
@@ -966,7 +993,8 @@ export const generatedProjects: Project[] = [
       "pandas",
       "DuckDB"
     ],
-    "url": "https://github.com/shiva-shivanibokka/SCM-using-MCP-and-LLM"
+    "url": "https://github.com/shiva-shivanibokka/SCM-using-MCP-and-LLM",
+    "demo": "https://scm-using-mcp-and-llm.vercel.app"
   },
   {
     "slug": "resumeforge",
@@ -990,7 +1018,8 @@ export const generatedProjects: Project[] = [
       "Postgres",
       "React"
     ],
-    "url": "https://github.com/shiva-shivanibokka/ResumeForge"
+    "url": "https://github.com/shiva-shivanibokka/ResumeForge",
+    "demo": "https://resume-forge-shiv-a.vercel.app"
   },
   {
     "slug": "ml-system-design-recommendation-engine",
@@ -1014,7 +1043,8 @@ export const generatedProjects: Project[] = [
       "Kafka",
       "FastAPI"
     ],
-    "url": "https://github.com/shiva-shivanibokka/ML-System-Design-Recommendation-Engine"
+    "url": "https://github.com/shiva-shivanibokka/ML-System-Design-Recommendation-Engine",
+    "demo": "https://ml-system-design-recommendation-eng.vercel.app"
   },
   {
     "slug": "churn-intelligence-platform",
@@ -1038,7 +1068,8 @@ export const generatedProjects: Project[] = [
       "Pydantic",
       "Node.js"
     ],
-    "url": "https://github.com/shiva-shivanibokka/Churn-Intelligence-Platform"
+    "url": "https://github.com/shiva-shivanibokka/Churn-Intelligence-Platform",
+    "demo": "https://customer-segmentation-churn.vercel.app"
   },
   {
     "slug": "codepilot-agent",
@@ -1083,7 +1114,8 @@ export const generatedProjects: Project[] = [
       "NumPy",
       "FastAPI"
     ],
-    "url": "https://github.com/shiva-shivanibokka/RAG-vs-CAG-Showdown"
+    "url": "https://github.com/shiva-shivanibokka/RAG-vs-CAG-Showdown",
+    "demo": "https://rag-vs-cag-showdown.vercel.app"
   },
   {
     "slug": "take-home-project",
@@ -1107,7 +1139,8 @@ export const generatedProjects: Project[] = [
       "Vercel",
       "AWS"
     ],
-    "url": "https://github.com/shiva-shivanibokka/take-home-project"
+    "url": "https://github.com/shiva-shivanibokka/take-home-project",
+    "demo": "https://take-home-project-ten.vercel.app"
   },
   {
     "slug": "ml-system-design-model-serving",

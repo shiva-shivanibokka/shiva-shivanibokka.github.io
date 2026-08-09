@@ -61,6 +61,17 @@ export default function ProjectCard({ project }: { project: Project }) {
         >
           View repo →
         </a>
+        {/* Only present when the deployment answered at build time. */}
+        {project.demo && (
+          <a
+            href={project.demo}
+            target="_blank"
+            rel="noreferrer"
+            className="text-[13.5px] font-semibold text-warm transition hover:text-mint"
+          >
+            Live demo →
+          </a>
+        )}
       </div>
     </article>
   )

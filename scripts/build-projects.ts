@@ -41,8 +41,44 @@ interface Repo {
   fork: boolean
   archived: boolean
   language: string | null
+  homepage: string | null
   topics?: string[]
   pushed_at: string
+}
+
+// A demo link is only worth showing if it still answers. These live on free
+// tiers that expire, get suspended, or quietly stop building, so the repo's
+// homepage field is treated as a claim to verify rather than a fact. Checked at
+// build time, which the daily CI run repeats — a demo that dies drops off the
+// site on its own, and comes back if it is redeployed.
+const DEMO_TIMEOUT_MS = 12_000
+
+async function checkLive(url: string): Promise<boolean> {
+  // Two attempts: a single flaky request from CI should not silently strip a
+  // link from every card. GET rather than HEAD — some static hosts reject HEAD,
+  // and GET is what an actual visitor performs.
+  for (let attempt = 0; attempt < 2; attempt++) {
+    const ctl = new AbortController()
+    const timer = setTimeout(() => ctl.abort(), DEMO_TIMEOUT_MS)
+    try {
+      const res = await fetch(url, { signal: ctl.signal, redirect: 'follow', headers: { 'User-Agent': 'portfolio-build' } })
+      if (res.ok) return true
+    } catch {
+      // network error, DNS failure or timeout — fall through and retry once
+    } finally {
+      clearTimeout(timer)
+    }
+  }
+  return false
+}
+
+// Homepages that point back at this site or at the repo itself are not demos.
+function demoCandidate(repo: string, homepage: string | null): string | null {
+  const url = (homepage || '').trim()
+  if (!/^https?:\/\//i.test(url)) return null
+  if (/github\.com/i.test(url)) return null
+  if (new RegExp(`${OWNER}\\.github\\.io/?$`, 'i').test(url)) return null
+  return url
 }
 
 async function listRepos(): Promise<Repo[]> {
@@ -300,7 +336,9 @@ async function main() {
   console.log(`Found ${repos.length} repos for @${OWNER}`)
 
   const shown: Project[] = []
+  const dead: string[] = []
   let scanned = 0
+  let live = 0
   for (const r of repos) {
     const key = r.name.toLowerCase()
     if (r.fork || r.archived || EXCLUDE.has(key)) continue
@@ -315,6 +353,16 @@ async function main() {
     const manifests = await fetchManifests(r.name)
     const hay = `${r.name} ${(r.topics || []).join(' ')} ${r.description || ''} ${langs.join(' ')} ${readme}\n${manifests}`.toLowerCase()
     const tech = detectTech(hay, langs)
+    const candidate = demoCandidate(r.name, r.homepage)
+    let demo: string | undefined
+    if (candidate) {
+      if (await checkLive(candidate)) {
+        demo = candidate
+        live++
+      } else {
+        dead.push(`${r.name} → ${candidate}`)
+      }
+    }
     shown.push({
       slug: slugify(r.name),
       title: prettyTitle(r.name),
@@ -323,10 +371,14 @@ async function main() {
       blurb,
       tech: tech.length ? tech : ['Project'],
       url: `https://github.com/${OWNER}/${r.name}`,
+      ...(demo ? { demo } : {}),
     })
   }
 
   console.log(`  ${shown.length} shown (of ${scanned} scanned; rest filtered for thin/empty READMEs)`)
+  console.log(`  ${live} live demos linked`)
+  // Never drop a demo silently — an unreachable one is a thing to go fix.
+  if (dead.length) console.warn(`  ${dead.length} demo(s) unreachable, link omitted:\n    ${dead.join('\n    ')}`)
 
   const body =
     `import type { Project } from './types'\n\n` +
