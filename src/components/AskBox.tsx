@@ -1,8 +1,10 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { useRetriever } from '../hooks/useRetriever'
 import { projects } from '../data/projects'
 import type { Answer } from '../rag/answer'
+import ChatPanel from './ChatPanel'
+import { chatAvailable } from '../lib/chat'
 
 const REPO_COUNT = new Set(projects.map((p) => p.repo)).size
 
@@ -16,6 +18,7 @@ const TRACE = [
 ]
 
 type State = 'idle' | 'thinking' | 'done' | 'error'
+type Mode = 'search' | 'chat'
 
 export default function AskBox({ ask: askProp }: { ask?: (q: string) => Promise<Answer> }) {
   const hook = useRetriever()
@@ -23,6 +26,19 @@ export default function AskBox({ ask: askProp }: { ask?: (q: string) => Promise<
   const [query, setQuery] = useState('')
   const [state, setState] = useState<State>('idle')
   const [answer, setAnswer] = useState<Answer | null>(null)
+  // Search stays the default deliberately: it is the part that runs entirely in
+  // the browser, and it is instant. Chat is the opt-in second gear.
+  const [mode, setMode] = useState<Mode>('search')
+  // The chat tab appears only once the Worker confirms it holds a key, so a
+  // visitor is never offered a button that errors.
+  const [canChat, setCanChat] = useState(false)
+  useEffect(() => {
+    let alive = true
+    chatAvailable().then((ok) => alive && setCanChat(ok))
+    return () => {
+      alive = false
+    }
+  }, [])
 
   async function run(q: string) {
     if (!q.trim()) return
@@ -51,9 +67,28 @@ export default function AskBox({ ask: askProp }: { ask?: (q: string) => Promise<
         <span className="h-2.5 w-2.5 rounded-full bg-[#FEBC2E]" />
         <span className="h-2.5 w-2.5 rounded-full bg-[#28C840]" />
         <span className="ml-2 text-[12.5px] text-muted">ask-my-work — zsh</span>
+        {canChat && (
+        <div className="ml-auto flex gap-1 rounded-full border border-white/10 bg-white/[0.03] p-0.5">
+          {(['search', 'chat'] as Mode[]).map((m) => (
+            <button
+              key={m}
+              onClick={() => setMode(m)}
+              aria-pressed={mode === m}
+              className={`rounded-full px-3 py-1 text-[12px] font-bold transition ${
+                mode === m ? 'bg-mint/15 text-mint' : 'text-muted hover:text-text'
+              }`}
+            >
+              {m === 'search' ? 'search' : 'chat'}
+            </button>
+          ))}
+        </div>
+        )}
       </div>
 
+      {canChat && mode === 'chat' && <ChatPanel />}
+
       {/* prompt row */}
+      {(mode === 'search' || !canChat) && (
       <form
         role="search"
         onSubmit={(e) => {
@@ -87,9 +122,10 @@ export default function AskBox({ ask: askProp }: { ask?: (q: string) => Promise<
           RUN ⌘↵
         </button>
       </form>
+      )}
 
       {/* idle: example questions */}
-      {state === 'idle' && (
+      {mode === 'search' && state === 'idle' && (
         <>
           <p className="px-5 pb-2.5 text-[13.5px] text-muted">
             ↳ semantic search over my repos — finds the most relevant projects by meaning, with match scores:
@@ -112,7 +148,7 @@ export default function AskBox({ ask: askProp }: { ask?: (q: string) => Promise<
       )}
 
       {/* thinking: live retrieval trace */}
-      {state === 'thinking' && (
+      {mode === 'search' && state === 'thinking' && (
         <div className="space-y-2 px-5 py-5 text-[13.5px]">
           {TRACE.map((s, i) => (
             <motion.p
@@ -129,7 +165,7 @@ export default function AskBox({ ask: askProp }: { ask?: (q: string) => Promise<
       )}
 
       {/* done */}
-      {state === 'done' &&
+      {mode === 'search' && state === 'done' &&
         answer &&
         (answer.empty ? (
           <p className="px-5 py-5 text-[13.5px] text-muted">
@@ -191,7 +227,7 @@ export default function AskBox({ ask: askProp }: { ask?: (q: string) => Promise<
         ))}
 
       {/* error */}
-      {state === 'error' && (
+      {mode === 'search' && state === 'error' && (
         <p className="px-5 py-5 text-[13.5px] text-muted">
           Something went wrong loading the model. Browse{' '}
           <a href="#projects" className="text-primary underline">

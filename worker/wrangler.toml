@@ -1,0 +1,17 @@
+name = "portfolio-chat"
+main = "src/index.ts"
+compatibility_date = "2026-08-09"
+
+[vars]
+# The Worker fetches the corpus itself rather than trusting the request body,
+# so the browser can only ever send chunk ids.
+CORPUS_URL = "https://shiva-shivanibokka.github.io/chat-corpus.json"
+ALLOWED_ORIGINS = "https://shiva-shivanibokka.github.io,http://localhost:5173,http://localhost:4177"
+
+# Per-IP daily counter, so a script pointed at the endpoint cannot run up a bill.
+[[kv_namespaces]]
+binding = "RATE"
+id = "b52ced81ab144a4594794751fceb10b9"
+
+# ANTHROPIC_API_KEY is a secret, never a var:
+#   npx wrangler secret put ANTHROPIC_API_KEY

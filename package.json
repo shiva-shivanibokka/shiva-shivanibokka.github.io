@@ -5,13 +5,14 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "npm run build:projects && npm run build:index && tsc -b && vite build && npm run build:static",
+    "build": "npm run build:projects && npm run build:index && npm run build:chat-corpus && tsc -b && vite build && npm run build:static",
     "build:projects": "tsx scripts/build-projects.ts",
     "build:index": "tsx scripts/build-index.ts",
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
-    "build:static": "tsx scripts/build-static-html.ts"
+    "build:static": "tsx scripts/build-static-html.ts",
+    "build:chat-corpus": "tsx scripts/build-chat-corpus.ts"
   },
   "dependencies": {
     "@xenova/transformers": "^2.17.2",
