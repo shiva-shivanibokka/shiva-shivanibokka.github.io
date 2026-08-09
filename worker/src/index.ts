@@ -41,6 +41,7 @@ interface CatalogEntry {
   demo?: string
 }
 interface Corpus {
+  generated?: string
   bio: string
   contact?: { label: string; url: string }[]
   experience: { role: string; org: string; period: string; bullets: string[] }[]
@@ -166,6 +167,70 @@ ${focusBlock}
 ${readmes}`
 }
 
+// Answer cache. Visitors overwhelmingly ask the same handful of things — the
+// four starter chips most of all — and regenerating a token-identical answer
+// costs quota, money and two seconds of someone's attention for nothing.
+//
+// The corpus timestamp is part of the key, so the whole cache invalidates by
+// construction the moment the daily rebuild changes anything. No stale answer
+// can outlive the README it came from.
+const CACHE_TTL_SECONDS = 604800 // 7 days, or until the corpus changes
+
+async function cacheKey(payload: unknown): Promise<string> {
+  const bytes = new TextEncoder().encode(JSON.stringify(payload))
+  const digest = await crypto.subtle.digest('SHA-256', bytes)
+  const hex = [...new Uint8Array(digest)].map((b) => b.toString(16).padStart(2, '0')).join('')
+  return `ans:${hex}`
+}
+
+/** Replay a cached answer as a stream, so it arrives the way a fresh one does. */
+function replay(text: string): ReadableStream {
+  const encoder = new TextEncoder()
+  return new ReadableStream({
+    start(controller) {
+      // Chunked rather than dumped in one frame: a cached answer that snaps in
+      // instantly reads as a canned response, which undersells it.
+      for (let i = 0; i < text.length; i += 90) {
+        controller.enqueue(encoder.encode(`data: ${JSON.stringify({ t: text.slice(i, i + 90) })}\n\n`))
+      }
+      controller.enqueue(encoder.encode('data: [DONE]\n\n'))
+      controller.close()
+    },
+  })
+}
+
+/** Pass the stream to the caller while collecting it for the cache. */
+function teeAndStore(
+  stream: ReadableStream,
+  store: (text: string) => void,
+): ReadableStream {
+  const decoder = new TextDecoder()
+  let acc = ''
+  return stream.pipeThrough(
+    new TransformStream({
+      transform(chunk, controller) {
+        const s = decoder.decode(chunk, { stream: true })
+        for (const line of s.split('\n')) {
+          const t = line.trim()
+          if (!t.startsWith('data:')) continue
+          const raw = t.slice(5).trim()
+          if (!raw || raw === '[DONE]') continue
+          try {
+            const o = JSON.parse(raw)
+            if (typeof o.t === 'string') acc += o.t
+          } catch {
+            // not a text frame — nothing to collect
+          }
+        }
+        controller.enqueue(chunk)
+      },
+      flush() {
+        if (acc.trim()) store(acc)
+      },
+    }),
+  )
+}
+
 async function rateLimited(env: Env, ip: string): Promise<boolean> {
   const key = `rl:${new Date().toISOString().slice(0, 10)}:${ip}`
   const n = Number((await env.RATE.get(key)) ?? '0')
@@ -175,7 +240,7 @@ async function rateLimited(env: Env, ip: string): Promise<boolean> {
 }
 
 export default {
-  async fetch(request: Request, env: Env): Promise<Response> {
+  async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     const origin = request.headers.get('Origin')
     const cors = corsHeaders(origin, env)
     const provider = pickProvider(env)
@@ -205,14 +270,6 @@ export default {
     if (!provider) {
       return new Response(JSON.stringify({ error: 'Chat is not configured yet.' }), {
         status: 503,
-        headers: { ...cors, 'Content-Type': 'application/json' },
-      })
-    }
-
-    const ip = request.headers.get('CF-Connecting-IP') ?? 'unknown'
-    if (await rateLimited(env, ip)) {
-      return new Response(JSON.stringify({ error: 'Daily limit reached. Try again tomorrow, or email her directly.' }), {
-        status: 429,
         headers: { ...cors, 'Content-Type': 'application/json' },
       })
     }
@@ -262,6 +319,37 @@ export default {
       // Whatever the focus project contributed is already present in full.
       .filter((c) => c.repo !== focusRepo)
 
+    const sseHeaders = {
+      ...cors,
+      'Content-Type': 'text/event-stream; charset=utf-8',
+      'Cache-Control': 'no-cache',
+      Connection: 'keep-alive',
+    }
+
+    // Cache lookup comes BEFORE the rate limiter on purpose. A question that has
+    // already been answered costs nothing to serve, so it should not count
+    // against anyone's allowance — and the starter chips, which are the most
+    // asked questions by a wide margin, become free and instant.
+    const key = await cacheKey({
+      gen: corpus.generated,
+      provider,
+      focusRepo,
+      chunkIds: chunks.map((c) => c.repo + c.text.slice(0, 24)),
+      messages,
+    })
+    const hit = await env.RATE.get(key)
+    if (hit) {
+      return new Response(replay(hit), { headers: { ...sseHeaders, 'X-Cache': 'HIT' } })
+    }
+
+    const ip = request.headers.get('CF-Connecting-IP') ?? 'unknown'
+    if (await rateLimited(env, ip)) {
+      return new Response(JSON.stringify({ error: 'Daily limit reached. Try again tomorrow, or email her directly.' }), {
+        status: 429,
+        headers: { ...cors, 'Content-Type': 'application/json' },
+      })
+    }
+
     const result = await streamAnswer(provider, env, systemPrompt(corpus, chunks, focus, focusRepo), messages)
     if (!result.ok) {
       console.error('provider error', provider, result.status, result.detail)
@@ -271,13 +359,10 @@ export default {
       })
     }
 
-    return new Response(result.stream, {
-      headers: {
-        ...cors,
-        'Content-Type': 'text/event-stream; charset=utf-8',
-        'Cache-Control': 'no-cache',
-        Connection: 'keep-alive',
-      },
+    const stream = teeAndStore(result.stream, (text) => {
+      ctx.waitUntil(env.RATE.put(key, text, { expirationTtl: CACHE_TTL_SECONDS }))
     })
+
+    return new Response(stream, { headers: { ...sseHeaders, 'X-Cache': 'MISS' } })
   },
 }
