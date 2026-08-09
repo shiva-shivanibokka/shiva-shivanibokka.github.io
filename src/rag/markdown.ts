@@ -16,7 +16,22 @@ export function stripMarkdown(md: string): string {
     .replace(/^\s*\[[^\]]+\]:\s*\S+.*$/gm, ' ')    // reference link defs
     .replace(/<[^>]+>/g, ' ')                       // HTML tags
     .replace(/^\s*\|?[\s:|-]+\|[\s:|-]*$/gm, ' ')  // table separator rows
-    .replace(/\|/g, ' ')                            // remaining table pipes
+    // Table rows, turned into readable sentences rather than run-on words.
+    // Replacing pipes with spaces merged every cell of every row into one
+    // stream — "Agent Model Responsibility Orchestrator Haiku/Sonnet Intent
+    // classification" — which is unreadable in a result and near-useless as
+    // model context. Cells are joined with an em dash and the row is ended with
+    // a full stop, so rows stay distinct once whitespace is collapsed.
+    .replace(/^[ \t]*\|(.+)\|[ \t]*$/gm, (_line, body: string) => {
+      const cells = body
+        .split('|')
+        .map((c) => c.trim())
+        .filter(Boolean)
+      if (!cells.length) return ' '
+      const row = cells.join(' — ')
+      return /[.!?:;]$/.test(row) ? row : row + '.'
+    })
+    .replace(/\|/g, ' ')                            // any pipe not in a full row
     .replace(/^\s{0,3}#{1,6}\s+/gm, '')            // heading markers
     .replace(/^\s{0,3}>\s?/gm, '')                 // blockquotes
     .replace(/^\s{0,3}[-*+]\s+/gm, '')             // list bullets

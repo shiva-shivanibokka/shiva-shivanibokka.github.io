@@ -194,8 +194,12 @@ export default function AskBox({ ask: askProp }: { ask?: (q: string) => Promise<
                   </a>
                   <span className="text-[12.5px] text-mint">· {g.score.toFixed(2)} match</span>
                 </div>
+                {/* A chunk runs to 1200 characters. Printed whole it buries the
+                    other matches under a wall of README, which is the opposite
+                    of what a ranked result is for — enough to judge relevance,
+                    then the link. */}
                 <p className="mt-2 whitespace-pre-line text-[14.5px] leading-relaxed text-[#D4CDE0]">
-                  {g.text}
+                  {g.text.length > 340 ? g.text.slice(0, 337).trimEnd() + '…' : g.text}
                 </p>
               </div>
             ))}

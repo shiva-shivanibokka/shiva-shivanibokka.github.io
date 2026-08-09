@@ -41,7 +41,10 @@ export async function buildIndex(opts: {
   // about projects, and including the bio added noise + off-topic matches.
   for (const p of projects) {
     const readme = stripMarkdown(await fetchReadme(p.repo))
-    const corpus = [`# ${p.title}\n${p.blurb}`, readme].filter(Boolean).join('\n\n')
+    // Title + blurb lead every corpus so each chunk carries topical context.
+    // Written as prose rather than a markdown heading — the "# " marker was
+    // surviving into the retrieved text and showing up in search results.
+    const corpus = [`${p.title}. ${p.blurb}`, readme].filter(Boolean).join('\n\n')
     chunkText(corpus).forEach((text, i) => {
       chunks.push({ id: `${p.slug}-${i}`, repo: p.repo, domain: p.domain, title: p.title, url: p.url, text })
     })

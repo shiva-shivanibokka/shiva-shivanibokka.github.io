@@ -17,7 +17,19 @@ export function chunkText(
     if (p.length <= maxChars) {
       units.push(p)
     } else {
-      for (let i = 0; i < p.length; i += maxChars) units.push(p.slice(i, i + maxChars))
+      // Break at the last space before the limit, not at the limit itself.
+      // Slicing on the character count alone cuts words in half, and the halves
+      // surface verbatim in search results — one chunk opened "rchitecture".
+      let i = 0
+      while (i < p.length) {
+        let end = Math.min(i + maxChars, p.length)
+        if (end < p.length) {
+          const space = p.lastIndexOf(' ', end)
+          if (space > i) end = space
+        }
+        units.push(p.slice(i, end).trim())
+        i = end
+      }
     }
   }
 
