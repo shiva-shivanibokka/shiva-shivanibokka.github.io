@@ -48,8 +48,10 @@ export async function buildIndex(opts: {
     // When a repo has no GitHub description the blurb IS the README's opening
     // paragraph, so prepending it made the first result say the same sentence
     // twice. Compare the openings and drop the blurb when it is already there.
-    const norm = (s: string) => s.slice(0, 80).toLowerCase().replace(/[^a-z0-9]+/g, '')
-    const duplicated = Boolean(p.blurb) && norm(readme).startsWith(norm(p.blurb).slice(0, 40))
+    // Looked for near the start rather than at it: a README opens with its own
+    // title, and the duplicated paragraph follows a line or two later.
+    const norm = (s: string, n: number) => s.slice(0, n).toLowerCase().replace(/[^a-z0-9]+/g, '')
+    const duplicated = p.blurb.length > 40 && norm(readme, 400).includes(norm(p.blurb, 60).slice(0, 40))
     const lead = duplicated ? `${p.title}.` : `${p.title}. ${p.blurb}`
     const corpus = [lead, readme].filter(Boolean).join('\n\n')
     chunkText(corpus).forEach((text, i) => {
