@@ -17,6 +17,12 @@ const TRACE = [
   'surfacing the best matches…',
 ]
 
+// The embedding model is ~22 MB and only downloads the first time anyone
+// searches. Claiming to be "embedding your query" through a 20-second download
+// is a lie the visitor can feel, so the first run says what is actually
+// happening — and why it will not happen again.
+const FIRST_RUN_TRACE = ['fetching the embedding model — 22 MB, once per browser…', ...TRACE]
+
 type State = 'idle' | 'thinking' | 'done' | 'error'
 type Mode = 'search' | 'chat'
 
@@ -29,6 +35,8 @@ export default function AskBox({ ask: askProp }: { ask?: (q: string) => Promise<
   // Search stays the default deliberately: it is the part that runs entirely in
   // the browser, and it is instant. Chat is the opt-in second gear.
   const [mode, setMode] = useState<Mode>('search')
+  // First search of the session pays for the model download; later ones do not.
+  const [warm, setWarm] = useState(false)
   // The chat tab appears only once the Worker confirms it holds a key, so a
   // visitor is never offered a button that errors.
   const [canChat, setCanChat] = useState(false)
@@ -47,6 +55,7 @@ export default function AskBox({ ask: askProp }: { ask?: (q: string) => Promise<
     try {
       const a = await ask(q)
       setAnswer(a)
+      setWarm(true)
       setState('done')
     } catch {
       setState('error')
@@ -150,7 +159,7 @@ export default function AskBox({ ask: askProp }: { ask?: (q: string) => Promise<
       {/* thinking: live retrieval trace */}
       {mode === 'search' && state === 'thinking' && (
         <div className="space-y-2 px-5 py-5 text-[13.5px]">
-          {TRACE.map((s, i) => (
+          {(warm ? TRACE : FIRST_RUN_TRACE).map((s, i) => (
             <motion.p
               key={s}
               initial={{ opacity: 0, x: -6 }}

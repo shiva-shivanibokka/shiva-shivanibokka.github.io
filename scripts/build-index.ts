@@ -44,7 +44,14 @@ export async function buildIndex(opts: {
     // Title + blurb lead every corpus so each chunk carries topical context.
     // Written as prose rather than a markdown heading — the "# " marker was
     // surviving into the retrieved text and showing up in search results.
-    const corpus = [`${p.title}. ${p.blurb}`, readme].filter(Boolean).join('\n\n')
+    //
+    // When a repo has no GitHub description the blurb IS the README's opening
+    // paragraph, so prepending it made the first result say the same sentence
+    // twice. Compare the openings and drop the blurb when it is already there.
+    const norm = (s: string) => s.slice(0, 80).toLowerCase().replace(/[^a-z0-9]+/g, '')
+    const duplicated = Boolean(p.blurb) && norm(readme).startsWith(norm(p.blurb).slice(0, 40))
+    const lead = duplicated ? `${p.title}.` : `${p.title}. ${p.blurb}`
+    const corpus = [lead, readme].filter(Boolean).join('\n\n')
     chunkText(corpus).forEach((text, i) => {
       chunks.push({ id: `${p.slug}-${i}`, repo: p.repo, domain: p.domain, title: p.title, url: p.url, text })
     })
