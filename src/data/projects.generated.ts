@@ -4,6 +4,72 @@ import type { Project } from './types'
 // Every public repo with a detailed README (empty / stub repos filtered out).
 export const generatedProjects: Project[] = [
   {
+    "slug": "churn-intelligence-platform",
+    "title": "Churn Intelligence Platform",
+    "repo": "Churn-Intelligence-Platform",
+    "domain": "Classical ML",
+    "blurb": "End-to-end decision intelligence platform: behavioral segmentation → per-cohort churn prediction → uplift modeling → 12-tool AI retention agent → closed-loop outcome tracking.",
+    "tech": [
+      "Python",
+      "TypeScript",
+      "PLpgSQL",
+      "scikit-learn",
+      "XGBoost",
+      "CatBoost",
+      "Groq",
+      "Plotly",
+      "FastAPI",
+      "uvicorn"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/Churn-Intelligence-Platform",
+    "demo": "https://customer-segmentation-churn.vercel.app",
+    "outcome": "Raw CatBoost output is not well-calibrated — a score of 0.7 ≠ 70% actual churn rate."
+  },
+  {
+    "slug": "sepsis-ml-model",
+    "title": "Sepsis ML Model",
+    "repo": "Sepsis-ML-Model",
+    "domain": "Classical ML",
+    "blurb": "Early prediction of sepsis in ICU patients using Random Forest and XGBoost on the PhysioNet/CinC Challenge 2019 dataset. Covers the full ML pipeline: EDA, preprocessing, feature selection, and model tuning. Built as an introductory project for students learning applied machine learning.",
+    "tech": [
+      "Jupyter Notebook",
+      "Python",
+      "scikit-learn",
+      "XGBoost",
+      "FastAPI",
+      "uvicorn",
+      "Pydantic",
+      "GitHub Actions",
+      "SciPy",
+      "NumPy"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/Sepsis-ML-Model",
+    "demo": "https://sepsis-icu-classifier.vercel.app",
+    "outcome": "Imbalanced classification — SMOTE, F1-over-accuracy framing, threshold calibration for a ~7% positive rate."
+  },
+  {
+    "slug": "tisch-ml-model",
+    "title": "Tisch ML Model",
+    "repo": "Tisch-ML-Model",
+    "domain": "Classical ML",
+    "blurb": "A machine learning classification project using the TISCH (Tumor Immune Single-cell Hub) dataset, applying machine learning techniques to classify cell types across cancer samples from single-cell RNA sequencing data.",
+    "tech": [
+      "Jupyter Notebook",
+      "Python",
+      "scikit-learn",
+      "XGBoost",
+      "ONNX",
+      "FastAPI",
+      "uvicorn",
+      "Pydantic",
+      "GitHub Actions",
+      "SciPy"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/Tisch-ML-Model",
+    "demo": "https://tisch-kidney-classifier.vercel.app",
+    "outcome": "A \"always predict Proximal Tubule\" model would score ~50% accuracy while learning nothing; weighted F1 rewards performance across all classes."
+  },
+  {
     "slug": "gradient-descent-and-optimizers",
     "title": "Gradient Descent And Optimizers",
     "repo": "Gradient-Descent-and-Optimizers",
@@ -749,27 +815,6 @@ export const generatedProjects: Project[] = [
     "outcome": "Accuracy swings 42%→52% across five prompt templates; a 5-template ensemble recovers to 53.1% — but that is still far below a fine-tuned CNN's linear probe (78%), so any labeled data makes fine-tuning the better choice."
   },
   {
-    "slug": "sepsis-ml-model",
-    "title": "Sepsis ML Model",
-    "repo": "Sepsis-ML-Model",
-    "domain": "Classical ML",
-    "blurb": "Early prediction of sepsis in ICU patients using Random Forest and XGBoost on the PhysioNet/CinC Challenge 2019 dataset. Covers the full ML pipeline: EDA, preprocessing, feature selection, and model tuning. Built as an introductory project for students learning applied machine learning.",
-    "tech": [
-      "Jupyter Notebook",
-      "Python",
-      "scikit-learn",
-      "XGBoost",
-      "FastAPI",
-      "uvicorn",
-      "Pydantic",
-      "GitHub Actions",
-      "GCP",
-      "SciPy"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/Sepsis-ML-Model",
-    "outcome": "Imbalanced classification — SMOTE, F1-over-accuracy framing, threshold calibration for a ~7% positive rate."
-  },
-  {
     "slug": "launchpad",
     "title": "Launchpad",
     "repo": "launchpad",
@@ -784,27 +829,6 @@ export const generatedProjects: Project[] = [
       "Vite"
     ],
     "url": "https://github.com/shiva-shivanibokka/launchpad"
-  },
-  {
-    "slug": "tisch-ml-model",
-    "title": "Tisch ML Model",
-    "repo": "Tisch-ML-Model",
-    "domain": "Classical ML",
-    "blurb": "A machine learning classification project using the TISCH (Tumor Immune Single-cell Hub) dataset, applying machine learning techniques to classify cell types across cancer samples from single-cell RNA sequencing data.",
-    "tech": [
-      "Jupyter Notebook",
-      "Python",
-      "scikit-learn",
-      "XGBoost",
-      "FastAPI",
-      "uvicorn",
-      "Pydantic",
-      "GitHub Actions",
-      "SciPy",
-      "NumPy"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/Tisch-ML-Model",
-    "outcome": "A \"always predict Proximal Tubule\" model would score ~50% accuracy while learning nothing; weighted F1 rewards performance across all classes."
   },
   {
     "slug": "cumida-ml-model",
@@ -910,28 +934,6 @@ export const generatedProjects: Project[] = [
     ],
     "url": "https://github.com/shiva-shivanibokka/ML-System-Design-Recommendation-Engine",
     "demo": "https://ml-system-design-recommendation-eng.vercel.app"
-  },
-  {
-    "slug": "churn-intelligence-platform",
-    "title": "Churn Intelligence Platform",
-    "repo": "Churn-Intelligence-Platform",
-    "domain": "Classical ML",
-    "blurb": "End-to-end decision intelligence platform: behavioral segmentation → per-cohort churn prediction → uplift modeling → 12-tool AI retention agent → closed-loop outcome tracking.",
-    "tech": [
-      "Python",
-      "TypeScript",
-      "PLpgSQL",
-      "scikit-learn",
-      "XGBoost",
-      "CatBoost",
-      "Groq",
-      "Plotly",
-      "FastAPI",
-      "uvicorn"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/Churn-Intelligence-Platform",
-    "demo": "https://customer-segmentation-churn.vercel.app",
-    "outcome": "Raw CatBoost output is not well-calibrated — a score of 0.7 ≠ 70% actual churn rate."
   },
   {
     "slug": "codepilot-agent",
