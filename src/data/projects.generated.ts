@@ -4,6 +4,69 @@ import type { Project } from './types'
 // Every public repo with a detailed README (empty / stub repos filtered out).
 export const generatedProjects: Project[] = [
   {
+    "slug": "ml-system-design-model-serving",
+    "title": "ML System Design Model Serving",
+    "repo": "ML-System-Design-Model-Serving",
+    "domain": "ML System Design",
+    "blurb": "A production-grade model deployment system built around the question every ML engineering interview asks:",
+    "tech": [
+      "Python",
+      "JavaScript",
+      "PyTorch",
+      "Transformers",
+      "Plotly",
+      "FastAPI",
+      "uvicorn",
+      "Pydantic",
+      "SQLAlchemy",
+      "Redis"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/ML-System-Design-Model-Serving",
+    "outcome": "\"What triggers automatic rollback?\" Two independent signals: error rate 5% OR p99 latency 2× v1 p99."
+  },
+  {
+    "slug": "federated-learning-simulation",
+    "title": "Federated Learning Simulation",
+    "repo": "Federated-Learning-Simulation",
+    "domain": "Full-Stack / Product",
+    "blurb": "Reconstruct a real patient's medical record from a single federated-learning gradient — then defeat the attack with differential privacy. Live, in the browser.",
+    "tech": [
+      "TypeScript",
+      "Python",
+      "JavaScript",
+      "PyTorch",
+      "scikit-learn",
+      "React",
+      "Next.js",
+      "Tailwind",
+      "Recharts",
+      "GitHub Actions"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/Federated-Learning-Simulation",
+    "demo": "https://web-neon-eight-45.vercel.app"
+  },
+  {
+    "slug": "ml-system-design-feature-store",
+    "title": "ML System Design Feature Store",
+    "repo": "ML-System-Design-Feature-Store",
+    "domain": "ML System Design",
+    "blurb": "Recruiter TL;DR - What it is: a full, live feature store — offline + online stores, point-in-time-correct training data, a dual-path serving API, and a monitoring dashboard — that structurally prevents training-serving skew , the 1 silen…",
+    "tech": [
+      "Python",
+      "TypeScript",
+      "JavaScript",
+      "scikit-learn",
+      "LightGBM",
+      "DuckDB",
+      "FastAPI",
+      "uvicorn",
+      "Pydantic",
+      "Redis"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/ML-System-Design-Feature-Store",
+    "demo": "https://ml-feature-store-three.vercel.app"
+  },
+  {
     "slug": "churn-intelligence-platform",
     "title": "Churn Intelligence Platform",
     "repo": "Churn-Intelligence-Platform",
@@ -254,48 +317,6 @@ export const generatedProjects: Project[] = [
       "FastAPI"
     ],
     "url": "https://github.com/shiva-shivanibokka/Autonomous-Research-Report-Agent"
-  },
-  {
-    "slug": "federated-learning-simulation",
-    "title": "Federated Learning Simulation",
-    "repo": "Federated-Learning-Simulation",
-    "domain": "Full-Stack / Product",
-    "blurb": "Reconstruct a real patient's medical record from a single federated-learning gradient — then defeat the attack with differential privacy. Live, in the browser.",
-    "tech": [
-      "TypeScript",
-      "Python",
-      "JavaScript",
-      "PyTorch",
-      "scikit-learn",
-      "React",
-      "Next.js",
-      "Tailwind",
-      "Recharts",
-      "GitHub Actions"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/Federated-Learning-Simulation",
-    "demo": "https://web-neon-eight-45.vercel.app"
-  },
-  {
-    "slug": "ml-system-design-feature-store",
-    "title": "ML System Design Feature Store",
-    "repo": "ML-System-Design-Feature-Store",
-    "domain": "ML System Design",
-    "blurb": "Recruiter TL;DR - What it is: a full, live feature store — offline + online stores, point-in-time-correct training data, a dual-path serving API, and a monitoring dashboard — that structurally prevents training-serving skew , the 1 silen…",
-    "tech": [
-      "Python",
-      "TypeScript",
-      "JavaScript",
-      "scikit-learn",
-      "LightGBM",
-      "DuckDB",
-      "FastAPI",
-      "uvicorn",
-      "Pydantic",
-      "Redis"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/ML-System-Design-Feature-Store",
-    "demo": "https://ml-feature-store-three.vercel.app"
   },
   {
     "slug": "prepgap-lens",
@@ -998,27 +1019,6 @@ export const generatedProjects: Project[] = [
     "url": "https://github.com/shiva-shivanibokka/take-home-project",
     "demo": "https://take-home-project-ten.vercel.app",
     "outcome": "The latency tradeoff is acceptable: the write stage increases from ~10s to ~45s."
-  },
-  {
-    "slug": "ml-system-design-model-serving",
-    "title": "ML System Design Model Serving",
-    "repo": "ML-System-Design-Model-Serving",
-    "domain": "ML System Design",
-    "blurb": "A production-grade model deployment system built around the question every ML engineering interview asks:",
-    "tech": [
-      "Python",
-      "PyTorch",
-      "Transformers",
-      "Plotly",
-      "FastAPI",
-      "uvicorn",
-      "Pydantic",
-      "SQLAlchemy",
-      "Postgres",
-      "Redis"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/ML-System-Design-Model-Serving",
-    "outcome": "\"What triggers automatic rollback?\" Two independent signals: error rate 5% OR p99 latency 2× v1 p99."
   },
   {
     "slug": "autograder-agent",
