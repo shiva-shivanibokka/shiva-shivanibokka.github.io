@@ -4,11 +4,31 @@ import type { Project } from './types'
 // Every public repo with a detailed README (empty / stub repos filtered out).
 export const generatedProjects: Project[] = [
   {
+    "slug": "computer-vision-mlops-pipeline",
+    "title": "Computer Vision MLOps Pipeline",
+    "repo": "Computer-Vision-MLOps-Pipeline",
+    "domain": "MLOps",
+    "blurb": "An end-to-end, production-style MLOps system for detecting manufacturing defects on printed circuit boards with a YOLO object detector. The point of this project is not the model — it's the closed MLOps loop around it: versioned data, tr…",
+    "tech": [
+      "Python",
+      "JavaScript",
+      "PyTorch",
+      "FastAPI",
+      "uvicorn",
+      "Pydantic",
+      "GitHub Actions",
+      "MLflow",
+      "DVC",
+      "GCP"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/Computer-Vision-MLOps-Pipeline"
+  },
+  {
     "slug": "ml-system-design-model-serving",
     "title": "ML System Design Model Serving",
     "repo": "ML-System-Design-Model-Serving",
     "domain": "ML System Design",
-    "blurb": "A production-grade model deployment system built around the question every ML engineering interview asks:",
+    "blurb": "Running on Cloud Run — control panel at /ui , API docs at /docs . Real models, real inference, nothing pre-recorded. Start on the Manual tab.",
     "tech": [
       "Python",
       "JavaScript",
@@ -174,26 +194,6 @@ export const generatedProjects: Project[] = [
     "url": "https://github.com/shiva-shivanibokka/Fraud-Detection-System",
     "demo": "https://fraud-detection-system-ebon.vercel.app",
     "outcome": "Real numbers: Tabular model AUC-PR 0.314 at a 0.49% base rate (~64× lift) on synthetic Sparkov data; GNN module — EvolveGCN-O beats static GAT and TGAT on illicit-F1 on the real Elliptic Bitcoin graph."
-  },
-  {
-    "slug": "computer-vision-mlops-pipeline",
-    "title": "Computer Vision MLOps Pipeline",
-    "repo": "Computer-Vision-MLOps-Pipeline",
-    "domain": "MLOps",
-    "blurb": "An end-to-end, production-style MLOps system for detecting manufacturing defects on printed circuit boards with a YOLO object detector. The point of this project is not the model — it's the closed MLOps loop around it: versioned data, tr…",
-    "tech": [
-      "Python",
-      "PyTorch",
-      "Transformers",
-      "FastAPI",
-      "uvicorn",
-      "Pydantic",
-      "Gradio",
-      "GitHub Actions",
-      "MLflow",
-      "DVC"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/Computer-Vision-MLOps-Pipeline"
   },
   {
     "slug": "autonomous-ml-pipeline-builder",
