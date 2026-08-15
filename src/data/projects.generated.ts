@@ -4,11 +4,168 @@ import type { Project } from './types'
 // Every public repo with a detailed README (empty / stub repos filtered out).
 export const generatedProjects: Project[] = [
   {
+    "slug": "portfolio-keepalive",
+    "title": "Portfolio Keepalive",
+    "repo": "portfolio-keepalive",
+    "domain": "ML System Design",
+    "blurb": "Keeps the Cloud Run demos warm and reports when one is down",
+    "tech": [
+      "RAG",
+      "GitHub Actions"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/portfolio-keepalive"
+  },
+  {
+    "slug": "sql-and-database-skills",
+    "title": "SQL And Database Skills",
+    "repo": "SQL-and-Database-Skills",
+    "domain": "Data Science",
+    "blurb": "Two things live in this repo: BookIt , a Postgres event-ticketing system that demonstrates production database engineering, and a set of SQL notebooks covering fundamentals through FAANG-level interview patterns on a 2.6M-row synthetic e…",
+    "tech": [
+      "Jupyter Notebook",
+      "Python",
+      "FastAPI",
+      "uvicorn",
+      "SQLAlchemy",
+      "Postgres",
+      "GitHub Actions",
+      "pandas",
+      "Matplotlib",
+      "Seaborn"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/SQL-and-Database-Skills"
+  },
+  {
+    "slug": "llm-hallucination-detection",
+    "title": "Llm Hallucination Detection",
+    "repo": "llm-hallucination-detection",
+    "domain": "LLMs & GenAI",
+    "blurb": "NLI-based hallucination detection pipeline. Flags unsupported LLM claims using DeBERTa-v3, assigns a hallucination confidence score per sentence, and grounds responses against source documents via ChromaDB.",
+    "tech": [
+      "Python",
+      "TypeScript",
+      "JavaScript",
+      "PyTorch",
+      "TensorFlow",
+      "Transformers",
+      "sentence-transformers",
+      "RAG",
+      "ChromaDB",
+      "OpenAI"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/llm-hallucination-detection",
+    "demo": "https://frontend-shiv-a.vercel.app"
+  },
+  {
+    "slug": "cumida-ml-model",
+    "title": "Cumida ML Model",
+    "repo": "Cumida-ML-Model",
+    "domain": "MLOps",
+    "blurb": "ML classification project using the CuMiDa Liver Cancer dataset, applying supervised learning techniques to classify liver cancer subtypes from curated microarray gene expression data.",
+    "tech": [
+      "Jupyter Notebook",
+      "Python",
+      "scikit-learn",
+      "FastAPI",
+      "uvicorn",
+      "Pydantic",
+      "GitHub Actions",
+      "GCP",
+      "NumPy",
+      "pandas"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/Cumida-ML-Model"
+  },
+  {
+    "slug": "nlp-pipeline-at-scale",
+    "title": "NLP Pipeline At Scale",
+    "repo": "NLP-Pipeline-at-Scale",
+    "domain": "MLOps",
+    "blurb": "[!IMPORTANT] The hosted demo is temporary. This project's backend runs on Google Cloud Run under a Google Cloud free trial that ends around 19 September 2026 . When the trial closes the service is stopped, and every run.app link below st…",
+    "tech": [
+      "Python",
+      "TypeScript",
+      "JavaScript",
+      "PyTorch",
+      "scikit-learn",
+      "Transformers",
+      "sentence-transformers",
+      "PEFT",
+      "Plotly",
+      "Kafka"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/NLP-Pipeline-at-Scale",
+    "demo": "https://frontend-ten-eta-64.vercel.app"
+  },
+  {
+    "slug": "multimodal-rag",
+    "title": "Multimodal RAG",
+    "repo": "Multimodal-RAG",
+    "domain": "LLMs & GenAI",
+    "blurb": "[!IMPORTANT] The hosted demo is temporary. This project's backend runs on Google Cloud Run under a Google Cloud free trial that ends around 19 September 2026 . When the trial closes the service is stopped, and every run.app link below st…",
+    "tech": [
+      "Python",
+      "TypeScript",
+      "JavaScript",
+      "PyTorch",
+      "Transformers",
+      "sentence-transformers",
+      "RAG",
+      "FAISS",
+      "OpenAI",
+      "Anthropic"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/Multimodal-RAG",
+    "demo": "https://multimodal-rag-plum.vercel.app"
+  },
+  {
+    "slug": "ml-system-design-feature-store",
+    "title": "ML System Design Feature Store",
+    "repo": "ML-System-Design-Feature-Store",
+    "domain": "ML System Design",
+    "blurb": "[!IMPORTANT] The hosted demo is temporary. This project's backend runs on Google Cloud Run under a Google Cloud free trial that ends around 19 September 2026 . When the trial closes the service is stopped, and every run.app link below st…",
+    "tech": [
+      "Python",
+      "TypeScript",
+      "JavaScript",
+      "scikit-learn",
+      "LightGBM",
+      "DuckDB",
+      "FastAPI",
+      "uvicorn",
+      "Pydantic",
+      "Redis"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/ML-System-Design-Feature-Store",
+    "demo": "https://ml-feature-store-three.vercel.app"
+  },
+  {
+    "slug": "ml-system-design-model-serving",
+    "title": "ML System Design Model Serving",
+    "repo": "ML-System-Design-Model-Serving",
+    "domain": "ML System Design",
+    "blurb": "[!IMPORTANT] The hosted demo is temporary. This project's backend runs on Google Cloud Run under a Google Cloud free trial that ends around 19 September 2026 . When the trial closes the service is stopped, and every run.app link below st…",
+    "tech": [
+      "Python",
+      "JavaScript",
+      "PyTorch",
+      "Transformers",
+      "Plotly",
+      "FastAPI",
+      "uvicorn",
+      "Pydantic",
+      "SQLAlchemy",
+      "Redis"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/ML-System-Design-Model-Serving",
+    "outcome": "\"What triggers automatic rollback?\" Two independent signals: error rate 5% OR p99 latency 2× v1 p99."
+  },
+  {
     "slug": "computer-vision-mlops-pipeline",
     "title": "Computer Vision MLOps Pipeline",
     "repo": "Computer-Vision-MLOps-Pipeline",
     "domain": "MLOps",
-    "blurb": "An end-to-end, production-style MLOps system for detecting manufacturing defects on printed circuit boards with a YOLO object detector. The point of this project is not the model — it's the closed MLOps loop around it: versioned data, tr…",
+    "blurb": "[!IMPORTANT] The hosted demo is temporary. This project's backend runs on Google Cloud Run under a Google Cloud free trial that ends around 19 September 2026 . When the trial closes the service is stopped, and every run.app link below st…",
     "tech": [
       "Python",
       "JavaScript",
@@ -24,25 +181,24 @@ export const generatedProjects: Project[] = [
     "url": "https://github.com/shiva-shivanibokka/Computer-Vision-MLOps-Pipeline"
   },
   {
-    "slug": "ml-system-design-model-serving",
-    "title": "ML System Design Model Serving",
-    "repo": "ML-System-Design-Model-Serving",
-    "domain": "ML System Design",
-    "blurb": "Running on Cloud Run — control panel at /ui , API docs at /docs . Real models, real inference, nothing pre-recorded. Start on the Manual tab.",
+    "slug": "ml-model-efficiency-toolkit",
+    "title": "ML Model Efficiency Toolkit",
+    "repo": "ML-Model-Efficiency-Toolkit",
+    "domain": "Full-Stack / Product",
+    "blurb": "Benchmark every major neural-network compression technique side-by-side — so the size/latency/accuracy tradeoff is measured, not guessed.",
     "tech": [
       "Python",
-      "JavaScript",
+      "TypeScript",
+      "Jupyter Notebook",
       "PyTorch",
       "Transformers",
-      "Plotly",
       "FastAPI",
-      "uvicorn",
-      "Pydantic",
-      "SQLAlchemy",
-      "Redis"
+      "React",
+      "Next.js",
+      "Tailwind",
+      "Recharts"
     ],
-    "url": "https://github.com/shiva-shivanibokka/ML-System-Design-Model-Serving",
-    "outcome": "\"What triggers automatic rollback?\" Two independent signals: error rate 5% OR p99 latency 2× v1 p99."
+    "url": "https://github.com/shiva-shivanibokka/ML-Model-Efficiency-Toolkit"
   },
   {
     "slug": "federated-learning-simulation",
@@ -64,27 +220,6 @@ export const generatedProjects: Project[] = [
     ],
     "url": "https://github.com/shiva-shivanibokka/Federated-Learning-Simulation",
     "demo": "https://web-neon-eight-45.vercel.app"
-  },
-  {
-    "slug": "ml-system-design-feature-store",
-    "title": "ML System Design Feature Store",
-    "repo": "ML-System-Design-Feature-Store",
-    "domain": "ML System Design",
-    "blurb": "Recruiter TL;DR - What it is: a full, live feature store — offline + online stores, point-in-time-correct training data, a dual-path serving API, and a monitoring dashboard — that structurally prevents training-serving skew , the 1 silen…",
-    "tech": [
-      "Python",
-      "TypeScript",
-      "JavaScript",
-      "scikit-learn",
-      "LightGBM",
-      "DuckDB",
-      "FastAPI",
-      "uvicorn",
-      "Pydantic",
-      "Redis"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/ML-System-Design-Feature-Store",
-    "demo": "https://ml-feature-store-three.vercel.app"
   },
   {
     "slug": "churn-intelligence-platform",
@@ -214,26 +349,6 @@ export const generatedProjects: Project[] = [
       "OpenAI"
     ],
     "url": "https://github.com/shiva-shivanibokka/Autonomous-ML-Pipeline-Builder"
-  },
-  {
-    "slug": "ml-model-efficiency-toolkit",
-    "title": "ML Model Efficiency Toolkit",
-    "repo": "ML-Model-Efficiency-Toolkit",
-    "domain": "Full-Stack / Product",
-    "blurb": "Benchmark every major neural-network compression technique side-by-side — so the size/latency/accuracy tradeoff is measured, not guessed.",
-    "tech": [
-      "Python",
-      "TypeScript",
-      "Jupyter Notebook",
-      "PyTorch",
-      "Transformers",
-      "FastAPI",
-      "React",
-      "Next.js",
-      "Tailwind",
-      "Recharts"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/ML-Model-Efficiency-Toolkit"
   },
   {
     "slug": "ml-system-design-batch-inference",
@@ -381,48 +496,6 @@ export const generatedProjects: Project[] = [
     "demo": "https://web-sable-gamma-39.vercel.app"
   },
   {
-    "slug": "multimodal-rag",
-    "title": "Multimodal RAG",
-    "repo": "Multimodal-RAG",
-    "domain": "LLMs & GenAI",
-    "blurb": "Don't trust the LLM — verify it. A document-QA system that answers only what your documents actually support: every claim is checked against retrieved evidence with an NLI model before it reaches you, answers refuse outright when the gro…",
-    "tech": [
-      "Python",
-      "TypeScript",
-      "JavaScript",
-      "PyTorch",
-      "Transformers",
-      "sentence-transformers",
-      "RAG",
-      "FAISS",
-      "OpenAI",
-      "Anthropic"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/Multimodal-RAG",
-    "demo": "https://multimodal-rag-plum.vercel.app"
-  },
-  {
-    "slug": "llm-hallucination-detection",
-    "title": "Llm Hallucination Detection",
-    "repo": "llm-hallucination-detection",
-    "domain": "LLMs & GenAI",
-    "blurb": "NLI-based hallucination detection pipeline. Flags unsupported LLM claims using DeBERTa-v3, assigns a hallucination confidence score per sentence, and grounds responses against source documents via ChromaDB.",
-    "tech": [
-      "Python",
-      "TypeScript",
-      "JavaScript",
-      "PyTorch",
-      "TensorFlow",
-      "Transformers",
-      "sentence-transformers",
-      "RAG",
-      "ChromaDB",
-      "OpenAI"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/llm-hallucination-detection",
-    "demo": "https://frontend-shiv-a.vercel.app"
-  },
-  {
     "slug": "all-about-cross-validation",
     "title": "All About Cross Validation",
     "repo": "All-About-Cross-Validation",
@@ -560,27 +633,6 @@ export const generatedProjects: Project[] = [
     ],
     "url": "https://github.com/shiva-shivanibokka/Data-Preprocessing",
     "demo": "https://data-preprocessing.vercel.app"
-  },
-  {
-    "slug": "nlp-pipeline-at-scale",
-    "title": "NLP Pipeline At Scale",
-    "repo": "NLP-Pipeline-at-Scale",
-    "domain": "MLOps",
-    "blurb": "Recruiter TL;DR - What it is: a production, end-to-end NLP system that reads social-media text three ways at once — sentiment, emotion, and toxicity — from a single RoBERTa forward pass, plus named-entity extraction with brand normalizat…",
-    "tech": [
-      "Python",
-      "TypeScript",
-      "JavaScript",
-      "PyTorch",
-      "scikit-learn",
-      "Transformers",
-      "sentence-transformers",
-      "PEFT",
-      "Plotly",
-      "Kafka"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/NLP-Pipeline-at-Scale",
-    "demo": "https://frontend-ten-eta-64.vercel.app"
   },
   {
     "slug": "fine-tuned-domain-llm-qlora",
@@ -752,26 +804,6 @@ export const generatedProjects: Project[] = [
     "outcome": "Measured results (reproducible, randomstate=42): linear R² 0.927 / RMSE ≈ $1,076 after a log-target transform; logistic 97.7% accuracy, 0.998 ROC-AUC on a 10,788-row hold-out set."
   },
   {
-    "slug": "sql-and-database-skills",
-    "title": "SQL And Database Skills",
-    "repo": "SQL-and-Database-Skills",
-    "domain": "Data Science",
-    "blurb": "Two things live in this repo: BookIt , a Postgres event-ticketing system that demonstrates production database engineering, and a set of SQL notebooks covering fundamentals through FAANG-level interview patterns on a 2.6M-row synthetic e…",
-    "tech": [
-      "Jupyter Notebook",
-      "Python",
-      "FastAPI",
-      "uvicorn",
-      "SQLAlchemy",
-      "Postgres",
-      "GitHub Actions",
-      "pandas",
-      "Matplotlib",
-      "Seaborn"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/SQL-and-Database-Skills"
-  },
-  {
     "slug": "hireview",
     "title": "HireView",
     "repo": "HireView",
@@ -850,26 +882,6 @@ export const generatedProjects: Project[] = [
       "Vite"
     ],
     "url": "https://github.com/shiva-shivanibokka/launchpad"
-  },
-  {
-    "slug": "cumida-ml-model",
-    "title": "Cumida ML Model",
-    "repo": "Cumida-ML-Model",
-    "domain": "MLOps",
-    "blurb": "ML classification project using the CuMiDa Liver Cancer dataset, applying supervised learning techniques to classify liver cancer subtypes from curated microarray gene expression data.",
-    "tech": [
-      "Jupyter Notebook",
-      "Python",
-      "scikit-learn",
-      "FastAPI",
-      "uvicorn",
-      "Pydantic",
-      "GitHub Actions",
-      "GCP",
-      "NumPy",
-      "pandas"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/Cumida-ML-Model"
   },
   {
     "slug": "ml-system-design-retraining-pipeline",
