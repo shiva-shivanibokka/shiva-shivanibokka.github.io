@@ -16,6 +16,27 @@ export const generatedProjects: Project[] = [
     "url": "https://github.com/shiva-shivanibokka/portfolio-keepalive"
   },
   {
+    "slug": "all-about-cross-validation",
+    "title": "All About Cross Validation",
+    "repo": "All-About-Cross-Validation",
+    "domain": "Classical ML",
+    "blurb": "Learn everything there is to learn about Cross Validation in ML.",
+    "tech": [
+      "Jupyter Notebook",
+      "TypeScript",
+      "Python",
+      "scikit-learn",
+      "React",
+      "Next.js",
+      "Optuna",
+      "SciPy",
+      "NumPy",
+      "pandas"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/All-About-Cross-Validation",
+    "demo": "https://cross-validation-visualizer.vercel.app"
+  },
+  {
     "slug": "sql-and-database-skills",
     "title": "SQL And Database Skills",
     "repo": "SQL-and-Database-Skills",
@@ -494,27 +515,6 @@ export const generatedProjects: Project[] = [
     ],
     "url": "https://github.com/shiva-shivanibokka/Dive-deeper-into-linear-models",
     "demo": "https://web-sable-gamma-39.vercel.app"
-  },
-  {
-    "slug": "all-about-cross-validation",
-    "title": "All About Cross Validation",
-    "repo": "All-About-Cross-Validation",
-    "domain": "Classical ML",
-    "blurb": "Learn everything there is to learn about Cross Validation in ML.",
-    "tech": [
-      "Jupyter Notebook",
-      "TypeScript",
-      "Python",
-      "scikit-learn",
-      "React",
-      "Next.js",
-      "Optuna",
-      "SciPy",
-      "NumPy",
-      "pandas"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/All-About-Cross-Validation",
-    "demo": "https://cross-validation-visualizer.vercel.app"
   },
   {
     "slug": "llm-research-scraper",
