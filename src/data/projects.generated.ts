@@ -16,6 +16,66 @@ export const generatedProjects: Project[] = [
     "url": "https://github.com/shiva-shivanibokka/portfolio-keepalive"
   },
   {
+    "slug": "autonomous-ml-pipeline-builder",
+    "title": "Autonomous ML Pipeline Builder",
+    "repo": "Autonomous-ML-Pipeline-Builder",
+    "domain": "MLOps",
+    "blurb": "Upload a CSV, describe your problem in plain English, and a team of AI agents builds, evaluates, and packages a complete, deployable ML pipeline — live.",
+    "tech": [
+      "Python",
+      "TypeScript",
+      "JavaScript",
+      "scikit-learn",
+      "XGBoost",
+      "LightGBM",
+      "LangGraph",
+      "LangChain",
+      "RAG",
+      "OpenAI"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/Autonomous-ML-Pipeline-Builder"
+  },
+  {
+    "slug": "hireview",
+    "title": "HireView",
+    "repo": "HireView",
+    "domain": "Full-Stack / Product",
+    "blurb": "A first-party job aggregator and application tracker. HireView searches the ATS platforms companies actually hire on — Greenhouse, Lever, and Ashby — across 1,000+ companies at once, then lets you track every role you care about through…",
+    "tech": [
+      "TypeScript",
+      "Python",
+      "JavaScript",
+      "FastAPI",
+      "uvicorn",
+      "React",
+      "Next.js",
+      "Tailwind",
+      "GitHub Actions",
+      "GCP"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/HireView"
+  },
+  {
+    "slug": "all-about-neural-networks",
+    "title": "All About Neural Networks",
+    "repo": "All-about-Neural-Networks",
+    "domain": "LLMs & GenAI",
+    "blurb": "Implementing Neural Networks from scratch",
+    "tech": [
+      "Jupyter Notebook",
+      "Python",
+      "PyTorch",
+      "scikit-learn",
+      "Transformers",
+      "PEFT",
+      "RAG",
+      "LoRA",
+      "OpenAI",
+      "React"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/All-about-Neural-Networks"
+  },
+  {
     "slug": "all-about-cross-validation",
     "title": "All About Cross Validation",
     "repo": "All-About-Cross-Validation",
@@ -352,26 +412,6 @@ export const generatedProjects: Project[] = [
     "outcome": "Real numbers: Tabular model AUC-PR 0.314 at a 0.49% base rate (~64× lift) on synthetic Sparkov data; GNN module — EvolveGCN-O beats static GAT and TGAT on illicit-F1 on the real Elliptic Bitcoin graph."
   },
   {
-    "slug": "autonomous-ml-pipeline-builder",
-    "title": "Autonomous ML Pipeline Builder",
-    "repo": "Autonomous-ML-Pipeline-Builder",
-    "domain": "MLOps",
-    "blurb": "Upload a CSV, describe your problem in plain English, and a team of AI agents builds, evaluates, and packages a complete, deployable ML pipeline — live.",
-    "tech": [
-      "Python",
-      "TypeScript",
-      "JavaScript",
-      "scikit-learn",
-      "XGBoost",
-      "LightGBM",
-      "LangGraph",
-      "LangChain",
-      "RAG",
-      "OpenAI"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/Autonomous-ML-Pipeline-Builder"
-  },
-  {
     "slug": "ml-system-design-batch-inference",
     "title": "ML System Design Batch Inference",
     "repo": "ML-System-Design-Batch-Inference",
@@ -594,26 +634,6 @@ export const generatedProjects: Project[] = [
     "outcome": "100% of solution cells pass verifynotebooks.py, enforced by CI on every push."
   },
   {
-    "slug": "all-about-neural-networks",
-    "title": "All About Neural Networks",
-    "repo": "All-about-Neural-Networks",
-    "domain": "LLMs & GenAI",
-    "blurb": "Implementing Neural Networks from scratch",
-    "tech": [
-      "Jupyter Notebook",
-      "PyTorch",
-      "Transformers",
-      "PEFT",
-      "RAG",
-      "LoRA",
-      "OpenAI",
-      "React",
-      "NumPy",
-      "Matplotlib"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/All-about-Neural-Networks"
-  },
-  {
     "slug": "data-preprocessing",
     "title": "Data Preprocessing",
     "repo": "Data-Preprocessing",
@@ -802,26 +822,6 @@ export const generatedProjects: Project[] = [
     ],
     "url": "https://github.com/shiva-shivanibokka/Basics-of-Linear-and-Logistic-Regression",
     "outcome": "Measured results (reproducible, randomstate=42): linear R² 0.927 / RMSE ≈ $1,076 after a log-target transform; logistic 97.7% accuracy, 0.998 ROC-AUC on a 10,788-row hold-out set."
-  },
-  {
-    "slug": "hireview",
-    "title": "HireView",
-    "repo": "HireView",
-    "domain": "Full-Stack / Product",
-    "blurb": "A first-party job aggregator and application tracker. HireView searches the ATS platforms companies actually hire on — Greenhouse, Lever, and Ashby — across 1,000+ companies at once, then lets you track every role you care about through…",
-    "tech": [
-      "TypeScript",
-      "Python",
-      "JavaScript",
-      "FastAPI",
-      "uvicorn",
-      "React",
-      "Next.js",
-      "Tailwind",
-      "GitHub Actions",
-      "GCP"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/HireView"
   },
   {
     "slug": "search-ranking-system",
@@ -1031,26 +1031,6 @@ export const generatedProjects: Project[] = [
     "url": "https://github.com/shiva-shivanibokka/take-home-project",
     "demo": "https://take-home-project-ten.vercel.app",
     "outcome": "The latency tradeoff is acceptable: the write stage increases from ~10s to ~45s."
-  },
-  {
-    "slug": "autograder-agent",
-    "title": "AutoGrader Agent",
-    "repo": "AutoGrader-Agent",
-    "domain": "LLMs & GenAI",
-    "blurb": "AI agent that auto-grades any Jupyter notebook (ML, RAG, NLP, CV, data analysis, algorithms). Upload a notebook, optionally provide your own rubric, set grading strictness, and get a structured report with scores per criterion, written feedback, strengths, and improvement suggestions. Built with LangGraph, nbformat, Pydantic, FastAPI, and Gradio.",
-    "tech": [
-      "Python",
-      "Transformers",
-      "LangGraph",
-      "LangChain",
-      "RAG",
-      "OpenAI",
-      "Anthropic",
-      "Groq",
-      "FastAPI",
-      "uvicorn"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/AutoGrader-Agent"
   },
   {
     "slug": "super-resolution-using-han",
