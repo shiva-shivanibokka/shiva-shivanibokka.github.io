@@ -19,7 +19,7 @@ export const generatedProjects: Project[] = [
     "slug": "autonomous-ml-pipeline-builder",
     "title": "Autonomous ML Pipeline Builder",
     "repo": "Autonomous-ML-Pipeline-Builder",
-    "domain": "MLOps",
+    "domain": "LLMs & GenAI",
     "blurb": "Upload a CSV, describe your problem in plain English, and a team of AI agents builds, evaluates, and packages a complete, deployable ML pipeline — live.",
     "tech": [
       "Python",
@@ -33,7 +33,8 @@ export const generatedProjects: Project[] = [
       "RAG",
       "OpenAI"
     ],
-    "url": "https://github.com/shiva-shivanibokka/Autonomous-ML-Pipeline-Builder"
+    "url": "https://github.com/shiva-shivanibokka/Autonomous-ML-Pipeline-Builder",
+    "demo": "https://autonomous-ml-pipeline-builder.vercel.app"
   },
   {
     "slug": "hireview",
