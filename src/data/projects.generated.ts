@@ -16,6 +16,49 @@ export const generatedProjects: Project[] = [
     "url": "https://github.com/shiva-shivanibokka/portfolio-keepalive"
   },
   {
+    "slug": "autonomous-swe-agent",
+    "title": "Autonomous SWE Agent",
+    "repo": "Autonomous-SWE-Agent",
+    "domain": "LLMs & GenAI",
+    "blurb": "Takes a GitHub issue, writes a patch inside an isolated workspace, and runs the repository's own tests against it — built two ways, an agentic tool-use loop and a tool-free agentless pipeline , so the same task can be run through both an…",
+    "tech": [
+      "Python",
+      "TypeScript",
+      "JavaScript",
+      "PyTorch",
+      "Transformers",
+      "sentence-transformers",
+      "OpenAI",
+      "Anthropic",
+      "Groq",
+      "FastAPI"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/Autonomous-SWE-Agent",
+    "demo": "https://autonomous-swe-agent.vercel.app"
+  },
+  {
+    "slug": "autonomous-research-report-agent",
+    "title": "Autonomous Research Report Agent",
+    "repo": "Autonomous-Research-Report-Agent",
+    "domain": "Agentic",
+    "blurb": "A multi-agent pipeline that researches the open web and writes cited, quality-scored research reports — with a self-improving critic loop, source triangulation, contradiction detection, and per-report cost accounting.",
+    "tech": [
+      "Python",
+      "TypeScript",
+      "JavaScript",
+      "LangGraph",
+      "LangChain",
+      "OpenAI",
+      "Anthropic",
+      "Gemini",
+      "Groq",
+      "FastAPI"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/Autonomous-Research-Report-Agent",
+    "demo": "https://autonomous-research-report-agent-nu.vercel.app",
+    "outcome": "The run surfaced the METR randomized controlled trial, in which developers took 19% longer with AI assistance while perceiving a 20% speedup — against vendor studies claiming 20–50% gains."
+  },
+  {
     "slug": "autonomous-ml-pipeline-builder",
     "title": "Autonomous ML Pipeline Builder",
     "repo": "Autonomous-ML-Pipeline-Builder",
@@ -453,47 +496,6 @@ export const generatedProjects: Project[] = [
     ],
     "url": "https://github.com/shiva-shivanibokka/RL-Portfolio-Optimization",
     "demo": "https://rl-portfolio-optimization.vercel.app"
-  },
-  {
-    "slug": "autonomous-swe-agent",
-    "title": "Autonomous SWE Agent",
-    "repo": "Autonomous-SWE-Agent",
-    "domain": "MLOps",
-    "blurb": "Resolves real GitHub issues two ways — an agentic tool-use loop vs. a 3-phase agentless pipeline — on the same benchmark, with full cost/token/turn accounting.",
-    "tech": [
-      "Python",
-      "TypeScript",
-      "JavaScript",
-      "PyTorch",
-      "Transformers",
-      "sentence-transformers",
-      "OpenAI",
-      "Anthropic",
-      "Gemini",
-      "Groq"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/Autonomous-SWE-Agent",
-    "demo": "https://autonomous-swe-agent.vercel.app"
-  },
-  {
-    "slug": "autonomous-research-report-agent",
-    "title": "Autonomous Research Report Agent",
-    "repo": "Autonomous-Research-Report-Agent",
-    "domain": "Agentic",
-    "blurb": "A multi-agent pipeline that autonomously researches the open web and writes cited, quality-scored research reports — with a self-improving critic loop, source triangulation, contradiction detection, and per-report cost accounting.",
-    "tech": [
-      "Python",
-      "TypeScript",
-      "JavaScript",
-      "LangGraph",
-      "LangChain",
-      "OpenAI",
-      "Anthropic",
-      "Gemini",
-      "Groq",
-      "FastAPI"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/Autonomous-Research-Report-Agent"
   },
   {
     "slug": "prepgap-lens",
