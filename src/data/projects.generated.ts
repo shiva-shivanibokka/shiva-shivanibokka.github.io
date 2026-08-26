@@ -16,6 +16,50 @@ export const generatedProjects: Project[] = [
     "url": "https://github.com/shiva-shivanibokka/portfolio-keepalive"
   },
   {
+    "slug": "rag-vs-cag-showdown",
+    "title": "RAG Vs CAG Showdown",
+    "repo": "RAG-vs-CAG-Showdown",
+    "domain": "LLMs & GenAI",
+    "blurb": "A modular benchmarking framework that compares Context Augmented Generation and Retrieval Augmented Generation head-to-head. Measures latency, token cost, and answer quality via LLM-as-judge scoring across factual, multi-hop, and reasoning tasks using the Anthropic Claude API",
+    "tech": [
+      "Python",
+      "JavaScript",
+      "ONNX",
+      "vLLM",
+      "RAG",
+      "FAISS",
+      "Qdrant",
+      "OpenAI",
+      "Anthropic",
+      "Gemini"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/RAG-vs-CAG-Showdown",
+    "demo": "https://rag-vs-cag-showdown.vercel.app",
+    "outcome": "It was faster in 4 of the five runs, despite sending 5x the tokens."
+  },
+  {
+    "slug": "basics-of-linear-and-logistic-regression",
+    "title": "Basics Of Linear And Logistic Regression",
+    "repo": "Basics-of-Linear-and-Logistic-Regression",
+    "domain": "Classical ML",
+    "blurb": "Learn everything about basics of Linear and Logistic regression end to end",
+    "tech": [
+      "Jupyter Notebook",
+      "TypeScript",
+      "Python",
+      "scikit-learn",
+      "Transformers",
+      "React",
+      "Next.js",
+      "NumPy",
+      "pandas",
+      "Matplotlib"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/Basics-of-Linear-and-Logistic-Regression",
+    "demo": "https://basics-of-linear-and-logistic-regre.vercel.app",
+    "outcome": "Measured results (randomstate=42, 10,788 held-out rows): linear R² 0.953 / RMSE $868 with the log-target model; logistic 97.6% accuracy, 0.998 ROC-AUC."
+  },
+  {
     "slug": "autonomous-swe-agent",
     "title": "Autonomous SWE Agent",
     "repo": "Autonomous-SWE-Agent",
@@ -808,25 +852,6 @@ export const generatedProjects: Project[] = [
     "demo": "https://competitor-insight-engine.vercel.app"
   },
   {
-    "slug": "basics-of-linear-and-logistic-regression",
-    "title": "Basics Of Linear And Logistic Regression",
-    "repo": "Basics-of-Linear-and-Logistic-Regression",
-    "domain": "Classical ML",
-    "blurb": "Learn everything about basics of Linear and Logistic regression end to end",
-    "tech": [
-      "Jupyter Notebook",
-      "scikit-learn",
-      "Transformers",
-      "FastAPI",
-      "NumPy",
-      "pandas",
-      "Matplotlib",
-      "Seaborn"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/Basics-of-Linear-and-Logistic-Regression",
-    "outcome": "Measured results (reproducible, randomstate=42): linear R² 0.927 / RMSE ≈ $1,076 after a log-target transform; logistic 97.7% accuracy, 0.998 ROC-AUC on a 10,788-row hold-out set."
-  },
-  {
     "slug": "search-ranking-system",
     "title": "Search Ranking System",
     "repo": "Search-Ranking-System",
@@ -990,28 +1015,6 @@ export const generatedProjects: Project[] = [
       "Docker"
     ],
     "url": "https://github.com/shiva-shivanibokka/CodePilot-Agent"
-  },
-  {
-    "slug": "rag-vs-cag-showdown",
-    "title": "RAG Vs CAG Showdown",
-    "repo": "RAG-vs-CAG-Showdown",
-    "domain": "LLMs & GenAI",
-    "blurb": "A modular benchmarking framework that compares Context Augmented Generation and Retrieval Augmented Generation head-to-head. Measures latency, token cost, and answer quality via LLM-as-judge scoring across factual, multi-hop, and reasoning tasks using the Anthropic Claude API",
-    "tech": [
-      "Python",
-      "JavaScript",
-      "ONNX",
-      "vLLM",
-      "RAG",
-      "FAISS",
-      "Qdrant",
-      "OpenAI",
-      "Anthropic",
-      "Gemini"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/RAG-vs-CAG-Showdown",
-    "demo": "https://rag-vs-cag-showdown.vercel.app",
-    "outcome": "CAG's latency disadvantage (~30% slower in the sample tournament) is largely a perception problem at full-document scale; streaming would make it feel much faster."
   },
   {
     "slug": "take-home-project",
