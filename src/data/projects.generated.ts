@@ -16,6 +16,28 @@ export const generatedProjects: Project[] = [
     "url": "https://github.com/shiva-shivanibokka/portfolio-keepalive"
   },
   {
+    "slug": "churn-intelligence-platform",
+    "title": "Churn Intelligence Platform",
+    "repo": "Churn-Intelligence-Platform",
+    "domain": "Classical ML",
+    "blurb": "End-to-end decision intelligence platform: behavioral segmentation → per-cohort churn prediction → uplift modeling → 12-tool AI retention agent → closed-loop outcome tracking.",
+    "tech": [
+      "Python",
+      "TypeScript",
+      "JavaScript",
+      "scikit-learn",
+      "XGBoost",
+      "CatBoost",
+      "OpenAI",
+      "Anthropic",
+      "Gemini",
+      "Groq"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/Churn-Intelligence-Platform",
+    "demo": "https://customer-segmentation-churn.vercel.app",
+    "outcome": "These models are trained with classweights=[1, posweight] to handle imbalance, which inflates the positive class by construction — so a raw score of 0.7 is not a 70% chance of churn."
+  },
+  {
     "slug": "rag-vs-cag-showdown",
     "title": "RAG Vs CAG Showdown",
     "repo": "RAG-vs-CAG-Showdown",
@@ -389,28 +411,6 @@ export const generatedProjects: Project[] = [
     ],
     "url": "https://github.com/shiva-shivanibokka/Federated-Learning-Simulation",
     "demo": "https://web-neon-eight-45.vercel.app"
-  },
-  {
-    "slug": "churn-intelligence-platform",
-    "title": "Churn Intelligence Platform",
-    "repo": "Churn-Intelligence-Platform",
-    "domain": "Classical ML",
-    "blurb": "End-to-end decision intelligence platform: behavioral segmentation → per-cohort churn prediction → uplift modeling → 12-tool AI retention agent → closed-loop outcome tracking.",
-    "tech": [
-      "Python",
-      "TypeScript",
-      "PLpgSQL",
-      "scikit-learn",
-      "XGBoost",
-      "CatBoost",
-      "Groq",
-      "Plotly",
-      "FastAPI",
-      "uvicorn"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/Churn-Intelligence-Platform",
-    "demo": "https://customer-segmentation-churn.vercel.app",
-    "outcome": "Raw CatBoost output is not well-calibrated — a score of 0.7 ≠ 70% actual churn rate."
   },
   {
     "slug": "sepsis-ml-model",
