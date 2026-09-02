@@ -16,6 +16,26 @@ export const generatedProjects: Project[] = [
     "url": "https://github.com/shiva-shivanibokka/portfolio-keepalive"
   },
   {
+    "slug": "codepilot-agent",
+    "title": "CodePilot Agent",
+    "repo": "CodePilot-Agent",
+    "domain": "Agentic",
+    "blurb": "A small coding agent that edits real git repositories, built to find out how coding agents actually work — and to measure the design choices instead of asserting them.",
+    "tech": [
+      "Python",
+      "LangGraph",
+      "LangChain",
+      "Anthropic",
+      "FastAPI",
+      "uvicorn",
+      "Pydantic",
+      "Gradio",
+      "Docker",
+      "pytest"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/CodePilot-Agent"
+  },
+  {
     "slug": "churn-intelligence-platform",
     "title": "Churn Intelligence Platform",
     "repo": "Churn-Intelligence-Platform",
@@ -995,26 +1015,6 @@ export const generatedProjects: Project[] = [
     ],
     "url": "https://github.com/shiva-shivanibokka/ML-System-Design-Recommendation-Engine",
     "demo": "https://ml-system-design-recommendation-eng.vercel.app"
-  },
-  {
-    "slug": "codepilot-agent",
-    "title": "CodePilot Agent",
-    "repo": "CodePilot-Agent",
-    "domain": "Agentic",
-    "blurb": "An autonomous coding agent that takes a natural language task, plans an implementation, writes code across multiple files, runs it in an isolated sandbox, debugs failures, and delivers working results — all streamed to you in real time.",
-    "tech": [
-      "Python",
-      "LangGraph",
-      "LangChain",
-      "Anthropic",
-      "FastAPI",
-      "uvicorn",
-      "Pydantic",
-      "Redis",
-      "Gradio",
-      "Docker"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/CodePilot-Agent"
   },
   {
     "slug": "take-home-project",
