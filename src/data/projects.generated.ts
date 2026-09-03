@@ -33,7 +33,8 @@ export const generatedProjects: Project[] = [
       "Docker",
       "pytest"
     ],
-    "url": "https://github.com/shiva-shivanibokka/CodePilot-Agent"
+    "url": "https://github.com/shiva-shivanibokka/CodePilot-Agent",
+    "demo": "https://codepilot-alpha.vercel.app"
   },
   {
     "slug": "churn-intelligence-platform",
