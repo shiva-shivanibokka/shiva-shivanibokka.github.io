@@ -16,6 +16,19 @@ export const generatedProjects: Project[] = [
     "url": "https://github.com/shiva-shivanibokka/portfolio-keepalive"
   },
   {
+    "slug": "sobel-kernel-recovery",
+    "title": "Sobel Kernel Recovery",
+    "repo": "sobel-kernel-recovery",
+    "domain": "Deep Learning",
+    "blurb": "Deriving a Sobel filter kernel from image pairs with a single 3x3 convolution layer",
+    "tech": [
+      "Python",
+      "PyTorch",
+      "NumPy"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/sobel-kernel-recovery"
+  },
+  {
     "slug": "codepilot-agent",
     "title": "CodePilot Agent",
     "repo": "CodePilot-Agent",
