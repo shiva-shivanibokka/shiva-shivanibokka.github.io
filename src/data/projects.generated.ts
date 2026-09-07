@@ -16,17 +16,25 @@ export const generatedProjects: Project[] = [
     "url": "https://github.com/shiva-shivanibokka/portfolio-keepalive"
   },
   {
-    "slug": "sobel-kernel-recovery",
-    "title": "Sobel Kernel Recovery",
-    "repo": "sobel-kernel-recovery",
-    "domain": "Deep Learning",
-    "blurb": "Deriving a Sobel filter kernel from image pairs with a single 3x3 convolution layer",
+    "slug": "competitor-insight-engine",
+    "title": "Competitor Insight Engine",
+    "repo": "Competitor-Insight-Engine",
+    "domain": "LLMs & GenAI",
+    "blurb": "AI-powered tool that scrapes any company's website, finds real-time competitors via Tavily search, and generates a full competitive intelligence report — including market comparison and strategic recommendations — using any LLM of your choice.",
     "tech": [
       "Python",
-      "PyTorch",
-      "NumPy"
+      "Jupyter Notebook",
+      "TypeScript",
+      "OpenAI",
+      "Anthropic",
+      "Gemini",
+      "Groq",
+      "Ollama",
+      "FastAPI",
+      "uvicorn"
     ],
-    "url": "https://github.com/shiva-shivanibokka/sobel-kernel-recovery"
+    "url": "https://github.com/shiva-shivanibokka/Competitor-Insight-Engine",
+    "demo": "https://competitor-insight-engine.vercel.app"
   },
   {
     "slug": "codepilot-agent",
@@ -48,6 +56,19 @@ export const generatedProjects: Project[] = [
     ],
     "url": "https://github.com/shiva-shivanibokka/CodePilot-Agent",
     "demo": "https://codepilot-alpha.vercel.app"
+  },
+  {
+    "slug": "sobel-kernel-recovery",
+    "title": "Sobel Kernel Recovery",
+    "repo": "sobel-kernel-recovery",
+    "domain": "Deep Learning",
+    "blurb": "Deriving a Sobel filter kernel from image pairs with a single 3x3 convolution layer",
+    "tech": [
+      "Python",
+      "PyTorch",
+      "NumPy"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/sobel-kernel-recovery"
   },
   {
     "slug": "churn-intelligence-platform",
@@ -863,27 +884,6 @@ export const generatedProjects: Project[] = [
     ],
     "url": "https://github.com/shiva-shivanibokka/Multi-Horizon-Stock-Forecasting-AI-Model",
     "demo": "https://mhf-forecaster.vercel.app"
-  },
-  {
-    "slug": "competitor-insight-engine",
-    "title": "Competitor Insight Engine",
-    "repo": "Competitor-Insight-Engine",
-    "domain": "LLMs & GenAI",
-    "blurb": "AI-powered tool that scrapes any company's website, finds real-time competitors via Tavily search, and generates a full competitive intelligence report — including market comparison and strategic recommendations — using any LLM of your choice.",
-    "tech": [
-      "Python",
-      "Jupyter Notebook",
-      "TypeScript",
-      "OpenAI",
-      "Anthropic",
-      "Gemini",
-      "Groq",
-      "Ollama",
-      "FastAPI",
-      "uvicorn"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/Competitor-Insight-Engine",
-    "demo": "https://competitor-insight-engine.vercel.app"
   },
   {
     "slug": "search-ranking-system",
