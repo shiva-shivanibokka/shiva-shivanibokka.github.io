@@ -11,9 +11,49 @@ export const generatedProjects: Project[] = [
     "blurb": "Keeps the Cloud Run demos warm and reports when one is down",
     "tech": [
       "RAG",
-      "GitHub Actions"
+      "GitHub Actions",
+      "Vercel"
     ],
     "url": "https://github.com/shiva-shivanibokka/portfolio-keepalive"
+  },
+  {
+    "slug": "core-algorithms-for-leetcode",
+    "title": "Core Algorithms For Leetcode",
+    "repo": "Core-algorithms-for-Leetcode",
+    "domain": "MLOps",
+    "blurb": "A pattern-first coding-interview prep bank: 13 algorithm patterns, 90 worked problems each, every solution paired with runnable assert tests, a sample of them cross-checked against independent references, and the whole thing enforced gre…",
+    "tech": [
+      "Jupyter Notebook",
+      "TypeScript",
+      "Python",
+      "Next.js",
+      "GitHub Actions"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/Core-algorithms-for-Leetcode",
+    "demo": "https://pattern-bank-liart.vercel.app",
+    "outcome": "100% of solution cells pass, every problem has a solution, and every solution is reached — enforced by CI on every push."
+  },
+  {
+    "slug": "computer-vision-mlops-pipeline",
+    "title": "Computer Vision MLOps Pipeline",
+    "repo": "Computer-Vision-MLOps-Pipeline",
+    "domain": "MLOps",
+    "blurb": "An end-to-end, production-style MLOps system for detecting manufacturing defects on printed circuit boards with a YOLO object detector. The point of this project is not the model — it's the closed MLOps loop around it: versioned data, tr…",
+    "tech": [
+      "Python",
+      "JavaScript",
+      "PyTorch",
+      "ONNX",
+      "OpenCV",
+      "Transformers",
+      "FastAPI",
+      "uvicorn",
+      "Pydantic",
+      "GitHub Actions"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/Computer-Vision-MLOps-Pipeline",
+    "demo": "https://pcb-detector.vercel.app",
+    "outcome": "Shipping it would have meant publishing an accuracy figure for a model nobody had measured, so the page carries the 45 MB one."
   },
   {
     "slug": "competitor-insight-engine",
@@ -407,26 +447,6 @@ export const generatedProjects: Project[] = [
     "outcome": "\"What triggers automatic rollback?\" Two independent signals: error rate 5% OR p99 latency 2× v1 p99."
   },
   {
-    "slug": "computer-vision-mlops-pipeline",
-    "title": "Computer Vision MLOps Pipeline",
-    "repo": "Computer-Vision-MLOps-Pipeline",
-    "domain": "MLOps",
-    "blurb": "[!IMPORTANT] The hosted demo is temporary. This project's backend runs on Google Cloud Run under a Google Cloud free trial that ends around 19 September 2026 . When the trial closes the service is stopped, and every run.app link below st…",
-    "tech": [
-      "Python",
-      "JavaScript",
-      "PyTorch",
-      "FastAPI",
-      "uvicorn",
-      "Pydantic",
-      "GitHub Actions",
-      "MLflow",
-      "DVC",
-      "GCP"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/Computer-Vision-MLOps-Pipeline"
-  },
-  {
     "slug": "ml-model-efficiency-toolkit",
     "title": "ML Model Efficiency Toolkit",
     "repo": "ML-Model-Efficiency-Toolkit",
@@ -719,21 +739,6 @@ export const generatedProjects: Project[] = [
     ],
     "url": "https://github.com/shiva-shivanibokka/Data-Analytics-Portfolio",
     "demo": "https://data-analytics-portfolio-shiv-a.vercel.app"
-  },
-  {
-    "slug": "core-algorithms-for-leetcode",
-    "title": "Core Algorithms For Leetcode",
-    "repo": "Core-algorithms-for-Leetcode",
-    "domain": "ML System Design",
-    "blurb": "A pattern-first coding-interview prep bank: 13 algorithm patterns, 90 worked problems each, every solution paired with runnable assert tests and enforced green by CI.",
-    "tech": [
-      "Jupyter Notebook",
-      "JavaScript",
-      "Python",
-      "GitHub Actions"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/Core-algorithms-for-Leetcode",
-    "outcome": "100% of solution cells pass verifynotebooks.py, enforced by CI on every push."
   },
   {
     "slug": "data-preprocessing",
