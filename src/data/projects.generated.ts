@@ -17,6 +17,42 @@ export const generatedProjects: Project[] = [
     "url": "https://github.com/shiva-shivanibokka/portfolio-keepalive"
   },
   {
+    "slug": "cumida-ml-model",
+    "title": "Cumida ML Model",
+    "repo": "Cumida-ML-Model",
+    "domain": "Classical ML",
+    "blurb": "ML classification project using the CuMiDa Liver Cancer dataset, applying supervised learning techniques to classify liver cancer subtypes from curated microarray gene expression data.",
+    "tech": [
+      "Jupyter Notebook",
+      "Python",
+      "TypeScript",
+      "scikit-learn",
+      "FastAPI",
+      "uvicorn",
+      "Pydantic",
+      "Next.js",
+      "NumPy",
+      "pandas"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/Cumida-ML-Model",
+    "demo": "https://liver-hcc.vercel.app",
+    "outcome": "Result — F1 0.9589, ROC-AUC 0.9892 on a patient-grouped held-out set, and the context that makes it meaningful: a 95% interval of [0.903, 1.000], and a single probe with no model at all scoring AUC 0.980."
+  },
+  {
+    "slug": "inline-fim",
+    "title": "Inline Fim",
+    "repo": "inline-fim",
+    "domain": "LLMs & GenAI",
+    "blurb": "Inline code completion for JetBrains IDEs, powered by a local fill-in-the-middle model. No API key, no network.",
+    "tech": [
+      "Kotlin",
+      "Python",
+      "Ollama"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/inline-fim",
+    "outcome": "Session one: 83% of suggestions were being cut off at the line cap, which put real p50 total at 1567ms where the benchmark said 210ms, and left broken Python that disabled the IDE's own indent-on-Enter."
+  },
+  {
     "slug": "core-algorithms-for-leetcode",
     "title": "Core Algorithms For Leetcode",
     "repo": "Core-algorithms-for-Leetcode",
@@ -341,26 +377,6 @@ export const generatedProjects: Project[] = [
     ],
     "url": "https://github.com/shiva-shivanibokka/llm-hallucination-detection",
     "demo": "https://frontend-shiv-a.vercel.app"
-  },
-  {
-    "slug": "cumida-ml-model",
-    "title": "Cumida ML Model",
-    "repo": "Cumida-ML-Model",
-    "domain": "MLOps",
-    "blurb": "ML classification project using the CuMiDa Liver Cancer dataset, applying supervised learning techniques to classify liver cancer subtypes from curated microarray gene expression data.",
-    "tech": [
-      "Jupyter Notebook",
-      "Python",
-      "scikit-learn",
-      "FastAPI",
-      "uvicorn",
-      "Pydantic",
-      "GitHub Actions",
-      "GCP",
-      "NumPy",
-      "pandas"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/Cumida-ML-Model"
   },
   {
     "slug": "nlp-pipeline-at-scale",
