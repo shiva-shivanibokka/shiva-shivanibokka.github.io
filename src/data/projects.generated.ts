@@ -17,6 +17,21 @@ export const generatedProjects: Project[] = [
     "url": "https://github.com/shiva-shivanibokka/portfolio-keepalive"
   },
   {
+    "slug": "unclaimed",
+    "title": "Unclaimed",
+    "repo": "unclaimed",
+    "domain": "Agentic",
+    "blurb": "Alexa+ benefits screener: asks only the questions that change the answer, calculates with PolicyEngine-US, hands off a step-by-step plan",
+    "tech": [
+      "Python",
+      "TypeScript",
+      "MCP",
+      "FastAPI",
+      "AWS"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/unclaimed"
+  },
+  {
     "slug": "cumida-ml-model",
     "title": "Cumida ML Model",
     "repo": "Cumida-ML-Model",
@@ -375,8 +390,7 @@ export const generatedProjects: Project[] = [
       "ChromaDB",
       "OpenAI"
     ],
-    "url": "https://github.com/shiva-shivanibokka/llm-hallucination-detection",
-    "demo": "https://frontend-shiv-a.vercel.app"
+    "url": "https://github.com/shiva-shivanibokka/llm-hallucination-detection"
   },
   {
     "slug": "nlp-pipeline-at-scale",
@@ -925,7 +939,6 @@ export const generatedProjects: Project[] = [
       "PEFT"
     ],
     "url": "https://github.com/shiva-shivanibokka/Search-Ranking-System",
-    "demo": "https://web-shiv-a.vercel.app",
     "outcome": "Result: in-domain Recall@100 ≈ 0.74 over the full 1M index (measured); a two-stage pipeline evaluated end-to-end with NDCG@10 / Recall / MRR across BM25, dense, hybrid, and both rerankers — see the measured table in §14."
   },
   {
