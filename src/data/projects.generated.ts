@@ -25,9 +25,12 @@ export const generatedProjects: Project[] = [
     "tech": [
       "Python",
       "TypeScript",
+      "TeX",
       "MCP",
-      "FastAPI",
-      "AWS"
+      "uvicorn",
+      "AWS",
+      "Express",
+      "pytest"
     ],
     "url": "https://github.com/shiva-shivanibokka/unclaimed"
   },
