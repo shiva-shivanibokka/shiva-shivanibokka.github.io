@@ -17,6 +17,69 @@ export const generatedProjects: Project[] = [
     "url": "https://github.com/shiva-shivanibokka/portfolio-keepalive"
   },
   {
+    "slug": "competitor-insight-engine",
+    "title": "Competitor Insight Engine",
+    "repo": "Competitor-Insight-Engine",
+    "domain": "LLMs & GenAI",
+    "blurb": "AI-powered tool that scrapes any company's website, finds real-time competitors via Tavily search, and generates a full competitive intelligence report — including market comparison and strategic recommendations — using any LLM of your choice.",
+    "tech": [
+      "Python",
+      "Jupyter Notebook",
+      "TypeScript",
+      "OpenAI",
+      "Anthropic",
+      "Gemini",
+      "Groq",
+      "Ollama",
+      "FastAPI",
+      "uvicorn"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/Competitor-Insight-Engine",
+    "demo": "https://competitor-insight-engine.vercel.app"
+  },
+  {
+    "slug": "codepilot-swe",
+    "title": "CodePilot SWE",
+    "repo": "CodePilot-SWE",
+    "domain": "Agentic",
+    "blurb": "Autonomous coding agent with a SWE-bench Lite evaluation harness: agent vs agentless under hard spend caps",
+    "tech": [
+      "Python",
+      "LangGraph",
+      "LangChain",
+      "OpenAI",
+      "Anthropic",
+      "Gemini",
+      "Groq",
+      "Ollama",
+      "FastAPI",
+      "Flask"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/CodePilot-SWE"
+  },
+  {
+    "slug": "take-home-project",
+    "title": "Take Home Project",
+    "repo": "take-home-project",
+    "domain": "LLMs & GenAI",
+    "blurb": "Confer Inc. · AI/ML Engineering Take-Home · Assignment 5 of 5",
+    "tech": [
+      "TypeScript",
+      "JavaScript",
+      "PLpgSQL",
+      "OpenAI",
+      "Anthropic",
+      "Groq",
+      "Ollama",
+      "Postgres",
+      "Supabase",
+      "React"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/take-home-project",
+    "demo": "https://take-home-project-ten.vercel.app",
+    "outcome": "The latency tradeoff is acceptable: the write stage increases from ~10s to ~45s."
+  },
+  {
     "slug": "unclaimed",
     "title": "Unclaimed",
     "repo": "unclaimed",
@@ -24,8 +87,8 @@ export const generatedProjects: Project[] = [
     "blurb": "Alexa+ benefits screener: asks only the questions that change the answer, calculates with PolicyEngine-US, hands off a step-by-step plan",
     "tech": [
       "Python",
-      "TypeScript",
       "TeX",
+      "TypeScript",
       "MCP",
       "uvicorn",
       "AWS",
@@ -33,6 +96,156 @@ export const generatedProjects: Project[] = [
       "pytest"
     ],
     "url": "https://github.com/shiva-shivanibokka/unclaimed"
+  },
+  {
+    "slug": "autonomous-swe-agent",
+    "title": "Autonomous SWE Agent",
+    "repo": "Autonomous-SWE-Agent",
+    "domain": "LLMs & GenAI",
+    "blurb": "Takes a GitHub issue, writes a patch inside an isolated workspace, and runs the repository's own tests against it — built two ways, an agentic tool-use loop and a tool-free agentless pipeline , so the same task can be run through both an…",
+    "tech": [
+      "Python",
+      "TypeScript",
+      "JavaScript",
+      "PyTorch",
+      "Transformers",
+      "sentence-transformers",
+      "OpenAI",
+      "Anthropic",
+      "Groq",
+      "FastAPI"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/Autonomous-SWE-Agent",
+    "demo": "https://autonomous-swe-agent.vercel.app"
+  },
+  {
+    "slug": "churn-intelligence-platform",
+    "title": "Churn Intelligence Platform",
+    "repo": "Churn-Intelligence-Platform",
+    "domain": "Classical ML",
+    "blurb": "End-to-end decision intelligence platform: behavioral segmentation → per-cohort churn prediction → uplift modeling → 12-tool AI retention agent → closed-loop outcome tracking.",
+    "tech": [
+      "Python",
+      "TypeScript",
+      "JavaScript",
+      "scikit-learn",
+      "XGBoost",
+      "CatBoost",
+      "OpenAI",
+      "Anthropic",
+      "Gemini",
+      "Groq"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/Churn-Intelligence-Platform",
+    "demo": "https://customer-segmentation-churn.vercel.app",
+    "outcome": "These models are trained with classweights=[1, posweight] to handle imbalance, which inflates the positive class by construction — so a raw score of 0.7 is not a 70% chance of churn."
+  },
+  {
+    "slug": "supply-chain-demand-agent",
+    "title": "Supply Chain Demand Agent",
+    "repo": "Supply-Chain-Demand-Agent",
+    "domain": "LLMs & GenAI",
+    "blurb": "Agentic RAG pipeline for supply chain demand forecasting using LLMs, time-series models, and MLOps",
+    "tech": [
+      "Python",
+      "TypeScript",
+      "Jupyter Notebook",
+      "PyTorch",
+      "Transformers",
+      "sentence-transformers",
+      "RAG",
+      "ChromaDB",
+      "OpenAI",
+      "Anthropic"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/Supply-Chain-Demand-Agent",
+    "demo": "https://supply-chain-demand-agent.vercel.app",
+    "outcome": "actual average daily demand - Calibration — the % of actuals falling inside the predicted p10–p90 band (target ~80%+) - Drift flag — fires when MAE is more than 1.5× the baseline (predict-the-global-mean) MAE"
+  },
+  {
+    "slug": "scm-using-mcp-and-llm",
+    "title": "SCM Using MCP And LLM",
+    "repo": "SCM-using-MCP-and-LLM",
+    "domain": "Agentic",
+    "blurb": "A pet-retail supply-chain platform where an AI agent reasons over a live data warehouse and tells you what to do — not just what happened.",
+    "tech": [
+      "Python",
+      "JavaScript",
+      "PyTorch",
+      "CatBoost",
+      "Transformers",
+      "RAG",
+      "MCP",
+      "OpenAI",
+      "Anthropic",
+      "Gemini"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/SCM-using-MCP-and-LLM",
+    "demo": "https://scm-using-mcp-and-llm.vercel.app"
+  },
+  {
+    "slug": "autonomous-research-report-agent",
+    "title": "Autonomous Research Report Agent",
+    "repo": "Autonomous-Research-Report-Agent",
+    "domain": "Agentic",
+    "blurb": "A multi-agent pipeline that researches the open web and writes cited, quality-scored research reports — with a self-improving critic loop, source triangulation, contradiction detection, and per-report cost accounting.",
+    "tech": [
+      "Python",
+      "TypeScript",
+      "JavaScript",
+      "LangGraph",
+      "LangChain",
+      "OpenAI",
+      "Anthropic",
+      "Gemini",
+      "Groq",
+      "FastAPI"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/Autonomous-Research-Report-Agent",
+    "demo": "https://autonomous-research-report-agent-nu.vercel.app",
+    "outcome": "The run surfaced the METR randomized controlled trial, in which developers took 19% longer with AI assistance while perceiving a 20% speedup — against vendor studies claiming 20–50% gains."
+  },
+  {
+    "slug": "autonomous-ml-pipeline-builder",
+    "title": "Autonomous ML Pipeline Builder",
+    "repo": "Autonomous-ML-Pipeline-Builder",
+    "domain": "LLMs & GenAI",
+    "blurb": "Upload a CSV, describe your problem in plain English, and a team of AI agents builds, evaluates, and packages a complete, deployable ML pipeline — live.",
+    "tech": [
+      "Python",
+      "TypeScript",
+      "JavaScript",
+      "scikit-learn",
+      "XGBoost",
+      "LightGBM",
+      "LangGraph",
+      "LangChain",
+      "RAG",
+      "OpenAI"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/Autonomous-ML-Pipeline-Builder",
+    "demo": "https://autonomous-ml-pipeline-builder.vercel.app"
+  },
+  {
+    "slug": "multimodal-rag",
+    "title": "Multimodal RAG",
+    "repo": "Multimodal-RAG",
+    "domain": "LLMs & GenAI",
+    "blurb": "[!IMPORTANT] The hosted demo is temporary. This project's backend runs on Google Cloud Run under a Google Cloud free trial that ends around 19 September 2026 . When the trial closes the service is stopped, and every run.app link below st…",
+    "tech": [
+      "Python",
+      "TypeScript",
+      "JavaScript",
+      "PyTorch",
+      "Transformers",
+      "sentence-transformers",
+      "RAG",
+      "FAISS",
+      "OpenAI",
+      "Anthropic"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/Multimodal-RAG",
+    "demo": "https://multimodal-rag-plum.vercel.app"
   },
   {
     "slug": "cumida-ml-model",
@@ -110,27 +323,6 @@ export const generatedProjects: Project[] = [
     "outcome": "Shipping it would have meant publishing an accuracy figure for a model nobody had measured, so the page carries the 45 MB one."
   },
   {
-    "slug": "competitor-insight-engine",
-    "title": "Competitor Insight Engine",
-    "repo": "Competitor-Insight-Engine",
-    "domain": "LLMs & GenAI",
-    "blurb": "AI-powered tool that scrapes any company's website, finds real-time competitors via Tavily search, and generates a full competitive intelligence report — including market comparison and strategic recommendations — using any LLM of your choice.",
-    "tech": [
-      "Python",
-      "Jupyter Notebook",
-      "TypeScript",
-      "OpenAI",
-      "Anthropic",
-      "Gemini",
-      "Groq",
-      "Ollama",
-      "FastAPI",
-      "uvicorn"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/Competitor-Insight-Engine",
-    "demo": "https://competitor-insight-engine.vercel.app"
-  },
-  {
     "slug": "codepilot-agent",
     "title": "CodePilot Agent",
     "repo": "CodePilot-Agent",
@@ -163,28 +355,6 @@ export const generatedProjects: Project[] = [
       "NumPy"
     ],
     "url": "https://github.com/shiva-shivanibokka/sobel-kernel-recovery"
-  },
-  {
-    "slug": "churn-intelligence-platform",
-    "title": "Churn Intelligence Platform",
-    "repo": "Churn-Intelligence-Platform",
-    "domain": "Classical ML",
-    "blurb": "End-to-end decision intelligence platform: behavioral segmentation → per-cohort churn prediction → uplift modeling → 12-tool AI retention agent → closed-loop outcome tracking.",
-    "tech": [
-      "Python",
-      "TypeScript",
-      "JavaScript",
-      "scikit-learn",
-      "XGBoost",
-      "CatBoost",
-      "OpenAI",
-      "Anthropic",
-      "Gemini",
-      "Groq"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/Churn-Intelligence-Platform",
-    "demo": "https://customer-segmentation-churn.vercel.app",
-    "outcome": "These models are trained with classweights=[1, posweight] to handle imbalance, which inflates the positive class by construction — so a raw score of 0.7 is not a 70% chance of churn."
   },
   {
     "slug": "rag-vs-cag-showdown",
@@ -229,70 +399,6 @@ export const generatedProjects: Project[] = [
     "url": "https://github.com/shiva-shivanibokka/Basics-of-Linear-and-Logistic-Regression",
     "demo": "https://basics-of-linear-and-logistic-regre.vercel.app",
     "outcome": "Measured results (randomstate=42, 10,788 held-out rows): linear R² 0.953 / RMSE $868 with the log-target model; logistic 97.6% accuracy, 0.998 ROC-AUC."
-  },
-  {
-    "slug": "autonomous-swe-agent",
-    "title": "Autonomous SWE Agent",
-    "repo": "Autonomous-SWE-Agent",
-    "domain": "LLMs & GenAI",
-    "blurb": "Takes a GitHub issue, writes a patch inside an isolated workspace, and runs the repository's own tests against it — built two ways, an agentic tool-use loop and a tool-free agentless pipeline , so the same task can be run through both an…",
-    "tech": [
-      "Python",
-      "TypeScript",
-      "JavaScript",
-      "PyTorch",
-      "Transformers",
-      "sentence-transformers",
-      "OpenAI",
-      "Anthropic",
-      "Groq",
-      "FastAPI"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/Autonomous-SWE-Agent",
-    "demo": "https://autonomous-swe-agent.vercel.app"
-  },
-  {
-    "slug": "autonomous-research-report-agent",
-    "title": "Autonomous Research Report Agent",
-    "repo": "Autonomous-Research-Report-Agent",
-    "domain": "Agentic",
-    "blurb": "A multi-agent pipeline that researches the open web and writes cited, quality-scored research reports — with a self-improving critic loop, source triangulation, contradiction detection, and per-report cost accounting.",
-    "tech": [
-      "Python",
-      "TypeScript",
-      "JavaScript",
-      "LangGraph",
-      "LangChain",
-      "OpenAI",
-      "Anthropic",
-      "Gemini",
-      "Groq",
-      "FastAPI"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/Autonomous-Research-Report-Agent",
-    "demo": "https://autonomous-research-report-agent-nu.vercel.app",
-    "outcome": "The run surfaced the METR randomized controlled trial, in which developers took 19% longer with AI assistance while perceiving a 20% speedup — against vendor studies claiming 20–50% gains."
-  },
-  {
-    "slug": "autonomous-ml-pipeline-builder",
-    "title": "Autonomous ML Pipeline Builder",
-    "repo": "Autonomous-ML-Pipeline-Builder",
-    "domain": "LLMs & GenAI",
-    "blurb": "Upload a CSV, describe your problem in plain English, and a team of AI agents builds, evaluates, and packages a complete, deployable ML pipeline — live.",
-    "tech": [
-      "Python",
-      "TypeScript",
-      "JavaScript",
-      "scikit-learn",
-      "XGBoost",
-      "LightGBM",
-      "LangGraph",
-      "LangChain",
-      "RAG",
-      "OpenAI"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/Autonomous-ML-Pipeline-Builder",
-    "demo": "https://autonomous-ml-pipeline-builder.vercel.app"
   },
   {
     "slug": "hireview",
@@ -415,27 +521,6 @@ export const generatedProjects: Project[] = [
     ],
     "url": "https://github.com/shiva-shivanibokka/NLP-Pipeline-at-Scale",
     "demo": "https://frontend-ten-eta-64.vercel.app"
-  },
-  {
-    "slug": "multimodal-rag",
-    "title": "Multimodal RAG",
-    "repo": "Multimodal-RAG",
-    "domain": "LLMs & GenAI",
-    "blurb": "[!IMPORTANT] The hosted demo is temporary. This project's backend runs on Google Cloud Run under a Google Cloud free trial that ends around 19 September 2026 . When the trial closes the service is stopped, and every run.app link below st…",
-    "tech": [
-      "Python",
-      "TypeScript",
-      "JavaScript",
-      "PyTorch",
-      "Transformers",
-      "sentence-transformers",
-      "RAG",
-      "FAISS",
-      "OpenAI",
-      "Anthropic"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/Multimodal-RAG",
-    "demo": "https://multimodal-rag-plum.vercel.app"
   },
   {
     "slug": "ml-system-design-feature-store",
@@ -881,28 +966,6 @@ export const generatedProjects: Project[] = [
     "demo": "https://dive-deeper-supervised-learning.vercel.app"
   },
   {
-    "slug": "supply-chain-demand-agent",
-    "title": "Supply Chain Demand Agent",
-    "repo": "Supply-Chain-Demand-Agent",
-    "domain": "LLMs & GenAI",
-    "blurb": "Agentic RAG pipeline for supply chain demand forecasting using LLMs, time-series models, and MLOps",
-    "tech": [
-      "Python",
-      "TypeScript",
-      "Jupyter Notebook",
-      "PyTorch",
-      "Transformers",
-      "sentence-transformers",
-      "RAG",
-      "ChromaDB",
-      "OpenAI",
-      "Anthropic"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/Supply-Chain-Demand-Agent",
-    "demo": "https://supply-chain-demand-agent.vercel.app",
-    "outcome": "actual average daily demand - Calibration — the % of actuals falling inside the predicted p10–p90 band (target ~80%+) - Drift flag — fires when MAE is more than 1.5× the baseline (predict-the-global-mean) MAE"
-  },
-  {
     "slug": "multi-horizon-stock-forecasting-ai-model",
     "title": "Multi Horizon Stock Forecasting AI Model",
     "repo": "Multi-Horizon-Stock-Forecasting-AI-Model",
@@ -1005,27 +1068,6 @@ export const generatedProjects: Project[] = [
     "outcome": "If ANY slice degrades 2% AUC vs champion → REJECTED."
   },
   {
-    "slug": "scm-using-mcp-and-llm",
-    "title": "SCM Using MCP And LLM",
-    "repo": "SCM-using-MCP-and-LLM",
-    "domain": "Agentic",
-    "blurb": "A pet-retail supply-chain platform where an AI agent reasons over a live data warehouse and tells you what to do — not just what happened.",
-    "tech": [
-      "Python",
-      "JavaScript",
-      "PyTorch",
-      "CatBoost",
-      "Transformers",
-      "RAG",
-      "MCP",
-      "OpenAI",
-      "Anthropic",
-      "Gemini"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/SCM-using-MCP-and-LLM",
-    "demo": "https://scm-using-mcp-and-llm.vercel.app"
-  },
-  {
     "slug": "resumeforge",
     "title": "ResumeForge",
     "repo": "ResumeForge",
@@ -1066,28 +1108,6 @@ export const generatedProjects: Project[] = [
     ],
     "url": "https://github.com/shiva-shivanibokka/ML-System-Design-Recommendation-Engine",
     "demo": "https://ml-system-design-recommendation-eng.vercel.app"
-  },
-  {
-    "slug": "take-home-project",
-    "title": "Take Home Project",
-    "repo": "take-home-project",
-    "domain": "LLMs & GenAI",
-    "blurb": "Confer Inc. · AI/ML Engineering Take-Home · Assignment 5 of 5",
-    "tech": [
-      "TypeScript",
-      "JavaScript",
-      "PLpgSQL",
-      "OpenAI",
-      "Anthropic",
-      "Groq",
-      "Ollama",
-      "Postgres",
-      "Supabase",
-      "React"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/take-home-project",
-    "demo": "https://take-home-project-ten.vercel.app",
-    "outcome": "The latency tradeoff is acceptable: the write stage increases from ~10s to ~45s."
   },
   {
     "slug": "super-resolution-using-han",
