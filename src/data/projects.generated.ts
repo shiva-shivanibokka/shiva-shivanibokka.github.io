@@ -17,6 +17,167 @@ export const generatedProjects: Project[] = [
     "url": "https://github.com/shiva-shivanibokka/portfolio-keepalive"
   },
   {
+    "slug": "churn-intelligence-platform",
+    "title": "Churn Intelligence Platform",
+    "repo": "Churn-Intelligence-Platform",
+    "domain": "Classical ML",
+    "blurb": "End-to-end decision intelligence platform: behavioral segmentation → per-cohort churn prediction → uplift modeling → 12-tool AI retention agent → closed-loop outcome tracking.",
+    "tech": [
+      "Python",
+      "TypeScript",
+      "JavaScript",
+      "scikit-learn",
+      "XGBoost",
+      "CatBoost",
+      "OpenAI",
+      "Anthropic",
+      "Gemini",
+      "Groq"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/Churn-Intelligence-Platform",
+    "demo": "https://customer-segmentation-churn.vercel.app",
+    "outcome": "These models are trained with classweights=[1, posweight] to handle imbalance, which inflates the positive class by construction — so a raw score of 0.7 is not a 70% chance of churn."
+  },
+  {
+    "slug": "search-ranking-system",
+    "title": "Search Ranking System",
+    "repo": "Search-Ranking-System",
+    "domain": "LLMs & GenAI",
+    "blurb": "🔗 Live demo: https://search-ranking-system-shiv-a.vercel.app (SvelteKit on Vercel → FastAPI on Cloud Run; the first request may cold-start for 1–2 min)",
+    "tech": [
+      "Python",
+      "Svelte",
+      "TypeScript",
+      "PyTorch",
+      "scikit-learn",
+      "XGBoost",
+      "ONNX",
+      "Transformers",
+      "sentence-transformers",
+      "PEFT"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/Search-Ranking-System",
+    "outcome": "Result: in-domain Recall@100 ≈ 0.74 over the full 1M index (measured); a two-stage pipeline evaluated end-to-end with NDCG@10 / Recall / MRR across BM25, dense, hybrid, and both rerankers — see the measured table in §14."
+  },
+  {
+    "slug": "nlp-pipeline-at-scale",
+    "title": "NLP Pipeline At Scale",
+    "repo": "NLP-Pipeline-at-Scale",
+    "domain": "MLOps",
+    "blurb": "[!IMPORTANT] The hosted demo is temporary. This project's backend runs on Google Cloud Run under a Google Cloud free trial that ends around 19 September 2026 . When the trial closes the service is stopped, and every run.app link below st…",
+    "tech": [
+      "Python",
+      "TypeScript",
+      "JavaScript",
+      "PyTorch",
+      "scikit-learn",
+      "Transformers",
+      "sentence-transformers",
+      "PEFT",
+      "Plotly",
+      "Kafka"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/NLP-Pipeline-at-Scale",
+    "demo": "https://frontend-ten-eta-64.vercel.app"
+  },
+  {
+    "slug": "ml-system-design-retraining-pipeline",
+    "title": "ML System Design Retraining Pipeline",
+    "repo": "ML-System-Design-Retraining-Pipeline",
+    "domain": "ML System Design",
+    "blurb": "Recruiter TL;DR - What it is — An end-to-end MLOps system that keeps a production credit-risk model accurate as data drifts: it detects distribution shift nightly, retrains a hyperparameter-tuned challenger, gates it behind statistical a…",
+    "tech": [
+      "Python",
+      "TypeScript",
+      "JavaScript",
+      "scikit-learn",
+      "XGBoost",
+      "LightGBM",
+      "Transformers",
+      "OpenAI",
+      "Anthropic",
+      "Groq"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/ML-System-Design-Retraining-Pipeline",
+    "demo": "https://ml-system-design-retraining-pipelin.vercel.app",
+    "outcome": "If ANY slice degrades 2% AUC vs champion → REJECTED."
+  },
+  {
+    "slug": "tool-dependency-graph",
+    "title": "Tool Dependency Graph",
+    "repo": "tool-dependency-graph",
+    "domain": "LLMs & GenAI",
+    "blurb": "Derives a call-order dependency graph from a tool catalog: which tool must run first to supply each required parameter, and which parameters have to come from the user.",
+    "tech": [
+      "TypeScript",
+      "OpenAI"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/tool-dependency-graph"
+  },
+  {
+    "slug": "ml-system-design-model-serving",
+    "title": "ML System Design Model Serving",
+    "repo": "ML-System-Design-Model-Serving",
+    "domain": "ML System Design",
+    "blurb": "[!IMPORTANT] The hosted demo is temporary. This project's backend runs on Google Cloud Run under a Google Cloud free trial that ends around 19 September 2026 . When the trial closes the service is stopped, and every run.app link below st…",
+    "tech": [
+      "Python",
+      "JavaScript",
+      "PyTorch",
+      "Transformers",
+      "Plotly",
+      "FastAPI",
+      "uvicorn",
+      "Pydantic",
+      "SQLAlchemy",
+      "Redis"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/ML-System-Design-Model-Serving",
+    "outcome": "\"What triggers automatic rollback?\" Two independent signals: error rate 5% OR p99 latency 2× v1 p99."
+  },
+  {
+    "slug": "ml-system-design-feature-store",
+    "title": "ML System Design Feature Store",
+    "repo": "ML-System-Design-Feature-Store",
+    "domain": "ML System Design",
+    "blurb": "[!IMPORTANT] The hosted demo is temporary. This project's backend runs on Google Cloud Run under a Google Cloud free trial that ends around 19 September 2026 . When the trial closes the service is stopped, and every run.app link below st…",
+    "tech": [
+      "Python",
+      "TypeScript",
+      "JavaScript",
+      "scikit-learn",
+      "LightGBM",
+      "DuckDB",
+      "FastAPI",
+      "uvicorn",
+      "Pydantic",
+      "Redis"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/ML-System-Design-Feature-Store",
+    "demo": "https://ml-feature-store-three.vercel.app"
+  },
+  {
+    "slug": "codepilot-swe",
+    "title": "CodePilot SWE",
+    "repo": "CodePilot-SWE",
+    "domain": "Agentic",
+    "blurb": "Autonomous coding agent with a SWE-bench Lite evaluation harness: agent vs agentless under hard spend caps",
+    "tech": [
+      "Python",
+      "JavaScript",
+      "LangGraph",
+      "LangChain",
+      "OpenAI",
+      "Anthropic",
+      "Gemini",
+      "Groq",
+      "Ollama",
+      "FastAPI"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/CodePilot-SWE",
+    "demo": "https://codepilot-swe-replay.vercel.app"
+  },
+  {
     "slug": "competitor-insight-engine",
     "title": "Competitor Insight Engine",
     "repo": "Competitor-Insight-Engine",
@@ -36,26 +197,6 @@ export const generatedProjects: Project[] = [
     ],
     "url": "https://github.com/shiva-shivanibokka/Competitor-Insight-Engine",
     "demo": "https://competitor-insight-engine.vercel.app"
-  },
-  {
-    "slug": "codepilot-swe",
-    "title": "CodePilot SWE",
-    "repo": "CodePilot-SWE",
-    "domain": "Agentic",
-    "blurb": "Autonomous coding agent with a SWE-bench Lite evaluation harness: agent vs agentless under hard spend caps",
-    "tech": [
-      "Python",
-      "LangGraph",
-      "LangChain",
-      "OpenAI",
-      "Anthropic",
-      "Gemini",
-      "Groq",
-      "Ollama",
-      "FastAPI",
-      "Flask"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/CodePilot-SWE"
   },
   {
     "slug": "take-home-project",
@@ -117,28 +258,6 @@ export const generatedProjects: Project[] = [
     ],
     "url": "https://github.com/shiva-shivanibokka/Autonomous-SWE-Agent",
     "demo": "https://autonomous-swe-agent.vercel.app"
-  },
-  {
-    "slug": "churn-intelligence-platform",
-    "title": "Churn Intelligence Platform",
-    "repo": "Churn-Intelligence-Platform",
-    "domain": "Classical ML",
-    "blurb": "End-to-end decision intelligence platform: behavioral segmentation → per-cohort churn prediction → uplift modeling → 12-tool AI retention agent → closed-loop outcome tracking.",
-    "tech": [
-      "Python",
-      "TypeScript",
-      "JavaScript",
-      "scikit-learn",
-      "XGBoost",
-      "CatBoost",
-      "OpenAI",
-      "Anthropic",
-      "Gemini",
-      "Groq"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/Churn-Intelligence-Platform",
-    "demo": "https://customer-segmentation-churn.vercel.app",
-    "outcome": "These models are trained with classweights=[1, posweight] to handle imbalance, which inflates the positive class by construction — so a raw score of 0.7 is not a 70% chance of churn."
   },
   {
     "slug": "supply-chain-demand-agent",
@@ -500,69 +619,6 @@ export const generatedProjects: Project[] = [
       "OpenAI"
     ],
     "url": "https://github.com/shiva-shivanibokka/llm-hallucination-detection"
-  },
-  {
-    "slug": "nlp-pipeline-at-scale",
-    "title": "NLP Pipeline At Scale",
-    "repo": "NLP-Pipeline-at-Scale",
-    "domain": "MLOps",
-    "blurb": "[!IMPORTANT] The hosted demo is temporary. This project's backend runs on Google Cloud Run under a Google Cloud free trial that ends around 19 September 2026 . When the trial closes the service is stopped, and every run.app link below st…",
-    "tech": [
-      "Python",
-      "TypeScript",
-      "JavaScript",
-      "PyTorch",
-      "scikit-learn",
-      "Transformers",
-      "sentence-transformers",
-      "PEFT",
-      "Plotly",
-      "Kafka"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/NLP-Pipeline-at-Scale",
-    "demo": "https://frontend-ten-eta-64.vercel.app"
-  },
-  {
-    "slug": "ml-system-design-feature-store",
-    "title": "ML System Design Feature Store",
-    "repo": "ML-System-Design-Feature-Store",
-    "domain": "ML System Design",
-    "blurb": "[!IMPORTANT] The hosted demo is temporary. This project's backend runs on Google Cloud Run under a Google Cloud free trial that ends around 19 September 2026 . When the trial closes the service is stopped, and every run.app link below st…",
-    "tech": [
-      "Python",
-      "TypeScript",
-      "JavaScript",
-      "scikit-learn",
-      "LightGBM",
-      "DuckDB",
-      "FastAPI",
-      "uvicorn",
-      "Pydantic",
-      "Redis"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/ML-System-Design-Feature-Store",
-    "demo": "https://ml-feature-store-three.vercel.app"
-  },
-  {
-    "slug": "ml-system-design-model-serving",
-    "title": "ML System Design Model Serving",
-    "repo": "ML-System-Design-Model-Serving",
-    "domain": "ML System Design",
-    "blurb": "[!IMPORTANT] The hosted demo is temporary. This project's backend runs on Google Cloud Run under a Google Cloud free trial that ends around 19 September 2026 . When the trial closes the service is stopped, and every run.app link below st…",
-    "tech": [
-      "Python",
-      "JavaScript",
-      "PyTorch",
-      "Transformers",
-      "Plotly",
-      "FastAPI",
-      "uvicorn",
-      "Pydantic",
-      "SQLAlchemy",
-      "Redis"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/ML-System-Design-Model-Serving",
-    "outcome": "\"What triggers automatic rollback?\" Two independent signals: error rate 5% OR p99 latency 2× v1 p99."
   },
   {
     "slug": "ml-model-efficiency-toolkit",
@@ -987,27 +1043,6 @@ export const generatedProjects: Project[] = [
     "demo": "https://mhf-forecaster.vercel.app"
   },
   {
-    "slug": "search-ranking-system",
-    "title": "Search Ranking System",
-    "repo": "Search-Ranking-System",
-    "domain": "LLMs & GenAI",
-    "blurb": "🔗 Live demo: https://search-ranking-system-shiv-a.vercel.app (SvelteKit on Vercel → FastAPI on Cloud Run; the first request may cold-start for 1–2 min)",
-    "tech": [
-      "Python",
-      "Svelte",
-      "TypeScript",
-      "PyTorch",
-      "scikit-learn",
-      "XGBoost",
-      "ONNX",
-      "Transformers",
-      "sentence-transformers",
-      "PEFT"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/Search-Ranking-System",
-    "outcome": "Result: in-domain Recall@100 ≈ 0.74 over the full 1M index (measured); a two-stage pipeline evaluated end-to-end with NDCG@10 / Recall / MRR across BM25, dense, hybrid, and both rerankers — see the measured table in §14."
-  },
-  {
     "slug": "transfer-learning-huggingface",
     "title": "Transfer Learning HuggingFace",
     "repo": "Transfer-Learning-HuggingFace",
@@ -1044,28 +1079,6 @@ export const generatedProjects: Project[] = [
       "Vite"
     ],
     "url": "https://github.com/shiva-shivanibokka/launchpad"
-  },
-  {
-    "slug": "ml-system-design-retraining-pipeline",
-    "title": "ML System Design Retraining Pipeline",
-    "repo": "ML-System-Design-Retraining-Pipeline",
-    "domain": "ML System Design",
-    "blurb": "Recruiter TL;DR - What it is — An end-to-end MLOps system that keeps a production credit-risk model accurate as data drifts: it detects distribution shift nightly, retrains a hyperparameter-tuned challenger, gates it behind statistical a…",
-    "tech": [
-      "Python",
-      "TypeScript",
-      "JavaScript",
-      "scikit-learn",
-      "XGBoost",
-      "LightGBM",
-      "Transformers",
-      "OpenAI",
-      "Anthropic",
-      "Groq"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/ML-System-Design-Retraining-Pipeline",
-    "demo": "https://ml-system-design-retraining-pipelin.vercel.app",
-    "outcome": "If ANY slice degrades 2% AUC vs champion → REJECTED."
   },
   {
     "slug": "resumeforge",
