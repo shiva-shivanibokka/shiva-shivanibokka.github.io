@@ -4,67 +4,11 @@ import type { Project } from './types'
 // Every public repo with a detailed README (empty / stub repos filtered out).
 export const generatedProjects: Project[] = [
   {
-    "slug": "portfolio-keepalive",
-    "title": "Portfolio Keepalive",
-    "repo": "portfolio-keepalive",
-    "domain": "ML System Design",
-    "blurb": "Keeps the Cloud Run demos warm and reports when one is down",
-    "tech": [
-      "RAG",
-      "GitHub Actions",
-      "Vercel"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/portfolio-keepalive"
-  },
-  {
-    "slug": "churn-intelligence-platform",
-    "title": "Churn Intelligence Platform",
-    "repo": "Churn-Intelligence-Platform",
-    "domain": "Classical ML",
-    "blurb": "End-to-end decision intelligence platform: behavioral segmentation → per-cohort churn prediction → uplift modeling → 12-tool AI retention agent → closed-loop outcome tracking.",
-    "tech": [
-      "Python",
-      "TypeScript",
-      "JavaScript",
-      "scikit-learn",
-      "XGBoost",
-      "CatBoost",
-      "OpenAI",
-      "Anthropic",
-      "Gemini",
-      "Groq"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/Churn-Intelligence-Platform",
-    "demo": "https://customer-segmentation-churn.vercel.app",
-    "outcome": "These models are trained with classweights=[1, posweight] to handle imbalance, which inflates the positive class by construction — so a raw score of 0.7 is not a 70% chance of churn."
-  },
-  {
-    "slug": "search-ranking-system",
-    "title": "Search Ranking System",
-    "repo": "Search-Ranking-System",
-    "domain": "LLMs & GenAI",
-    "blurb": "🔗 Live demo: https://search-ranking-system-shiv-a.vercel.app (SvelteKit on Vercel → FastAPI on Cloud Run; the first request may cold-start for 1–2 min)",
-    "tech": [
-      "Python",
-      "Svelte",
-      "TypeScript",
-      "PyTorch",
-      "scikit-learn",
-      "XGBoost",
-      "ONNX",
-      "Transformers",
-      "sentence-transformers",
-      "PEFT"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/Search-Ranking-System",
-    "outcome": "Result: in-domain Recall@100 ≈ 0.74 over the full 1M index (measured); a two-stage pipeline evaluated end-to-end with NDCG@10 / Recall / MRR across BM25, dense, hybrid, and both rerankers — see the measured table in §14."
-  },
-  {
     "slug": "nlp-pipeline-at-scale",
     "title": "NLP Pipeline At Scale",
     "repo": "NLP-Pipeline-at-Scale",
-    "domain": "MLOps",
-    "blurb": "[!IMPORTANT] The hosted demo is temporary. This project's backend runs on Google Cloud Run under a Google Cloud free trial that ends around 19 September 2026 . When the trial closes the service is stopped, and every run.app link below st…",
+    "domain": "ML System Design",
+    "blurb": "[!IMPORTANT] The hosted demo is offline. The backend ran on Google Cloud Run under a free trial that has since closed, so the Cloud Run service no longer exists and every run.app link below is dead. The Vercel frontend still loads and no…",
     "tech": [
       "Python",
       "TypeScript",
@@ -78,7 +22,8 @@ export const generatedProjects: Project[] = [
       "Kafka"
     ],
     "url": "https://github.com/shiva-shivanibokka/NLP-Pipeline-at-Scale",
-    "demo": "https://frontend-ten-eta-64.vercel.app"
+    "demo": "https://frontend-ten-eta-64.vercel.app",
+    "outcome": "Takeaway: one shared backbone comes within 1.8 F1 points of three separate models on every task, at 3.0× fewer parameters (373 M → 125 M) and 2.2× lower p99 latency (27.0 → 12.4 ms)."
   },
   {
     "slug": "ml-system-design-retraining-pipeline",
@@ -100,125 +45,7 @@ export const generatedProjects: Project[] = [
     ],
     "url": "https://github.com/shiva-shivanibokka/ML-System-Design-Retraining-Pipeline",
     "demo": "https://ml-system-design-retraining-pipelin.vercel.app",
-    "outcome": "If ANY slice degrades 2% AUC vs champion → REJECTED."
-  },
-  {
-    "slug": "tool-dependency-graph",
-    "title": "Tool Dependency Graph",
-    "repo": "tool-dependency-graph",
-    "domain": "LLMs & GenAI",
-    "blurb": "Derives a call-order dependency graph from a tool catalog: which tool must run first to supply each required parameter, and which parameters have to come from the user.",
-    "tech": [
-      "TypeScript",
-      "OpenAI"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/tool-dependency-graph"
-  },
-  {
-    "slug": "ml-system-design-model-serving",
-    "title": "ML System Design Model Serving",
-    "repo": "ML-System-Design-Model-Serving",
-    "domain": "ML System Design",
-    "blurb": "[!IMPORTANT] The hosted demo is temporary. This project's backend runs on Google Cloud Run under a Google Cloud free trial that ends around 19 September 2026 . When the trial closes the service is stopped, and every run.app link below st…",
-    "tech": [
-      "Python",
-      "JavaScript",
-      "PyTorch",
-      "Transformers",
-      "Plotly",
-      "FastAPI",
-      "uvicorn",
-      "Pydantic",
-      "SQLAlchemy",
-      "Redis"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/ML-System-Design-Model-Serving",
-    "outcome": "\"What triggers automatic rollback?\" Two independent signals: error rate 5% OR p99 latency 2× v1 p99."
-  },
-  {
-    "slug": "ml-system-design-feature-store",
-    "title": "ML System Design Feature Store",
-    "repo": "ML-System-Design-Feature-Store",
-    "domain": "ML System Design",
-    "blurb": "[!IMPORTANT] The hosted demo is temporary. This project's backend runs on Google Cloud Run under a Google Cloud free trial that ends around 19 September 2026 . When the trial closes the service is stopped, and every run.app link below st…",
-    "tech": [
-      "Python",
-      "TypeScript",
-      "JavaScript",
-      "scikit-learn",
-      "LightGBM",
-      "DuckDB",
-      "FastAPI",
-      "uvicorn",
-      "Pydantic",
-      "Redis"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/ML-System-Design-Feature-Store",
-    "demo": "https://ml-feature-store-three.vercel.app"
-  },
-  {
-    "slug": "codepilot-swe",
-    "title": "CodePilot SWE",
-    "repo": "CodePilot-SWE",
-    "domain": "Agentic",
-    "blurb": "Autonomous coding agent with a SWE-bench Lite evaluation harness: agent vs agentless under hard spend caps",
-    "tech": [
-      "Python",
-      "JavaScript",
-      "LangGraph",
-      "LangChain",
-      "OpenAI",
-      "Anthropic",
-      "Gemini",
-      "Groq",
-      "Ollama",
-      "FastAPI"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/CodePilot-SWE",
-    "demo": "https://codepilot-swe-replay.vercel.app"
-  },
-  {
-    "slug": "competitor-insight-engine",
-    "title": "Competitor Insight Engine",
-    "repo": "Competitor-Insight-Engine",
-    "domain": "LLMs & GenAI",
-    "blurb": "AI-powered tool that scrapes any company's website, finds real-time competitors via Tavily search, and generates a full competitive intelligence report — including market comparison and strategic recommendations — using any LLM of your choice.",
-    "tech": [
-      "Python",
-      "Jupyter Notebook",
-      "TypeScript",
-      "OpenAI",
-      "Anthropic",
-      "Gemini",
-      "Groq",
-      "Ollama",
-      "FastAPI",
-      "uvicorn"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/Competitor-Insight-Engine",
-    "demo": "https://competitor-insight-engine.vercel.app"
-  },
-  {
-    "slug": "take-home-project",
-    "title": "Take Home Project",
-    "repo": "take-home-project",
-    "domain": "LLMs & GenAI",
-    "blurb": "Confer Inc. · AI/ML Engineering Take-Home · Assignment 5 of 5",
-    "tech": [
-      "TypeScript",
-      "JavaScript",
-      "PLpgSQL",
-      "OpenAI",
-      "Anthropic",
-      "Groq",
-      "Ollama",
-      "Postgres",
-      "Supabase",
-      "React"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/take-home-project",
-    "demo": "https://take-home-project-ten.vercel.app",
-    "outcome": "The latency tradeoff is acceptable: the write stage increases from ~10s to ~45s."
+    "outcome": "If ANY evaluated slice degrades 2% AUC vs champion → REJECTED."
   },
   {
     "slug": "unclaimed",
@@ -237,27 +64,6 @@ export const generatedProjects: Project[] = [
       "pytest"
     ],
     "url": "https://github.com/shiva-shivanibokka/unclaimed"
-  },
-  {
-    "slug": "autonomous-swe-agent",
-    "title": "Autonomous SWE Agent",
-    "repo": "Autonomous-SWE-Agent",
-    "domain": "LLMs & GenAI",
-    "blurb": "Takes a GitHub issue, writes a patch inside an isolated workspace, and runs the repository's own tests against it — built two ways, an agentic tool-use loop and a tool-free agentless pipeline , so the same task can be run through both an…",
-    "tech": [
-      "Python",
-      "TypeScript",
-      "JavaScript",
-      "PyTorch",
-      "Transformers",
-      "sentence-transformers",
-      "OpenAI",
-      "Anthropic",
-      "Groq",
-      "FastAPI"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/Autonomous-SWE-Agent",
-    "demo": "https://autonomous-swe-agent.vercel.app"
   },
   {
     "slug": "supply-chain-demand-agent",
@@ -279,28 +85,28 @@ export const generatedProjects: Project[] = [
     ],
     "url": "https://github.com/shiva-shivanibokka/Supply-Chain-Demand-Agent",
     "demo": "https://supply-chain-demand-agent.vercel.app",
-    "outcome": "actual average daily demand - Calibration — the % of actuals falling inside the predicted p10–p90 band (target ~80%+) - Drift flag — fires when MAE is more than 1.5× the baseline (predict-the-global-mean) MAE"
+    "outcome": "On this repo's synthetic data, a rolling-origin backtest (RESULTS.md) found the TFT's MAE 28% lower than this baseline and 14% lower than AutoARIMA; this has not been tested on real demand data."
   },
   {
-    "slug": "scm-using-mcp-and-llm",
-    "title": "SCM Using MCP And LLM",
-    "repo": "SCM-using-MCP-and-LLM",
+    "slug": "codepilot-swe",
+    "title": "CodePilot SWE",
+    "repo": "CodePilot-SWE",
     "domain": "Agentic",
-    "blurb": "A pet-retail supply-chain platform where an AI agent reasons over a live data warehouse and tells you what to do — not just what happened.",
+    "blurb": "Autonomous coding agent with a SWE-bench Lite evaluation harness: agent vs agentless under hard spend caps",
     "tech": [
       "Python",
       "JavaScript",
-      "PyTorch",
-      "CatBoost",
-      "Transformers",
-      "RAG",
-      "MCP",
+      "LangGraph",
+      "LangChain",
       "OpenAI",
       "Anthropic",
-      "Gemini"
+      "Gemini",
+      "Groq",
+      "Ollama",
+      "FastAPI"
     ],
-    "url": "https://github.com/shiva-shivanibokka/SCM-using-MCP-and-LLM",
-    "demo": "https://scm-using-mcp-and-llm.vercel.app"
+    "url": "https://github.com/shiva-shivanibokka/CodePilot-SWE",
+    "demo": "https://codepilot-swe-replay.vercel.app"
   },
   {
     "slug": "autonomous-research-report-agent",
@@ -346,6 +152,27 @@ export const generatedProjects: Project[] = [
     "demo": "https://autonomous-ml-pipeline-builder.vercel.app"
   },
   {
+    "slug": "search-ranking-system",
+    "title": "Search Ranking System",
+    "repo": "Search-Ranking-System",
+    "domain": "LLMs & GenAI",
+    "blurb": "🔗 Frontend: https://search-ranking-system-shiv-a.vercel.app — the search backend is currently offline. The SvelteKit frontend deploys and loads, but the Cloud Run API behind it returns 503 on every path ( / , /health , /docs ) in 0.2 s,…",
+    "tech": [
+      "Python",
+      "Svelte",
+      "TypeScript",
+      "PyTorch",
+      "scikit-learn",
+      "XGBoost",
+      "ONNX",
+      "Transformers",
+      "sentence-transformers",
+      "PEFT"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/Search-Ranking-System",
+    "outcome": "That is now fixed with a gold-inclusive ~1M corpus (see §11), and together the two changes take measured in-domain Recall@100 to ~0.74 (see §11 and §14)."
+  },
+  {
     "slug": "multimodal-rag",
     "title": "Multimodal RAG",
     "repo": "Multimodal-RAG",
@@ -365,6 +192,243 @@ export const generatedProjects: Project[] = [
     ],
     "url": "https://github.com/shiva-shivanibokka/Multimodal-RAG",
     "demo": "https://multimodal-rag-plum.vercel.app"
+  },
+  {
+    "slug": "scm-using-mcp-and-llm",
+    "title": "SCM Using MCP And LLM",
+    "repo": "SCM-using-MCP-and-LLM",
+    "domain": "Agentic",
+    "blurb": "A pet-retail supply-chain platform where an AI agent reasons over a live data warehouse and tells you what to do — not just what happened.",
+    "tech": [
+      "Python",
+      "JavaScript",
+      "PyTorch",
+      "CatBoost",
+      "Transformers",
+      "RAG",
+      "MCP",
+      "OpenAI",
+      "Anthropic",
+      "Gemini"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/SCM-using-MCP-and-LLM",
+    "demo": "https://scm-using-mcp-and-llm.vercel.app"
+  },
+  {
+    "slug": "ml-system-design-recommendation-engine",
+    "title": "ML System Design Recommendation Engine",
+    "repo": "ML-System-Design-Recommendation-Engine",
+    "domain": "ML System Design",
+    "blurb": "A two-stage, bandit-routed movie recommender served behind a latency-budgeted FastAPI gateway — deployed live, end-to-end, on free-tier infrastructure.",
+    "tech": [
+      "Python",
+      "TypeScript",
+      "JavaScript",
+      "PyTorch",
+      "scikit-learn",
+      "Transformers",
+      "FAISS",
+      "Gemini",
+      "Plotly",
+      "Kafka"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/ML-System-Design-Recommendation-Engine",
+    "demo": "https://ml-system-design-recommendation-eng.vercel.app"
+  },
+  {
+    "slug": "rl-portfolio-optimization",
+    "title": "RL Portfolio Optimization",
+    "repo": "RL-Portfolio-Optimization",
+    "domain": "Full-Stack / Product",
+    "blurb": "Interactive reinforcement-learning portfolio allocator — three reward-shaped PPO agents, trained offline on real ETF data, served on Vercel's free tier with zero PyTorch in production.",
+    "tech": [
+      "Python",
+      "TypeScript",
+      "JavaScript",
+      "PyTorch",
+      "React",
+      "Next.js",
+      "Recharts",
+      "GitHub Actions",
+      "MLflow",
+      "NumPy"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/RL-Portfolio-Optimization",
+    "demo": "https://rl-portfolio-optimization.vercel.app"
+  },
+  {
+    "slug": "autonomous-swe-agent",
+    "title": "Autonomous SWE Agent",
+    "repo": "Autonomous-SWE-Agent",
+    "domain": "LLMs & GenAI",
+    "blurb": "Takes a GitHub issue, writes a patch inside an isolated workspace, and runs the repository's own tests against it — built two ways, an agentic tool-use loop and a tool-free agentless pipeline , so the same task can be run through both an…",
+    "tech": [
+      "Python",
+      "TypeScript",
+      "JavaScript",
+      "PyTorch",
+      "Transformers",
+      "sentence-transformers",
+      "OpenAI",
+      "Anthropic",
+      "Groq",
+      "FastAPI"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/Autonomous-SWE-Agent",
+    "demo": "https://autonomous-swe-agent.vercel.app"
+  },
+  {
+    "slug": "churn-intelligence-platform",
+    "title": "Churn Intelligence Platform",
+    "repo": "Churn-Intelligence-Platform",
+    "domain": "Classical ML",
+    "blurb": "End-to-end decision intelligence platform: behavioral segmentation → per-cohort churn prediction → uplift modeling → 12-tool AI retention agent → closed-loop outcome tracking.",
+    "tech": [
+      "Python",
+      "TypeScript",
+      "JavaScript",
+      "scikit-learn",
+      "XGBoost",
+      "CatBoost",
+      "OpenAI",
+      "Anthropic",
+      "Gemini",
+      "Groq"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/Churn-Intelligence-Platform",
+    "demo": "https://customer-segmentation-churn.vercel.app",
+    "outcome": "These models are trained with classweights=[1, posweight] to handle imbalance, which inflates the positive class by construction — so a raw score of 0.7 is not a 70% chance of churn."
+  },
+  {
+    "slug": "take-home-project",
+    "title": "Take Home Project",
+    "repo": "take-home-project",
+    "domain": "LLMs & GenAI",
+    "blurb": "Confer Inc. · AI/ML Engineering Take-Home · Assignment 5 of 5",
+    "tech": [
+      "TypeScript",
+      "Python",
+      "JavaScript",
+      "OpenAI",
+      "Anthropic",
+      "Groq",
+      "Ollama",
+      "Postgres",
+      "Supabase",
+      "React"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/take-home-project",
+    "demo": "https://take-home-project-ten.vercel.app",
+    "outcome": "The latency tradeoff is acceptable: the write stage increases from ~10s to ~45s."
+  },
+  {
+    "slug": "ml-system-design-model-serving",
+    "title": "ML System Design Model Serving",
+    "repo": "ML-System-Design-Model-Serving",
+    "domain": "ML System Design",
+    "blurb": "Measured evaluation: RESULTS.md — an early return that silently cancelled the canary, shadow mode and drift detection — the three mechanisms this project exists to demonstrate — plus auto-promotion with no health gate at all.",
+    "tech": [
+      "Python",
+      "JavaScript",
+      "PyTorch",
+      "Transformers",
+      "Plotly",
+      "FastAPI",
+      "uvicorn",
+      "Pydantic",
+      "SQLAlchemy",
+      "Postgres"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/ML-System-Design-Model-Serving",
+    "outcome": "\"What triggers automatic rollback?\" Two independent signals: error rate 5% OR p99 latency 2× v1 p99."
+  },
+  {
+    "slug": "ml-system-design-feature-store",
+    "title": "ML System Design Feature Store",
+    "repo": "ML-System-Design-Feature-Store",
+    "domain": "ML System Design",
+    "blurb": "Measured evaluation: RESULTS.md — six defects found by running the system rather than reading it, including the online and on-demand paths returning different values for the same entity , and an advertised ROC-AUC that could not be repro…",
+    "tech": [
+      "Python",
+      "TypeScript",
+      "JavaScript",
+      "scikit-learn",
+      "LightGBM",
+      "DuckDB",
+      "FastAPI",
+      "uvicorn",
+      "Pydantic",
+      "Redis"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/ML-System-Design-Feature-Store",
+    "demo": "https://ml-feature-store-three.vercel.app",
+    "outcome": "Model quality: the LightGBM churn model reaches ROC-AUC 0.747 (average precision 0.313, F1 0.308) on point-in-time-correct features, on 1,202 labelled users with an 11.9% churn rate (python training/train.py)."
+  },
+  {
+    "slug": "llm-hallucination-detection",
+    "title": "Llm Hallucination Detection",
+    "repo": "llm-hallucination-detection",
+    "domain": "LLMs & GenAI",
+    "blurb": "NLI-based hallucination detection pipeline. Flags unsupported LLM claims using DeBERTa-v3, assigns a hallucination confidence score per sentence, and grounds responses against source documents via ChromaDB.",
+    "tech": [
+      "Python",
+      "TypeScript",
+      "JavaScript",
+      "PyTorch",
+      "TensorFlow",
+      "Transformers",
+      "sentence-transformers",
+      "RAG",
+      "ChromaDB",
+      "OpenAI"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/llm-hallucination-detection"
+  },
+  {
+    "slug": "portfolio-keepalive",
+    "title": "Portfolio Keepalive",
+    "repo": "portfolio-keepalive",
+    "domain": "ML System Design",
+    "blurb": "Keeps the Cloud Run demos warm and reports when one is down",
+    "tech": [
+      "RAG",
+      "GitHub Actions",
+      "Vercel"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/portfolio-keepalive"
+  },
+  {
+    "slug": "competitor-insight-engine",
+    "title": "Competitor Insight Engine",
+    "repo": "Competitor-Insight-Engine",
+    "domain": "LLMs & GenAI",
+    "blurb": "AI-powered tool that scrapes any company's website, finds real-time competitors via Tavily search, and generates a full competitive intelligence report — including market comparison and strategic recommendations — using any LLM of your choice.",
+    "tech": [
+      "Python",
+      "Jupyter Notebook",
+      "TypeScript",
+      "PyTorch",
+      "scikit-learn",
+      "Transformers",
+      "OpenAI",
+      "Anthropic",
+      "Gemini",
+      "Groq"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/Competitor-Insight-Engine",
+    "demo": "https://competitor-insight-engine.vercel.app"
+  },
+  {
+    "slug": "tool-dependency-graph",
+    "title": "Tool Dependency Graph",
+    "repo": "tool-dependency-graph",
+    "domain": "LLMs & GenAI",
+    "blurb": "Derives a call-order dependency graph from a tool catalog: which tool must run first to supply each required parameter, and which parameters have to come from the user.",
+    "tech": [
+      "TypeScript",
+      "OpenAI"
+    ],
+    "url": "https://github.com/shiva-shivanibokka/tool-dependency-graph"
   },
   {
     "slug": "cumida-ml-model",
@@ -601,26 +665,6 @@ export const generatedProjects: Project[] = [
     "url": "https://github.com/shiva-shivanibokka/SQL-and-Database-Skills"
   },
   {
-    "slug": "llm-hallucination-detection",
-    "title": "Llm Hallucination Detection",
-    "repo": "llm-hallucination-detection",
-    "domain": "LLMs & GenAI",
-    "blurb": "NLI-based hallucination detection pipeline. Flags unsupported LLM claims using DeBERTa-v3, assigns a hallucination confidence score per sentence, and grounds responses against source documents via ChromaDB.",
-    "tech": [
-      "Python",
-      "TypeScript",
-      "JavaScript",
-      "PyTorch",
-      "TensorFlow",
-      "Transformers",
-      "sentence-transformers",
-      "RAG",
-      "ChromaDB",
-      "OpenAI"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/llm-hallucination-detection"
-  },
-  {
     "slug": "ml-model-efficiency-toolkit",
     "title": "ML Model Efficiency Toolkit",
     "repo": "ML-Model-Efficiency-Toolkit",
@@ -768,27 +812,6 @@ export const generatedProjects: Project[] = [
     ],
     "url": "https://github.com/shiva-shivanibokka/ML-System-Design-Batch-Inference",
     "outcome": "Measured on the real data: LightGBM churn model AUC-ROC 0.81 (held-out test); the pandas scoring path scores all 970,960 subscribers in ~10s (~95K records/sec) on a single machine."
-  },
-  {
-    "slug": "rl-portfolio-optimization",
-    "title": "RL Portfolio Optimization",
-    "repo": "RL-Portfolio-Optimization",
-    "domain": "Full-Stack / Product",
-    "blurb": "Interactive reinforcement-learning portfolio allocator — three reward-shaped PPO agents, trained offline on real ETF data, served on Vercel's free tier with zero PyTorch in production.",
-    "tech": [
-      "Python",
-      "TypeScript",
-      "JavaScript",
-      "PyTorch",
-      "React",
-      "Next.js",
-      "Recharts",
-      "MLflow",
-      "NumPy",
-      "pandas"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/RL-Portfolio-Optimization",
-    "demo": "https://rl-portfolio-optimization.vercel.app"
   },
   {
     "slug": "prepgap-lens",
@@ -1100,27 +1123,6 @@ export const generatedProjects: Project[] = [
     ],
     "url": "https://github.com/shiva-shivanibokka/ResumeForge",
     "demo": "https://resume-forge-shiv-a.vercel.app"
-  },
-  {
-    "slug": "ml-system-design-recommendation-engine",
-    "title": "ML System Design Recommendation Engine",
-    "repo": "ML-System-Design-Recommendation-Engine",
-    "domain": "ML System Design",
-    "blurb": "A two-stage, bandit-routed movie recommender served behind a latency-budgeted FastAPI gateway — deployed live, end-to-end, on free-tier infrastructure.",
-    "tech": [
-      "Python",
-      "TypeScript",
-      "JavaScript",
-      "PyTorch",
-      "scikit-learn",
-      "Transformers",
-      "FAISS",
-      "Gemini",
-      "Plotly",
-      "Kafka"
-    ],
-    "url": "https://github.com/shiva-shivanibokka/ML-System-Design-Recommendation-Engine",
-    "demo": "https://ml-system-design-recommendation-eng.vercel.app"
   },
   {
     "slug": "super-resolution-using-han",
