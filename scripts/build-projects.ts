@@ -85,6 +85,17 @@ interface Curated {
    */
   private?: true
   tech?: string[]
+  /**
+   * No demo button, even though the repo names one and the page responds.
+   * The Google Cloud free tier ended and these back ends were not moved to a
+   * paid plan, so six front ends are now shells.
+   * These are front ends whose back end was switched off when a free tier ended:
+   * the page loads, then reports that it cannot do anything. checkLive only asks
+   * whether a page answers, which is the wrong question for a site that answers
+   * with "the model backend is offline". Linking it sends a reader to a dead end
+   * with the project's name on it, which is worse than no link.
+   */
+  noDemo?: true
 }
 
 const CURATED: Curated[] = [
@@ -108,6 +119,8 @@ const CURATED: Curated[] = [
   },
   {
     repo: 'SCM-using-MCP-and-LLM',
+    // Checked 2026-10-12: the dashboard never gets past "Crunching the numbers".
+    noDemo: true,
     domain: 'Agentic',
     pitch:
       'A pet-retail supply-chain platform where an MCP agent reasons over a live data warehouse and says what to do, not just what happened.',
@@ -124,6 +137,8 @@ const CURATED: Curated[] = [
   },
   {
     repo: 'take-home-project',
+    // Checked 2026-10-12: the board renders but makes no request to its database at all, so nothing can ever appear on it.
+    noDemo: true,
     domain: 'Agentic',
     pitch:
       'Three cooperating agents research a topic, draft a structured brief, and review it — escalating low-confidence work to a human instead of publishing it.',
@@ -132,6 +147,8 @@ const CURATED: Curated[] = [
   },
   {
     repo: 'Autonomous-ML-Pipeline-Builder',
+    // Checked 2026-10-12: the page says "These controls need a backend, and this page does not have one".
+    noDemo: true,
     domain: 'Agentic',
     pitch:
       'Upload a CSV, describe the problem in plain English, and a team of agents builds, evaluates and packages a deployable ML pipeline.',
@@ -164,6 +181,8 @@ const CURATED: Curated[] = [
   },
   {
     repo: 'Autonomous-SWE-Agent',
+    // Checked 2026-10-12: the page loads empty: "No run has been recorded yet".
+    noDemo: true,
     domain: 'Agentic',
     pitch:
       'Takes a GitHub issue, writes a patch in an isolated workspace, and runs the repository’s own tests against it — built both as an agentic tool-use loop and as a fixed pipeline.',
@@ -212,6 +231,8 @@ const CURATED: Curated[] = [
   // ─────────────── NLP ───────────────
   {
     repo: 'NLP-Pipeline-at-Scale',
+    // Checked 2026-10-12: the page states "model backend offline — the demo below will not return results".
+    noDemo: true,
     domain: 'NLP',
     pitch:
       'A real-time social-listening pipeline: Kafka ingest, one multi-task RoBERTa forward pass for sentiment, emotion and toxicity together, entity extraction with brand normalization, and anomaly alerts.',
@@ -238,6 +259,8 @@ const CURATED: Curated[] = [
   },
   {
     repo: 'ML-System-Design-Feature-Store',
+    // Checked 2026-10-12: the dashboard loads and then sits on "waking up", because its Cloud Run API and Aiven Valkey are both gone.
+    noDemo: true,
     domain: 'ML System Design',
     pitch:
       'A feature store on the Uber Michelangelo / Feast / Tecton pattern, with one SQL definition per feature feeding both training and serving — running entirely on free tiers.',
@@ -708,7 +731,7 @@ async function main() {
     // The declared demo wins over the repo's homepage field — it is the one
     // chosen for the card, usually a replay the homepage does not name. Either
     // way it ships only if it answered just now.
-    const candidate = c.demo ?? demoCandidate(c.repo, r?.homepage ?? null)
+    const candidate = c.noDemo ? null : (c.demo ?? demoCandidate(c.repo, r?.homepage ?? null))
     let demo: string | undefined
     if (candidate) {
       if (await checkLive(candidate)) {

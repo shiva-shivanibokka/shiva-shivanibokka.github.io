@@ -67,7 +67,6 @@ export const generatedProjects: Project[] = [
       "Gemini"
     ],
     "url": "https://github.com/shiva-shivanibokka/SCM-using-MCP-and-LLM",
-    "demo": "https://scm-using-mcp-and-llm.vercel.app",
     "outcome": "The forecasting gain is one season, not a model: CatBoost beats a 28-day moving average 13.24% against 14.77% sMAPE overall, but drop the single festival-season origin and it is indistinguishable, +0.17pp with CI [-0.17, +0.56]. Agent strict accuracy of 47.6% splits into lookup 91.7%, aggregation 52.1%, multi-hop 9.5%."
   },
   {
@@ -111,7 +110,6 @@ export const generatedProjects: Project[] = [
       "React"
     ],
     "url": "https://github.com/shiva-shivanibokka/take-home-project",
-    "demo": "https://take-home-project-ten.vercel.app",
     "outcome": "The Reviewer’s own confidence predicts which briefs are wrong: single-call AUROC 0.778, CI [0.682, 0.864], against random, fewer-sources and shorter-brief baselines that all sit at chance. It is overconfident, ECE 0.28. The NLI judge was validated against human RAGTruth labels, failed, and is unused — no result here is validated by a human."
   },
   {
@@ -133,7 +131,6 @@ export const generatedProjects: Project[] = [
       "OpenAI"
     ],
     "url": "https://github.com/shiva-shivanibokka/Autonomous-ML-Pipeline-Builder",
-    "demo": "https://autonomous-ml-pipeline-builder.vercel.app",
     "outcome": "With a local 7B model the full agent pipeline failed outright on 9 of 15 datasets. On the 6 that completed it was not better than the same pipeline with the LLM steps removed: delta -0.012 AUC, Holm p = 0.47. An earlier +0.010 AUC win over default LightGBM did not replicate on 16 further CC18 datasets."
   },
   {
@@ -218,7 +215,6 @@ export const generatedProjects: Project[] = [
       "FastAPI"
     ],
     "url": "https://github.com/shiva-shivanibokka/Autonomous-SWE-Agent",
-    "demo": "https://autonomous-swe-agent.vercel.app",
     "outcome": "Recorded head-to-head runs on four SWE-bench instances, with per-instance cost and wall time for each arm. The evaluation also closed a leakage route — cloned workspaces carried post-base history — and made test grading match test ids exactly rather than loosely."
   },
   {
@@ -325,7 +321,6 @@ export const generatedProjects: Project[] = [
       "Kafka"
     ],
     "url": "https://github.com/shiva-shivanibokka/NLP-Pipeline-at-Scale",
-    "demo": "https://frontend-ten-eta-64.vercel.app",
     "outcome": "The published throughput measured nothing: ~1500 msg/s ran against a mock whose batch step was time.sleep. The real ceiling is 277-308 msg/s on an RTX 4060 and 9.2-12.7 on CPU — 4.2-4.6× and 101-139× optimistic. The multi-task ablation holds up: one shared backbone stays within 1.8 F1 on every task at 3.0× fewer parameters, and emotion improves while toxicity pays the whole cost."
   },
   {
@@ -390,7 +385,6 @@ export const generatedProjects: Project[] = [
       "Redis"
     ],
     "url": "https://github.com/shiva-shivanibokka/ML-System-Design-Feature-Store",
-    "demo": "https://ml-feature-store-three.vercel.app",
     "outcome": "The README claimed training and serving values were \"impossible to drift apart by construction\". The same entity, queried seconds apart through the two paths, returned txn_count_30d 2.0 against 0.0 and days_since_last_txn 15.0 against 101.0. Three of its four headline claims were falsifiable in under a minute, two by running the commands the README itself gives."
   },
   {
