@@ -29,6 +29,13 @@ export interface Project {
    */
   demo?: string
   /**
+   * What to call the demo link. "Live demo" is the default and is a claim: the
+   * page computes something when you use it. A page that replays a recorded run
+   * says "Replay" instead, because calling it live would promise a reader
+   * something it does not do.
+   */
+  demoLabel?: string
+  /**
    * A result the README actually states, extracted verbatim — never written or
    * inferred here. Projects whose README claims no outcome simply have none,
    * which is the honest display.

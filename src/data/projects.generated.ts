@@ -24,6 +24,7 @@ export const generatedProjects: Project[] = [
     ],
     "url": "https://github.com/shiva-shivanibokka/CodePilot-SWE",
     "demo": "https://codepilot-swe-replay.vercel.app",
+    "demoLabel": "Replay",
     "outcome": "Agent resolved 5 of 10 SWE-bench Lite instances against agentless 1 of 10, all four discordant pairs favouring the agent — but exact McNemar p = 0.125, which is not significant, and the write-up says so. The agent cost 8.6× for 5× the resolutions, at $2.4892 over 588 calls."
   },
   {
@@ -46,6 +47,7 @@ export const generatedProjects: Project[] = [
     ],
     "url": "https://github.com/shiva-shivanibokka/Autonomous-Research-Report-Agent",
     "demo": "https://autonomous-research-report-agent-nu.vercel.app",
+    "demoLabel": "Replay",
     "outcome": "The local correctness judges are invalid: they mark explicit refusals as CORRECT — llama3.1:8b 6 of 9, gemma2:9b 8 of 9 — and the two disagree on the sign of the effect. Separately, a cp1252 encoding error silently discarded every page for a sub-question; fixing it took extracted claims from 104 to 158, and all 36 runs logged no errors either way."
   },
   {
@@ -153,6 +155,7 @@ export const generatedProjects: Project[] = [
     ],
     "url": "https://github.com/shiva-shivanibokka/Competitor-Insight-Engine",
     "demo": "https://competitor-insight-engine.vercel.app",
+    "demoLabel": "Replay",
     "outcome": "Retrieved search evidence gives no measurable gain over the model’s own parametric knowledge — P@4 +0.069, CI [-0.035, +0.177] on Haiku and +0.036, [-0.048, +0.119] on qwen — so the null replicates across two models and two providers. The model does read its evidence, since shuffling it drops P@4 to 0.028; the cause is retrieval coverage of 0.33."
   },
   {
@@ -175,6 +178,7 @@ export const generatedProjects: Project[] = [
     ],
     "url": "https://github.com/shiva-shivanibokka/CodePilot-Agent",
     "demo": "https://codepilot-alpha.vercel.app",
+    "demoLabel": "Replay",
     "outcome": "A model choosing each step beat a fixed plan/code/test/debug/review pipeline on the same 15 tasks, both solving 15 of 15: $0.042 against $0.184, 22s against 88s, and 75% against 56% correct on the first try. The loop is cheaper and faster, not just more flexible."
   },
   {
@@ -237,6 +241,7 @@ export const generatedProjects: Project[] = [
     ],
     "url": "https://github.com/shiva-shivanibokka/Multimodal-RAG",
     "demo": "https://multimodal-rag-replay.vercel.app",
+    "demoLabel": "Replay",
     "outcome": "The shipped refusal gate’s AUROC on near-domain OOD is 0.302, CI [0.198, 0.404] — entirely below chance — while the unshipped reranker logit reaches 0.632 on the same inputs. The system computes a working signal and discards it for one worse than a coin flip. Production hybrid+rerank R@1 of 0.832 is also not distinguishable from BM25 alone at 0.794."
   },
   {
@@ -256,6 +261,7 @@ export const generatedProjects: Project[] = [
       "Next.js"
     ],
     "demo": "https://faultlines-peach.vercel.app",
+    "demoLabel": "Slides",
     "outcome": "Cross-model disagreement reaches AUC 0.840, CI [0.836, 0.845], against 0.778 for the best single-model semantic entropy on the same 6,436 questions and the same budget. The independence assumption fails: four models from different developers are wrong together 3.3× as often as it predicts, and 950 shared blind spots were found."
   },
   {
@@ -278,6 +284,7 @@ export const generatedProjects: Project[] = [
     ],
     "url": "https://github.com/shiva-shivanibokka/RAG-vs-CAG-Showdown",
     "demo": "https://rag-vs-cag-showdown.vercel.app",
+    "demoLabel": "Replay",
     "outcome": "Across five recorded tournaments the two are a wash on quality — on claude-sonnet-5, CAG 4.925 against RAG 4.975, with 8 of 10 questions tied — but CAG spends 20,610 input tokens per question against RAG’s 4,121 to get there."
   },
   {
@@ -449,7 +456,6 @@ export const generatedProjects: Project[] = [
       "sentence-transformers"
     ],
     "url": "https://github.com/shiva-shivanibokka/Fraud-Detection-System",
-    "demo": "https://fraud-detection-system-ebon.vercel.app",
     "outcome": "On severely imbalanced data the honest metric is AUC-PR, and it reports 0.314 against a 0.49% base rate — roughly a 64× lift — rather than leaning on the 0.950 AUC-ROC. Precision@1% is 0.236, and recall at a 1-in-1000 false-block rate is 0.176."
   },
   {

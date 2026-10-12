@@ -96,12 +96,25 @@ interface Curated {
    * with the project's name on it, which is worse than no link.
    */
   noDemo?: true
+  /**
+   * What the demo link is called. Default "Live demo" is a claim that the page
+   * computes something when you use it. Pages that replay a recorded run say
+   * "Replay", because every one of them states so itself and a reader who
+   * clicks "Live demo" expecting to run something has been misled.
+   *
+   * Worth noting which projects survived: the Google Cloud shutdown took out
+   * every demo that needed a server and none of the replays, because a replay
+   * calls nothing.
+   */
+  demoLabel?: string
 }
 
 const CURATED: Curated[] = [
   // ─────────────── Agentic — the focus ───────────────
   {
     repo: 'CodePilot-SWE',
+    // Checked 2026-10-12: the page is headed "RECORDED RUN".
+    demoLabel: 'Replay',
     domain: 'Agentic',
     pitch:
       'A coding agent that edits real git repositories, and a benchmark harness asking whether a model choosing its own next step beats a fixed, tool-free pipeline on real GitHub issues.',
@@ -111,6 +124,8 @@ const CURATED: Curated[] = [
   },
   {
     repo: 'Autonomous-Research-Report-Agent',
+    // Checked 2026-10-12: the page offers "PLAY THE RECORDED RUN"; there is no backend behind it.
+    demoLabel: 'Replay',
     domain: 'Agentic',
     pitch:
       'A multi-agent pipeline that researches the open web and writes cited, quality-scored reports, with a critic loop and source triage.',
@@ -157,6 +172,8 @@ const CURATED: Curated[] = [
   },
   {
     repo: 'Competitor-Insight-Engine',
+    // Checked 2026-10-12: opens on "RECORDED RUNS · no keys needed"; it can also run live if you bring your own key.
+    demoLabel: 'Replay',
     domain: 'Agentic',
     pitch:
       'Give it one company URL and an agent scrapes the site, finds real competitors via live search, and writes a competitive-intelligence report.',
@@ -165,6 +182,8 @@ const CURATED: Curated[] = [
   },
   {
     repo: 'CodePilot-Agent',
+    // Checked 2026-10-12: the page is "CodePilot — recorded sessions".
+    demoLabel: 'Replay',
     domain: 'Agentic',
     pitch:
       'The agent that came first: it reads code, edits it, runs the tests, and checkpoints every turn to a git ref so one command puts things back.',
@@ -193,6 +212,8 @@ const CURATED: Curated[] = [
   // ─────────────── LLMs & GenAI ───────────────
   {
     repo: 'Multimodal-RAG',
+    // Checked 2026-10-12: the page says it "makes no model call and contacts no backend".
+    demoLabel: 'Replay',
     domain: 'LLMs & GenAI',
     pitch:
       'Don’t trust the LLM — verify it. Document QA that answers only what the documents support: every claim is checked against retrieved evidence by an NLI model, table math is computed rather than guessed, and each citation points at an exact pixel region of the source page.',
@@ -202,6 +223,8 @@ const CURATED: Curated[] = [
   },
   {
     repo: 'faultlines',
+    // The link is the capstone slide deck, not a running tool.
+    demoLabel: 'Slides',
     domain: 'LLMs & GenAI',
     pitch:
       'M.S. capstone: a visual-analytics tool for the place where asking several language models stops working — when they all agree, and all of them are wrong.',
@@ -213,6 +236,8 @@ const CURATED: Curated[] = [
   },
   {
     repo: 'RAG-vs-CAG-Showdown',
+    // Checked 2026-10-12: the page says it replays five tournaments "with no API key and no server involved".
+    demoLabel: 'Replay',
     domain: 'LLMs & GenAI',
     pitch:
       'A benchmarking framework that runs Context-Augmented Generation against Retrieval-Augmented Generation head to head on latency, token cost and judged answer quality.',
@@ -287,6 +312,9 @@ const CURATED: Curated[] = [
   // ─────────────── MLOps ───────────────
   {
     repo: 'Fraud-Detection-System',
+    // Checked 2026-10-12: "Score Transaction" leaves the page on "Waking up the
+    // server" indefinitely and no scoring request is ever made.
+    noDemo: true,
     domain: 'MLOps',
     pitch:
       'Two modules for two different problems: a deployed real-time scoring API with calibrated XGBoost, conformal uncertainty and counterfactual explanations, plus a graph-neural-network module benchmarking static against temporal GNNs.',
@@ -749,7 +777,7 @@ async function main() {
       blurb: c.pitch,
       tech: tech.length ? tech : ['Project'],
       ...(c.private ? {} : { url: `https://github.com/${OWNER}/${c.repo}` }),
-      ...(demo ? { demo } : {}),
+      ...(demo ? { demo, ...(c.demoLabel ? { demoLabel: c.demoLabel } : {}) } : {}),
       ...(c.finding ? { outcome: c.finding } : {}),
     })
   }

@@ -55,7 +55,7 @@ function socialTags(): string {
 function fallbackBody(): string {
   const projectItems = generatedProjects
     .map((p) => {
-      const demo = p.demo ? `<a href="${esc(p.demo)}">Live demo</a>` : ''
+      const demo = p.demo ? `<a href="${esc(p.demo)}">${esc(p.demoLabel ?? 'Live demo')}</a>` : ''
       // No Source link for a private repo — see Project.url.
       const source = p.url ? `<a href="${esc(p.url)}">Source</a>` : ''
       const links = [source, demo].filter(Boolean).join(' · ')

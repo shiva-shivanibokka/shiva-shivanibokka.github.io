@@ -86,7 +86,7 @@ export default function ProjectCard({ project }: { project: Project }) {
             rel="noreferrer"
             className="text-[13.5px] font-semibold text-warm transition hover:text-mint"
           >
-            Live demo →
+            {project.demoLabel ?? 'Live demo'} →
           </a>
         )}
       </div>
