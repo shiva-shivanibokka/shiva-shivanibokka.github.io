@@ -15,7 +15,7 @@ The hero isn't a list of links — it's a **real, in-browser semantic search ove
 
 ## How the search works
 
-1. **The project list builds itself** (`npm run build:projects`). Instead of a hand-curated list, `scripts/build-projects.ts` discovers projects straight from GitHub — every public repo with a *detailed* README (forks, archived, and infra/tracker repos filtered out), each auto-classified by domain and tech stack from its README, topics, languages, and dependency manifests. The result is written to `src/data/projects.generated.ts`.
+1. **The project list is curated, and the rest builds itself** (`npm run build:projects`). `CURATED` in `scripts/build-projects.ts` names the 25 projects the site shows, in display order, each with a one-line pitch, its measured finding, and its domain. The bar for inclusion is that the project *ran*: fourteen carry a full `RESULTS.md` evaluation, the rest have committed run artifacts, and an evaluation harness that was never executed does not qualify. Everything else is still read from GitHub on each build — the tech stack from each repo's README, topics, languages and dependency manifests, and whether its demo is still answering. Discovery used to pick up every repo with a detailed README, which surfaced 57 and buried the agent work under coursework. The result is written to `src/data/projects.generated.ts`.
 2. **The index is embedded** (`npm run build:index`). Each of those repos' READMEs is fetched live from the GitHub API, stripped of markdown, chunked, and embedded. The vectors are written to `public/search-index.json`, and `scripts/build-map.ts` computes the 2D embedding map into `public/embedding-map.json`.
 3. **In the browser**, the model is loaded once (cached afterward), the query is embedded, and results are cosine-ranked against the prebuilt index — all client-side.
 
@@ -46,7 +46,7 @@ src/
   hooks/           useRetriever (runs a query, lights up the map), reduced-motion
   data/            content.ts (experience/skills/bio), projects.generated.ts (auto-built list)
 scripts/
-  build-projects.ts  discover GitHub repos w/ detailed READMEs -> src/data/projects.generated.ts
+  build-projects.ts  curated list + live repo metadata        -> src/data/projects.generated.ts
   build-index.ts     fetch live READMEs -> chunk -> embed -> public/search-index.json
   build-map.ts       PCA of repo embeddings -> public/embedding-map.json
 public/

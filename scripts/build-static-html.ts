@@ -55,11 +55,15 @@ function socialTags(): string {
 function fallbackBody(): string {
   const projectItems = generatedProjects
     .map((p) => {
-      const demo = p.demo ? ` · <a href="${esc(p.demo)}">Live demo</a>` : ''
+      const demo = p.demo ? `<a href="${esc(p.demo)}">Live demo</a>` : ''
+      // No Source link for a private repo — see Project.url.
+      const source = p.url ? `<a href="${esc(p.url)}">Source</a>` : ''
+      const links = [source, demo].filter(Boolean).join(' · ')
+      const outcome = p.outcome ? `<p><strong>Result:</strong> ${esc(p.outcome)}</p>` : ''
       return (
-        `<li><h3>${esc(p.title)}</h3><p>${esc(p.blurb)}</p>` +
+        `<li><h3>${esc(p.title)}</h3><p>${esc(p.blurb)}</p>${outcome}` +
         `<p><small>${esc(p.domain)} · ${esc(p.tech.join(', '))}</small></p>` +
-        `<p><a href="${esc(p.url)}">Source</a>${demo}</p></li>`
+        `<p>${links}</p></li>`
       )
     })
     .join('\n')

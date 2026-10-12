@@ -63,14 +63,21 @@ export default function ProjectCard({ project }: { project: Project }) {
         >
           {open ? '▾ Show less' : '▸ Show more'}
         </button>
-        <a
-          href={project.url}
-          target="_blank"
-          rel="noreferrer"
-          className="text-[13.5px] font-medium text-mint transition hover:text-warm"
-        >
-          View repo →
-        </a>
+        {/* Absent for a private repo — see Project.url. */}
+        {project.url ? (
+          <a
+            href={project.url}
+            target="_blank"
+            rel="noreferrer"
+            className="text-[13.5px] font-medium text-mint transition hover:text-warm"
+          >
+            View repo →
+          </a>
+        ) : (
+          <span className="text-[13.5px] text-muted" title="The code is private; the demo is not.">
+            Code private
+          </span>
+        )}
         {/* Only present when the deployment answered at build time. */}
         {project.demo && (
           <a

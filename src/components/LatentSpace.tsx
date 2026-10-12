@@ -1,12 +1,13 @@
 import { useEffect, useRef } from 'react'
 import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion'
+import { projects } from '../data/projects'
 
 // The "let the embeddings shine" section: a real, interactive 2D map of every
 // repo in embedding space (built at build time → public/embedding-map.json).
 // Similar repos cluster; hover shows the repo; click opens it; and when the
 // search above retrieves, the matching nodes pulse and connect right here.
 
-type MapNode = { repo: string; title: string; domain: string; x: number; y: number }
+type MapNode = { repo: string; title: string; domain: string; url: string; x: number; y: number }
 type Live = MapNode & { c: string; phase: number; hx: number; hy: number; cx: number; cy: number }
 
 const DOMAIN_COLORS: Record<string, string> = {
@@ -21,8 +22,13 @@ const DOMAIN_COLORS: Record<string, string> = {
   'Full-Stack / Product': '90,200,255',
 }
 const colorFor = (d: string) => DOMAIN_COLORS[d] ?? '139,123,255'
-const ghUrl = (repo: string) => `https://github.com/shiva-shivanibokka/${repo}`
-const LEGEND = Object.entries(DOMAIN_COLORS)
+// The legend lists only the domains the map actually contains. The project list
+// is curated, so several of the colours above are unused, and a legend entry for
+// a colour no node wears sends the reader hunting for a dot that is not there.
+// Read from the project list rather than the fetched map because the map is
+// built from that same list, and this way the legend is right on first paint.
+const PRESENT = new Set<string>(projects.map((p) => p.domain))
+const LEGEND = Object.entries(DOMAIN_COLORS).filter(([d]) => PRESENT.has(d))
 
 export default function LatentSpace() {
   const wrapRef = useRef<HTMLDivElement>(null)
@@ -171,7 +177,10 @@ export default function LatentSpace() {
       mouse.y = -1
     }
     const onClick = () => {
-      if (hoverRepo) window.open(ghUrl(hoverRepo), '_blank', 'noopener')
+      // The node carries its own link: the repo for a public project, the live
+      // demo for a private one. Never a URL assembled from the repo name.
+      const target = nodes.find((n) => n.repo === hoverRepo)?.url
+      if (target) window.open(target, '_blank', 'noopener')
     }
     const onResize = () => layout()
     const onRetrieve = (e: Event) => {

@@ -17,7 +17,11 @@ export interface Project {
   domain: Domain
   blurb: string
   tech: string[]
-  url: string
+  /**
+   * The GitHub page, omitted when the repo is private. A "View repo" link that
+   * 404s for every visitor is worse than no link, so the card simply drops it.
+   */
+  url?: string
   /**
    * The repo's homepage, but only when it actually responded at build time.
    * Free-tier hosts go away without warning, so a link is never emitted on the

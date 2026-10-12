@@ -36,11 +36,20 @@ export async function buildIndex(opts: {
   const { fetchReadme, embed } = opts
   const chunks: Omit<IndexChunk, 'embedding'>[] = []
 
-  // Per-project corpus ONLY: the live GitHub README + the project blurb.
+  // Per-project corpus ONLY: the project blurb, the finding it states, and the
+  // live GitHub README where there is a public one.
   // The About/profile README is intentionally NOT embedded — the RAG answers
   // about projects, and including the bio added noise + off-topic matches.
   for (const p of projects) {
-    const readme = stripMarkdown(await fetchReadme(p.repo))
+    // A project with no public repo page is private, and this index is served
+    // to every visitor as a static file. Reading its README here would publish
+    // it: a token with `repo` scope fetches a private README perfectly well, so
+    // this check is the only thing between a private repo and the public index.
+    // CI does not catch it — there the Actions token cannot see other private
+    // repos, so the fetch 404s into an empty string by luck rather than by
+    // design. A private project is represented by the pitch and finding written
+    // for it in CURATED, which were written to be published.
+    const readme = p.url ? stripMarkdown(await fetchReadme(p.repo)) : ''
     // Title + blurb lead every corpus so each chunk carries topical context.
     // Written as prose rather than a markdown heading — the "# " marker was
     // surviving into the retrieved text and showing up in search results.
@@ -53,9 +62,15 @@ export async function buildIndex(opts: {
     const norm = (s: string, n: number) => s.slice(0, n).toLowerCase().replace(/[^a-z0-9]+/g, '')
     const duplicated = p.blurb.length > 40 && norm(readme, 400).includes(norm(p.blurb, 60).slice(0, 40))
     const lead = duplicated ? `${p.title}.` : `${p.title}. ${p.blurb}`
-    const corpus = [lead, readme].filter(Boolean).join('\n\n')
+    // The finding is the most load-bearing sentence a project has — "did the
+    // refusal gate work?" should retrieve it — and it does not reliably appear
+    // in the README prose, so embed it explicitly rather than hoping.
+    const corpus = [lead, p.outcome, readme].filter(Boolean).join('\n\n')
     chunkText(corpus).forEach((text, i) => {
-      chunks.push({ id: `${p.slug}-${i}`, repo: p.repo, domain: p.domain, title: p.title, url: p.url, text })
+      // A private repo has no GitHub page to cite, so the citation points at
+      // its live demo instead. One of the two is always present.
+      const cite = p.url ?? p.demo ?? ''
+      chunks.push({ id: `${p.slug}-${i}`, repo: p.repo, domain: p.domain, title: p.title, url: cite, text })
     })
   }
 

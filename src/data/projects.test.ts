@@ -7,7 +7,7 @@ test('auto-discovered projects are well-formed', () => {
     expect(p.title.length).toBeGreaterThan(0)
     expect(p.blurb.length).toBeGreaterThan(20)
     expect(p.tech.length).toBeGreaterThan(0)
-    expect(p.url).toBe(`https://github.com/shiva-shivanibokka/${p.repo}`)
+    if (p.url) expect(p.url).toBe(`https://github.com/shiva-shivanibokka/${p.repo}`)
     expect(DOMAINS).toContain(p.domain)
   }
 })

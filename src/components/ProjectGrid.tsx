@@ -5,7 +5,10 @@ import ProjectCard from './ProjectCard'
 
 type Filter = Domain | 'All'
 
-type RoleKey = 'ML Engineer' | 'Data Scientist' | 'Deep Learning' | 'GenAI / Agentic' | 'SWE / Full-Stack'
+// 'SWE / Full-Stack' was dropped when the list was curated: it pointed at
+// 'Full-Stack / Product', which now holds nothing, and the lens would have
+// answered with ten agent projects under a label that does not describe them.
+type RoleKey = 'ML Engineer' | 'Data Scientist' | 'Deep Learning' | 'GenAI / Agentic'
 const ROLES: Record<RoleKey, { domains: Domain[]; line: string }> = {
   'ML Engineer': {
     domains: ['ML System Design', 'MLOps', 'Deep Learning', 'Classical ML'],
@@ -23,10 +26,6 @@ const ROLES: Record<RoleKey, { domains: Domain[]; line: string }> = {
     domains: ['Agentic', 'LLMs & GenAI', 'NLP'],
     line: 'LLM agents, RAG/CAG architectures, and applied generative AI.',
   },
-  'SWE / Full-Stack': {
-    domains: ['Full-Stack / Product', 'Agentic', 'MLOps'],
-    line: 'Shipping real products end-to-end — APIs, frontends, and infra.',
-  },
 }
 const ROLE_KEYS = Object.keys(ROLES) as RoleKey[]
 
@@ -40,13 +39,23 @@ export default function ProjectGrid() {
       ? projects
       : projects.filter((p) => p.domain === filter)
 
-  const filters: Filter[] = ['All', ...DOMAINS]
+  // The project list is curated, so several domains hold nothing. Offering a
+  // chip or a role lens that filters to an empty grid reads as a broken page
+  // rather than as an empty category, so only the populated ones are shown.
+  const counts = new Map<Domain, number>()
+  for (const p of projects) counts.set(p.domain, (counts.get(p.domain) ?? 0) + 1)
+  const filters: Filter[] = ['All', ...DOMAINS.filter((d) => counts.has(d))]
+  const roleKeys = ROLE_KEYS.filter((r) => ROLES[r].domains.some((d) => counts.has(d)))
 
   return (
     <section id="projects" className="w-full scroll-mt-28 px-[clamp(28px,4vw,72px)] py-12">
       <p className="text-base uppercase tracking-[0.2em] text-mint">// 01</p>
       <h2 className="mt-2 text-[clamp(23px,2.9vw,38px)] font-bold tracking-tight">Projects</h2>
-      <p className="mt-3 text-[14px] text-muted">{projects.length} things I&apos;ve built.</p>
+      {/* Honest about being a selection: 25 of 70-odd repos, each kept because it
+          has a measured result from a run that actually happened. */}
+      <p className="mt-3 text-[14px] text-muted">
+        {projects.length} selected projects — agentic work first, and every one states what it measured.
+      </p>
 
       {/* Hiring-for role lens */}
       <div className="mt-7 rounded-2xl border border-white/10 bg-surface/60 p-5 backdrop-blur-sm">
@@ -54,7 +63,7 @@ export default function ProjectGrid() {
           <span className="text-mint">▸</span> Hiring for a specific role?
         </h3>
         <div className="flex flex-wrap gap-2.5">
-          {ROLE_KEYS.map((r) => (
+          {roleKeys.map((r) => (
             <button
               key={r}
               onClick={() => {

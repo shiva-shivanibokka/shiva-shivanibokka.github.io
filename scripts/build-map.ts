@@ -9,6 +9,12 @@ export interface MapNode {
   repo: string
   title: string
   domain: string
+  /**
+   * Where clicking the node goes. Carried from the index rather than rebuilt as
+   * github.com/<owner>/<repo> on the client, because a private project has no
+   * GitHub page and that guess would send every visitor to a 404.
+   */
+  url: string
   x: number // normalized 0–1
   y: number // normalized 0–1
 }
@@ -54,19 +60,21 @@ const normalize01 = (a: number[]): number[] => {
 }
 
 export function buildMap(index: SearchIndex): MapNode[] {
-  const byRepo = new Map<string, { title: string; domain: string; vecs: number[][] }>()
+  const byRepo = new Map<string, { title: string; domain: string; url: string; vecs: number[][] }>()
   for (const c of index.chunks) {
     if (!c.repo) continue
-    if (!byRepo.has(c.repo)) byRepo.set(c.repo, { title: c.title, domain: c.domain, vecs: [] })
+    if (!byRepo.has(c.repo)) byRepo.set(c.repo, { title: c.title, domain: c.domain, url: c.url, vecs: [] })
     byRepo.get(c.repo)!.vecs.push(c.embedding)
   }
   const repos = [...byRepo.entries()].map(([repo, o]) => ({
     repo,
     title: o.title,
     domain: o.domain,
+    url: o.url,
     vec: meanVec(o.vecs),
   }))
-  if (repos.length < 2) return repos.map((r) => ({ repo: r.repo, title: r.title, domain: r.domain, x: 0.5, y: 0.5 }))
+  if (repos.length < 2)
+    return repos.map((r) => ({ repo: r.repo, title: r.title, domain: r.domain, url: r.url, x: 0.5, y: 0.5 }))
 
   const gmean = meanVec(repos.map((r) => r.vec))
   const rows = repos.map((r) => sub(r.vec, gmean))
@@ -79,7 +87,7 @@ export function buildMap(index: SearchIndex): MapNode[] {
 
   const xs = normalize01(rows.map((r) => dot(r, pc1)))
   const ys = normalize01(rows.map((r) => dot(r, pc2)))
-  return repos.map((r, i) => ({ repo: r.repo, title: r.title, domain: r.domain, x: xs[i], y: ys[i] }))
+  return repos.map((r, i) => ({ repo: r.repo, title: r.title, domain: r.domain, url: r.url, x: xs[i], y: ys[i] }))
 }
 
 async function main() {

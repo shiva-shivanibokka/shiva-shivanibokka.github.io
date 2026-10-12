@@ -4,29 +4,312 @@ import { fileURLToPath } from 'node:url'
 import type { Domain, Project } from '../src/data/types'
 import { firstParagraph, proseLength } from '../src/rag/markdown'
 
-// Auto-build the FULL project list from GitHub: every public repo that has a
-// *detailed* README, with empty/stub repos, forks, archived, and infra/site/
-// tracker repos filtered out. Runs at build time (and on the CI schedule), so
-// improving a README or adding a new project makes it appear automatically;
-// gutting one drops it. Writes src/data/projects.generated.ts.
+// Build the project list from GitHub for a CURATED set of repos. Everything
+// *about* each project is still read from the repo at build time — blurb, tech
+// stack, the outcome its README states, whether its demo is actually up — so
+// improving a README still improves the card on the next build. What is no
+// longer automatic is *which* repos are eligible. Writes
+// src/data/projects.generated.ts.
 
 const OWNER = 'shiva-shivanibokka'
 const API = 'https://api.github.com'
 
-// Repos that are infrastructure / site / trackers / profile — never shown as "projects".
-const EXCLUDE = new Set(
-  [
-    'shiva-shivanibokka.github.io',
-    'shiva-shivanibokka',
-    'dsa-dojo',
-    'mission-frontier',
-    'build-log',
-    'mission-control',
-    'residency-dojo',
-  ].map((s) => s.toLowerCase()),
-)
+// The portfolio is curated, not exhaustive, and the bar is that the project ran.
+//
+// Discovering every repo with a detailed README surfaced 57 of them, and most of
+// what that added was coursework: a reader landing on the page had to sort the
+// agent systems out of a dozen "learn X from scratch" notebooks before reaching
+// anything built to answer a question. So the site shows the 25 below and
+// nothing else — agentic work first, because that is the through-line.
+//
+// Every entry has measured results from a run that actually happened. Fourteen
+// carry a full RESULTS.md evaluation on `main`; the rest have committed run
+// artifacts. An evaluation harness with no executed run does not qualify —
+// llm-hallucination-detection is the honest example, and its own README says it
+// "reports no measured result of its own".
+//
+// Left out on purpose:
+//   • Educational / tutorial repos — Dive-Deeper ×4, All-About-Cross-Validation,
+//     Gradient-Descent-and-Optimizers, Data-Preprocessing, SQL-and-Database-Skills,
+//     Core-algorithms-for-Leetcode, Games-built-using-Python, All-about-Neural-Networks,
+//     Basics-of-Linear-and-Logistic-Regression, Transfer-Learning-HuggingFace,
+//     Data-Analytics-Portfolio, Sepsis-ML-Model, dsa-dojo. They demonstrate a
+//     technique rather than claim a result, so there is nothing in them to check.
+//   • Ran nothing — llm-hallucination-detection, HireView, PrepGap-Lens,
+//     ResumeForge, Wellnest, sobel-kernel-recovery, Super_Resolution_using_HAN.
+//   • Folded into a bigger project — tool-dependency-graph, whose call-order work
+//     lives inside CodePilot-SWE.
+//   • Thin or unfinished — RecSys-Design, Huft-Refactored,
+//     ML-System-Design-Batch-Inference.
+//   • Infrastructure and trackers — this site, the profile README, build-log,
+//     launchpad, mission-frontier, mission-control, residency-dojo,
+//     portfolio-keepalive, todo.
+//
+// `pitch` and `finding` are written here rather than scraped, because scraping
+// them produced the wrong text on exactly the projects that matter most. Four of
+// these READMEs now open with a "the hosted backend is gone" notice — the free
+// tiers expired — so first-paragraph extraction put a dead-demo warning on the
+// card instead of the project. Multimodal-RAG, the strongest artefact here, was
+// advertising a Google Cloud trial that closed in September. And the outcome
+// extractor needs a unit-suffixed number in prose, so it found nothing at all in
+// CodePilot-SWE, whose result is a table and a dollar figure.
+//
+// Each `finding` is the project's own measured claim, taken from its RESULTS.md
+// or README. Nothing here is estimated or inferred, and the negative results are
+// stated as negative — that is the point of them.
+//
+// Domain is declared here too. Keyword scoring filed most of the agent work
+// under "LLMs & GenAI" — an agent repo says "RAG" and "embeddings" far more
+// often than it says "agentic" — which buried the exact thing this page leads
+// with.
+//
+// To change what the site shows, edit this list: membership and order are both
+// display decisions, and both live here.
+interface Curated {
+  repo: string
+  domain: Domain
+  /** What it is, in one line. Replaces README first-paragraph extraction. */
+  pitch: string
+  /** The measured result, from the repo's own RESULTS.md or README. */
+  finding?: string
+  /**
+   * A live deployment the repo's `homepage` field does not name — the replay
+   * sites, mostly. Still liveness-checked like any other demo, so the link only
+   * ships if it answered at build time.
+   */
+  demo?: string
+  /**
+   * The repo is private, so no GitHub link is emitted: a "View repo" that 404s
+   * for every visitor is worse than no link at all. Tech cannot be detected from
+   * a private README either, so a private entry declares its own.
+   */
+  private?: true
+  tech?: string[]
+}
 
-// A README counts as "detailed" if it has real prose (not just a title/badges).
+const CURATED: Curated[] = [
+  // ─────────────── Agentic — the focus ───────────────
+  {
+    repo: 'CodePilot-SWE',
+    domain: 'Agentic',
+    pitch:
+      'A coding agent that edits real git repositories, and a benchmark harness asking whether a model choosing its own next step beats a fixed, tool-free pipeline on real GitHub issues.',
+    finding:
+      'Agent resolved 5 of 10 SWE-bench Lite instances against agentless 1 of 10, all four discordant pairs favouring the agent — but exact McNemar p = 0.125, which is not significant, and the write-up says so. The agent cost 8.6× for 5× the resolutions, at $2.4892 over 588 calls.',
+    demo: 'https://codepilot-swe-replay.vercel.app',
+  },
+  {
+    repo: 'Autonomous-Research-Report-Agent',
+    domain: 'Agentic',
+    pitch:
+      'A multi-agent pipeline that researches the open web and writes cited, quality-scored reports, with a critic loop and source triage.',
+    finding:
+      'The local correctness judges are invalid: they mark explicit refusals as CORRECT — llama3.1:8b 6 of 9, gemma2:9b 8 of 9 — and the two disagree on the sign of the effect. Separately, a cp1252 encoding error silently discarded every page for a sub-question; fixing it took extracted claims from 104 to 158, and all 36 runs logged no errors either way.',
+  },
+  {
+    repo: 'SCM-using-MCP-and-LLM',
+    domain: 'Agentic',
+    pitch:
+      'A pet-retail supply-chain platform where an MCP agent reasons over a live data warehouse and says what to do, not just what happened.',
+    finding:
+      'The forecasting gain is one season, not a model: CatBoost beats a 28-day moving average 13.24% against 14.77% sMAPE overall, but drop the single festival-season origin and it is indistinguishable, +0.17pp with CI [-0.17, +0.56]. Agent strict accuracy of 47.6% splits into lookup 91.7%, aggregation 52.1%, multi-hop 9.5%.',
+  },
+  {
+    repo: 'Supply-Chain-Demand-Agent',
+    domain: 'Agentic',
+    pitch:
+      'An agentic RAG pipeline for supply-chain demand forecasting, pairing a Temporal Fusion Transformer with retrieval over operational context.',
+    finding:
+      'The original comparison gave the baselines weekly seasonality on data with zero weekly pattern. Closing that gap, a yearly-Fourier baseline reaches MAE 6.673 against the TFT 6.862 — the TFT is 2.8% worse on point accuracy, where the earlier framing claimed 14% better. Its calibrated uncertainty does survive: 11.5% lower pinball loss at half the interval width.',
+  },
+  {
+    repo: 'take-home-project',
+    domain: 'Agentic',
+    pitch:
+      'Three cooperating agents research a topic, draft a structured brief, and review it — escalating low-confidence work to a human instead of publishing it.',
+    finding:
+      'The Reviewer’s own confidence predicts which briefs are wrong: single-call AUROC 0.778, CI [0.682, 0.864], against random, fewer-sources and shorter-brief baselines that all sit at chance. It is overconfident, ECE 0.28. The NLI judge was validated against human RAGTruth labels, failed, and is unused — no result here is validated by a human.',
+  },
+  {
+    repo: 'Autonomous-ML-Pipeline-Builder',
+    domain: 'Agentic',
+    pitch:
+      'Upload a CSV, describe the problem in plain English, and a team of agents builds, evaluates and packages a deployable ML pipeline.',
+    finding:
+      'With a local 7B model the full agent pipeline failed outright on 9 of 15 datasets. On the 6 that completed it was not better than the same pipeline with the LLM steps removed: delta -0.012 AUC, Holm p = 0.47. An earlier +0.010 AUC win over default LightGBM did not replicate on 16 further CC18 datasets.',
+  },
+  {
+    repo: 'Competitor-Insight-Engine',
+    domain: 'Agentic',
+    pitch:
+      'Give it one company URL and an agent scrapes the site, finds real competitors via live search, and writes a competitive-intelligence report.',
+    finding:
+      'Retrieved search evidence gives no measurable gain over the model’s own parametric knowledge — P@4 +0.069, CI [-0.035, +0.177] on Haiku and +0.036, [-0.048, +0.119] on qwen — so the null replicates across two models and two providers. The model does read its evidence, since shuffling it drops P@4 to 0.028; the cause is retrieval coverage of 0.33.',
+  },
+  {
+    repo: 'CodePilot-Agent',
+    domain: 'Agentic',
+    pitch:
+      'The agent that came first: it reads code, edits it, runs the tests, and checkpoints every turn to a git ref so one command puts things back.',
+    finding:
+      'A model choosing each step beat a fixed plan/code/test/debug/review pipeline on the same 15 tasks, both solving 15 of 15: $0.042 against $0.184, 22s against 88s, and 75% against 56% correct on the first try. The loop is cheaper and faster, not just more flexible.',
+  },
+  {
+    repo: 'unclaimed',
+    domain: 'Agentic',
+    pitch:
+      'A voice agent that asks only the questions that change the answer, computes benefits eligibility with the PolicyEngine-US rules engine, and hands back a plan to apply.',
+    finding:
+      'Across 475 simulated households the question-selection engine made no false "you qualify" calls and missed no programs, while asking a median 54 questions against 71 for asking everything, and taking 11 conversational turns against 17.',
+  },
+  {
+    repo: 'Autonomous-SWE-Agent',
+    domain: 'Agentic',
+    pitch:
+      'Takes a GitHub issue, writes a patch in an isolated workspace, and runs the repository’s own tests against it — built both as an agentic tool-use loop and as a fixed pipeline.',
+    finding:
+      'Recorded head-to-head runs on four SWE-bench instances, with per-instance cost and wall time for each arm. The evaluation also closed a leakage route — cloned workspaces carried post-base history — and made test grading match test ids exactly rather than loosely.',
+  },
+
+  // ─────────────── LLMs & GenAI ───────────────
+  {
+    repo: 'Multimodal-RAG',
+    domain: 'LLMs & GenAI',
+    pitch:
+      'Don’t trust the LLM — verify it. Document QA that answers only what the documents support: every claim is checked against retrieved evidence by an NLI model, table math is computed rather than guessed, and each citation points at an exact pixel region of the source page.',
+    finding:
+      'The shipped refusal gate’s AUROC on near-domain OOD is 0.302, CI [0.198, 0.404] — entirely below chance — while the unshipped reranker logit reaches 0.632 on the same inputs. The system computes a working signal and discards it for one worse than a coin flip. Production hybrid+rerank R@1 of 0.832 is also not distinguishable from BM25 alone at 0.794.',
+    demo: 'https://multimodal-rag-replay.vercel.app',
+  },
+  {
+    repo: 'faultlines',
+    domain: 'LLMs & GenAI',
+    pitch:
+      'M.S. capstone: a visual-analytics tool for the place where asking several language models stops working — when they all agree, and all of them are wrong.',
+    finding:
+      'Cross-model disagreement reaches AUC 0.840, CI [0.836, 0.845], against 0.778 for the best single-model semantic entropy on the same 6,436 questions and the same budget. The independence assumption fails: four models from different developers are wrong together 3.3× as often as it predicts, and 950 shared blind spots were found.',
+    private: true,
+    demo: 'https://faultlines-peach.vercel.app',
+    tech: ['Python', 'TypeScript', 'Transformers', 'OpenAI', 'Anthropic', 'Gemini', 'D3.js', 'Next.js'],
+  },
+  {
+    repo: 'RAG-vs-CAG-Showdown',
+    domain: 'LLMs & GenAI',
+    pitch:
+      'A benchmarking framework that runs Context-Augmented Generation against Retrieval-Augmented Generation head to head on latency, token cost and judged answer quality.',
+    finding:
+      'Across five recorded tournaments the two are a wash on quality — on claude-sonnet-5, CAG 4.925 against RAG 4.975, with 8 of 10 questions tied — but CAG spends 20,610 input tokens per question against RAG’s 4,121 to get there.',
+  },
+  {
+    repo: 'Fine-Tuned-Domain-LLM-QLoRA',
+    domain: 'LLMs & GenAI',
+    pitch:
+      'Fine-tunes Llama 3.2 3B with QLoRA to extract specific clauses from real commercial contracts, with the whole train-evaluate-serve loop running on free tiers.',
+    finding:
+      'Fine-tuning made the surface metric worse, and the repo reports it: BERTScore F1 goes 0.490 base, 0.473 QLoRA, 0.469 QLoRA+DPO. What improved was hallucination rate, 0.845 to 0.818 to 0.815, with clause-presence accuracy flat at 0.983.',
+  },
+
+  // ─────────────── NLP ───────────────
+  {
+    repo: 'NLP-Pipeline-at-Scale',
+    domain: 'NLP',
+    pitch:
+      'A real-time social-listening pipeline: Kafka ingest, one multi-task RoBERTa forward pass for sentiment, emotion and toxicity together, entity extraction with brand normalization, and anomaly alerts.',
+    finding:
+      'The published throughput measured nothing: ~1500 msg/s ran against a mock whose batch step was time.sleep. The real ceiling is 277-308 msg/s on an RTX 4060 and 9.2-12.7 on CPU — 4.2-4.6× and 101-139× optimistic. The multi-task ablation holds up: one shared backbone stays within 1.8 F1 on every task at 3.0× fewer parameters, and emotion improves while toxicity pays the whole cost.',
+  },
+
+  // ─────────────── ML system design ───────────────
+  {
+    repo: 'Search-Ranking-System',
+    domain: 'ML System Design',
+    pitch:
+      'A full search and ranking stack over a ~1M passage index: query understanding, hybrid retrieval, learned ranking, and a feedback loop.',
+    finding:
+      'Every BM25 call site tokenized on whitespace, so punctuation stayed glued to words and the baseline was crippled everywhere. Fixing it inverted two documented conclusions: BM25 went 0.337 to 0.446, and the headline "~50% over BM25" became +16%, with the un-reranked hybrid now best — the rerankers do not earn their cost. The corrected BM25 lands within 0.0001-0.020 of published BEIR baselines on all three datasets.',
+  },
+  {
+    repo: 'ML-System-Design-Retraining-Pipeline',
+    domain: 'ML System Design',
+    pitch:
+      'An automated model-lifecycle system for a credit-risk LightGBM model: drift detection, retraining, a promotion gate, and fairness reporting.',
+    finding:
+      'The drift trigger fires on 36 of 36 batches. A rolling-reference sweep showed the frozen 2015 window explained the magnitude but not the rate — the rule counted KS significance with no effect-size floor, making it a sample-size detector — and neither fix works alone. The promotion gate also compared an in-sample champion to an out-of-sample challenger, with holdout rows overlapping training rows 26.1% on average.',
+  },
+  {
+    repo: 'ML-System-Design-Feature-Store',
+    domain: 'ML System Design',
+    pitch:
+      'A feature store on the Uber Michelangelo / Feast / Tecton pattern, with one SQL definition per feature feeding both training and serving — running entirely on free tiers.',
+    finding:
+      'The README claimed training and serving values were "impossible to drift apart by construction". The same entity, queried seconds apart through the two paths, returned txn_count_30d 2.0 against 0.0 and days_since_last_txn 15.0 against 101.0. Three of its four headline claims were falsifiable in under a minute, two by running the commands the README itself gives.',
+  },
+  {
+    repo: 'ML-System-Design-Model-Serving',
+    domain: 'ML System Design',
+    pitch:
+      'A model-deployment system built around the shadow → canary → full rollout question, with real DistilBERT inference and drift monitoring behind it.',
+    finding:
+      'One early `return` cancelled the canary, shadow mode and drift detection at once: the cache was checked before routing, so on a hit the router never ran. At a 50% canary split, 60 identical requests never once reached v2. All three mechanisms the project exists to demonstrate were broken.',
+  },
+  {
+    repo: 'ML-System-Design-Recommendation-Engine',
+    domain: 'ML System Design',
+    pitch:
+      'A five-stage serving pipeline for the "design Netflix recommendations" question, with running code: cache, FAISS retrieval, feature fetch, neural ranking, business rules.',
+    finding:
+      'Neural collaborative filtering earns its complexity over a linear baseline on the shortlist it reranks: NeuMF reaches 0.670 against TruncatedSVD’s 0.629, and 0.449 against 0.378 on the second metric, with MMR diversity re-ranking and a hard genre cap on top.',
+  },
+
+  // ─────────────── MLOps ───────────────
+  {
+    repo: 'Fraud-Detection-System',
+    domain: 'MLOps',
+    pitch:
+      'Two modules for two different problems: a deployed real-time scoring API with calibrated XGBoost, conformal uncertainty and counterfactual explanations, plus a graph-neural-network module benchmarking static against temporal GNNs.',
+    finding:
+      'On severely imbalanced data the honest metric is AUC-PR, and it reports 0.314 against a 0.49% base rate — roughly a 64× lift — rather than leaning on the 0.950 AUC-ROC. Precision@1% is 0.236, and recall at a 1-in-1000 false-block rate is 0.176.',
+  },
+  {
+    repo: 'ML-Model-Efficiency-Toolkit',
+    domain: 'MLOps',
+    pitch:
+      'Benchmarks every major neural-network compression technique side by side, so the size/latency/accuracy tradeoff is measured instead of guessed.',
+    finding:
+      'Eleven configurations across vision and NLP, every number from a real RTX 4060 run: static post-training INT8 quantization holds 91.35% accuracy at 24.1 MB — a 74.5% size cut — for a 1.97× speedup with no accuracy loss. A configuration with no trained checkpoint shows an em dash rather than a number.',
+    // Live, but the repo's homepage field was never set, so discovery missed it.
+    demo: 'https://ml-model-efficiency-toolkit.vercel.app',
+  },
+
+  // ─────────────── Modeling ───────────────
+  {
+    repo: 'Churn-Intelligence-Platform',
+    domain: 'Classical ML',
+    pitch:
+      'Segments customers behaviorally, predicts churn per cohort with calibrated probabilities, picks the subset worth retention budget via uplift modeling, and puts a 12-tool ReAct agent over SHAP drivers and ROI.',
+    finding:
+      'Uplift measured on the Hillstrom randomized set with a checksummed download, and the bootstrap raised from 500 to 5,000 resamples because a conclusion rested on a bound inside the Monte-Carlo error of 500. The evaluation added 46 reproduction tests, 73 to 119 passing, each pinning a defect before it was fixed. No paid API, no LLM judge.',
+  },
+  {
+    repo: 'Federated-Learning-Simulation',
+    domain: 'Deep Learning',
+    pitch:
+      'Trains a heart-disease model across simulated hospitals without pooling their data, then shows interactively that the shared gradients still leak.',
+    finding:
+      'Federated training matches centralized exactly at 83.3% accuracy, against 57.3% for local-only — so collaboration is worth 26 points without sharing data. But a gradient-inversion attack rebuilds a patient record to a reconstruction error of ~1.98e-12, and differential privacy raises that to 0.165, defeating the same attack.',
+  },
+  {
+    repo: 'RL-Portfolio-Optimization',
+    domain: 'Deep Learning',
+    pitch:
+      'Three reward-shaped PPO agents allocating a portfolio, trained offline on real ETF data and served with no PyTorch in production.',
+    finding:
+      'All three agents underperform both passive baselines out of sample, and the repo says so: +10% to +35% total return against equal-weight +57% and SPY +117%. What reward shaping does deliver is a strictly monotonic risk spectrum, and the Conservative agent holds the lowest max drawdown of any strategy in the table at -20%, beating SPY.',
+  },
+]
+
+// A curated repo whose README has lost its prose is worth a warning: the tech
+// tags are detected from it, so a gutted README quietly thins a card.
 const MIN_README_CHARS = 500
 
 function headers() {
@@ -376,35 +659,6 @@ function extractOutcome(readme: string): string | undefined {
   return undefined
 }
 
-// Domain by WEIGHTED keyword score over README + topics + description + languages.
-// [domain, strong markers (×3), weak markers (×1)]. Strong = distinctive to that
-// domain; weak = broad terms that show up across many ML repos. Earlier domains
-// win ties (most specific first); 'Other' only when there's no signal at all.
-const DOMAIN_KW: [Domain, string[], string[]][] = [
-  ['Agentic', ['langgraph', 'mcp', 'model context protocol', 'multi-agent', 'agentic', 'react loop', 'tool registry', 'autonomous agent'], ['agent', 'tool-calling', 'planner']],
-  ['LLMs & GenAI', ['rag', 'cag', 'retrieval-augmented', 'fine-tuning', 'fine-tune', 'lora', 'qlora', 'dpo', 'prompt engineering'], ['llm', 'gpt', 'prompt', 'generative', 'genai', 'chatbot', 'embedding', 'embeddings', 'openai', 'anthropic', 'langchain', 'llama', 'mistral']],
-  ['NLP', ['named entity', 'ner', 'entailment', 'hallucination', 'tokenizer', 'sentiment analysis'], ['nlp', 'sentiment', 'spacy', 'summarization', 'text classification']],
-  ['Deep Learning', ['cnn', 'super-resolution', 'autograd', 'backprop', 'lstm', 'temporal fusion', 'patchtst'], ['pytorch', 'tensorflow', 'keras', 'transformer', 'neural network', 'deep learning', 'rnn', 'attention', 'gan']],
-  ['ML System Design', ['feature store', 'feature-store', 'batch inference', 'batch-inference', 'model serving', 'model-serving', 'retraining pipeline', 'retraining-pipeline', 'system design', 'system-design', 'recommendation-engine'], ['recommendation', 'ranking', 'scalable']],
-  ['MLOps', ['mlflow', 'ci/cd', 'model registry', 'kubernetes', 'drift detection'], ['mlops', 'monitoring', 'drift', 'deployment pipeline', 'docker-compose']],
-  ['Classical ML', ['xgboost', 'catboost', 'random forest', 'gradient boosting', 'k-means'], ['regression', 'classification', 'svm', 'clustering', 'scikit-learn', 'sklearn', 'feature engineering']],
-  ['Data Science', ['exploratory data analysis', 'eda', 'tableau', 'power bi'], ['data analysis', 'visualization', 'dashboard', 'statistics', 'hypothesis', 'pandas']],
-  ['Full-Stack / Product', ['full-stack', 'fullstack', 'next.js', 'saas'], ['web app', 'frontend', 'react app', 'user interface']],
-]
-
-function classify(hay: string): Domain {
-  let best: Domain = 'Other'
-  let bestScore = 0
-  for (const [domain, strong, weak] of DOMAIN_KW) {
-    const score = 3 * strong.filter((k) => hit(hay, k)).length + weak.filter((k) => hit(hay, k)).length
-    if (score > bestScore) {
-      bestScore = score
-      best = domain
-    }
-  }
-  return best
-}
-
 function slugify(repo: string): string {
   return repo.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')
 }
@@ -414,62 +668,85 @@ async function main() {
   const outFile = path.resolve(here, '..', 'src', 'data', 'projects.generated.ts')
 
   const repos = await listRepos()
-  console.log(`Found ${repos.length} repos for @${OWNER}`)
+  console.log(`Found ${repos.length} public repos for @${OWNER}; ${CURATED.length} curated`)
+  const byKey = new Map(repos.map((r) => [r.name.toLowerCase(), r]))
 
   const shown: Project[] = []
   const dead: string[] = []
-  let scanned = 0
+  // A curated repo that produces no card is a mistake to go fix — a rename, a
+  // repo flipped private, a README that lost its prose — not a quiet omission.
+  // Collected and reported rather than thrown: one stale entry should not take
+  // the whole site build down with it.
+  const skipped: string[] = []
+  const thin: string[] = []
   let live = 0
-  let withOutcome = 0
-  for (const r of repos) {
-    const key = r.name.toLowerCase()
-    if (r.fork || r.archived || EXCLUDE.has(key)) continue
-    scanned++
-    const readme = await fetchReadme(r.name)
-    if (proseLength(readme) < MIN_README_CHARS) continue // skip empty / stub repos
-    const blurb = (r.description && r.description.trim()) || firstParagraph(readme)
-    if (blurb.length < 30) continue // no usable summary → skip
-    // Detect tech + domain from README + topics + description + real repo
-    // languages + dependency manifests (the actual imported libraries).
-    const langs = await fetchLanguages(r.name)
-    const manifests = await fetchManifests(r.name)
-    const hay = `${r.name} ${(r.topics || []).join(' ')} ${r.description || ''} ${langs.join(' ')} ${readme}\n${manifests}`.toLowerCase()
-    const tech = detectTech(hay, langs)
-    const outcome = extractOutcome(readme)
-    if (outcome) withOutcome++
-    const candidate = demoCandidate(r.name, r.homepage)
+  // CURATED order is display order, so walk it rather than the API's pushed-at
+  // ordering.
+  for (const c of CURATED) {
+    const r = byKey.get(c.repo.toLowerCase())
+    if (!r && !c.private) {
+      skipped.push(`${c.repo}: not among @${OWNER}'s public repos (renamed, deleted, or now private?)`)
+      continue
+    }
+    if (r && (r.fork || r.archived)) {
+      skipped.push(`${c.repo}: ${r.fork ? 'fork' : 'archived'}`)
+      continue
+    }
+    // A private entry declares its own tech, because its README cannot be read.
+    // A public one gets tech detected from README + topics + description + the
+    // repo's real languages + dependency manifests (the libraries it imports).
+    let tech = c.tech ?? []
+    if (r) {
+      const readme = await fetchReadme(r.name)
+      if (proseLength(readme) < MIN_README_CHARS) thin.push(`${c.repo} (${proseLength(readme)} chars of prose)`)
+      const langs = await fetchLanguages(r.name)
+      const manifests = await fetchManifests(r.name)
+      const hay = `${r.name} ${(r.topics || []).join(' ')} ${r.description || ''} ${langs.join(' ')} ${readme}\n${manifests}`.toLowerCase()
+      const detected = detectTech(hay, langs)
+      if (detected.length) tech = detected
+    }
+    // The declared demo wins over the repo's homepage field — it is the one
+    // chosen for the card, usually a replay the homepage does not name. Either
+    // way it ships only if it answered just now.
+    const candidate = c.demo ?? demoCandidate(c.repo, r?.homepage ?? null)
     let demo: string | undefined
     if (candidate) {
       if (await checkLive(candidate)) {
         demo = candidate
         live++
       } else {
-        dead.push(`${r.name} → ${candidate}`)
+        dead.push(`${c.repo} → ${candidate}`)
       }
     }
     shown.push({
-      slug: slugify(r.name),
-      title: prettyTitle(r.name),
-      repo: r.name,
-      domain: classify(hay),
-      blurb,
+      slug: slugify(c.repo),
+      title: prettyTitle(c.repo),
+      repo: c.repo,
+      domain: c.domain,
+      blurb: c.pitch,
       tech: tech.length ? tech : ['Project'],
-      url: `https://github.com/${OWNER}/${r.name}`,
+      ...(c.private ? {} : { url: `https://github.com/${OWNER}/${c.repo}` }),
       ...(demo ? { demo } : {}),
-      ...(outcome ? { outcome } : {}),
+      ...(c.finding ? { outcome: c.finding } : {}),
     })
   }
 
-  console.log(`  ${shown.length} shown (of ${scanned} scanned; rest filtered for thin/empty READMEs)`)
+  const withOutcome = shown.filter((p) => p.outcome).length
+  console.log(`  ${shown.length} shown of ${CURATED.length} curated`)
   console.log(`  ${live} live demos linked`)
-  console.log(`  ${withOutcome} projects state an outcome in their README`)
+  console.log(`  ${withOutcome} state a measured finding`)
+  if (skipped.length) console.warn(`  ${skipped.length} curated repo(s) produced no card:\n    ${skipped.join('\n    ')}`)
+  // Tech tags come from the README, so a gutted one thins a card without
+  // emptying it. Worth saying; not worth dropping the project over.
+  if (thin.length) console.warn(`  ${thin.length} README(s) under ${MIN_README_CHARS} chars of prose, tech tags may be sparse:\n    ${thin.join('\n    ')}`)
   // Never drop a demo silently — an unreachable one is a thing to go fix.
   if (dead.length) console.warn(`  ${dead.length} demo(s) unreachable, link omitted:\n    ${dead.join('\n    ')}`)
 
   const body =
     `import type { Project } from './types'\n\n` +
     `// AUTO-GENERATED by scripts/build-projects.ts — do not edit by hand.\n` +
-    `// Every public repo with a detailed README (empty / stub repos filtered out).\n` +
+    `// Curated list — membership, order, blurb and outcome come from CURATED in that\n` +
+    `// script; tech tags and demo liveness are read from each repo at build time.\n` +
     `export const generatedProjects: Project[] = ${JSON.stringify(shown, null, 2)}\n`
   await fs.writeFile(outFile, body)
   console.log(`Wrote ${shown.length} projects → src/data/projects.generated.ts`)
