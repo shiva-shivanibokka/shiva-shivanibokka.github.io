@@ -189,8 +189,8 @@ export const generatedProjects: Project[] = [
     "blurb": "A voice agent that asks only the questions that change the answer, computes benefits eligibility with the PolicyEngine-US rules engine, and hands back a plan to apply.",
     "tech": [
       "Python",
-      "TeX",
       "TypeScript",
+      "JavaScript",
       "MCP",
       "uvicorn",
       "AWS",
