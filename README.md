@@ -2,13 +2,13 @@
 
 My personal AI/ML portfolio. Live at **[shiva-shivanibokka.github.io](https://shiva-shivanibokka.github.io)**.
 
-The hero isn't a list of links — it's a **real, in-browser semantic search over my own work**. You type a query in plain English ("RAG projects", "deep learning", "MLOps"), and the page embeds your query and ranks my repositories by meaning, showing the most relevant projects with the matching snippets and a cosine similarity score. The search itself needs no server, no API keys and no LLM calls — the embedding model runs entirely in your browser. (The separate **Ask** tab *is* LLM-backed: retrieval stays in the browser, but the conversation goes to a Cloudflare Worker that holds the provider key. It hides itself when that backend is unconfigured.)
+The hero isn't a list of links — it's a **real, in-browser semantic search over my own work**. You type a query in plain English ("RAG projects", "deep learning", "MLOps"), and the page embeds your query and ranks my repositories by meaning, showing the most relevant projects with the matching snippets and a cosine similarity score. The search itself needs no server, no API keys and no LLM calls — the embedding model runs entirely in your browser. (The **chat** toggle beside `search` in that same box *is* LLM-backed: retrieval stays in the browser, but the conversation goes to a Cloudflare Worker that holds the provider key. It hides itself when that backend is unconfigured.)
 
 ---
 
 ## What it does
 
-- **Semantic search over my repos.** A sentence-transformer (`Xenova/all-MiniLM-L6-v2`, 384-dim) embeds the query in-browser, then cosine-ranks chunks of my repo READMEs and surfaces the best-matching projects, each with a snippet and a match score (e.g. `0.45 match`). It's honest retrieval — **no generative LLM writes the search results**. Generated prose appears only in the Ask tab, which is explicitly a chat over the same index and is labelled as such.
+- **Semantic search over my repos.** A sentence-transformer (`Xenova/all-MiniLM-L6-v2`, 384-dim) embeds the query in-browser, then cosine-ranks chunks of my repo READMEs and surfaces the best-matching projects, each with a snippet and a match score (e.g. `0.45 match`). It's honest retrieval — **no generative LLM writes the search results**. Generated prose appears only under the `chat` toggle, which runs over the same index and is labelled as such.
 - **"Connecting the Dots" embedding map.** A real 2D projection (PCA of per-repo mean embeddings) renders my repositories as an interactive constellation. Nodes are colored by domain, hover reveals the repo, click opens it, and the nodes **pulse when a search runs** so you can see which projects matched.
 - **"Hiring for…" role lens.** Pick a role (ML Engineer / Data Scientist / Deep Learning / GenAI·Agentic / SWE) and the Projects section refocuses on the relevant work.
 - **The rest:** a glitchy animated hero, a Netflix-style particle intro (skippable, runs once per session, reduced-motion safe), real experience & skills, and a downloadable résumé.
